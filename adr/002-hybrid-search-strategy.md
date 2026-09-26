@@ -1,4 +1,4 @@
-# ADR 001: Hybrid Search Strategy
+# ADR 002: Hybrid Search Strategy
 
 ## Status
 Proposed (Sep 28, 2026)
