@@ -1,7 +1,9 @@
-"""Document ingestion endpoints."""
+"""Document ingestion endpoints — wired to the ADR-001 pipeline (Week 1 Day 3)."""
 
-from fastapi import APIRouter, status
+from fastapi import APIRouter, HTTPException, Request, status
 
+from ...core.embeddings import get_embedding_backend
+from ...core.ingest_service import IngestService
 from ...schemas.common import ChunkStatus
 from ...schemas.documents import DocumentUpload, IngestResponse
 
@@ -12,16 +14,32 @@ router = APIRouter()
     "",
     response_model=IngestResponse,
     status_code=status.HTTP_202_ACCEPTED,
-    summary="Submit a document for ingestion",
+    summary="Ingest a document: parse -> semantic chunk -> embed -> upsert",
 )
-async def ingest_document(payload: DocumentUpload) -> IngestResponse:
-    """Accept a document and (eventually) run it through the parsing + chunking pipeline.
+async def ingest_document(payload: DocumentUpload, request: Request) -> IngestResponse:
+    """Run the full parsing + chunking + embedding pipeline and upsert into Qdrant.
 
-    Skeleton stub: parsing, semantic chunking, contextual headers and table-aware
-    rules are implemented on Week 1 Day 3 (per ``daily-goals.md``).
+    The pipeline is CPU-bound (embedding) so it runs in a worker thread to keep
+    the event loop responsive.
     """
-    return IngestResponse(
-        document_id=payload.document_id,
-        status=ChunkStatus.PENDING,
-        chunks_created=0,
-    )
+    import asyncio
+
+    qdrant = request.app.state.qdrant
+    if qdrant is None:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Qdrant unavailable; ingestion is disabled.",
+        )
+    embedder = get_embedding_backend(request.app.state.settings)
+    service = IngestService(qdrant, embedder, request.app.state.settings)
+    try:
+        result = await asyncio.to_thread(service.ingest, payload)
+    except FileNotFoundError as exc:
+        raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
+    if result.stats.parse_failed:
+        raise HTTPException(
+            status_code=status.HTTP_422_UNPROCESSABLE_ENTITY,
+            detail=f"Ingestion failed: {result.stats.error}",
+        )
+    return result.response
+

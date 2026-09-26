@@ -35,13 +35,21 @@ def get_qdrant_client(settings: Settings | None = None) -> QdrantClient:
 
 
 def ensure_collection(client: QdrantClient, settings: Settings | None = None) -> bool:
-    """Create the dense+sparse collection if it does not exist.
+    """Create the dense+sparse collection if needed (recreates on dim mismatch).
 
-    Returns ``True`` when the collection was created, ``False`` when it already existed.
+    Returns ``True`` when the collection was (re)created, ``False`` when a
+    compatible collection already existed.
     """
     settings = settings or get_settings()
     if client.collection_exists(settings.qdrant_collection):
-        return False
+        try:
+            info = client.get_collection(settings.qdrant_collection)
+            dims = info.config.params.vectors["dense"].size
+            if dims == settings.dense_vector_size:
+                return False
+            client.delete_collection(settings.qdrant_collection)  # stale dims; rebuild
+        except Exception:
+            return False
     client.create_collection(
         collection_name=settings.qdrant_collection,
         **build_collection_config(settings),

@@ -10,7 +10,7 @@ def test_dense_vector_config():
     cfg = build_collection_config()
     dense = cfg["vectors_config"]["dense"]
     assert isinstance(dense, models.VectorParams)
-    assert dense.size == get_settings().dense_vector_size == 1024
+    assert dense.size == get_settings().dense_vector_size == 384
     assert dense.distance == models.Distance.COSINE
 
 

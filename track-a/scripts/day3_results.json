@@ -1,0 +1,166 @@
+{
+  "quality": {
+    "parse_failures": 0,
+    "parse_failure_rate": 0.0,
+    "tables_total": 68,
+    "tables_corrupted": 0,
+    "table_corruption_rate": 0.0,
+    "recall_at5_dense": 0.9,
+    "recall_at5_hybrid": 0.9,
+    "delta_recall_at5": 0.0
+  },
+  "latency": {
+    "ingest_total_ms": [
+      75226.6,
+      411.6,
+      131.5,
+      42.5
+    ],
+    "ingest_p95_ms": 131337.9,
+    "throughput_docs_per_sec": 0.053,
+    "search_spans": [
+      {
+        "query": "what was apple net sales in fiscal 2023",
+        "embed_ms": 6.3,
+        "dense_ms": 9.7,
+        "sparse_ms": 8.8,
+        "fuse_ms": 0.06,
+        "total_ms": 24.9
+      },
+      {
+        "query": "iphone revenue mac revenue segment breakdown",
+        "embed_ms": 4.8,
+        "dense_ms": 11.0,
+        "sparse_ms": 4.7,
+        "fuse_ms": 0.07,
+        "total_ms": 20.5
+      },
+      {
+        "query": "gross margin percentage fiscal 2023",
+        "embed_ms": 5.2,
+        "dense_ms": 6.9,
+        "sparse_ms": 6.4,
+        "fuse_ms": 0.04,
+        "total_ms": 18.6
+      },
+      {
+        "query": "domestic fee cross-border fee tier",
+        "embed_ms": 5.7,
+        "dense_ms": 10.4,
+        "sparse_ms": 4.0,
+        "fuse_ms": 0.03,
+        "total_ms": 20.2
+      },
+      {
+        "query": "hnsw ef_search recall latency trade-off",
+        "embed_ms": 5.7,
+        "dense_ms": 5.3,
+        "sparse_ms": 4.9,
+        "fuse_ms": 0.03,
+        "total_ms": 15.9
+      },
+      {
+        "query": "quantization memory reduction per million vectors",
+        "embed_ms": 4.3,
+        "dense_ms": 5.8,
+        "sparse_ms": 38.5,
+        "fuse_ms": 0.04,
+        "total_ms": 48.7
+      },
+      {
+        "query": "reciprocal rank fusion decision sprint",
+        "embed_ms": 4.5,
+        "dense_ms": 6.5,
+        "sparse_ms": 3.9,
+        "fuse_ms": 0.08,
+        "total_ms": 15.0
+      },
+      {
+        "query": "reranker candidate cap fifty",
+        "embed_ms": 4.9,
+        "dense_ms": 8.7,
+        "sparse_ms": 4.3,
+        "fuse_ms": 0.03,
+        "total_ms": 17.9
+      },
+      {
+        "query": "total operating expenses research development",
+        "embed_ms": 4.8,
+        "dense_ms": 4.9,
+        "sparse_ms": 3.8,
+        "fuse_ms": 0.07,
+        "total_ms": 13.6
+      },
+      {
+        "query": "services revenue growth drivers",
+        "embed_ms": 3.3,
+        "dense_ms": 4.8,
+        "sparse_ms": 4.2,
+        "fuse_ms": 0.03,
+        "total_ms": 12.3
+      }
+    ],
+    "search_p50_ms": 18.2,
+    "search_p95_ms": 59.4,
+    "fuse_p95_ms": 0.084
+  },
+  "cost": {
+    "points": 251,
+    "dense_index_bytes": 385536,
+    "sparse_index_est_bytes": 55220,
+    "storage_gb_month_usd": 4.4e-05,
+    "embedding_tokens": 63316,
+    "embed_cost_usd_per_1k_pages_reference": 0.0025,
+    "storage_cost_usd_per_1k_pages_reference": 0.0878
+  },
+  "ingest_rows": [
+    {
+      "title": "Apple FY2023 Form 10-K",
+      "source_tokens": 63047,
+      "chunks": 239,
+      "table_chunks": 66,
+      "parse_ms": 99.0,
+      "embed_ms": 73124.3,
+      "upsert_ms": 2000.4,
+      "total_ms": 75226.6,
+      "failed": false,
+      "tables": 66
+    },
+    {
+      "title": "Product Notes: Payments Platform",
+      "source_tokens": 112,
+      "chunks": 4,
+      "table_chunks": 1,
+      "parse_ms": 0.5,
+      "embed_ms": 390.7,
+      "upsert_ms": 20.4,
+      "total_ms": 411.6,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Vector Database Primer",
+      "source_tokens": 98,
+      "chunks": 4,
+      "table_chunks": 1,
+      "parse_ms": 0.1,
+      "embed_ms": 117.7,
+      "upsert_ms": 13.6,
+      "total_ms": 131.5,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Q3 Retrieval Sync Transcript",
+      "source_tokens": 59,
+      "chunks": 1,
+      "table_chunks": 0,
+      "parse_ms": 0.1,
+      "embed_ms": 22.6,
+      "upsert_ms": 19.7,
+      "total_ms": 42.5,
+      "failed": false,
+      "tables": 0
+    }
+  ]
+}

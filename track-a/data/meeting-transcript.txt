@@ -1,0 +1,5 @@
+The quarterly review opened with the retrieval quality dashboard.
+Recall at five improved after we added contextual chunk headers.
+The team agreed to adopt hybrid retrieval with reciprocal rank fusion next sprint.
+Latency remained under budget because the reranker was capped at fifty candidates.
+The action items are to benchmark cost per thousand queries and to profile embedding throughput.

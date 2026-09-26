@@ -27,3 +27,6 @@ class SearchResponse(BaseModel):
     query: str
     results: list[SearchResult] = Field(default_factory=list)
     latency_ms: float | None = None
+    mode: str | None = None
+    spans: dict[str, float] = Field(default_factory=dict)
+

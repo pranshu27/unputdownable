@@ -35,7 +35,7 @@ class Chunk(BaseModel):
     end_index: int = Field(ge=0)
     token_count: int | None = None
     is_table: bool = False
-    table_rows: list[dict[str, Any]] | None = None
+    table_rows: list[list[str]] | None = None
     metadata: dict[str, Any] = Field(default_factory=dict)
 
 
