@@ -222,3 +222,8 @@ __marimo__/
 
 # Local infra volumes
 qdrant_storage/
+
+# Obsidian local workspace state (UI layout churns every open)
+vault/.obsidian/workspace.json
+vault/.obsidian/workspace-mobile.json
+vault/.obsidian/cache/

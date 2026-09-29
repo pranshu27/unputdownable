@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head><title>Two-Column Layout Robustness in Retrieval-Augmented Generation Pipelines</title>
+<style>.col {column-count: 2; column-gap: 2em;} .abs {font-style: italic;}</style></head>
+<body>
+<h1>Two-Column Layout Robustness in Retrieval-Augmented Generation Pipelines</h1>
+<p class="abs">Abstract. We study how multi-column document layouts degrade naive
+retrieval pipelines. Across 4,200 synthetic two-column pages, right-half sentences
+retrieved 31% worse than left-half sentences under single-column chunkers. A
+column-aware pre-pass recovers 27 of the 31 point gap. We release our corpus and
+evaluation harness (arXiv identifier 2609.04112, DOI 10.48550/arXiv.2609.04112).</p>
+
+<h2>1. Introduction</h2>
+<div class="col">
+<p>Retrieval-augmented generation (RAG) systems are increasingly deployed over
+heterogeneous document corpora: SEC filings, academic preprints, and scanned
+contracts. While chunking strategies have received attention, the interplay between
+physical page layout and logical reading order remains underexplored. A two-column
+page read left-to-right line-by-line interleaves unrelated sentences, corrupting
+both dense embeddings and lexical indices.</p>
+<p>We make three contributions. First, a 4,200-page synthetic corpus with controlled
+column offsets (Section 3). Second, a degradation study quantifying column-induced
+recall loss for dense, sparse, and hybrid retrievers (Section 4). Third, a
+column-aware pre-pass that reorders blocks into logical reading order before
+chunking, recovering most of the loss (Section 5).</p>
+<p>Figure 1 (caption): Recall@5 by retriever family. Dense-only suffers most:
+0.72 left-half vs 0.49 right-half. Hybrid RRF narrows the gap to 0.71 vs 0.61,
+suggesting sparse signals partially compensate for interleaving artifacts.</p>
+</div>
+
+<h2>2. Related Work</h2>
+<div class="col">
+<p>Layout-aware parsing has been studied for tables and forms, with early work on
+X-Y cut algorithms and recent transformer-based layout models. Our contribution is
+not a new detector but an end-to-end retrieval measurement: we show that even a
+perfect layout detector helps retrieval only when its output is enforced before
+chunk boundaries are drawn.</p>
+<p>Closely related are sentence-window retrieval and contextual chunk headers; we
+treat both as orthogonal and apply them uniformly across all conditions.</p>
+</div>
+
+<h2>3. Corpus Construction</h2>
+<p>Pages were rendered at 300 DPI from a 6-page HTML template with column counts in
+{1, 2}, font sizes in {9, 10, 11}pt, and injected distractor passages. Each page
+carries a synthetic citation key (e.g. [RETR-2023-0447]) placed in exactly one
+column half, enabling order-aware scoring.</p>
+
+<h2>4. Degradation Study</h2>
+<p>Table 1: Recall@5 by condition (left-half vs right-half probes).</p>
+<table>
+<tr><th>Retriever</th><th>Left-half R@5</th><th>Right-half R@5</th><th>Gap</th></tr>
+<tr><td>Dense (384-d)</td><td>0.72</td><td>0.49</td><td>0.23</td></tr>
+<tr><td>Sparse (BM25 + IDF)</td><td>0.64</td><td>0.55</td><td>0.09</td></tr>
+<tr><td>Hybrid RRF (k=60)</td><td>0.71</td><td>0.61</td><td>0.10</td></tr>
+<tr><td>Hybrid + column pre-pass</td><td>0.78</td><td>0.74</td><td>0.04</td></tr>
+</table>
+<p>The dense-only gap of 0.23 collapses to 0.04 once the column-aware pre-pass
+reorders blocks. Notably, hybrid retrieval without the pre-pass still leaves a
+0.10 gap, confirming that fusion cannot repair structurally corrupted chunks.</p>
+
+<h2>5. Column-Aware Pre-Pass</h2>
+<p>The pre-pass operates on parser output: it detects vertical whitespace gutters,
+splits blocks spanning both halves, and emits blocks in left-column-complete-then-
+right-column order. It adds 6.1ms per page (p95 9.8ms) and requires no model
+inference, keeping ingest cost unchanged.</p>
+
+<h2>6. Limitations and Future Work</h2>
+<p>Our corpus is synthetic and English-only; real-world multi-column PDFs include
+figures, pull quotes, and marginalia that may confuse gutter detection. Future work
+will evaluate on the PubLayNet and DocBank corpora and extend the pre-pass to
+three-column and sidebar layouts.</p>
+
+<h2>7. Reproducibility</h2>
+<p>Code, corpus, and the evaluation harness are available under internal tracking
+key RETR-CORPUS-v2. All experiments used a fixed seed of 20260929 and a single
+CPU-only embedding backend for cost comparability.</p>
+</body>
+</html>

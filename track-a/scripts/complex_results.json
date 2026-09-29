@@ -1,0 +1,341 @@
+{
+  "quality": {
+    "parse_failures": 0,
+    "parse_failure_rate": 0.0,
+    "tables_total": 75,
+    "tables_corrupted": 0,
+    "table_corruption_rate": 0.0,
+    "recall_at5_dense": 0.92,
+    "recall_at5_hybrid": 0.92,
+    "delta_recall_at5": 0.0,
+    "recall_at5_dense_lexical_hard": 0.9,
+    "recall_at5_hybrid_lexical_hard": 0.9,
+    "delta_recall_at5_lexical_hard": 0.0
+  },
+  "latency": {
+    "ingest_total_ms": [
+      61838.6,
+      1245.8,
+      77.2,
+      67.4,
+      381.5,
+      446.5,
+      643.0,
+      25.4
+    ],
+    "ingest_p95_ms": 95164.6,
+    "throughput_docs_per_sec": 0.124,
+    "search_spans": [
+      {
+        "query": "what was apple net sales in fiscal 2023",
+        "embed_ms": 4.9,
+        "dense_ms": 4.6,
+        "sparse_ms": 7.6,
+        "fuse_ms": 0.04,
+        "total_ms": 17.2
+      },
+      {
+        "query": "iphone revenue mac revenue segment breakdown",
+        "embed_ms": 3.4,
+        "dense_ms": 4.4,
+        "sparse_ms": 2.8,
+        "fuse_ms": 0.03,
+        "total_ms": 10.6
+      },
+      {
+        "query": "gross margin percentage fiscal 2023",
+        "embed_ms": 5.2,
+        "dense_ms": 4.1,
+        "sparse_ms": 3.0,
+        "fuse_ms": 0.06,
+        "total_ms": 12.4
+      },
+      {
+        "query": "domestic fee cross-border fee tier",
+        "embed_ms": 3.4,
+        "dense_ms": 5.7,
+        "sparse_ms": 4.0,
+        "fuse_ms": 0.03,
+        "total_ms": 13.2
+      },
+      {
+        "query": "hnsw ef_search recall latency trade-off",
+        "embed_ms": 9.4,
+        "dense_ms": 7.8,
+        "sparse_ms": 6.4,
+        "fuse_ms": 0.1,
+        "total_ms": 23.8
+      },
+      {
+        "query": "quantization memory reduction per million vectors",
+        "embed_ms": 4.2,
+        "dense_ms": 4.4,
+        "sparse_ms": 2.8,
+        "fuse_ms": 0.04,
+        "total_ms": 11.4
+      },
+      {
+        "query": "reciprocal rank fusion decision sprint",
+        "embed_ms": 4.7,
+        "dense_ms": 6.1,
+        "sparse_ms": 3.9,
+        "fuse_ms": 0.02,
+        "total_ms": 14.8
+      },
+      {
+        "query": "reranker candidate cap fifty",
+        "embed_ms": 2.9,
+        "dense_ms": 3.8,
+        "sparse_ms": 3.5,
+        "fuse_ms": 0.02,
+        "total_ms": 10.2
+      },
+      {
+        "query": "total operating expenses research development",
+        "embed_ms": 3.3,
+        "dense_ms": 4.9,
+        "sparse_ms": 5.1,
+        "fuse_ms": 0.03,
+        "total_ms": 13.4
+      },
+      {
+        "query": "services revenue growth drivers",
+        "embed_ms": 2.7,
+        "dense_ms": 4.7,
+        "sparse_ms": 3.4,
+        "fuse_ms": 0.03,
+        "total_ms": 10.9
+      },
+      {
+        "query": "what is the ACMR CIK number",
+        "embed_ms": 4.0,
+        "dense_ms": 3.8,
+        "sparse_ms": 3.0,
+        "fuse_ms": 0.03,
+        "total_ms": 10.9
+      },
+      {
+        "query": "ACME restructuring charges severance impairment Hannover",
+        "embed_ms": 3.3,
+        "dense_ms": 3.4,
+        "sparse_ms": 3.3,
+        "fuse_ms": 0.03,
+        "total_ms": 10.0
+      },
+      {
+        "query": "Series B term loan interest rate basis points",
+        "embed_ms": 3.4,
+        "dense_ms": 4.6,
+        "sparse_ms": 3.3,
+        "fuse_ms": 0.03,
+        "total_ms": 11.3
+      },
+      {
+        "query": "ACME warehouse fulfillment segment revenue growth percent",
+        "embed_ms": 3.3,
+        "dense_ms": 3.9,
+        "sparse_ms": 2.5,
+        "fuse_ms": 0.03,
+        "total_ms": 9.7
+      },
+      {
+        "query": "ACME diluted earnings per share fiscal 2023",
+        "embed_ms": 3.4,
+        "dense_ms": 4.0,
+        "sparse_ms": 3.3,
+        "fuse_ms": 0.04,
+        "total_ms": 10.7
+      },
+      {
+        "query": "ERR-4021 ledger journal write timeout",
+        "embed_ms": 3.6,
+        "dense_ms": 4.3,
+        "sparse_ms": 3.3,
+        "fuse_ms": 0.04,
+        "total_ms": 11.2
+      },
+      {
+        "query": "which deploy caused the canary rollback",
+        "embed_ms": 3.3,
+        "dense_ms": 4.0,
+        "sparse_ms": 4.3,
+        "fuse_ms": 0.03,
+        "total_ms": 11.7
+      },
+      {
+        "query": "trace id fraud scoring span budget breach",
+        "embed_ms": 3.3,
+        "dense_ms": 3.9,
+        "sparse_ms": 2.4,
+        "fuse_ms": 0.03,
+        "total_ms": 9.7
+      },
+      {
+        "query": "remediation owner canary blast radius tier-0",
+        "embed_ms": 3.5,
+        "dense_ms": 3.7,
+        "sparse_ms": 3.1,
+        "fuse_ms": 0.03,
+        "total_ms": 10.3
+      },
+      {
+        "query": "lease monthly base rent lease year three",
+        "embed_ms": 4.4,
+        "dense_ms": 3.9,
+        "sparse_ms": 2.5,
+        "fuse_ms": 0.03,
+        "total_ms": 10.8
+      },
+      {
+        "query": "security deposit amount Sundial Analytics",
+        "embed_ms": 2.9,
+        "dense_ms": 4.3,
+        "sparse_ms": 3.2,
+        "fuse_ms": 0.03,
+        "total_ms": 10.4
+      },
+      {
+        "query": "proportionate share operating expenses base year",
+        "embed_ms": 3.2,
+        "dense_ms": 4.8,
+        "sparse_ms": 3.5,
+        "fuse_ms": 0.03,
+        "total_ms": 11.5
+      },
+      {
+        "query": "two-column degradation dense right half recall",
+        "embed_ms": 3.5,
+        "dense_ms": 3.4,
+        "sparse_ms": 3.4,
+        "fuse_ms": 0.08,
+        "total_ms": 10.3
+      },
+      {
+        "query": "column-aware pre-pass latency milliseconds per page",
+        "embed_ms": 4.1,
+        "dense_ms": 3.8,
+        "sparse_ms": 2.9,
+        "fuse_ms": 0.03,
+        "total_ms": 10.9
+      },
+      {
+        "query": "synthetic corpus citation key retrieval",
+        "embed_ms": 3.1,
+        "dense_ms": 3.4,
+        "sparse_ms": 2.6,
+        "fuse_ms": 0.03,
+        "total_ms": 9.2
+      }
+    ],
+    "search_p50_ms": 10.9,
+    "search_p95_ms": 21.8,
+    "fuse_p95_ms": 0.094
+  },
+  "cost": {
+    "points": 290,
+    "dense_index_bytes": 445440,
+    "sparse_index_est_bytes": 63800,
+    "storage_gb_month_usd": 5.1e-05,
+    "embedding_tokens": 65276,
+    "embed_cost_usd_per_1k_pages_reference": 0.0026,
+    "storage_cost_usd_per_1k_pages_reference": 0.0878
+  },
+  "ingest_rows": [
+    {
+      "title": "Apple FY2023 Form 10-K",
+      "source_tokens": 63047,
+      "chunks": 239,
+      "table_chunks": 66,
+      "parse_ms": 96.3,
+      "embed_ms": 60714.3,
+      "upsert_ms": 1025.0,
+      "total_ms": 61838.6,
+      "failed": false,
+      "tables": 66
+    },
+    {
+      "title": "ACME Robotics FY2023 Form 10-K",
+      "source_tokens": 439,
+      "chunks": 13,
+      "table_chunks": 4,
+      "parse_ms": 2.4,
+      "embed_ms": 1229.2,
+      "upsert_ms": 14.2,
+      "total_ms": 1245.8,
+      "failed": false,
+      "tables": 4
+    },
+    {
+      "title": "Product Notes: Payments Platform",
+      "source_tokens": 112,
+      "chunks": 4,
+      "table_chunks": 1,
+      "parse_ms": 0.2,
+      "embed_ms": 66.7,
+      "upsert_ms": 10.3,
+      "total_ms": 77.2,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Vector Database Primer",
+      "source_tokens": 98,
+      "chunks": 4,
+      "table_chunks": 1,
+      "parse_ms": 0.1,
+      "embed_ms": 55.1,
+      "upsert_ms": 12.2,
+      "total_ms": 67.4,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Incident Postmortem: Payment Authorization Degradation",
+      "source_tokens": 472,
+      "chunks": 6,
+      "table_chunks": 1,
+      "parse_ms": 0.2,
+      "embed_ms": 368.3,
+      "upsert_ms": 12.9,
+      "total_ms": 381.5,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Commercial Lease Agreement (Scanned OCR)",
+      "source_tokens": 521,
+      "chunks": 12,
+      "table_chunks": 1,
+      "parse_ms": 0.7,
+      "embed_ms": 433.4,
+      "upsert_ms": 12.4,
+      "total_ms": 446.5,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Two-Column Layout RAG Paper",
+      "source_tokens": 528,
+      "chunks": 11,
+      "table_chunks": 1,
+      "parse_ms": 0.7,
+      "embed_ms": 629.5,
+      "upsert_ms": 12.8,
+      "total_ms": 643.0,
+      "failed": false,
+      "tables": 1
+    },
+    {
+      "title": "Q3 Retrieval Sync Transcript",
+      "source_tokens": 59,
+      "chunks": 1,
+      "table_chunks": 0,
+      "parse_ms": 0.1,
+      "embed_ms": 17.2,
+      "upsert_ms": 8.1,
+      "total_ms": 25.4,
+      "failed": false,
+      "tables": 0
+    }
+  ]
+}
