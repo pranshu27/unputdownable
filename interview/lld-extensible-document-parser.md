@@ -50,3 +50,17 @@
 - Failure/observability:
 - Testing:
 - Trade-offs:
+
+---
+
+## Session trace — 2026-10-08 (drill 1)
+
+**Candidate clarifying questions:**
+1. What formats need to be parsed?
+2. What should the standard output format be?
+
+**Interviewer answers:**
+1. Five formats today: native (text-layer) PDFs ~70% of volume; scanned/image-only PDFs ~12%; Markdown exported from the internal wiki; DOCX from legal/ops; SEC HTML filings (10-K/10-Q, inline XBRL, page-like layout tables). A new source appears roughly once a quarter (last quarter: scanned contracts; next quarter: legal is threatening PPTX). Volume ~4,000 docs/day, bursts to ~40 docs/sec, average 60 pages, 10-Ks up to ~400. Latency budget: p95 <= 2 s/doc for text-layer docs; the scanned path may be 10-20x slower and is allowed to be asynchronous. Downstream consumer is the chunker -> embeddings -> hybrid search, and analysts query financial statements, so numeric tables must be queryable exactly.
+2. **Handed back as a design decision, not a requirement:** "That's your proposal to make - I'll answer requirements questions and ask you to justify design ones." Interviewer expects: the interface signature, the return type, how tables are represented (structure preserved, not flattened), how section hierarchy is carried, and what metadata rides along (provenance, format, warnings/confidence).
+
+**Rubric status at this point:** clarify ✅ (2 solid requirement questions) · abstractions ⬜ · extensibility ⬜ · failure/observability ⬜ · testing ⬜ · trade-offs ⬜
