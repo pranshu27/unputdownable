@@ -1,7 +1,11 @@
 """Live Qdrant integration tests.
 
-These tests auto-skip when Qdrant is not reachable (e.g. Docker not running), so the
-unit suite still passes in CI without infrastructure.
+Auto-skip when Qdrant is not reachable (e.g. Docker down), so the unit suite still
+passes in CI without infrastructure.
+
+Writes NEVER touch the real collection: they go to the ``scratch_client`` fixture
+(collection ``documents-tests``), which is dropped on teardown. Previously the
+round-trip test left a ``"hello world"`` point inside ``documents``.
 """
 
 import pytest
@@ -11,29 +15,36 @@ from app.config import get_settings
 from app.core.qdrant import ensure_collection, get_qdrant_client
 
 
-@pytest.fixture(scope="module")
-def client():
-    settings = get_settings()
+def _live_client(settings):
+    """Client bound to ``settings``; skips the test when Qdrant is unreachable."""
     c = get_qdrant_client(settings)
     try:
         c.get_collections()  # force a round-trip; raises if the server is down
     except Exception as exc:  # pragma: no cover - depends on local Docker
         pytest.skip(f"Qdrant unavailable: {exc}")
-    return c, settings
+    return c
 
 
-def test_collection_has_dense_and_sparse_vectors(client):
-    c, settings = client
-    ensure_collection(c, settings)
-    info = c.get_collection(settings.qdrant_collection)
+def test_production_collection_config_is_read_only():
+    """Read-only assertion that the real collection exists with the expected config."""
+    settings = get_settings()
+    c = _live_client(settings)
+    try:
+        info = c.get_collection(settings.qdrant_collection)
+    except Exception:  # pragma: no cover - collection not created yet
+        pytest.skip(f"collection {settings.qdrant_collection!r} does not exist yet")
     assert str(info.status).lower() == "green"
     assert "dense" in info.config.params.vectors
     assert "sparse" in info.config.params.sparse_vectors
     assert info.config.params.vectors["dense"].size == settings.dense_vector_size
 
 
-def test_roundtrip_upsert_and_query(client):
-    c, settings = client
+def test_roundtrip_upsert_and_query(scratch_client):
+    """Upsert + query round-trip, isolated in the scratch collection."""
+    c, settings = scratch_client
+    assert settings.qdrant_collection != get_settings().qdrant_collection, (
+        "integration tests must not write into the production collection"
+    )
     ensure_collection(c, settings)
     c.upsert(
         collection_name=settings.qdrant_collection,

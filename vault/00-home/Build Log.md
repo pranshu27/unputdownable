@@ -1,7 +1,7 @@
 ---
 tags: [build-log, log]
 created: 2026-09-29
-updated: 2026-09-29
+updated: 2026-10-05
 ---
 # 📓 Build Log
 
@@ -9,6 +9,14 @@ One entry per work day. **Newest first.** Use `90-templates/tpl-daily-log`.
 Rule of thumb: 5 bullets max per day — what was built, what was measured, what was learned, what's next.
 
 ---
+
+## 2026-10-05 · DSA drill — prefix sums & sliding window (Week 1 Thu catch-up)
+- **Built:** 3 drill notebooks in `dsa/` — LC 560 ✅ (fuzz 200/200), LC 974 ✅ (fuzz 300/300, hand-derived 7), LC 3 ✅ (fuzz 500/500, `max(left, last[c] + 1)` trap) — plus `dsa/patterns.md` (2 pattern families, skeletons, 7 cross-cutting traps) and `.vscode/settings.json` with AI completions off.
+- **Built (leftover scaffolds):** `interview/` — `lld-extensible-document-parser.md` (25-min spoken drill: 6-beat structure, 10-point rubric, reference mapped to `parsers.py`), `whiteboard-drills.md` (ingestion-from-memory + answer key, plus the 10M-doc drill for Week 2 Fri), `star-stories.md` (STAR template with metric slots, STAR 1 + company-track prompts), `question-bank.md` (seeded with 10).
+- **Measured:** LC 560 optimal **2.6 ms** at n=20,000 vs brute 5,532 ms; LC 974 optimal **2.2 ms** at n=20,000 vs brute 89.5 ms at only n=2,000; LC 3 fixed version fuzz 400/400 over letters+digits+symbols+**spaces**.
+- **Learned:** (1) the **pair lens** — a window is a pair of moments, equal state closes it, n moments at a state ⇒ 1+2+…+(n−1) windows; (2) the **family switch** — monotone validity (no-duplicates) ⇒ sliding window, non-monotone (sum = k with negatives) ⇒ count pairs; (3) **input opacity** — never `split()`/normalize, spaces are characters and `[0]*26` can't index one.
+- **Open drill items:** spoken LLD — Extensible Document Parser (narrate `track-a/src/app/core/parsers.py`).
+- **Next:** Week 2 Day 1 · Mon Oct 5 READ & DESIGN — RRF paper + BGE-M3 paper + cross-encoder reranking explainer → extend ADR-002 with the rerank stage (top-50 → top-5 + latency budget).
 
 ## 2026-09-29 · Week 1 Day 3 (evening) — Complex-doc stress batch
 - **Built:** 4 stress docs in `track-a/data/`: ACME 10-K (colspan/rowspan, XBRL, negatives),

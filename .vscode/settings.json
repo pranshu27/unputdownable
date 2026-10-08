@@ -1,0 +1,17 @@
+{
+    // DSA drill workspace: no AI completions while practicing.
+    // WORKSPACE-LEVEL (this repo only) — global settings untouched.
+    // Re-enable anytime by deleting these lines or flipping to true.
+    "editor.inlineSuggest.enabled": false,
+    "github.copilot.enable": {
+        "*": false
+    },
+    "editor.quickSuggestions": {
+        "other": false,
+        "comments": false,
+        "strings": false
+    },
+    "editor.suggestOnTriggerCharacters": false,
+    "editor.parameterHints.enabled": false,
+    "jupyter.askForKernelRestart": false
+}

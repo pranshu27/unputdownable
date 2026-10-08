@@ -36,12 +36,17 @@ Map of Content for everything understood & built so far. Each note ends with an
 - Code: `track-a/src/app/core/` (parsers, chunker, embeddings, rrf, search, ingest)
 - Benchmarks: `track-a/scripts/day3_benchmark.py`, `track-a/scripts/complex_batch.py`
 - Results: `track-a/scripts/day3_results.json`, `scripts/complex_results.json`, `measurements.md`
+- Interview prep leftovers: `interview/` (LLD drill · whiteboard drills · STAR stories + company track · question bank)
+- Pattern ledger (revise from here): `dsa/patterns.md` · DSA notebooks: `dsa/*.ipynb`
 
-## 🧭 Current position (Week 1 of 16)
-- ✅ Day 1 Read & Design · ✅ Day 2 Build · ✅ Day 3 Integrate & Measure · ✅ complex-doc stress batch
-- ⏭️ Next: Thu Oct 1 DRILL (DSA two-pointer/sliding-window + spoken LLD) → Week 2 (BGE-M3, batched embed workers, reranker top-50→top-5 on lexical-hard queries)
+## 🧭 Current position (Week 2 of 16 · Mon Oct 5)
+- ✅ **Week 1 complete:** Day 1 Read & Design · Day 2 Build · Day 3 Integrate & Measure · complex-doc stress batch
+- ✅ **DSA drill (Week 1 Thu catch-up):** LC 560 ✅ · LC 974 ✅ · LC 3 ✅ — revise from `dsa/patterns.md` (2 families + 7 traps)
+- ⏭️ **Next:** Week 2 Day 1 READ & DESIGN — RRF paper + BGE-M3 paper + cross-encoder explainer → extend ADR-002 with the rerank stage (top-50 → top-5 + latency budget)
 
 ## 🚧 Open items
+- [ ] **Week 1 leftovers (Thu/Fri)** — LLD drill · whiteboard-from-memory · STAR 1 · company track · bank +10 → `interview/README.md`
 - [ ] Point live tests (test_services.py, test_qdrant_integration.py) at a scratch collection — they pollute `documents`
-- [ ] Commit complex docs + complex_batch.py
+- [ ] Commit `dsa/` (3 notebooks + `patterns.md`) + decide on `.vscode/`
 - [ ] Async batched embedding workers (ingest p95 75→95s bottleneck)
+- [ ] Week 2: BGE-M3 (1024-d) swap + BGE-Reranker-Large, benchmarked on the lexical-hard goldens

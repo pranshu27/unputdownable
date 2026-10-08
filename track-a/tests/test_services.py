@@ -2,12 +2,11 @@
 
 Uses the deterministic hashing embedding backend so the suite runs without a
 model download, and auto-skips when Qdrant is not reachable (same pattern as
-``test_qdrant_integration.py``).
+``test_qdrant_integration.py``). Writes go to the scratch collection from ``conftest.py``.
 """
 
 import pytest
 
-from app.config import get_settings
 from app.core.embeddings import HashingBackend
 from app.core.ingest_service import IngestService
 from app.core.search_service import SearchService
@@ -29,29 +28,13 @@ Revenue grew on strong Services performance and iPhone demand.
 
 
 @pytest.fixture(scope="module")
-def env():
-    settings = get_settings()
-    from app.core.qdrant import get_qdrant_client
-
-    try:
-        client = get_qdrant_client(settings)
-        client.get_collections()
-    except Exception as exc:
-        pytest.skip(f"Qdrant unavailable: {exc}")
-    from app.core.qdrant import ensure_collection
-
-    # Recreate the collection if its dense dims no longer match settings.
-    try:
-        info = client.get_collection(settings.qdrant_collection)
-        dims = info.config.params.vectors["dense"].size
-        if dims != settings.dense_vector_size:
-            client.delete_collection(settings.qdrant_collection)
-    except Exception:
-        pass  # collection missing; ensure_collection will create it
-    ensure_collection(client, settings)
-    service = IngestService(client, HashingBackend(settings), settings)
-    search = SearchService(client, HashingBackend(settings), settings)
-    return service, search
+def env(scratch_client):
+    """Ingest + search services bound to the scratch collection (never ``documents``)."""
+    client, settings = scratch_client
+    return (
+        IngestService(client, HashingBackend(settings), settings),
+        SearchService(client, HashingBackend(settings), settings),
+    )
 
 
 def test_ingest_and_hybrid_search_roundtrip(env):
