@@ -23,6 +23,11 @@ Map of Content for everything understood & built so far. Each note ends with an
 - [[ADR-002 Hybrid Search]]
 - Full records: `adr/001-…md`, `adr/002-…md` in repo
 
+## 🏗️ Design docs (maintained)
+- [[HLD - Track A Agentic RAG]] - components, data flow, budgets, scaling, failure domains
+- [[LLD - Ingestion and Retrieval]] - modules, interfaces, data models, algorithms, tests, debt
+- LLD interview drill (trace in progress): `interview/lld-extensible-document-parser.md`
+
 ## 📓 Build Log
 - [[Build Log]] — one entry per work day (update ritual below)
 
