@@ -8,6 +8,8 @@ updated: 2026-09-29
 Map of Content for everything understood & built so far. Each note ends with an
 **Interview soundbite** — the line to say out loud.
 
+**Operating agreement:** [[Working Agreement]] — my role, the session loop, accountability rules, and the 3-month trajectory.
+
 ## 🗺️ The Journey (read in this order)
 1. [[RAG Overview]] — why any of this exists
 2. [[Chunking]] — ADR-001: parsers → blocks → semantic chunks (atomic tables)
