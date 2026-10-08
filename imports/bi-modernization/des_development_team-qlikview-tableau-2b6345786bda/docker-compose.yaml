@@ -1,0 +1,12 @@
+services:
+  llm_qlikview_dev_ecr:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: llm_qlikview_dev_container
+    environment:
+      - ALLOWED_HOSTS=*
+  # env_file:
+  #   - ./.env
+    ports:
+      - "9008:9008"

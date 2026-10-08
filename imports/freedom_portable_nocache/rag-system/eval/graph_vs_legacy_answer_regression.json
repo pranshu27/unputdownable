@@ -1,0 +1,469 @@
+{
+  "dataset": "C:\\dev\\freedom\\rag-system\\eval\\golden_answer_eval_candidates.jsonl",
+  "total_cases": 28,
+  "acceptance_policy": "non-refusal + non-empty answer + evidence + source_file match",
+  "legacy": {
+    "accepted": 22,
+    "refused": 0,
+    "reasons": {
+      "accepted": 22,
+      "source_mismatch": 6
+    },
+    "ids": [
+      "ans_001",
+      "ans_003",
+      "ans_005",
+      "ans_007",
+      "ans_008",
+      "ans_009",
+      "ans_011",
+      "ans_012",
+      "ans_013",
+      "ans_015",
+      "ans_016",
+      "ans_017",
+      "ans_019",
+      "ans_020",
+      "ans_021",
+      "ans_022",
+      "ans_023",
+      "ans_024",
+      "ans_025",
+      "ans_026",
+      "ans_027",
+      "ans_028"
+    ]
+  },
+  "graph": {
+    "accepted": 22,
+    "refused": 0,
+    "reasons": {
+      "accepted": 22,
+      "source_mismatch": 6
+    },
+    "ids": [
+      "ans_001",
+      "ans_003",
+      "ans_005",
+      "ans_007",
+      "ans_008",
+      "ans_009",
+      "ans_011",
+      "ans_012",
+      "ans_013",
+      "ans_015",
+      "ans_016",
+      "ans_017",
+      "ans_019",
+      "ans_020",
+      "ans_021",
+      "ans_022",
+      "ans_023",
+      "ans_024",
+      "ans_025",
+      "ans_026",
+      "ans_027",
+      "ans_028"
+    ]
+  },
+  "delta": {
+    "accepted_diff_graph_minus_legacy": 0,
+    "refused_diff_graph_minus_legacy": 0,
+    "only_legacy_ids": [],
+    "only_graph_ids": []
+  },
+  "rows": [
+    {
+      "id": "ans_001",
+      "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_002",
+      "query": "Where is SQ_FactInteractionGrpActivity used?",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_003",
+      "query": "Find SQL override in wf_0000_eintr_lmt_load_confirmation.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_004",
+      "query": "Find lineage records in wf_0000_eintr_lmt_load_confirmation.XML",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_005",
+      "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_006",
+      "query": "Where is SQ_wk_hhldbusinessgeneration_vw used?",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_007",
+      "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_008",
+      "query": "Find lineage records in wf_4201_calculate_interaction_facts.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_009",
+      "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_010",
+      "query": "Where is SQ_Override_DateChain_RLTInteractionAgreement used?",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_011",
+      "query": "Find SQL override in wf_4202_fnd_rltinteraction.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_012",
+      "query": "Find lineage records in wf_4202_fnd_rltinteraction.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_013",
+      "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_014",
+      "query": "Where is exp_to_derive_surroagate_key used?",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_015",
+      "query": "Find SQL override in wf_4203_calculate_interaction_facts_fbl.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_016",
+      "query": "Find lineage records in wf_4203_calculate_interaction_facts_fbl.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_017",
+      "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_018",
+      "query": "Where is SQ_Override_DateChain_RLTInteractionAgreement used?",
+      "legacy": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      },
+      "graph": {
+        "accepted": false,
+        "reason": "source_mismatch",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_019",
+      "query": "Find SQL override in wf_4204_fnd_rltinteraction_fbl.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_020",
+      "query": "Find lineage records in wf_4204_fnd_rltinteraction_fbl.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_021",
+      "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_022",
+      "query": "Where is SQ_FactSaleCallActivity used?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_023",
+      "query": "Find SQL override in wf_4205_calculate_dm_facts.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_024",
+      "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_025",
+      "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_026",
+      "query": "Where is SQ_FactFirstCallResolution used?",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_027",
+      "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    },
+    {
+      "id": "ans_028",
+      "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+      "legacy": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      },
+      "graph": {
+        "accepted": true,
+        "reason": "accepted",
+        "refused": false
+      }
+    }
+  ]
+}

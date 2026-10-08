@@ -1,0 +1,64 @@
+name: Restrict committers
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  verify-committer-identity:
+    runs-on: ubuntu-latest
+    env:
+      ALLOWED_ACTOR: psahijwani
+      ALLOWED_EMAIL: 17379710+psahijwani@users.noreply.github.com
+    steps:
+      - name: Validate actor
+        shell: bash
+        run: |
+          if [[ "${GITHUB_ACTOR}" != "${ALLOWED_ACTOR}" ]]; then
+            echo "Only ${ALLOWED_ACTOR} is allowed to commit."
+            echo "Actor was: ${GITHUB_ACTOR}"
+            exit 1
+          fi
+
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Validate commit author and committer emails
+        shell: bash
+        run: |
+          if [[ "${{ github.event_name }}" == "pull_request" ]]; then
+            range="${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }}"
+          else
+            before="${{ github.event.before }}"
+            after="${{ github.event.after }}"
+            if [[ "$before" == "0000000000000000000000000000000000000000" ]]; then
+              range="$after"
+            else
+              range="$before..$after"
+            fi
+          fi
+
+          invalid=0
+          while IFS='|' read -r sha author_name author_email committer_name committer_email; do
+            [[ -z "$sha" ]] && continue
+            if [[ "$author_email" != "$ALLOWED_EMAIL" ]]; then
+              echo "Invalid author email on $sha: $author_name <$author_email>"
+              invalid=1
+            fi
+            if [[ "$committer_email" != "$ALLOWED_EMAIL" ]]; then
+              echo "Invalid committer email on $sha: $committer_name <$committer_email>"
+              invalid=1
+            fi
+          done < <(git log --format='%H|%an|%ae|%cn|%ce' "$range")
+
+          if [[ "$invalid" -ne 0 ]]; then
+            echo "Commit identity policy failed."
+            exit 1
+          fi
+

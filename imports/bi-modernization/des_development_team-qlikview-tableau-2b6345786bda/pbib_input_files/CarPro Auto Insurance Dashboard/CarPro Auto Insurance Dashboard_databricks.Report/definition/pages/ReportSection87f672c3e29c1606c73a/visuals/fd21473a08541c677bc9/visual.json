@@ -1,0 +1,81 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "fd21473a08541c677bc9",
+  "position": {
+    "x": 914.67811158798281,
+    "y": 108.49785407725321,
+    "z": 3000,
+    "height": 361.20171673819743,
+    "width": 365.32188841201713
+  },
+  "visual": {
+    "visualType": "treemap",
+    "query": {
+      "queryState": {
+        "Group": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Worksheet"
+                    }
+                  },
+                  "Property": "AgeOfVehicle"
+                }
+              },
+              "queryRef": "Worksheet.AgeOfVehicle",
+              "active": true
+            }
+          ]
+        },
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Aggregation": {
+                  "Expression": {
+                    "Column": {
+                      "Expression": {
+                        "SourceRef": {
+                          "Entity": "Worksheet"
+                        }
+                      },
+                      "Property": "PolicyNumber"
+                    }
+                  },
+                  "Function": 5
+                }
+              },
+              "queryRef": "Sum(Worksheet.PolicyNumber)"
+            }
+          ]
+        }
+      }
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "text": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Policy by Car Age'"
+                }
+              }
+            },
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "20D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

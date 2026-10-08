@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "7ae757a17034176a15ca",
+  "position": {
+    "x": 220.68965517241378,
+    "y": 73.5632183908046,
+    "z": 3000,
+    "height": 89.747126436781613,
+    "width": 363.40229885057471
+  },
+  "visual": {
+    "visualType": "textbox",
+    "objects": {
+      "general": [
+        {
+          "properties": {
+            "paragraphs": [
+              {
+                "textRuns": [
+                  {
+                    "value": "DASHBOARD",
+                    "textStyle": {
+                      "fontWeight": "bold",
+                      "fontFamily": "Comic Sans MS",
+                      "fontSize": "40pt"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,37 @@
+name: Week4 Quality Gate
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - "rag-system/**"
+
+jobs:
+  quality-gate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install package
+        run: |
+          python -m pip install --upgrade pip
+          pip install -e ./rag-system[dev]
+
+      - name: Unit tests (eval gate)
+        run: |
+          pytest rag-system/tests/test_quality_gate.py -q
+
+      - name: Faithfulness drop gate
+        run: |
+          python -m rag_system.eval.quality_gate \
+            --baseline rag-system/eval/ragas_baseline_w3.json \
+            --current rag-system/eval/ragas_report_latest.json \
+            --metric faithfulness \
+            --max-drop 0.02

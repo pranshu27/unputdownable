@@ -1,0 +1,170 @@
+table 'Placed Achivement'
+	lineageTag: c261e814-0195-4199-809d-a54b639c9e10
+
+	column client_name
+		dataType: string
+		lineageTag: e19224b2-3d43-46d1-a2d3-87465bb60be4
+		summarizeBy: none
+		sourceColumn: client_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_number
+		dataType: string
+		lineageTag: bcc08f1f-81b9-4994-b29e-8d06d1af853c
+		summarizeBy: none
+		sourceColumn: policy_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_status
+		dataType: string
+		lineageTag: 8a0af6e1-966c-4cb8-b60b-75c699cb35de
+		summarizeBy: none
+		sourceColumn: policy_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_start_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 6c5c497d-c7a1-431d-95a9-936c70f0ac2d
+		summarizeBy: none
+		sourceColumn: policy_start_date
+
+		variation Variation
+			isDefault
+			relationship: b16238fe-31e8-42bd-8e06-a1e52d493f67
+			defaultHierarchy: LocalDateTable_ef7e6d59-396a-41e7-aedc-847e4ae66ff4.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_end_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 0ba95be3-8077-4c2f-8a63-324765e715e0
+		summarizeBy: none
+		sourceColumn: policy_end_date
+
+		variation Variation
+			isDefault
+			relationship: 6ec2aa83-7623-48e9-aa91-bce763ce5d17
+			defaultHierarchy: LocalDateTable_771f174f-57fd-4ea3-b914-f22895608ac0.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_group
+		dataType: string
+		lineageTag: 82582ce1-eba7-4bb0-8b5e-964dfdcbd60a
+		summarizeBy: none
+		sourceColumn: product_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Executive'
+		dataType: string
+		lineageTag: 2e162118-fb49-4271-b791-ca287726237d
+		summarizeBy: none
+		sourceColumn: Account Executive
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_name
+		dataType: string
+		lineageTag: a6895f9e-fca1-4012-8111-404da8d633ad
+		summarizeBy: none
+		sourceColumn: branch_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column solution_group
+		dataType: string
+		lineageTag: ebaef91c-afb4-4e15-bcbb-151e2e862f16
+		summarizeBy: none
+		sourceColumn: solution_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column income_class
+		dataType: string
+		lineageTag: 70e9415c-f993-4a5d-926b-d7b104bc0e0c
+		summarizeBy: none
+		sourceColumn: income_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: double
+		lineageTag: 1bae5eb1-959c-4122-bc3f-e2eae4eccb26
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column income_due_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: b9de723f-1779-46c4-bd0b-7c6f3a2f89bb
+		summarizeBy: none
+		sourceColumn: income_due_date
+
+		variation Variation
+			isDefault
+			relationship: 77d9519d-96c3-4973-869b-8fa377eb6588
+			defaultHierarchy: LocalDateTable_7b5664af-11cb-4f3c-8bbd-c9c0f6280077.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_transaction_type
+		dataType: string
+		lineageTag: 6b1be3ab-160f-410b-96da-9ffa807f42d9
+		summarizeBy: none
+		sourceColumn: revenue_transaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column renewal_status
+		dataType: string
+		lineageTag: eacbb6f6-d28f-44e0-92f7-50794db9bce5
+		summarizeBy: none
+		sourceColumn: renewal_status
+
+		annotation SummarizationSetBy = Automatic
+
+	column lapse_reason
+		dataType: string
+		lineageTag: b62c64cc-7bd0-46a6-8532-f97bcb1d000e
+		summarizeBy: none
+		sourceColumn: lapse_reason
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_updated_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 2a3518e4-12c3-46e8-b047-135ac42d5994
+		summarizeBy: none
+		sourceColumn: last_updated_date
+
+		variation Variation
+			isDefault
+			relationship: 8fe6e3c9-b47e-4c57-a628-9b2ea7b7d7ce
+			defaultHierarchy: LocalDateTable_5fd0eb89-8d7a-4829-85b5-78e48c6d9d53.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition 'Placed Achivement' = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_analysis_Schema = genai_demo_Database{[Name="insurance_analysis",Kind="Schema"]}[Data],
+				    placed_achivement_Table = insurance_analysis_Schema{[Name="placed_achivement",Kind="Table"]}[Data]
+				in
+				    placed_achivement_Table
+
+	changedProperty = Name
+

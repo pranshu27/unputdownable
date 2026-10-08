@@ -1,0 +1,122 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "1ae6eca1a9120121000b",
+  "position": {
+    "x": 561.50001525878906,
+    "y": 65.999984741210938,
+    "z": 5000,
+    "height": 212.5,
+    "width": 297.5,
+    "tabOrder": 4000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "region"
+                }
+              },
+              "queryRef": "processed_insurance_data.region",
+              "nativeQueryRef": "region"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(region)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\n# Sample data, replace this with loading your actual dataset\ndata = {\n    ''region'': [''northwest'', ''northeast'', ''southwest'', ''southeast''],\n    ''claim'': [10000, 15000, 20000, 25000]  # Example claim amounts for each region\n}\ndataset = pd.DataFrame(data)\n\n# Function to calculate the claim percentages\ndef make_autopct(values):\n    def my_autopct(pct):\n        total = sum(values)\n        val = int(round(pct*total/100.0))\n        return ''{p:.2f}%  ({v:d})''.format(p=pct, v=val)\n    return my_autopct\n\n# Plot the pie chart\nplt.figure(figsize=(8, 6))\nplt.pie(dataset[''claim''], labels=dataset[''region''], autopct=make_autopct(dataset[''claim'']), startangle=90, textprops={''fontsize'': 16})\nplt.title(\"Region Distribution\", fontsize=30)\nplt.ylabel('''')  # Hide the y-axis label for a cleaner look\nplt.tight_layout()\nplt.show()\n\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "background": [
+        {
+          "properties": {
+            "transparency": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

@@ -1,0 +1,77 @@
+relationship 68d9a12b-211f-46b7-adc5-32843504cc2c
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Brokerage.policy_start_date
+	toColumn: LocalDateTable_6947cff9-dc56-4479-a4c5-c97730c6b055.Date
+
+relationship e4eddaf4-d513-4631-b1e7-f2178cfd9b19
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Brokerage.policy_end_date
+	toColumn: LocalDateTable_75459b09-52f7-497f-a540-77c635c2ae64.Date
+
+relationship d8b51807-0250-4222-9765-501c55ef327e
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Brokerage.income_due_date
+	toColumn: LocalDateTable_cfa0c6d2-b7e3-43f1-9069-5633c1813848.Date
+
+relationship 71360937-e6d2-43c7-9340-2d1c207c1900
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Brokerage.last_updated_date
+	toColumn: LocalDateTable_3f166fc3-752f-40a0-9047-103d20c06c56.Date
+
+relationship e843341e-bb19-4478-b887-926cfc9fa3a2
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Fees.income_due_date
+	toColumn: LocalDateTable_0314a4f7-e3c9-4435-bfb6-5258f32a8a76.Date
+
+relationship b9ced52f-9005-4ff1-bac2-9f6ed5275e14
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Invoice.invoice_date
+	toColumn: LocalDateTable_7bf0c99c-624f-4796-9e66-82016fcd035c.Date
+
+relationship 2153d1ef-5105-4f0e-a2c4-4a15cece4459
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Invoice.income_due_date
+	toColumn: LocalDateTable_09c6dfc4-c035-47ca-beba-00ce2c70979b.Date
+
+relationship 6a56d9c9-c38c-4bab-90cf-e2a3217e8360
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Meeting_list.meeting_date
+	toColumn: LocalDateTable_91991741-e618-4a60-80e4-ad07f13f736e.Date
+
+relationship 44c8a3ae-c71b-4e47-b866-c6e81158d0e3
+	joinOnDateBehavior: datePartOnly
+	fromColumn: Opportunity.closing_date
+	toColumn: LocalDateTable_6abd95be-3615-48da-81f8-54e6405af744.Date
+
+relationship b16238fe-31e8-42bd-8e06-a1e52d493f67
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Placed Achivement'.policy_start_date
+	toColumn: LocalDateTable_ef7e6d59-396a-41e7-aedc-847e4ae66ff4.Date
+
+relationship 6ec2aa83-7623-48e9-aa91-bce763ce5d17
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Placed Achivement'.policy_end_date
+	toColumn: LocalDateTable_771f174f-57fd-4ea3-b914-f22895608ac0.Date
+
+relationship 77d9519d-96c3-4973-869b-8fa377eb6588
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Placed Achivement'.income_due_date
+	toColumn: LocalDateTable_7b5664af-11cb-4f3c-8bbd-c9c0f6280077.Date
+
+relationship 8fe6e3c9-b47e-4c57-a628-9b2ea7b7d7ce
+	joinOnDateBehavior: datePartOnly
+	fromColumn: 'Placed Achivement'.last_updated_date
+	toColumn: LocalDateTable_5fd0eb89-8d7a-4829-85b5-78e48c6d9d53.Date
+
+relationship 93fef4fc-940c-639c-2be5-7e6c8ddfd6c4
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Individual_Budge.Branch
+	toColumn: Invoice.branch_name
+
+relationship 5611afda-93b4-07af-d08b-bad010c9e4a8
+	crossFilteringBehavior: bothDirections
+	toCardinality: many
+	fromColumn: Individual_Budge.Branch
+	toColumn: Opportunity.branch
+

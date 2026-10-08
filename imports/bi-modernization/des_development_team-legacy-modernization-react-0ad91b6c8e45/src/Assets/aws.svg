@@ -1,0 +1,13 @@
+<!-- aws-bedrock.svg -->
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- AWS Orange Background -->
+  <rect width="48" height="48" rx="8" fill="#FF9900"/>
+  
+  <!-- Bedrock Symbol (Layers/Foundation) -->
+  <path d="M24 10L12 16V20L24 26L36 20V16L24 10Z" fill="white" opacity="0.9"/>
+  <path d="M12 22V26L24 32L36 26V22L24 28L12 22Z" fill="white" opacity="0.7"/>
+  <path d="M12 28V32L24 38L36 32V28L24 34L12 28Z" fill="white" opacity="0.5"/>
+  
+  <!-- AWS Text (optional) -->
+  <text x="24" y="44" font-family="Arial, sans-serif" font-size="6" font-weight="bold" fill="white" text-anchor="middle">BEDROCK</text>
+</svg>

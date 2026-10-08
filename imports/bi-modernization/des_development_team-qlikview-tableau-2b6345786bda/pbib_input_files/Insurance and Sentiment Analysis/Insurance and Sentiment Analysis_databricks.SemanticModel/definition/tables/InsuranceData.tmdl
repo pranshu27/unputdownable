@@ -1,0 +1,155 @@
+table InsuranceData
+	lineageTag: 7696eeab-c146-4b1e-9d0c-8e26f66f4f6b
+
+	column PolicyNumber
+		dataType: string
+		lineageTag: c1a1f7da-7e44-40e2-be68-170c60388004
+		summarizeBy: none
+		sourceColumn: PolicyNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: string
+		lineageTag: 02725aa6-289d-48f0-8b70-12e89d4a518f
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: d5d0ae3a-22d2-41bf-82bc-e8f8443d162a
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 48552b2f-f948-4e50-a88e-64ed6f5a3f2c
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyType
+		dataType: string
+		lineageTag: a4c59d2d-d468-4447-be08-c7175040de91
+		summarizeBy: none
+		sourceColumn: PolicyType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyStartDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: f1321a2e-c631-485c-92f4-3b46748a50d4
+		summarizeBy: none
+		sourceColumn: PolicyStartDate
+
+		variation Variation
+			isDefault
+			relationship: f0c75aef-71df-4d54-aa78-0239993c673a
+			defaultHierarchy: LocalDateTable_e4bf76f8-9e68-4a84-a20e-469348fdcae9.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyEndDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: a7e4b988-d5f3-46df-93f8-d8e91c6da4d0
+		summarizeBy: none
+		sourceColumn: PolicyEndDate
+
+		variation Variation
+			isDefault
+			relationship: ac396fd5-6964-41cb-ba22-9acadae03ca1
+			defaultHierarchy: LocalDateTable_0dd5dc3a-4c01-4805-ba64-4fba13fc0a84.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PremiumAmount
+		dataType: double
+		lineageTag: dab270d1-33b0-4af1-8b24-a5b23bfdedaf
+		summarizeBy: sum
+		sourceColumn: PremiumAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CoverageAmount
+		dataType: double
+		lineageTag: 227fcc64-52c9-421d-b976-b3059da2ddc4
+		summarizeBy: sum
+		sourceColumn: CoverageAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ClaimNumber
+		dataType: string
+		lineageTag: 325a4614-03ae-4148-b3d7-29dd75f253fd
+		summarizeBy: none
+		sourceColumn: ClaimNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaimDate
+		dataType: string
+		lineageTag: 385a5d4d-b150-4fef-b1d6-1147a387914d
+		summarizeBy: none
+		sourceColumn: ClaimDate
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaimAmount
+		dataType: double
+		lineageTag: e0dbbc32-ebbb-41d4-86a4-b975c9171bf2
+		summarizeBy: sum
+		sourceColumn: ClaimAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ClaimStatus
+		dataType: string
+		lineageTag: e80391df-974b-4c15-a5a2-903e23e57df1
+		summarizeBy: none
+		sourceColumn: ClaimStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group'
+		dataType: string
+		lineageTag: c2e87b4e-a45a-4d71-9f74-3bdd163ee6f8
+		summarizeBy: none
+		sourceColumn: Age Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active/Inactive
+		dataType: string
+		lineageTag: 55df21fc-abcf-44c2-8d6e-4c4e703897ff
+		summarizeBy: none
+		sourceColumn: Active/Inactive
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InsuranceData = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_and_sentiment_analysis_Schema = genai_demo_Database{[Name="insurance_and_sentiment_analysis",Kind="Schema"]}[Data],
+				    insurancedata_Table = insurance_and_sentiment_analysis_Schema{[Name="insurancedata",Kind="Table"]}[Data]
+				in
+				    insurancedata_Table
+
+	changedProperty = Name
+

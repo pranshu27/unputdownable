@@ -1,0 +1,123 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "d4fc5cbab477c7a72d70",
+  "position": {
+    "x": 320.00001525878906,
+    "y": 309.99998474121094,
+    "z": 4000,
+    "height": 198,
+    "width": 280,
+    "tabOrder": 3000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "bloodpressure"
+                }
+              },
+              "queryRef": "processed_insurance_data.bloodpressure",
+              "nativeQueryRef": "bloodpressure"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "insurance_data"
+                    }
+                  },
+                  "Property": "claim"
+                }
+              },
+              "queryRef": "insurance_data.claim",
+              "nativeQueryRef": "claim"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(bloodpressure)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\n# Binning the blood pressure data\nimport pandas as pd\nimport matplotlib.pyplot as plt\nimport numpy as np\nimport seaborn as sns\nbins = pd.cut(dataset[''bloodpressure''], bins=[0, 90, 120, 140, np.inf], labels=[''Low'', ''Normal'', ''Pre-high'', ''High''])\n\nplt.figure(figsize=(12, 8))\nsns.barplot(x=bins, y=dataset[''claim''])\nplt.title(''Claim by Blood Pressure Categories'', fontsize=30)\nplt.xlabel(''Blood Pressure Categories'', fontsize=20)\nplt.ylabel(''Average Claim'', fontsize=20)\nplt.xticks(rotation=45, fontsize=18)  # Rotate x-ticks if labels are long\nplt.yticks(fontsize=18)\nplt.tight_layout()\nplt.show()\n\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

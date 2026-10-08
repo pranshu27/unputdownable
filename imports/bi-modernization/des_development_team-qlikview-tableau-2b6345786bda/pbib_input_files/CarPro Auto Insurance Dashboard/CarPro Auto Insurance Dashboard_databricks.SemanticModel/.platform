@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "CarPro Auto Insurance Dashboard"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "288eda61-1a4b-4937-91ae-70353dd53890"
+  }
+}

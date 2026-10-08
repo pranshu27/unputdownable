@@ -1,0 +1,23 @@
+model Model
+	culture: en-IN
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: en-IN
+	dataAccessOptions
+		fastCombine
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation PBI_QueryOrder = ["Score sentiment","InsuranceData","Sheet1"]
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table DateTableTemplate_27c33d09-7b53-4bc1-a71d-24b954f7aec4
+ref table InsuranceData
+ref table LocalDateTable_e4bf76f8-9e68-4a84-a20e-469348fdcae9
+ref table LocalDateTable_0dd5dc3a-4c01-4805-ba64-4fba13fc0a84
+ref table Sheet1
+
+ref cultureInfo en-IN
+

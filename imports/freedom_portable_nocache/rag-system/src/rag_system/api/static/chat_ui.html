@@ -1,0 +1,693 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RAG Chat UI</title>
+  <style>
+    :root {
+      --bg: #f4f6fb;
+      --panel: #ffffff;
+      --ink: #1e293b;
+      --muted: #475569;
+      --accent: #0f766e;
+      --accent-soft: #d1fae5;
+      --user: #dbeafe;
+      --assistant: #ecfeff;
+      --border: #cbd5e1;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top left, #e2e8f0, var(--bg));
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+    }
+    .shell {
+      width: min(1000px, 100%);
+      height: min(90vh, 920px);
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    .sidebar {
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .title {
+      margin: 0;
+      font-size: 1.25rem;
+    }
+    .small {
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.35;
+    }
+    .row {
+      display: grid;
+      gap: 6px;
+    }
+    label {
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+    input, select {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      background: #fff;
+    }
+    button {
+      border: 0;
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      color: #fff;
+      background: var(--accent);
+    }
+    button.secondary {
+      background: #334155;
+    }
+    button:disabled {
+      opacity: 0.55;
+      cursor: not-allowed;
+    }
+    .status {
+      font-size: 0.85rem;
+      padding: 8px 10px;
+      border-radius: 8px;
+      background: var(--accent-soft);
+      color: #065f46;
+      border: 1px solid #6ee7b7;
+      word-break: break-word;
+    }
+    .chat {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      overflow: hidden;
+    }
+    .chat-head {
+      border-bottom: 1px solid var(--border);
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .messages {
+      padding: 14px;
+      overflow: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: linear-gradient(180deg, #f8fafc, #f1f5f9);
+    }
+    .bubble {
+      border-radius: 12px;
+      padding: 10px 12px;
+      border: 1px solid var(--border);
+      max-width: 90%;
+      white-space: pre-wrap;
+      line-height: 1.4;
+    }
+    .bubble.user {
+      background: var(--user);
+      margin-left: auto;
+    }
+    .bubble.assistant {
+      background: var(--assistant);
+      margin-right: auto;
+    }
+    .meta {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+    .md p {
+      margin: 0 0 8px;
+    }
+    .md p:last-child {
+      margin-bottom: 0;
+    }
+    .md ul {
+      margin: 0 0 8px 20px;
+      padding: 0;
+    }
+    .md li {
+      margin: 2px 0;
+    }
+    .md h2, .md h3 {
+      margin: 0 0 8px;
+      font-size: 1rem;
+      color: #0f172a;
+    }
+    .md code {
+      background: #e2e8f0;
+      border-radius: 6px;
+      padding: 1px 6px;
+      font-family: Consolas, monospace;
+      font-size: 0.88rem;
+    }
+    .md pre {
+      margin: 0 0 8px;
+      background: #0f172a;
+      color: #f8fafc;
+      border-radius: 8px;
+      padding: 10px;
+      overflow-x: auto;
+    }
+    .md pre code {
+      background: transparent;
+      color: inherit;
+      padding: 0;
+    }
+    .md .mermaid {
+      margin: 0 0 8px;
+      padding: 10px;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow-x: auto;
+    }
+    .md a {
+      color: #0f766e;
+      text-decoration: underline;
+    }
+    .composer {
+      border-top: 1px solid var(--border);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+    }
+    textarea {
+      resize: vertical;
+      min-height: 54px;
+      max-height: 180px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 10px 12px;
+      font-size: 0.95rem;
+      font-family: inherit;
+    }
+    .memory-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f8fafc;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+    .memory-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+    }
+    #memorySummary {
+      min-height: 92px;
+      max-height: 220px;
+      font-size: 0.9rem;
+    }
+    .memory-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .starter-box {
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #f8fafc;
+      padding: 10px;
+      display: grid;
+      gap: 8px;
+    }
+    .starter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .starter-chip {
+      border: 1px solid #9ca3af;
+      background: #ffffff;
+      color: #0f172a;
+      border-radius: 999px;
+      padding: 6px 10px;
+      font-size: 0.82rem;
+      line-height: 1.2;
+      cursor: pointer;
+      text-align: left;
+    }
+    .starter-chip:hover {
+      border-color: #0f766e;
+      background: #ecfeff;
+    }
+    @media (max-width: 980px) {
+      .shell { grid-template-columns: 1fr; height: auto; }
+      .chat { min-height: 70vh; }
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <aside class="card sidebar">
+      <h1 class="title">RAG Web Chat</h1>
+      <p class="small">Chat with your Informatica RAG and ask follow-up questions in the same session.</p>
+
+      <div class="row">
+        <label for="mode">Retrieval mode</label>
+        <select id="mode">
+          <option value="hybrid" selected>hybrid</option>
+          <option value="vector">vector</option>
+          <option value="bm25">bm25</option>
+          <option value="auto">auto</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="k">Top K chunks</label>
+        <input id="k" type="number" min="1" max="20" value="6" />
+      </div>
+
+      <div class="row">
+        <label for="historyTurns">History turns for follow-up context</label>
+        <input id="historyTurns" type="number" min="0" max="12" value="4" />
+      </div>
+
+      <div class="row">
+        <label><input id="useGraph" type="checkbox" checked /> Use graph orchestration</label>
+      </div>
+      <div class="row">
+        <label><input id="rerank" type="checkbox" /> Rerank</label>
+      </div>
+      <div class="row">
+        <label><input id="relevancyBoost" type="checkbox" checked /> Relevancy boost</label>
+      </div>
+
+      <button id="newSessionBtn" class="secondary">Start New Session</button>
+      <div id="status" class="status">Session: not started</div>
+
+      <div class="memory-box">
+        <strong>Conversation Memory</strong>
+        <div class="memory-label">Compressed summary retained across long chats</div>
+        <textarea id="memorySummary" placeholder="Memory summary appears here after the chat starts."></textarea>
+        <div class="memory-actions">
+          <button id="saveMemoryBtn" type="button">Save Memory</button>
+          <button id="clearMemoryBtn" class="secondary" type="button">Clear Memory</button>
+        </div>
+      </div>
+
+      <div class="starter-box">
+        <strong>Starter Prompts</strong>
+        <div class="memory-label">Click one to prefill the chat box</div>
+        <div class="starter-list" id="starterList">
+          <button class="starter-chip" type="button" data-prompt="Tell me what it can do and what all information it has across indexed XMLs.">What can this bot do?</button>
+          <button class="starter-chip" type="button" data-prompt="Which XML files are indexed right now, and what is the node class coverage?">What is indexed?</button>
+          <button class="starter-chip" type="button" data-prompt="What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?">Ask workflow logic</button>
+          <button class="starter-chip" type="button" data-prompt="Where is BeginInteractionGroup_Id used across mappings?">Ask usage</button>
+          <button class="starter-chip" type="button" data-prompt="Show source-to-target lineage for InteractionEvent_Id.">Ask lineage</button>
+        </div>
+      </div>
+    </aside>
+
+    <section class="card chat">
+      <div class="chat-head">
+        <strong>Conversation</strong>
+        <span id="sessionLabel" class="small">No session</span>
+      </div>
+
+      <div id="messages" class="messages"></div>
+
+      <div class="composer">
+        <textarea id="prompt" placeholder="Ask a question... then follow up naturally."></textarea>
+        <button id="sendBtn">Send</button>
+      </div>
+    </section>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+  <script>
+    const statusEl = document.getElementById("status");
+    const sessionLabel = document.getElementById("sessionLabel");
+    const messagesEl = document.getElementById("messages");
+    const promptEl = document.getElementById("prompt");
+    const sendBtn = document.getElementById("sendBtn");
+    const newSessionBtn = document.getElementById("newSessionBtn");
+
+    const modeEl = document.getElementById("mode");
+    const kEl = document.getElementById("k");
+    const historyTurnsEl = document.getElementById("historyTurns");
+    const useGraphEl = document.getElementById("useGraph");
+    const rerankEl = document.getElementById("rerank");
+    const relevancyBoostEl = document.getElementById("relevancyBoost");
+    const memorySummaryEl = document.getElementById("memorySummary");
+    const saveMemoryBtn = document.getElementById("saveMemoryBtn");
+    const clearMemoryBtn = document.getElementById("clearMemoryBtn");
+    const starterListEl = document.getElementById("starterList");
+    let mermaidInitialized = false;
+
+    let sessionId = null;
+
+    function escapeHtml(text) {
+      return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/\"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+    }
+
+    function renderInlineMarkdown(raw) {
+      let line = escapeHtml(raw);
+      line = line.replace(/`([^`]+)`/g, "<code>$1</code>");
+      line = line.replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
+      line = line.replace(/\*([^*]+)\*/g, "<em>$1</em>");
+      line = line.replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g, '<a href="$2" target="_blank" rel="noopener noreferrer">$1</a>');
+      return line;
+    }
+
+    function renderMarkdown(text) {
+      const input = String(text || "").replace(/\r\n/g, "\n");
+      const lines = input.split("\n");
+      const out = [];
+      let inUl = false;
+      let inCode = false;
+      let codeLang = "";
+      const mermaidBlocks = [];
+
+      function stashMermaid(raw) {
+        const idx = mermaidBlocks.length;
+        mermaidBlocks.push(raw);
+        return `__MERMAID_BLOCK_${idx}__`;
+      }
+
+      for (const rawLine of lines) {
+        const line = rawLine || "";
+
+        const fenceMatch = line.trim().match(/^```\s*([a-zA-Z0-9_-]+)?\s*$/);
+        if (fenceMatch) {
+          if (inUl) {
+            out.push("</ul>");
+            inUl = false;
+          }
+          if (!inCode) {
+            inCode = true;
+            codeLang = (fenceMatch[1] || "").toLowerCase();
+            if (codeLang === "mermaid") {
+              out.push("__MERMAID_OPEN__");
+            } else {
+              out.push("<pre><code>");
+            }
+          } else {
+            if (codeLang === "mermaid") {
+              out.push("__MERMAID_CLOSE__");
+            } else {
+              out.push("</code></pre>");
+            }
+            inCode = false;
+            codeLang = "";
+          }
+          continue;
+        }
+
+        if (inCode) {
+          if (codeLang === "mermaid") {
+            out.push(`${line}\n`);
+          } else {
+            out.push(escapeHtml(line) + "\n");
+          }
+          continue;
+        }
+
+        if (!line.trim()) {
+          if (inUl) {
+            out.push("</ul>");
+            inUl = false;
+          }
+          continue;
+        }
+
+        const headingMatch = line.match(/^(#{1,3})\s+(.+)$/);
+        if (headingMatch) {
+          if (inUl) {
+            out.push("</ul>");
+            inUl = false;
+          }
+          const level = headingMatch[1].length;
+          out.push(`<h${level}>${renderInlineMarkdown(headingMatch[2])}</h${level}>`);
+          continue;
+        }
+
+        const bulletMatch = line.match(/^\s*[-*]\s+(.+)$/);
+        if (bulletMatch) {
+          if (!inUl) {
+            out.push("<ul>");
+            inUl = true;
+          }
+          out.push(`<li>${renderInlineMarkdown(bulletMatch[1])}</li>`);
+          continue;
+        }
+
+        if (inUl) {
+          out.push("</ul>");
+          inUl = false;
+        }
+        out.push(`<p>${renderInlineMarkdown(line)}</p>`);
+      }
+
+      if (inUl) {
+        out.push("</ul>");
+      }
+      if (inCode) {
+        out.push(codeLang === "mermaid" ? "__MERMAID_CLOSE__" : "</code></pre>");
+      }
+
+      let html = out.join("");
+      html = html.replace(/__MERMAID_OPEN__([\s\S]*?)__MERMAID_CLOSE__/g, (_, block) => {
+        return stashMermaid(block.trim());
+      });
+
+      for (let i = 0; i < mermaidBlocks.length; i += 1) {
+        const token = `__MERMAID_BLOCK_${i}__`;
+        const escaped = escapeHtml(mermaidBlocks[i]);
+        html = html.replace(token, `<pre class="mermaid">${escaped}</pre>`);
+      }
+
+      return html;
+    }
+
+    async function renderMermaidIn(container) {
+      if (!container || typeof mermaid === "undefined") {
+        return;
+      }
+      if (!mermaidInitialized) {
+        mermaid.initialize({ startOnLoad: false, theme: "neutral", securityLevel: "loose" });
+        mermaidInitialized = true;
+      }
+      const blocks = container.querySelectorAll("pre.mermaid");
+      if (!blocks.length) {
+        return;
+      }
+      try {
+        await mermaid.run({ nodes: blocks });
+      } catch (err) {
+        console.warn("Mermaid render failed", err);
+      }
+    }
+
+    function appendBubble(role, text, metaText) {
+      const wrap = document.createElement("div");
+      wrap.className = `bubble ${role}`;
+      if (role === "assistant") {
+        wrap.classList.add("md");
+        wrap.innerHTML = renderMarkdown(text || "(empty)");
+        renderMermaidIn(wrap);
+      } else {
+        wrap.textContent = text || "(empty)";
+      }
+      if (metaText) {
+        const meta = document.createElement("div");
+        meta.className = "meta";
+        meta.textContent = metaText;
+        wrap.appendChild(meta);
+      }
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+    }
+
+    function setStatus(msg) {
+      statusEl.textContent = msg;
+    }
+
+    function setMemory(summary) {
+      memorySummaryEl.value = (summary || "").trim();
+    }
+
+    async function loadSessionMemory() {
+      if (!sessionId) return;
+      const resp = await fetch(`/chat/sessions/${sessionId}`);
+      if (!resp.ok) {
+        const t = await resp.text();
+        throw new Error(`Failed loading memory: ${resp.status} ${t}`);
+      }
+      const data = await resp.json();
+      setMemory(data.summary || "");
+    }
+
+    async function saveMemory() {
+      if (!sessionId) return;
+      const summary = memorySummaryEl.value || "";
+      setStatus("Saving memory...");
+      saveMemoryBtn.disabled = true;
+      try {
+        const resp = await fetch(`/chat/sessions/${sessionId}/summary`, {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ summary })
+        });
+        if (!resp.ok) {
+          const t = await resp.text();
+          throw new Error(`Save memory failed: ${resp.status} ${t}`);
+        }
+        const data = await resp.json();
+        setMemory(data.summary || "");
+        setStatus("Memory saved");
+      } catch (err) {
+        setStatus(err.message);
+      } finally {
+        saveMemoryBtn.disabled = false;
+      }
+    }
+
+    async function clearMemory() {
+      if (!sessionId) return;
+      setStatus("Clearing memory...");
+      clearMemoryBtn.disabled = true;
+      try {
+        const resp = await fetch(`/chat/sessions/${sessionId}/summary`, { method: "DELETE" });
+        if (!resp.ok) {
+          const t = await resp.text();
+          throw new Error(`Clear memory failed: ${resp.status} ${t}`);
+        }
+        setMemory("");
+        setStatus("Memory cleared");
+      } catch (err) {
+        setStatus(err.message);
+      } finally {
+        clearMemoryBtn.disabled = false;
+      }
+    }
+
+    async function createSession() {
+      setStatus("Creating session...");
+      const resp = await fetch("/chat/sessions", { method: "POST" });
+      if (!resp.ok) {
+        const t = await resp.text();
+        throw new Error(`Session create failed: ${resp.status} ${t}`);
+      }
+      const data = await resp.json();
+      sessionId = data.session_id;
+      sessionLabel.textContent = sessionId;
+      messagesEl.innerHTML = "";
+      setMemory(data.summary || "");
+      setStatus(`Session ready: ${sessionId}`);
+      appendBubble("assistant", "Session started. Ask me anything about your workflows.", "system");
+    }
+
+    async function sendMessage() {
+      const text = promptEl.value.trim();
+      if (!text) return;
+      if (!sessionId) {
+        await createSession();
+      }
+
+      appendBubble("user", text);
+      promptEl.value = "";
+      sendBtn.disabled = true;
+      setStatus("Generating answer...");
+
+      try {
+        const payload = {
+          message: text,
+          k: Number(kEl.value || 6),
+          mode: modeEl.value,
+          rerank: !!rerankEl.checked,
+          llm: true,
+          use_graph: !!useGraphEl.checked,
+          relevancy_boost: !!relevancyBoostEl.checked,
+          history_turns: Number(historyTurnsEl.value || 4)
+        };
+
+        const resp = await fetch(`/chat/sessions/${sessionId}/messages`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!resp.ok) {
+          const t = await resp.text();
+          throw new Error(`Chat failed: ${resp.status} ${t}`);
+        }
+
+        const data = await resp.json();
+        const answer = data.answer || {};
+        const subflow = (answer.chat_subflow && answer.chat_subflow.subflow) || "default";
+        const refused = !!answer.refused;
+        const replyText = (answer.answer_text && String(answer.answer_text).trim())
+          ? answer.answer_text
+          : (answer.detail || "I could not answer confidently from available evidence.");
+        const meta = [
+          `subflow=${subflow}`,
+          `refused=${String(refused)}`,
+          `strategy=${answer.answer_strategy || "n/a"}`,
+          `llm_used=${String(!!answer.llm_used)}`,
+          `ctx_msgs=${answer.chat_context_message_count ?? 0}`,
+        ].join(" | ");
+
+        appendBubble("assistant", replyText, meta);
+        setMemory(answer.session_summary || "");
+        await loadSessionMemory();
+        setStatus("Ready");
+      } catch (err) {
+        appendBubble("assistant", `Error: ${err.message}`, "error");
+        setStatus("Error while generating answer");
+      } finally {
+        sendBtn.disabled = false;
+      }
+    }
+
+    sendBtn.addEventListener("click", () => { sendMessage(); });
+    promptEl.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+    newSessionBtn.addEventListener("click", () => { createSession().catch(e => setStatus(e.message)); });
+    saveMemoryBtn.addEventListener("click", () => { saveMemory(); });
+    clearMemoryBtn.addEventListener("click", () => { clearMemory(); });
+    starterListEl.addEventListener("click", (event) => {
+      const target = event.target;
+      if (!(target instanceof HTMLElement)) return;
+      const prompt = target.getAttribute("data-prompt");
+      if (!prompt) return;
+      promptEl.value = prompt;
+      promptEl.focus();
+      setStatus("Starter prompt added. Press Send.");
+    });
+
+    createSession().catch(e => setStatus(e.message));
+  </script>
+</body>
+</html>

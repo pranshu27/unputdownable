@@ -1,0 +1,10 @@
+{
+  "baseline_name": "W3 answer-level baseline",
+  "captured_at_utc": "2026-08-17T10:02:38.470442+00:00",
+  "source_report": "eval/ragas_report_latest.json",
+  "query_count": 12,
+  "scores": {
+    "faithfulness": 0.4,
+    "answer_relevancy": 0.0
+  }
+}

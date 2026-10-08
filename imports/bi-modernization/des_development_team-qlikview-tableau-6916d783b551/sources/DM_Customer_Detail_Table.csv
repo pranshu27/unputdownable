@@ -1,0 +1,26 @@
+Customer ID,Policy Holder Name,Gender,Age at Entry,Current Age,Occupation,Smoker Status,Medical Exam Required,Nationality,State
+CUS0001,Name 1,Male,Value 1,Value 1,Doctor,Active,Yes,Value 1,KL
+CUS0002,Name 2,Female,Value 2,Value 2,Doctor,Active,Yes,Value 2,MH
+CUS0003,Name 3,Male,Value 3,Value 3,Manager,Active,No,Value 3,RJ
+CUS0004,Name 4,Female,Value 4,Value 4,Manager,Active,No,Value 4,KL
+CUS0005,Name 5,Female,Value 5,Value 5,Engineer,Active,No,Value 5,TN
+CUS0006,Name 6,Male,Value 6,Value 6,Teacher,Active,Yes,Value 6,MH
+CUS0007,Name 7,Male,Value 7,Value 7,Teacher,Active,Yes,Value 7,TS
+CUS0008,Name 8,Male,Value 8,Value 8,Manager,Active,No,Value 8,GJ
+CUS0009,Name 9,Female,Value 9,Value 9,Manager,Inactive,Yes,Value 9,TN
+CUS0010,Name 10,Male,Value 10,Value 10,Engineer,Inactive,Yes,Value 10,TN
+CUS0011,Name 11,Female,Value 11,Value 11,Sales,Active,No,Value 11,KL
+CUS0012,Name 12,Female,Value 12,Value 12,Doctor,Active,No,Value 12,KL
+CUS0013,Name 13,Male,Value 13,Value 13,Teacher,Active,No,Value 13,TN
+CUS0014,Name 14,Female,Value 14,Value 14,Doctor,Active,No,Value 14,RJ
+CUS0015,Name 15,Male,Value 15,Value 15,Manager,Active,No,Value 15,WB
+CUS0016,Name 16,Female,Value 16,Value 16,Engineer,Active,No,Value 16,DL
+CUS0017,Name 17,Male,Value 17,Value 17,Engineer,Active,No,Value 17,MH
+CUS0018,Name 18,Female,Value 18,Value 18,Sales,Active,Yes,Value 18,RJ
+CUS0019,Name 19,Male,Value 19,Value 19,Manager,Active,Yes,Value 19,UP
+CUS0020,Name 20,Female,Value 20,Value 20,Sales,Inactive,No,Value 20,UP
+CUS0021,Name 21,Male,Value 21,Value 21,Engineer,Inactive,Yes,Value 21,MH
+CUS0022,Name 22,Female,Value 22,Value 22,Sales,Active,Yes,Value 22,KA
+CUS0023,Name 23,Male,Value 23,Value 23,Sales,Active,Yes,Value 23,GJ
+CUS0024,Name 24,Male,Value 24,Value 24,Teacher,Active,No,Value 24,UP
+CUS0025,Name 25,Male,Value 25,Value 25,Teacher,Active,No,Value 25,GJ

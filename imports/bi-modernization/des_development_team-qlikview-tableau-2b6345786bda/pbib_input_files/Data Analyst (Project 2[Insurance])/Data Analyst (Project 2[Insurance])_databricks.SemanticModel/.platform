@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Data Analyst (Project 2[Insurance])_databricks"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "613c8794-d943-461e-ab6d-e5e1254e347c"
+  }
+}

@@ -1,0 +1,44 @@
+.theme__select {
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  width: 280px;
+  height: 60px;
+  border: 1px solid rgba(79, 141, 192, 1);
+  outline: none;
+  transition: border 0.2s ease;
+}
+
+.theme__select:hover,
+.theme__select:focus {
+  border: 1px solid rgba(79, 141, 192, 1);
+}
+.edge-highlight .react-flow__edge-path {
+  stroke: orange !important;
+  stroke-width: 3 !important;
+}
+
+.edge-dim .react-flow__edge-path {
+  opacity: 0.2 !important;
+}
+.lineage-type-select {
+  position: absolute;
+  top: 15px;
+  right: 220px; /* 👈 Adjust this to align exactly after your "Dark" dropdown */
+  z-index: 1000;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-size: 15px;
+  border: 1px solid rgba(79, 141, 192, 1);
+  background-color: white;
+  color: rgba(0, 48, 135, 1);
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.lineage-type-select:hover {
+  background-color: rgba(240, 248, 255, 0.7);
+}
+
+  

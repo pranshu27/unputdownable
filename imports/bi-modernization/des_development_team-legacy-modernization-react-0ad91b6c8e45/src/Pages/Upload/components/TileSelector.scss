@@ -1,0 +1,266 @@
+.tile-selector-container {
+    margin-bottom: 32px;
+  
+    .tile-selector-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 20px;
+  
+      .step-badge {
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #2972C7 0%, #244766 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 12px rgba(41, 114, 199, 0.3);
+        animation: pulse 2s ease-in-out infinite;
+  
+        .step-number {
+          color: white;
+          font-weight: 700;
+          font-size: 18px;
+        }
+      }
+  
+      .tile-selector-title {
+        font-size: 20px !important;
+        font-weight: 600 !important;
+        color: #003087;
+        letter-spacing: -0.5px;
+      }
+    }
+  
+    .tiles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+  
+    .tile-item {
+      position: relative;
+      background: white;
+      border: 2px solid #E0E7F1;
+      border-radius: 16px;
+      padding: 24px 16px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      min-height: 140px;
+  
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(135deg, rgba(41, 114, 199, 0.05) 0%, rgba(36, 71, 102, 0.05) 100%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+  
+      .tile-shine {
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: linear-gradient(
+          45deg,
+          transparent 30%,
+          rgba(255, 255, 255, 0.3) 50%,
+          transparent 70%
+        );
+        transform: rotate(45deg);
+        opacity: 0;
+        transition: opacity 0.5s ease;
+      }
+  
+      &:hover {
+        transform: translateY(-4px);
+        border-color: #2972C7;
+        box-shadow: 0 8px 24px rgba(41, 114, 199, 0.15);
+  
+        &::before {
+          opacity: 1;
+        }
+  
+        .tile-shine {
+          opacity: 1;
+          animation: shine 0.8s ease;
+        }
+  
+        .tile-icon-wrapper {
+          transform: scale(1.1);
+  
+          .icon-glow {
+            opacity: 1;
+          }
+        }
+  
+        .tile-label {
+          color: #2972C7;
+        }
+      }
+  
+      &.selected {
+        border-color: #2972C7;
+        background: linear-gradient(135deg, #F0F7FF 0%, #E7F0FF 100%);
+        box-shadow: 0 8px 24px rgba(41, 114, 199, 0.2);
+  
+        &::before {
+          opacity: 1;
+        }
+  
+        .tile-icon-wrapper {
+          transform: scale(1.05);
+  
+          .icon-glow {
+            opacity: 1;
+          }
+        }
+  
+        .tile-label {
+          color: #2972C7;
+          font-weight: 600;
+        }
+  
+        .selection-indicator {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+  
+      .selection-indicator {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 2;
+  
+        .check-icon {
+          color: #2972C7;
+          font-size: 24px;
+          filter: drop-shadow(0 2px 4px rgba(41, 114, 199, 0.3));
+        }
+      }
+  
+      .tile-icon-wrapper {
+        position: relative;
+        width: 56px;
+        height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  
+        .tile-icon {
+          width: 48px;
+          height: 48px;
+          object-fit: contain;
+          position: relative;
+          z-index: 1;
+          filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+        }
+  
+        .icon-glow {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 64px;
+          height: 64px;
+          background: radial-gradient(circle, rgba(41, 114, 199, 0.2) 0%, transparent 70%);
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+      }
+  
+      .tile-label {
+        font-size: 13px;
+        font-weight: 500;
+        color: #5C7BB3;
+        text-align: center;
+        transition: all 0.3s ease;
+        letter-spacing: 0.2px;
+        line-height: 1.3;
+        word-break: break-word;
+        max-width: 100%;
+      }
+    }
+  
+    .multi-select-hint {
+      font-size: 13px !important;
+      color: #5C7BB3 !important;
+      font-style: italic;
+      margin-top: 8px;
+      padding-left: 4px;
+    }
+  }
+  
+  
+  .custom-tooltip {
+    background-color: #003087 !important;
+    font-size: 13px !important;
+    padding: 8px 12px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 12px rgba(41, 114, 199, 0.3);
+    }
+    50% {
+      box-shadow: 0 4px 20px rgba(41, 114, 199, 0.5);
+    }
+  }
+  
+  
+  @keyframes shine {
+    0% {
+      left: -50%;
+    }
+    100% {
+      left: 150%;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .tile-selector-container {
+      .tiles-grid {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 12px;
+      }
+  
+      .tile-item {
+        padding: 20px 12px;
+        min-height: 120px;
+  
+        .tile-icon-wrapper {
+          width: 48px;
+          height: 48px;
+  
+          .tile-icon {
+            width: 40px;
+            height: 40px;
+          }
+        }
+  
+        .tile-label {
+          font-size: 12px;
+        }
+      }
+    }
+  }

@@ -1,0 +1,1027 @@
+{
+  "timestamp_utc": "2026-08-15T12:22:09.524370+00:00",
+  "base_url": "http://localhost:8000",
+  "dataset": "c:\\dev\\freedom\\rag-system\\eval\\golden_retrieval.jsonl",
+  "modes": {
+    "hybrid": {
+      "summary": {
+        "query_count": 10,
+        "avg_recall_at_k": 0.4,
+        "avg_ndcg_at_k": 0.25674
+      },
+      "rows": [
+        {
+          "id": "q_sq_factfcr_eligible",
+          "query": "What is SQ_FactFCR_Eligible?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.056438,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.010937
+          }
+        },
+        {
+          "id": "q_exp_derive_attributes_values",
+          "query": "What does exp_derive_attributes_values do?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:jnr_address_lead:592b4d02#1",
+            "name": "jnr_address_lead",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_sq_rltinteractionparty",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.01129
+          }
+        },
+        {
+          "id": "q_interactionevent_id",
+          "query": "How is InteractionEvent_Id used?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:agg_remove_duplicates:60236fa8",
+            "name": "agg_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_filter_condition_filtrans",
+          "query": "How is FILTER_CONDITION used in FILTRANS?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.304513,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_2204_source_saf_interaction_ebi.XML:TRANSFORMATION:SQ_EBI_MarketLink:c676b0cc#1",
+            "name": "SQ_EBI_MarketLink",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_workflow_4202_file",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM_HIST:ActivityCreatedBy_Nb:a3596b10",
+            "name": "DM_XREF_CTM_HIST.ActivityCreatedBy_Nb",
+            "node_class": "LINEAGE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_lineage_path_target_source",
+          "query": "How do I trace PATH TARGET SOURCE lineage?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM:SourceTransaction_Ts:605a1e53",
+            "name": "DM_XREF_CTM.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.010937
+          }
+        },
+        {
+          "id": "q_join_condition_source_cd",
+          "query": "What JOIN_CONDITION uses Source_cd?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.496639,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TRANSFORMATION:SQ_RLTInteractionParty:4c26b5c8#0",
+            "name": "SQ_RLTInteractionParty",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_source_saf_interaction_arm_history",
+          "query": "Where is source_saf_interaction_arm_history referenced?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2202_source_saf_interaction_arm.XML:LINEAGE:File_SAF_LeadAssignmentDetail:Source_Cd:db62822b",
+            "name": "File_SAF_LeadAssignmentDetail.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "q_dm_xref_final_ph",
+          "query": "Where is dm_xref_final_ph used?",
+          "mode": "hybrid",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": 0.011475
+          }
+        }
+      ]
+    },
+    "vector": {
+      "summary": {
+        "query_count": 10,
+        "avg_recall_at_k": 0.4,
+        "avg_ndcg_at_k": 0.25674
+      },
+      "rows": [
+        {
+          "id": "q_sq_factfcr_eligible",
+          "query": "What is SQ_FactFCR_Eligible?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.056438,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.1928
+          }
+        },
+        {
+          "id": "q_exp_derive_attributes_values",
+          "query": "What does exp_derive_attributes_values do?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:jnr_address_lead:592b4d02#1",
+            "name": "jnr_address_lead",
+            "node_class": "TRANSFORMATION",
+            "score": 0.1587
+          }
+        },
+        {
+          "id": "q_sq_rltinteractionparty",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2754
+          }
+        },
+        {
+          "id": "q_interactionevent_id",
+          "query": "How is InteractionEvent_Id used?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:agg_remove_duplicates:60236fa8",
+            "name": "agg_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2324
+          }
+        },
+        {
+          "id": "q_filter_condition_filtrans",
+          "query": "How is FILTER_CONDITION used in FILTRANS?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.304513,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_2204_source_saf_interaction_ebi.XML:TRANSFORMATION:SQ_EBI_MarketLink:c676b0cc#1",
+            "name": "SQ_EBI_MarketLink",
+            "node_class": "TRANSFORMATION",
+            "score": 0.0868
+          }
+        },
+        {
+          "id": "q_workflow_4202_file",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM_HIST:ActivityCreatedBy_Nb:a3596b10",
+            "name": "DM_XREF_CTM_HIST.ActivityCreatedBy_Nb",
+            "node_class": "LINEAGE",
+            "score": 0.0535
+          }
+        },
+        {
+          "id": "q_lineage_path_target_source",
+          "query": "How do I trace PATH TARGET SOURCE lineage?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM:SourceTransaction_Ts:605a1e53",
+            "name": "DM_XREF_CTM.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.0407
+          }
+        },
+        {
+          "id": "q_join_condition_source_cd",
+          "query": "What JOIN_CONDITION uses Source_cd?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.496639,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TRANSFORMATION:SQ_RLTInteractionParty:4c26b5c8#0",
+            "name": "SQ_RLTInteractionParty",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3192
+          }
+        },
+        {
+          "id": "q_source_saf_interaction_arm_history",
+          "query": "Where is source_saf_interaction_arm_history referenced?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2202_source_saf_interaction_arm.XML:LINEAGE:File_SAF_LeadAssignmentDetail:Source_Cd:db62822b",
+            "name": "File_SAF_LeadAssignmentDetail.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0052
+          }
+        },
+        {
+          "id": "q_dm_xref_final_ph",
+          "query": "Where is dm_xref_final_ph used?",
+          "mode": "vector",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": -0.096
+          }
+        }
+      ]
+    },
+    "bm25": {
+      "summary": {
+        "query_count": 10,
+        "avg_recall_at_k": 0.15,
+        "avg_ndcg_at_k": 0.191732
+      },
+      "rows": [
+        {
+          "id": "q_sq_factfcr_eligible",
+          "query": "What is SQ_FactFCR_Eligible?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.917319,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_4206_calculate_facts_fcr.XML:TRANSFORMATION:SQ_FactFCR_Eligible:de348dd1#0",
+            "name": "SQ_FactFCR_Eligible",
+            "node_class": "TRANSFORMATION",
+            "score": 0.26833
+          }
+        },
+        {
+          "id": "q_exp_derive_attributes_values",
+          "query": "What does exp_derive_attributes_values do?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 8
+          },
+          "top_hit": {
+            "chunk_id": "wf_2208_source_saf_interaction_fbl.XML:TRANSFORMATION:exp_derive_attributes_values:a0c20fb4#0",
+            "name": "exp_derive_attributes_values",
+            "node_class": "TRANSFORMATION",
+            "score": 0.463622
+          }
+        },
+        {
+          "id": "q_sq_rltinteractionparty",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_interactionevent_id",
+          "query": "How is InteractionEvent_Id used?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_filter_condition_filtrans",
+          "query": "How is FILTER_CONDITION used in FILTRANS?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_workflow_4202_file",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_lineage_path_target_source",
+          "query": "How do I trace PATH TARGET SOURCE lineage?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 3,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_join_condition_source_cd",
+          "query": "What JOIN_CONDITION uses Source_cd?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_source_saf_interaction_arm_history",
+          "query": "Where is source_saf_interaction_arm_history referenced?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "q_dm_xref_final_ph",
+          "query": "Where is dm_xref_final_ph used?",
+          "mode": "bm25",
+          "k": 8,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        }
+      ]
+    }
+  }
+}

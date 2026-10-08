@@ -1,0 +1,32 @@
+const XIcon = ({ size = 20 }) => (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M57.6959 42.5784H35.7495L37.933 45.1216L40.0873 42.5795H57.5485L46.7204 55.3567L65.5154 77.2483H87.4618L57.6959 42.5784Z"
+        fill="#44C8F5"
+      />
+      <path
+        d="M55.7534 42.5786H29.3218L0.00018692 77.1781H26.4318L55.7534 42.5786Z"
+        fill="#FFCB05"
+      />
+      <path
+        d="M0.0341797 6.38245L26.4658 6.38245L55.8279 41.233H29.3963L0.0341797 6.38245Z"
+        fill="#ED1C24"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M65.2901 6.38232H87.2365L57.5831 41.1904L46.6387 28.276L65.2901 6.38232Z"
+        fill="#A6CE39"
+      />
+    </svg>
+  );
+  
+  export default XIcon;
+  

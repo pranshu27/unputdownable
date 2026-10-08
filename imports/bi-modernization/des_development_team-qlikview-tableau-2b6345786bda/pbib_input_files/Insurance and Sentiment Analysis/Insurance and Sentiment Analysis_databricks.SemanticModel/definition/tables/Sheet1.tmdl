@@ -1,0 +1,50 @@
+table Sheet1
+	lineageTag: b0e5c07a-1e4a-4b70-a8f7-729e901e7c52
+
+	column 'Customer Name'
+		dataType: string
+		lineageTag: a7de6c2c-7fd1-41d0-bb7f-87cc90efd0ab
+		summarizeBy: none
+		sourceColumn: Customer Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column Feedback
+		dataType: string
+		lineageTag: 91a37b0c-3598-459e-9d18-ef6e17d970cb
+		summarizeBy: none
+		sourceColumn: Feedback
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Score sentiment'
+		dataType: double
+		lineageTag: d120fa31-471c-4c8c-b8da-8ee8df88c2a9
+		summarizeBy: sum
+		sourceColumn: Score sentiment
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column 'Good / Improvement'
+		dataType: string
+		lineageTag: 9309eb7a-2e69-4efb-8a9c-d4867bef5e9b
+		summarizeBy: none
+		sourceColumn: Good / Improvement
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Sheet1 = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_and_sentiment_analysis_Schema = genai_demo_Database{[Name="insurance_and_sentiment_analysis",Kind="Schema"]}[Data],
+				    sheet1_Table = insurance_and_sentiment_analysis_Schema{[Name="sheet1",Kind="Table"]}[Data]
+				in
+				    sheet1_Table
+
+	changedProperty = Name
+

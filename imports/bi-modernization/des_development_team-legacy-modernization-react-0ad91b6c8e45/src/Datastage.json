@@ -1,0 +1,2565 @@
+{
+"filename":"HANA_ldap_trn_hana_CREDIT_USER_INFO.xml",
+"etlTool":"datastage", 
+"model":"gpt4o", 
+"technology":"pyspark-datbricks", 
+"framework":"multiagent-moa",
+"response" :{
+    "source": [
+        {
+            "nodeId": "V155S0",
+            "sourceName": "CREDIT_USER_INFO1",
+            "sourceType": "File",
+            "connectionID": "",
+            "field_names": {
+                "LdapOut": "STRING"
+            },
+            "connection_type": "PxSequentialFile",
+            "description": "The data is been loadedin this file  from LDAP server using unix script.",
+            "connection_attributes": {
+                "file_name": "HANA_ldap_trn_hana_CREDIT_USER_INFO.txt"
+            },
+            "authentication_method": "",
+            "nextnodeId": [
+                "V72S0"
+            ]
+        },
+        {
+            "nodeId": "V153S0",
+            "sourceName": "CREDIT_USER_INFO",
+            "sourceType": "File",
+            "connectionID": "",
+            "field_names": {
+                "LdapOut": "STRING"
+            },
+            "connection_type": "PxSequentialFile",
+            "description": "The data is been loadedin this file  from LDAP server using unix script.",
+            "connection_attributes": {
+                "file_name": "HANA_ldap_trn_hana_CREDIT_USER_INFO.txt"
+            },
+            "authentication_method": "",
+            "nextnodeId": [
+                "V0S13"
+            ]
+        },
+        {
+            "nodeId": "V149S0",
+            "sourceName": "ref_CREDIT_USER_INFO",
+            "sourceType": "Database",
+            "connectionID": "#GetHANAREPORTINGPROJDEFValues.$hana_DH2_DBNAME#",
+            "field_names": {
+                "IAM_UNIQUE_ID": "NVARCHAR(12)",
+                "VALID_FROM": "NVARCHAR(8)",
+                "VALID_TO": "NVARCHAR(8)",
+                "FIRST_NAME": "NVARCHAR(70)",
+                "LAST_NAME": "NVARCHAR(70)",
+                "DEPARTMENT": "NVARCHAR(80)",
+                "LOCATION": "NVARCHAR(70)",
+                "PRIM_WORK_PHONE_NUM": "NVARCHAR(40)",
+                "MBL_PHONE_NUM": "NVARCHAR(40)",
+                "EMAIL_ADDR_TXT": "NVARCHAR(255)",
+                "DIRECT_MGR_ID": "NVARCHAR(10)",
+                "DIRECT_MGR_NAME": "NVARCHAR(150)",
+                "NEXT_MGR_ID": "NVARCHAR(10)",
+                "NEXT_MGR_NAME": "NVARCHAR(150)",
+                "TERMINATE_FLAG": "NVARCHAR(2)",
+                "DUMMY": "INTEGER(1)"
+            },
+            "connection_type": "ODBCConnectorPX",
+            "description": "This stage is used to lookup target table for checking SCD conditions.",
+            "connection_attributes": {
+                "host": "",
+                "port": "",
+                "db": "#GetHANAREPORTINGPROJDEFValues.$hana_DH2_DBNAME#",
+                "schema": "#GetHANAREPORTINGPROJDEFValues.$hana_FOUNDATION_SCHEMA#",
+                "path": "CREDIT_USER_INFO",
+                "format": ""
+            },
+            "authentication_method": "#GetHANAREPORTINGPROJDEFValues.$hana_DH2_USER#",
+            "nextnodeId": [
+                "V0S74"
+            ]
+        },
+        {
+            "nodeId": "V154S0",
+            "sourceName": "CREDIT_USER_INFO2",
+            "sourceType": "File",
+            "connectionID": "",
+            "field_names": {
+                "LdapOut": "STRING"
+            },
+            "connection_type": "PxSequentialFile",
+            "description": "The data is been loadedin this file  from LDAP server using unix script.",
+            "connection_attributes": {
+                "file_name": "HANA_ldap_trn_hana_CREDIT_USER_INFO.txt"
+            },
+            "authentication_method": "",
+            "nextnodeId": [
+                "V73S0"
+            ]
+        }
+    ],
+    "output": [
+        {
+            "id": "V0S88",
+            "name": "pek_rej_CREDIT_USER_INFO_SCD2",
+            "node_type": "PxPeek",
+            "baseType": "Other",
+            "serialize": false,
+            "output_type": "Error Capture",
+            "output_details": {
+                "Description": "This stage is used to capture error messages.",
+                "Value": "\\(20)"
+            },
+            "connectionID": "",
+            "field_names": {
+                "IAM_UNIQUE_ID": "NVARCHAR(12)",
+                "VALID_TO": "NVARCHAR(8)",
+                "ROW_UPDATE_STP": "TIMESTAMP(27)",
+                "ROW_UPDATE_USER_ID": "NVARCHAR(8)",
+                "VALID_FROM_ref": "NVARCHAR(8)",
+                "VALID_TO_ref": "NVARCHAR(8)",
+                "RejectERRORCODE": "ERRORCODE(10)",
+                "RejectERRORTEXT": "ERRORTEXT(512)"
+            },
+            "description": "This stage is used to capture error messages.",
+            "previousnodeId": [
+                "V152S0"
+            ]
+        },
+        {
+            "id": "V0S87",
+            "name": "pek_rej_CREDIT_USER_INFO_SCD1",
+            "node_type": "PxPeek",
+            "baseType": "Other",
+            "serialize": false,
+            "output_type": "Error Capture",
+            "output_details": {
+                "description": "This stage is used to capture error messages."
+            },
+            "connectionID": "",
+            "field_names": {
+                "IAM_UNIQUE_ID": "NVARCHAR(12)",
+                "PRIM_WORK_PHONE_NUM": "NVARCHAR(40)",
+                "MBL_PHONE_NUM": "NVARCHAR(40)",
+                "EMAIL_ADDR_TXT": "NVARCHAR(255)",
+                "TERMINATE_FLAG": "NVARCHAR(2)",
+                "ROW_UPDATE_STP": "TIMESTAMP(27)",
+                "ROW_UPDATE_USER_ID": "NVARCHAR(8)",
+                "VALID_FROM_ref": "NVARCHAR(8)",
+                "VALID_TO_ref": "NVARCHAR(8)",
+                "DUMMY": "INTEGER(1)",
+                "RejectERRORCODE": "INTEGER(10)",
+                "RejectERRORTEXT": "STRING(512)"
+            },
+            "description": "This stage is used to capture error messages.",
+            "previousnodeId": [
+                "V151S0"
+            ]
+        },
+        {
+            "id": "V0S86",
+            "name": "pek_rej_ins_CREDIT_USER_INFO",
+            "node_type": "PxPeek",
+            "baseType": "Other",
+            "serialize": false,
+            "output_type": "Error Capture",
+            "output_details": {
+                "description": "This stage is used to capture error messages."
+            },
+            "connectionID": "",
+            "field_names": {
+                "IAM_UNIQUE_ID": "NVARCHAR(12)",
+                "VALID_FROM": "NVARCHAR(8)",
+                "VALID_TO": "NVARCHAR(8)",
+                "FIRST_NAME": "NVARCHAR(70)",
+                "LAST_NAME": "NVARCHAR(70)",
+                "DEPARTMENT": "NVARCHAR(80)",
+                "LOCATION": "NVARCHAR(70)",
+                "PRIM_WORK_PHONE_NUM": "NVARCHAR(40)",
+                "MBL_PHONE_NUM": "NVARCHAR(40)",
+                "EMAIL_ADDR_TXT": "NVARCHAR(255)",
+                "DIRECT_MGR_ID": "NVARCHAR(10)",
+                "DIRECT_MGR_NAME": "NVARCHAR(150)",
+                "NEXT_MGR_ID": "NVARCHAR(10)",
+                "NEXT_MGR_NAME": "NVARCHAR(150)",
+                "TERMINATE_FLAG": "NVARCHAR(2)",
+                "ROW_ADD_STP": "TIMESTAMP",
+                "ROW_ADD_USER_ID": "NVARCHAR(8)",
+                "ROW_UPDATE_STP": "TIMESTAMP",
+                "ROW_UPDATE_USER_ID": "NVARCHAR(8)",
+                "RejectERRORCODE": "INTEGER",
+                "RejectERRORTEXT": "NVARCHAR(512)"
+            },
+            "description": "This stage is used to capture error messages.",
+            "previousnodeId": [
+                "V150S0"
+            ]
+        },
+        {
+            "id": "V150S0",
+            "name": "ins_CREDIT_USER_INFO",
+            "node_type": "ODBCConnectorPX",
+            "baseType": "Database",
+            "serialize": true,
+            "output_type": "HANA Table",
+            "output_details": {
+                "ConnectionString": "/Connection/DataSource",
+                "Username": "/Connection/Username",
+                "Password": "/Connection/Password",
+                "TableName": "#GetHANAREPORTINGPROJDEFValues.$hana_FOUNDATION_SCHEMA#.CREDIT_USER_INFO",
+                "WriteMode": "0",
+                "GenerateSQL": "1",
+                "AutocommitMode": "1",
+                "ArraySize": "2000",
+                "FailOnSizeMismatch": "1",
+                "FailOnTypeMismatch": "1",
+                "DropUnmatchedFields": "1"
+            },
+            "connectionID": "",
+            "field_names": {
+                "IAM_UNIQUE_ID": "NVARCHAR(12)",
+                "VALID_FROM": "NVARCHAR(8)",
+                "VALID_TO": "NVARCHAR(8)",
+                "FIRST_NAME": "NVARCHAR(70)",
+                "LAST_NAME": "NVARCHAR(70)",
+                "DEPARTMENT": "NVARCHAR(80)",
+                "LOCATION": "NVARCHAR(70)",
+                "PRIM_WORK_PHONE_NUM": "NVARCHAR(40)",
+                "MBL_PHONE_NUM": "NVARCHAR(40)",
+                "EMAIL_ADDR_TXT": "NVARCHAR(255)",
+                "DIRECT_MGR_ID": "NVARCHAR(10)",
+                "DIRECT_MGR_NAME": "NVARCHAR(150)",
+                "NEXT_MGR_ID": "NVARCHAR(10)",
+                "NEXT_MGR_NAME": "NVARCHAR(150)",
+                "TERMINATE_FLAG": "NVARCHAR(2)",
+                "ROW_ADD_STP": "TIMESTAMP",
+                "ROW_ADD_USER_ID": "NVARCHAR(8)",
+                "ROW_UPDATE_STP": "TIMESTAMP",
+                "ROW_UPDATE_USER_ID": "NVARCHAR(8)",
+                "RejectERRORCODE": "ERRORCODE INT",
+                "RejectERRORTEXT": "ERRORTEXT STRING"
+            },
+            "description": "This stage insert (pure insert and SCD2 insert) values to CREDIT_USER_INFO table.",
+            "previousnodeId": [
+                "V0S79"
+            ]
+        },
+        {
+            "id": "V0S98",
+            "name": "ldap_hana_ds",
+            "node_type": "PxDataSet",
+            "baseType": "DataSet",
+            "serialize": true,
+            "output_type": "DataSet",
+            "output_details": {
+                "file_name": "#GetHANAREPORTINGPROJDEFValues.$HANASourceFileDir#LDAP_HANA.ds",
+                "datasetmode": ">| [ds"
+            },
+            "connectionID": "",
+            "field_names": {
+                "IAM_UNIQUE_ID": "ustring[max=12]",
+                "PRIM_WORK_PHONE_NUM": "nullable ustring[max=40]",
+                "MBL_PHONE_NUM": "nullable ustring[max=40]",
+                "EMAIL_ADDR_TXT": "nullable ustring[max=255]",
+                "TERMINATE_FLAG": "nullable ustring[max=2]",
+                "ROW_UPDATE_STP": "timestamp[microseconds]",
+                "ROW_UPDATE_USER_ID": "ustring[max=8]",
+                "VALID_FROM_ref": "ustring[max=8]",
+                "VALID_TO_ref": "ustring[max=8]",
+                "DUMMY": "nullable int32"
+            },
+            "description": "This stage is used to store SCD2 insert records.",
+            "previousnodeId": [
+                "V0S79"
+            ]
+        }
+    ],
+    "transformations": [
+        {
+            "Node ID": "V68A0",
+            "Node Name": "",
+            "Field Name": "ANNOTATION_TEXT",
+            "Description": "Annotation captured from node",
+            "Transformation Type": "annotation",
+            "Transformation Expression": "",
+            "Output Field": "ANNOTATION_TEXT STRING",
+            "Output Description": "Annotation captured from node",
+            "Next Nodes": []
+        },
+        {
+            "Node ID": "V67A0",
+            "Node Name": "",
+            "Field Name": "ANNOTATION_TEXT",
+            "Description": "Annotation captured from node",
+            "Transformation Type": "annotation",
+            "Transformation Expression": "",
+            "Output Field": "ANNOTATION_TEXT STRING",
+            "Output Description": "Annotation captured from node",
+            "Next Nodes": []
+        },
+        {
+            "Node ID": "V0S48",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_1",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_xfm_getValues_Direct_Mananger.IAM_UNIQUE_ID",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "IAM_UNIQUE_ID field passed through unchanged",
+            "Next Nodes": [
+                "V0S63"
+            ]
+        },
+        {
+            "Node ID": "V0S48",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_1",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_xfm_getValues_Direct_Mananger.DIRECT_MGR_NAME",
+            "Output Field": "DIRECT_MGR_NAME STRING",
+            "Output Description": "DIRECT_MGR_NAME field passed through unchanged",
+            "Next Nodes": [
+                "V0S63"
+            ]
+        },
+        {
+            "Node ID": "V0S48",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_1",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_xfm_getValues_Direct_Mananger.NEXT_MGR_ID",
+            "Output Field": "NEXT_MGR_ID STRING",
+            "Output Description": "NEXT_MGR_ID field passed through unchanged",
+            "Next Nodes": [
+                "V0S63"
+            ]
+        },
+        {
+            "Node ID": "V0S89",
+            "Node Name": "rmd_IAM_UNIQUE_ID_1",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Removes duplicate records based on IAM_UNIQUE_ID column.",
+            "Transformation Type": "filter",
+            "Transformation Expression": "TrimLeadingTrailing(svUID) with duplicates removed, keeping the first occurrence.",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "Unique identifier after duplicate removal.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S89",
+            "Node Name": "rmd_IAM_UNIQUE_ID_1",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Passes through DIRECT_MGR_NAME after trimming leading and trailing spaces.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "TrimLeadingTrailing(svCN)",
+            "Output Field": "DIRECT_MGR_NAME STRING",
+            "Output Description": "Direct manager name after trimming spaces.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S89",
+            "Node Name": "rmd_IAM_UNIQUE_ID_1",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Derives NEXT_MGR_ID using complex expression based on svManager1 and default values.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "svManager1[index(svManager1, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svManager1) - index(svManager1, '=', 1)]",
+            "Output Field": "NEXT_MGR_ID STRING",
+            "Output Description": "Next manager ID derived from svManager1.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S91",
+            "Node Name": "rmd_IAM_UNIQUE_ID_2",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Removes duplicate records based on IAM_UNIQUE_ID column.",
+            "Transformation Type": "filter",
+            "Transformation Expression": "TrimLeadingTrailing(svUID[index(svUID, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svUID) - index(svUID, '=', 1)])",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "Unique identifier after duplicate removal.",
+            "Next Nodes": [
+                "V0S63"
+            ]
+        },
+        {
+            "Node ID": "V0S91",
+            "Node Name": "rmd_IAM_UNIQUE_ID_2",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Processes NEXT_MGR_NAME field while removing duplicates.",
+            "Transformation Type": "filter",
+            "Transformation Expression": "TrimLeadingTrailing(svCN[index(svCN, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svCN) - index(svCN, '=', 1)])",
+            "Output Field": "NEXT_MGR_NAME STRING",
+            "Output Description": "Manager name after duplicate removal.",
+            "Next Nodes": [
+                "V0S63"
+            ]
+        },
+        {
+            "Node ID": "V73S0",
+            "Node Name": "xfm_getValues_Next_Mananger",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Extracts and trims the unique ID from the input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svUID[index(svUID, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svUID) - index(svUID, '=', 1)])",
+            "Output Field": "IAM_UNIQUE_ID ustring[max=12]",
+            "Output Description": "Unique identifier extracted and trimmed.",
+            "Next Nodes": [
+                "V0S91"
+            ]
+        },
+        {
+            "Node ID": "V73S0",
+            "Node Name": "xfm_getValues_Next_Mananger",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Extracts and trims the next manager's name from the input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svCN[index(svCN, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svCN) - index(svCN, '=', 1)])",
+            "Output Field": "NEXT_MGR_NAME ustring[max=150]",
+            "Output Description": "Next manager's name extracted and trimmed.",
+            "Next Nodes": [
+                "V0S91"
+            ]
+        },
+        {
+            "Node ID": "V72S0",
+            "Node Name": "xfm_getValues_Direct_Mananger",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Extracts and trims the unique ID from the input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svUID)",
+            "Output Field": "IAM_UNIQUE_ID ustring[max=12]",
+            "Output Description": "Unique identifier for the IAM user.",
+            "Next Nodes": [
+                "V0S89"
+            ]
+        },
+        {
+            "Node ID": "V72S0",
+            "Node Name": "xfm_getValues_Direct_Mananger",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Extracts and trims the direct manager's name from the input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svCN)",
+            "Output Field": "DIRECT_MGR_NAME ustring[max=150]",
+            "Output Description": "Name of the direct manager.",
+            "Next Nodes": [
+                "V0S89"
+            ]
+        },
+        {
+            "Node ID": "V72S0",
+            "Node Name": "xfm_getValues_Direct_Mananger",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Extracts and computes the next manager ID from the input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "svManager1[index(svManager1, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svManager1) - index(svManager1, '=', 1)]",
+            "Output Field": "NEXT_MGR_ID ustring[max=10]",
+            "Output Description": "Identifier for the next manager in the hierarchy.",
+            "Next Nodes": [
+                "V0S89"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Removes duplicate records based on IAM_UNIQUE_ID column.",
+            "Transformation Type": "filter",
+            "Transformation Expression": "Keep first occurrence of IAM_UNIQUE_ID.",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "Unique identifier for IAM records after deduplication.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Passes TERMINATE_FLAG field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "TERMINATE_FLAG STRING",
+            "Output Description": "Terminate flag for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Passes EMAIL_ADDR_TXT field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "EMAIL_ADDR_TXT STRING",
+            "Output Description": "Email address for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "FIRST_NAME",
+            "Description": "Passes FIRST_NAME field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "FIRST_NAME STRING",
+            "Output Description": "First name for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "LAST_NAME",
+            "Description": "Passes LAST_NAME field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "LAST_NAME STRING",
+            "Output Description": "Last name for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "CN",
+            "Description": "Passes CN field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "CN STRING",
+            "Output Description": "Common name for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "LOCATION",
+            "Description": "Passes LOCATION field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "LOCATION STRING",
+            "Output Description": "Location for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Passes DIRECT_MGR_ID field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "DIRECT_MGR_ID STRING",
+            "Output Description": "Direct manager ID for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Passes PRIM_WORK_PHONE_NUM field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "PRIM_WORK_PHONE_NUM STRING",
+            "Output Description": "Primary work phone number for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Passes MBL_PHONE_NUM field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "MBL_PHONE_NUM STRING",
+            "Output Description": "Mobile phone number for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S93",
+            "Node Name": "rmd_IAM_UNIQUE_ID",
+            "Field Name": "DEPARTMENT",
+            "Description": "Passes DEPARTMENT field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Field passed through unchanged.",
+            "Output Field": "DEPARTMENT STRING",
+            "Output Description": "Department for IAM records.",
+            "Next Nodes": [
+                "V0S48"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Extracts unique identifier from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svUniqueUID)",
+            "Output Field": "IAM_UNIQUE_ID ustring[max=12]",
+            "Output Description": "Unique identifier for IAM.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Determines termination flag based on employee status.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svcahintemployeestatus)",
+            "Output Field": "TERMINATE_FLAG ustring[max=1]",
+            "Output Description": "Flag indicating termination status.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Extracts email address from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svMail)",
+            "Output Field": "EMAIL_ADDR_TXT ustring[max=70]",
+            "Output Description": "Email address of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "FIRST_NAME",
+            "Description": "Extracts first name from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svGIVENNAME)",
+            "Output Field": "FIRST_NAME ustring[max=70]",
+            "Output Description": "First name of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "LAST_NAME",
+            "Description": "Extracts last name from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svSN)",
+            "Output Field": "LAST_NAME ustring[max=70]",
+            "Output Description": "Last name of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "CN",
+            "Description": "Extracts common name from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svCN)",
+            "Output Field": "CN ustring[max=150]",
+            "Output Description": "Common name of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "LOCATION",
+            "Description": "Extracts location from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "svL70[1,70]",
+            "Output Field": "LOCATION ustring[max=70]",
+            "Output Description": "Location of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Extracts direct manager ID from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "svManager1[index(svManager1, '=', 1) + GetHANAREPORTINGDefaultValues.Default_1, len(svManager1) - index(svManager1, '=', 1)]",
+            "Output Field": "DIRECT_MGR_ID ustring[max=10]",
+            "Output Description": "Direct manager ID of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Extracts primary work phone number from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svtelephonenumber)",
+            "Output Field": "PRIM_WORK_PHONE_NUM ustring[max=40]",
+            "Output Description": "Primary work phone number of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Extracts mobile phone number from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svMobile)",
+            "Output Field": "MBL_PHONE_NUM ustring[max=40]",
+            "Output Description": "Mobile phone number of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S13",
+            "Node Name": "xfm_getValues",
+            "Field Name": "DEPARTMENT",
+            "Description": "Extracts department information from input data.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(svcahintJobFamilyDesc)",
+            "Output Field": "DEPARTMENT ustring[max=80]",
+            "Output Description": "Department of the user.",
+            "Next Nodes": [
+                "V0S93"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.IAM_UNIQUE_ID",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "Unique identifier passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.TERMINATE_FLAG",
+            "Output Field": "TERMINATE_FLAG STRING",
+            "Output Description": "Terminate flag passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.EMAIL_ADDR_TXT",
+            "Output Field": "EMAIL_ADDR_TXT STRING",
+            "Output Description": "Email address passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "FIRST_NAME",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.FIRST_NAME",
+            "Output Field": "FIRST_NAME STRING",
+            "Output Description": "First name passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "LAST_NAME",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.LAST_NAME",
+            "Output Field": "LAST_NAME STRING",
+            "Output Description": "Last name passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "CN",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.CN",
+            "Output Field": "CN STRING",
+            "Output Description": "Common name passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "LOCATION",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.LOCATION",
+            "Output Field": "LOCATION STRING",
+            "Output Description": "Location passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.DIRECT_MGR_ID",
+            "Output Field": "DIRECT_MGR_ID STRING",
+            "Output Description": "Direct manager ID passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.PRIM_WORK_PHONE_NUM",
+            "Output Field": "PRIM_WORK_PHONE_NUM STRING",
+            "Output Description": "Primary work phone number passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.MBL_PHONE_NUM",
+            "Output Field": "MBL_PHONE_NUM STRING",
+            "Output Description": "Mobile phone number passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "DEPARTMENT",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.DEPARTMENT",
+            "Output Field": "DEPARTMENT STRING",
+            "Output Description": "Department passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.DIRECT_MGR_NAME",
+            "Output Field": "DIRECT_MGR_NAME STRING",
+            "Output Description": "Direct manager name passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_JavaClient_GetLDAPdata_1.NEXT_MGR_ID",
+            "Output Field": "NEXT_MGR_ID STRING",
+            "Output Description": "Next manager ID passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S63",
+            "Node Name": "lkp_JavaClient_GetLDAPdata_2",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_rmd_IAM_UNIQUE_ID_2.NEXT_MGR_NAME",
+            "Output Field": "NEXT_MGR_NAME STRING",
+            "Output Description": "Next manager name passed through unchanged",
+            "Next Nodes": [
+                "V0S71"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Trims leading and trailing spaces from IAM_UNIQUE_ID field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.IAM_UNIQUE_ID)",
+            "Output Field": "IAM_UNIQUE_ID_ref ustring[max=12]",
+            "Output Description": "Trimmed IAM_UNIQUE_ID field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "VALID_FROM",
+            "Description": "Trims leading and trailing spaces from VALID_FROM field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.VALID_FROM)",
+            "Output Field": "VALID_FROM_ref ustring[max=8]",
+            "Output Description": "Trimmed VALID_FROM field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "VALID_TO",
+            "Description": "Trims leading and trailing spaces from VALID_TO field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.VALID_TO)",
+            "Output Field": "VALID_TO_ref ustring[max=8]",
+            "Output Description": "Trimmed VALID_TO field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "FIRST_NAME",
+            "Description": "Trims leading and trailing spaces from FIRST_NAME field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.FIRST_NAME)",
+            "Output Field": "FIRST_NAME_ref nullable ustring[max=70]",
+            "Output Description": "Trimmed FIRST_NAME field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "LAST_NAME",
+            "Description": "Trims leading and trailing spaces from LAST_NAME field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.LAST_NAME)",
+            "Output Field": "LAST_NAME_ref nullable ustring[max=70]",
+            "Output Description": "Trimmed LAST_NAME field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "DEPARTMENT",
+            "Description": "Trims leading and trailing spaces from DEPARTMENT field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DEPARTMENT)",
+            "Output Field": "DEPARTMENT_ref nullable ustring[max=80]",
+            "Output Description": "Trimmed DEPARTMENT field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "LOCATION",
+            "Description": "Trims leading and trailing spaces from LOCATION field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.LOCATION)",
+            "Output Field": "LOCATION_ref nullable ustring[max=70]",
+            "Output Description": "Trimmed LOCATION field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Trims leading and trailing spaces from PRIM_WORK_PHONE_NUM field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.PRIM_WORK_PHONE_NUM)",
+            "Output Field": "PRIM_WORK_PHONE_NUM_ref nullable ustring[max=40]",
+            "Output Description": "Trimmed PRIM_WORK_PHONE_NUM field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Trims leading and trailing spaces from MBL_PHONE_NUM field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.MBL_PHONE_NUM)",
+            "Output Field": "MBL_PHONE_NUM_ref nullable ustring[max=40]",
+            "Output Description": "Trimmed MBL_PHONE_NUM field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Trims leading and trailing spaces from EMAIL_ADDR_TXT field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.EMAIL_ADDR_TXT)",
+            "Output Field": "EMAIL_ADDR_TXT_ref nullable ustring[max=255]",
+            "Output Description": "Trimmed EMAIL_ADDR_TXT field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Trims leading and trailing spaces from DIRECT_MGR_ID field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DIRECT_MGR_ID)",
+            "Output Field": "DIRECT_MGR_ID_ref nullable ustring[max=10]",
+            "Output Description": "Trimmed DIRECT_MGR_ID field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Trims leading and trailing spaces from DIRECT_MGR_NAME field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DIRECT_MGR_NAME)",
+            "Output Field": "DIRECT_MGR_NAME_ref nullable ustring[max=150]",
+            "Output Description": "Trimmed DIRECT_MGR_NAME field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Trims leading and trailing spaces from NEXT_MGR_ID field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.NEXT_MGR_ID)",
+            "Output Field": "NEXT_MGR_ID_ref nullable ustring[max=10]",
+            "Output Description": "Trimmed NEXT_MGR_ID field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Trims leading and trailing spaces from NEXT_MGR_NAME field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.NEXT_MGR_NAME)",
+            "Output Field": "NEXT_MGR_NAME_ref nullable ustring[max=150]",
+            "Output Description": "Trimmed NEXT_MGR_NAME field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Trims leading and trailing spaces from TERMINATE_FLAG field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.TERMINATE_FLAG)",
+            "Output Field": "TERMINATE_FLAG_ref nullable ustring[max=2]",
+            "Output Description": "Trimmed TERMINATE_FLAG field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S74",
+            "Node Name": "xfm_Trim_Fields",
+            "Field Name": "DUMMY",
+            "Description": "Passes through DUMMY field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_ref_CREDIT_USER_INFO.DUMMY",
+            "Output Field": "DUMMY int32",
+            "Output Description": "Unchanged DUMMY field.",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V0S79",
+            "Node Name": "xfm_Ins_Upd_SCD",
+            "Field Name": "svInsert",
+            "Description": "Determines if a record should be inserted based on comparison of DUMMY field and other conditions.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "If lnk_CREDIT_USER_INFO.DUMMY <> GetHANAREPORTINGDefaultValues.Default_1 Then GetHANAREPORTINGDefaultValues.Default_Y Else GetHANAREPORTINGDefaultValues.Default_N",
+            "Output Field": "svInsert STRING",
+            "Output Description": "Insert condition flag",
+            "Next Nodes": [
+                "V0S79P2"
+            ]
+        },
+        {
+            "Node ID": "V0S79",
+            "Node Name": "xfm_Ins_Upd_SCD",
+            "Field Name": "svSCD2Update",
+            "Description": "Determines if a record should be updated based on comparison of multiple fields.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "If lnk_CREDIT_USER_INFO.DUMMY = GetHANAREPORTINGDefaultValues.Default_1 AND (lnk_CREDIT_USER_INFO.FIRST_NAME<>lnk_CREDIT_USER_INFO.FIRST_NAME_ref OR lnk_CREDIT_USER_INFO.LAST_NAME<>lnk_CREDIT_USER_INFO.LAST_NAME_ref OR lnk_CREDIT_USER_INFO.DEPARTMENT<>lnk_CREDIT_USER_INFO.DEPARTMENT_ref OR lnk_CREDIT_USER_INFO.LOCATION<>lnk_CREDIT_USER_INFO.LOCATION_ref OR lnk_CREDIT_USER_INFO.DIRECT_MGR_ID<>lnk_CREDIT_USER_INFO.DIRECT_MGR_ID_ref OR lnk_CREDIT_USER_INFO.DIRECT_MGR_NAME<>lnk_CREDIT_USER_INFO.DIRECT_MGR_NAME_ref OR lnk_CREDIT_USER_INFO.NEXT_MGR_ID<>lnk_CREDIT_USER_INFO.NEXT_MGR_ID_ref OR lnk_CREDIT_USER_INFO.NEXT_MGR_NAME<>lnk_CREDIT_USER_INFO.NEXT_MGR_NAME_ref) Then GetHANAREPORTINGDefaultValues.Default_Y Else GetHANAREPORTINGDefaultValues.Default_N",
+            "Output Field": "svSCD2Update STRING",
+            "Output Description": "SCD2 update condition flag",
+            "Next Nodes": [
+                "V0S79P6"
+            ]
+        },
+        {
+            "Node ID": "V0S79",
+            "Node Name": "xfm_Ins_Upd_SCD",
+            "Field Name": "svSCD1Update",
+            "Description": "Determines if a record should be updated for SCD1 based on comparison of phone numbers and other fields.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "If svInsert = GetHANAREPORTINGDefaultValues.Default_N AND svSCD2Update = GetHANAREPORTINGDefaultValues.Default_N AND (lnk_CREDIT_USER_INFO.PRIM_WORK_PHONE_NUM <> lnk_CREDIT_USER_INFO.PRIM_WORK_PHONE_NUM_ref OR lnk_CREDIT_USER_INFO.MBL_PHONE_NUM <> lnk_CREDIT_USER_INFO.MBL_PHONE_NUM_ref OR lnk_CREDIT_USER_INFO.EMAIL_ADDR_TXT <> lnk_CREDIT_USER_INFO.EMAIL_ADDR_TXT_ref OR lnk_CREDIT_USER_INFO.TERMINATE_FLAG <> lnk_CREDIT_USER_INFO.TERMINATE_FLAG_ref) Then GetHANAREPORTINGDefaultValues.Default_Y Else GetHANAREPORTINGDefaultValues.Default_N",
+            "Output Field": "svSCD1Update STRING",
+            "Output Description": "SCD1 update condition flag",
+            "Next Nodes": [
+                "V0S79P5"
+            ]
+        },
+        {
+            "Node ID": "V0S79",
+            "Node Name": "xfm_Ins_Upd_SCD",
+            "Field Name": "svSCD2Insert",
+            "Description": "Determines if a record should be inserted for SCD2 based on comparison of multiple fields.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "If lnk_CREDIT_USER_INFO.DUMMY = GetHANAREPORTINGDefaultValues.Default_1 AND (lnk_CREDIT_USER_INFO.FIRST_NAME<>lnk_CREDIT_USER_INFO.FIRST_NAME_ref OR lnk_CREDIT_USER_INFO.LAST_NAME<>lnk_CREDIT_USER_INFO.LAST_NAME_ref OR lnk_CREDIT_USER_INFO.DEPARTMENT<>lnk_CREDIT_USER_INFO.DEPARTMENT_ref OR lnk_CREDIT_USER_INFO.LOCATION<>lnk_CREDIT_USER_INFO.LOCATION_ref OR lnk_CREDIT_USER_INFO.DIRECT_MGR_ID<>lnk_CREDIT_USER_INFO.DIRECT_MGR_ID_ref OR lnk_CREDIT_USER_INFO.DIRECT_MGR_NAME<>lnk_CREDIT_USER_INFO.DIRECT_MGR_NAME_ref OR lnk_CREDIT_USER_INFO.NEXT_MGR_ID<>lnk_CREDIT_USER_INFO.NEXT_MGR_ID_ref OR lnk_CREDIT_USER_INFO.NEXT_MGR_NAME<>lnk_CREDIT_USER_INFO.NEXT_MGR_NAME_ref) Then GetHANAREPORTINGDefaultValues.Default_Y Else GetHANAREPORTINGDefaultValues.Default_N",
+            "Output Field": "svSCD2Insert STRING",
+            "Output Description": "SCD2 insert condition flag",
+            "Next Nodes": [
+                "V0S79P8"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "IAM_UNIQUE_ID_ref",
+            "Description": "Trim leading and trailing spaces from IAM_UNIQUE_ID_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.IAM_UNIQUE_ID)",
+            "Output Field": "IAM_UNIQUE_ID_ref NVARCHAR(12)",
+            "Output Description": "Processed IAM_UNIQUE_ID_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "VALID_FROM_ref",
+            "Description": "Trim leading and trailing spaces from VALID_FROM_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.VALID_FROM)",
+            "Output Field": "VALID_FROM_ref NVARCHAR(8)",
+            "Output Description": "Processed VALID_FROM_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "VALID_TO_ref",
+            "Description": "Trim leading and trailing spaces from VALID_TO_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.VALID_TO)",
+            "Output Field": "VALID_TO_ref NVARCHAR(8)",
+            "Output Description": "Processed VALID_TO_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "FIRST_NAME_ref",
+            "Description": "Trim leading and trailing spaces from FIRST_NAME_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.FIRST_NAME)",
+            "Output Field": "FIRST_NAME_ref NVARCHAR(70)",
+            "Output Description": "Processed FIRST_NAME_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "LAST_NAME_ref",
+            "Description": "Trim leading and trailing spaces from LAST_NAME_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.LAST_NAME)",
+            "Output Field": "LAST_NAME_ref NVARCHAR(70)",
+            "Output Description": "Processed LAST_NAME_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "DEPARTMENT_ref",
+            "Description": "Trim leading and trailing spaces from DEPARTMENT_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DEPARTMENT)",
+            "Output Field": "DEPARTMENT_ref NVARCHAR(80)",
+            "Output Description": "Processed DEPARTMENT_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "LOCATION_ref",
+            "Description": "Trim leading and trailing spaces from LOCATION_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.LOCATION)",
+            "Output Field": "LOCATION_ref NVARCHAR(70)",
+            "Output Description": "Processed LOCATION_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "PRIM_WORK_PHONE_NUM_ref",
+            "Description": "Trim leading and trailing spaces from PRIM_WORK_PHONE_NUM_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.PRIM_WORK_PHONE_NUM)",
+            "Output Field": "PRIM_WORK_PHONE_NUM_ref NVARCHAR(40)",
+            "Output Description": "Processed PRIM_WORK_PHONE_NUM_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "MBL_PHONE_NUM_ref",
+            "Description": "Trim leading and trailing spaces from MBL_PHONE_NUM_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.MBL_PHONE_NUM)",
+            "Output Field": "MBL_PHONE_NUM_ref NVARCHAR(40)",
+            "Output Description": "Processed MBL_PHONE_NUM_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "EMAIL_ADDR_TXT_ref",
+            "Description": "Trim leading and trailing spaces from EMAIL_ADDR_TXT_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.EMAIL_ADDR_TXT)",
+            "Output Field": "EMAIL_ADDR_TXT_ref NVARCHAR(255)",
+            "Output Description": "Processed EMAIL_ADDR_TXT_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "DIRECT_MGR_ID_ref",
+            "Description": "Trim leading and trailing spaces from DIRECT_MGR_ID_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DIRECT_MGR_ID)",
+            "Output Field": "DIRECT_MGR_ID_ref NVARCHAR(10)",
+            "Output Description": "Processed DIRECT_MGR_ID_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "DIRECT_MGR_NAME_ref",
+            "Description": "Trim leading and trailing spaces from DIRECT_MGR_NAME_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.DIRECT_MGR_NAME)",
+            "Output Field": "DIRECT_MGR_NAME_ref NVARCHAR(150)",
+            "Output Description": "Processed DIRECT_MGR_NAME_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "NEXT_MGR_ID_ref",
+            "Description": "Trim leading and trailing spaces from NEXT_MGR_ID_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.NEXT_MGR_ID)",
+            "Output Field": "NEXT_MGR_ID_ref NVARCHAR(10)",
+            "Output Description": "Processed NEXT_MGR_ID_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "NEXT_MGR_NAME_ref",
+            "Description": "Trim leading and trailing spaces from NEXT_MGR_NAME_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.NEXT_MGR_NAME)",
+            "Output Field": "NEXT_MGR_NAME_ref NVARCHAR(150)",
+            "Output Description": "Processed NEXT_MGR_NAME_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "TERMINATE_FLAG_ref",
+            "Description": "Trim leading and trailing spaces from TERMINATE_FLAG_ref field.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TrimLeadingTrailing(lnk_ref_CREDIT_USER_INFO.TERMINATE_FLAG)",
+            "Output Field": "TERMINATE_FLAG_ref NVARCHAR(2)",
+            "Output Description": "Processed TERMINATE_FLAG_ref field with trimmed spaces.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V0S75",
+            "Node Name": "lkp_CREDIT_USER_INFO",
+            "Field Name": "DUMMY",
+            "Description": "Pass through DUMMY field unchanged.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_ref_CREDIT_USER_INFO.DUMMY",
+            "Output Field": "DUMMY INT32",
+            "Output Description": "Unchanged DUMMY field.",
+            "Next Nodes": [
+                "V0S79"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.IAM_UNIQUE_ID_ref",
+            "Output Field": "IAM_UNIQUE_ID NVARCHAR(12)",
+            "Output Description": "Unique identifier for the user",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.PRIM_WORK_PHONE_NUM",
+            "Output Field": "PRIM_WORK_PHONE_NUM NVARCHAR(40)",
+            "Output Description": "Primary work phone number",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.MBL_PHONE_NUM",
+            "Output Field": "MBL_PHONE_NUM NVARCHAR(40)",
+            "Output Description": "Mobile phone number",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.EMAIL_ADDR_TXT",
+            "Output Field": "EMAIL_ADDR_TXT NVARCHAR(255)",
+            "Output Description": "Email address text",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.TERMINATE_FLAG",
+            "Output Field": "TERMINATE_FLAG NVARCHAR(2)",
+            "Output Description": "Flag indicating termination status",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "ROW_UPDATE_STP",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.out_ROW_UPDATE_STP",
+            "Output Field": "ROW_UPDATE_STP TIMESTAMP",
+            "Output Description": "Timestamp of row update",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "ROW_UPDATE_USER_ID",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.out_ROW_UPDATE_USER_ID",
+            "Output Field": "ROW_UPDATE_USER_ID NVARCHAR(8)",
+            "Output Description": "User ID of the person who updated the row",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "VALID_FROM_ref",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.VALID_FROM_ref",
+            "Output Field": "VALID_FROM_ref NVARCHAR(8)",
+            "Output Description": "Reference for the valid from date",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "VALID_TO_ref",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.VALID_TO_ref",
+            "Output Field": "VALID_TO_ref NVARCHAR(8)",
+            "Output Description": "Reference for the valid to date",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "DUMMY",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.DUMMY",
+            "Output Field": "DUMMY INT32",
+            "Output Description": "Dummy field for processing",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "RejectERRORCODE",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Derivation",
+            "Output Field": "RejectERRORCODE INT32",
+            "Output Description": "Error code for rejected rows",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V151S0",
+            "Node Name": "CREDIT_USER_INFO_SCD1",
+            "Field Name": "RejectERRORTEXT",
+            "Description": "Field passed through unchanged",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "Derivation",
+            "Output Field": "RejectERRORTEXT NVARCHAR(512)",
+            "Output Description": "Error text for rejected rows",
+            "Next Nodes": [
+                "V0S87"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Transforms IAM_UNIQUE_ID by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.IAM_UNIQUE_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.IAM_UNIQUE_ID))",
+            "Output Field": "IAM_UNIQUE_ID ustring[max=12]",
+            "Output Description": "Transformed IAM_UNIQUE_ID field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Transforms TERMINATE_FLAG by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.TERMINATE_FLAG), '', lnk_lkp_JavaClient_GetLDAPdata_2.TERMINATE_FLAG))",
+            "Output Field": "TERMINATE_FLAG ustring[max=1]",
+            "Output Description": "Transformed TERMINATE_FLAG field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Transforms EMAIL_ADDR_TXT by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.EMAIL_ADDR_TXT), '', lnk_lkp_JavaClient_GetLDAPdata_2.EMAIL_ADDR_TXT))",
+            "Output Field": "EMAIL_ADDR_TXT ustring[max=70]",
+            "Output Description": "Transformed EMAIL_ADDR_TXT field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "FIRST_NAME",
+            "Description": "Transforms FIRST_NAME by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.FIRST_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.FIRST_NAME))",
+            "Output Field": "FIRST_NAME ustring[max=70]",
+            "Output Description": "Transformed FIRST_NAME field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "LAST_NAME",
+            "Description": "Transforms LAST_NAME by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.LAST_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.LAST_NAME))",
+            "Output Field": "LAST_NAME ustring[max=70]",
+            "Output Description": "Transformed LAST_NAME field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "LOCATION",
+            "Description": "Transforms LOCATION by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.LOCATION), '', lnk_lkp_JavaClient_GetLDAPdata_2.LOCATION))",
+            "Output Field": "LOCATION ustring[max=70]",
+            "Output Description": "Transformed LOCATION field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Transforms DIRECT_MGR_ID by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_ID))",
+            "Output Field": "DIRECT_MGR_ID ustring[max=10]",
+            "Output Description": "Transformed DIRECT_MGR_ID field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Transforms PRIM_WORK_PHONE_NUM by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.PRIM_WORK_PHONE_NUM), '', lnk_lkp_JavaClient_GetLDAPdata_2.PRIM_WORK_PHONE_NUM))",
+            "Output Field": "PRIM_WORK_PHONE_NUM ustring[max=40]",
+            "Output Description": "Transformed PRIM_WORK_PHONE_NUM field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Transforms MBL_PHONE_NUM by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.MBL_PHONE_NUM), '', lnk_lkp_JavaClient_GetLDAPdata_2.MBL_PHONE_NUM))",
+            "Output Field": "MBL_PHONE_NUM ustring[max=40]",
+            "Output Description": "Transformed MBL_PHONE_NUM field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "DEPARTMENT",
+            "Description": "Transforms DEPARTMENT by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DEPARTMENT), '', lnk_lkp_JavaClient_GetLDAPdata_2.DEPARTMENT))",
+            "Output Field": "DEPARTMENT ustring[max=80]",
+            "Output Description": "Transformed DEPARTMENT field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Transforms DIRECT_MGR_NAME by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_NAME))",
+            "Output Field": "DIRECT_MGR_NAME ustring[max=150]",
+            "Output Description": "Transformed DIRECT_MGR_NAME field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Transforms NEXT_MGR_ID by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_ID))",
+            "Output Field": "NEXT_MGR_ID ustring[max=10]",
+            "Output Description": "Transformed NEXT_MGR_ID field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Transforms NEXT_MGR_NAME by trimming leading and trailing spaces and replacing substrings.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_NAME))",
+            "Output Field": "NEXT_MGR_NAME ustring[max=150]",
+            "Output Description": "Transformed NEXT_MGR_NAME field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "VALID_FROM",
+            "Description": "Generates VALID_FROM using current date formatted as yyyyMMdd.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "DateToString(CurrentDate(), \"%yyyy%mm%dd\")",
+            "Output Field": "VALID_FROM ustring[max=8]",
+            "Output Description": "Generated VALID_FROM field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "VALID_TO",
+            "Description": "Sets VALID_TO to a default value of 99991231.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "GetHANAREPORTINGDefaultValues.Default_99991231",
+            "Output Field": "VALID_TO ustring[max=8]",
+            "Output Description": "Default VALID_TO field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "in_ETL_JOB_NAME",
+            "Description": "Passes through the job name.",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "DSJobName",
+            "Output Field": "in_ETL_JOB_NAME string[max=80]",
+            "Output Description": "Job name passed through.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "in_ROW_ADD_STP",
+            "Description": "Sets in_ROW_ADD_STP to null.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "SetNull()",
+            "Output Field": "in_ROW_ADD_STP nullable timestamp",
+            "Output Description": "Null timestamp field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "V0S71",
+            "Node Name": "xfm_audit_fields",
+            "Field Name": "in_ROW_ADD_USER_ID",
+            "Description": "Sets in_ROW_ADD_USER_ID to a default blank value.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "GetHANAREPORTINGDefaultValues.Deafult_Blank",
+            "Output Field": "in_ROW_ADD_USER_ID nullable string[max=8]",
+            "Output Description": "Default blank user ID field.",
+            "Next Nodes": [
+                "C148"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "IAM_UNIQUE_ID",
+            "Description": "Transforms IAM_UNIQUE_ID by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.IAM_UNIQUE_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.IAM_UNIQUE_ID))",
+            "Output Field": "IAM_UNIQUE_ID STRING",
+            "Output Description": "Processed IAM_UNIQUE_ID field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "TERMINATE_FLAG",
+            "Description": "Transforms TERMINATE_FLAG by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.TERMINATE_FLAG), '', lnk_lkp_JavaClient_GetLDAPdata_2.TERMINATE_FLAG))",
+            "Output Field": "TERMINATE_FLAG STRING",
+            "Output Description": "Processed TERMINATE_FLAG field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "EMAIL_ADDR_TXT",
+            "Description": "Transforms EMAIL_ADDR_TXT by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.EMAIL_ADDR_TXT), '', lnk_lkp_JavaClient_GetLDAPdata_2.EMAIL_ADDR_TXT))",
+            "Output Field": "EMAIL_ADDR_TXT STRING",
+            "Output Description": "Processed EMAIL_ADDR_TXT field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "FIRST_NAME",
+            "Description": "Transforms FIRST_NAME by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.FIRST_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.FIRST_NAME))",
+            "Output Field": "FIRST_NAME STRING",
+            "Output Description": "Processed FIRST_NAME field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "LAST_NAME",
+            "Description": "Transforms LAST_NAME by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.LAST_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.LAST_NAME))",
+            "Output Field": "LAST_NAME STRING",
+            "Output Description": "Processed LAST_NAME field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "LOCATION",
+            "Description": "Transforms LOCATION by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.LOCATION), '', lnk_lkp_JavaClient_GetLDAPdata_2.LOCATION))",
+            "Output Field": "LOCATION STRING",
+            "Output Description": "Processed LOCATION field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "DIRECT_MGR_ID",
+            "Description": "Transforms DIRECT_MGR_ID by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_ID))",
+            "Output Field": "DIRECT_MGR_ID STRING",
+            "Output Description": "Processed DIRECT_MGR_ID field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "PRIM_WORK_PHONE_NUM",
+            "Description": "Transforms PRIM_WORK_PHONE_NUM by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.PRIM_WORK_PHONE_NUM), '', lnk_lkp_JavaClient_GetLDAPdata_2.PRIM_WORK_PHONE_NUM))",
+            "Output Field": "PRIM_WORK_PHONE_NUM STRING",
+            "Output Description": "Processed PRIM_WORK_PHONE_NUM field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "MBL_PHONE_NUM",
+            "Description": "Transforms MBL_PHONE_NUM by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.MBL_PHONE_NUM), '', lnk_lkp_JavaClient_GetLDAPdata_2.MBL_PHONE_NUM))",
+            "Output Field": "MBL_PHONE_NUM STRING",
+            "Output Description": "Processed MBL_PHONE_NUM field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "DEPARTMENT",
+            "Description": "Transforms DEPARTMENT by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DEPARTMENT), '', lnk_lkp_JavaClient_GetLDAPdata_2.DEPARTMENT))",
+            "Output Field": "DEPARTMENT STRING",
+            "Output Description": "Processed DEPARTMENT field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "DIRECT_MGR_NAME",
+            "Description": "Transforms DIRECT_MGR_NAME by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.DIRECT_MGR_NAME))",
+            "Output Field": "DIRECT_MGR_NAME STRING",
+            "Output Description": "Processed DIRECT_MGR_NAME field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "NEXT_MGR_ID",
+            "Description": "Transforms NEXT_MGR_ID by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_ID), '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_ID))",
+            "Output Field": "NEXT_MGR_ID STRING",
+            "Output Description": "Processed NEXT_MGR_ID field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "NEXT_MGR_NAME",
+            "Description": "Transforms NEXT_MGR_NAME by trimming leading and trailing spaces and converting characters.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "TRIMLEADINGTRAILING(CONVERT(CONVERT('ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890_~`\"!@#$%^&*()-=+/\\{}[];:.,<>?| ', '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_NAME), '', lnk_lkp_JavaClient_GetLDAPdata_2.NEXT_MGR_NAME))",
+            "Output Field": "NEXT_MGR_NAME STRING",
+            "Output Description": "Processed NEXT_MGR_NAME field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "VALID_FROM",
+            "Description": "Generates VALID_FROM using current date formatted as yyyyMMdd.",
+            "Transformation Type": "computed",
+            "Transformation Expression": "DateToString(CurrentDate(), \"%yyyy%mm%dd\")",
+            "Output Field": "VALID_FROM STRING",
+            "Output Description": "Generated VALID_FROM field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "VALID_TO",
+            "Description": "Sets VALID_TO to a default value of 99991231.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "GetHANAREPORTINGDefaultValues.Default_99991231",
+            "Output Field": "VALID_TO STRING",
+            "Output Description": "Default VALID_TO field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "in_ETL_JOB_NAME",
+            "Description": "Sets in_ETL_JOB_NAME to the current job name.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "DSJobName",
+            "Output Field": "in_ETL_JOB_NAME STRING",
+            "Output Description": "Job name field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "in_ROW_ADD_STP",
+            "Description": "Sets in_ROW_ADD_STP to null.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "SetNull()",
+            "Output Field": "in_ROW_ADD_STP TIMESTAMP",
+            "Output Description": "Null timestamp field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "C148",
+            "Node Name": "scRetrieveAuditFields",
+            "Field Name": "in_ROW_ADD_USER_ID",
+            "Description": "Sets in_ROW_ADD_USER_ID to a default blank value.",
+            "Transformation Type": "literal",
+            "Transformation Expression": "GetHANAREPORTINGDefaultValues.Deafult_Blank",
+            "Output Field": "in_ROW_ADD_USER_ID STRING",
+            "Output Description": "Default blank user ID field",
+            "Next Nodes": [
+                "V0S75"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "VALID_TO",
+            "Description": "Updates VALID_TO field based on SCD2 condition",
+            "Transformation Type": "computed",
+            "Transformation Expression": "DateToString(DateFromDaysSince(GetHANAREPORTINGDefaultValues.Default_Minus_1, CurrentDate()), \"%yyyy%mm%dd\")",
+            "Output Field": "VALID_TO NVARCHAR(8)",
+            "Output Description": "Updated VALID_TO field for SCD2",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "ROW_UPDATE_STP",
+            "Description": "Updates ROW_UPDATE_STP field",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.out_ROW_UPDATE_STP",
+            "Output Field": "ROW_UPDATE_STP TIMESTAMP(27)",
+            "Output Description": "Updated ROW_UPDATE_STP field",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "ROW_UPDATE_USER_ID",
+            "Description": "Updates ROW_UPDATE_USER_ID field",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.out_ROW_UPDATE_USER_ID",
+            "Output Field": "ROW_UPDATE_USER_ID NVARCHAR(8)",
+            "Output Description": "Updated ROW_UPDATE_USER_ID field",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "VALID_FROM_ref",
+            "Description": "Updates VALID_FROM_ref field",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.VALID_FROM_ref",
+            "Output Field": "VALID_FROM_ref NVARCHAR(8)",
+            "Output Description": "Updated VALID_FROM_ref field",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "VALID_TO_ref",
+            "Description": "Updates VALID_TO_ref field",
+            "Transformation Type": "passthrough",
+            "Transformation Expression": "lnk_CREDIT_USER_INFO.VALID_TO_ref",
+            "Output Field": "VALID_TO_ref NVARCHAR(8)",
+            "Output Description": "Updated VALID_TO_ref field",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "RejectERRORCODE",
+            "Description": "Captures error code for rejected rows",
+            "Transformation Type": "literal",
+            "Transformation Expression": "Derivation",
+            "Output Field": "RejectERRORCODE INT(10)",
+            "Output Description": "Error code for rejected rows",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        },
+        {
+            "Node ID": "V152S0",
+            "Node Name": "CREDIT_USER_INFO_SCD2",
+            "Field Name": "RejectERRORTEXT",
+            "Description": "Captures error text for rejected rows",
+            "Transformation Type": "literal",
+            "Transformation Expression": "Derivation",
+            "Output Field": "RejectERRORTEXT NVARCHAR(512)",
+            "Output Description": "Error text for rejected rows",
+            "Next Nodes": [
+                "V0S88"
+            ]
+        }
+    ],
+    "transformation_node_summary": [
+        {
+            "nodeId": "V68A0",
+            "nodeName": "",
+            "description": "This node represents an annotation stage with no transformation logic."
+        },
+        {
+            "nodeId": "V67A0",
+            "nodeName": "",
+            "description": "This node represents an annotation stage with no transformation logic."
+        },
+        {
+            "nodeId": "V0S48",
+            "nodeName": "lkp_JavaClient_GetLDAPdata_1",
+            "description": "This node performs a lookup operation to extract NEXT_MANAGER_ID and DIRECT_MANAGER_NAME fields."
+        },
+        {
+            "nodeId": "V0S89",
+            "nodeName": "rmd_IAM_UNIQUE_ID_1",
+            "description": "This node removes duplicate records based on IAM_UNIQUE_ID column and processes other fields with trimming and derivation logic."
+        },
+        {
+            "nodeId": "V0S91",
+            "nodeName": "rmd_IAM_UNIQUE_ID_2",
+            "description": "This node removes duplicate records based on IAM_UNIQUE_ID column."
+        },
+        {
+            "nodeId": "V73S0",
+            "nodeName": "xfm_getValues_Next_Mananger",
+            "description": "Transforms input data by extracting and trimming specific fields such as unique ID and next manager's name."
+        },
+        {
+            "nodeId": "V72S0",
+            "nodeName": "xfm_getValues_Direct_Mananger",
+            "description": "Transforms input data to extract and compute fields such as IAM_UNIQUE_ID, DIRECT_MGR_NAME, and NEXT_MGR_ID."
+        },
+        {
+            "nodeId": "V0S93",
+            "nodeName": "rmd_IAM_UNIQUE_ID",
+            "description": "This node removes duplicate records based on IAM_UNIQUE_ID column and passes other fields unchanged."
+        },
+        {
+            "nodeId": "V0S13",
+            "nodeName": "xfm_getValues",
+            "description": "This node transforms LDAP data into structured output fields for downstream processing."
+        },
+        {
+            "nodeId": "V0S63",
+            "nodeName": "lkp_JavaClient_GetLDAPdata_2",
+            "description": "This node performs a lookup operation to extract NEXT_MANAGER_NAME value and passes through other fields unchanged."
+        },
+        {
+            "nodeId": "V0S74",
+            "nodeName": "xfm_Trim_Fields",
+            "description": "This node trims leading and trailing spaces from input fields and passes through the DUMMY field unchanged."
+        },
+        {
+            "nodeId": "V0S79",
+            "nodeName": "xfm_Ins_Upd_SCD",
+            "description": "This node calculates insert/update conditions for SCD1 and SCD2 transformations based on field comparisons."
+        },
+        {
+            "nodeId": "V0S75",
+            "nodeName": "lkp_CREDIT_USER_INFO",
+            "description": "This node performs lookup and transformation operations, including trimming spaces from input fields."
+        },
+        {
+            "nodeId": "V151S0",
+            "nodeName": "CREDIT_USER_INFO_SCD1",
+            "description": "This node updates fields in CREDIT_USER_INFO table when SCD1 condition is met and handles rejected rows."
+        },
+        {
+            "nodeId": "V0S71",
+            "nodeName": "xfm_audit_fields",
+            "description": "This node transforms audit fields by applying trimming, substring replacement, and default value assignments."
+        },
+        {
+            "nodeId": "C148",
+            "nodeName": "scRetrieveAuditFields",
+            "description": "Transforms and processes audit fields with specific derivations and default values."
+        },
+        {
+            "nodeId": "V152S0",
+            "nodeName": "CREDIT_USER_INFO_SCD2",
+            "description": "This node updates fields in CREDIT_USER_INFO table based on SCD2 condition and handles rejected rows."
+        }
+    ],
+    "customCalculations": [],
+    "summary": [
+        "# DataStage Job Technical Documentation\n\n## 1. Job Overview and Architecture\n\n- **Job Identity**:  \n  Name: `DataStage Job - Enhanced Pin-Based Topology`  \n  Category: Not specified  \n  Context: ETL processing for LDAP and database data integration into HANA tables.\n\n- **Parameters**:  \n  No parameters are explicitly defined in the job specification.\n\n- **Runtime Configuration**:  \n  - **Parallelism**: The job leverages parallel processing across multiple stages, including file-based and database-based sources.  \n  - **Partitioning**: Partitioning strategies are not explicitly defined but are implied in the sequential file and database connectors.  \n  - **Node Configuration**: The job uses PxSequentialFile and ODBCConnectorPX stages for data extraction and transformation.  \n  - **Memory/Performance Tuning**: Array size for database writes is set to 2000, and autocommit is enabled for efficient database operations.\n\n- **Job Purpose**:  \n  The job integrates LDAP data and HANA database records, applies transformations, and updates the `CREDIT_USER_INFO` table in HANA. It handles Slowly Changing Dimensions (SCD1 and SCD2) and captures error records for audit and reconciliation.\n\n- **Design Pattern**:  \n  Sequential and parallel ETL design pattern with lookup, transformation, and conditional logic stages.\n\n- **Operational Dependencies**:  \n  - **Scheduling**: Not explicitly defined.  \n  - **Triggers**: Upstream dependencies include LDAP data extraction scripts and HANA database connections.  \n  - **Upstream/Downstream Dependencies**: The job depends on LDAP scripts for file generation and HANA database for lookup and updates. Downstream dependencies include audit and error handling stages.\n\n## 2. Input Data Sources\n\n### Source: `CREDIT_USER_INFO1`, `CREDIT_USER_INFO2`, `CREDIT_USER_INFO`\n- **Stage Identity**:  \n  - ID: `V155S0`, `V154S0`, `V153S0`  \n  - Name: `CREDIT_USER_INFO1`, `CREDIT_USER_INFO2`, `CREDIT_USER_INFO`  \n  - Type: File  \n  - Designer Type: PxSequentialFile  \n\n- **Connection Details**:  \n  - Connection ID: Not specified  \n  - Authentication: None  \n\n- **Data Source Analysis**:  \n  - File Name: `HANA_ldap_trn_hana_CREDIT_USER_INFO.txt`  \n  - Description: Data loaded from LDAP server using Unix scripts.  \n\n- **Field Inventory**:  \n\n  | Field Name | Data Type | Nullability | Precision/Length | Business Meaning |\n  |------------|-----------|-------------|------------------|-----------------|\n  | LdapOut    | STRING    | Not specified | Not specified   | LDAP output data |\n\n- **Data Quality Rules**:  \n  No explicit validation rules are defined for these sources.\n\n- **Performance Notes**:  \n  Sequential file processing is used, which may limit parallelism.\n\n### Source: `ref_CREDIT_USER_INFO`\n- **Stage Identity**:  \n  - ID: `V149S0`  \n  - Name: `ref_CREDIT_USER_INFO`  \n  - Type: Database  \n  - Designer Type: ODBCConnectorPX  \n\n- **Connection Details**:  \n  - Connection ID: `#GetHANAREPORTINGPROJDEFValues.$hana_DH2_DBNAME#`  \n  - Authentication: `#GetHANAREPORTINGPROJDEFValues.$hana_DH2_USER#`  \n\n- **Data Source Analysis**:  \n  - Database: HANA  \n  - Schema: `#GetHANAREPORTINGPROJDEFValues.$hana_FOUNDATION_SCHEMA#`  \n  - Table: `CREDIT_USER_INFO`  \n  - Description: Used for lookup operations to check SCD conditions.  \n\n- **Field Inventory**:  \n\n  | Field Name          | Data Type     | Nullability | Precision/Length | Business Meaning |\n  |---------------------|---------------|-------------|------------------|-----------------|\n  | IAM_UNIQUE_ID       | NVARCHAR(12) | Not specified | 12              | Unique identifier for IAM records |\n  | VALID_FROM          | NVARCHAR(8)  | Not specified | 8               | Start date of record validity |\n  | VALID_TO            | NVARCHAR(8)  | Not specified | 8               | End date of record validity |\n  | FIRST_NAME          | NVARCHAR(70) | Not specified | 70              | First name of the user |\n  | LAST_NAME           | NVARCHAR(70) | Not specified | 70              | Last name of the user |\n  | DEPARTMENT          | NVARCHAR(80) | Not specified | 80              | Department of the user |\n  | LOCATION            | NVARCHAR(70) | Not specified | 70              | Location of the user |\n  | PRIM_WORK_PHONE_NUM | NVARCHAR(40) | Not specified | 40              | Primary work phone number |\n  | MBL_PHONE_NUM       | NVARCHAR(40) | Not specified | 40              | Mobile phone number |\n  | EMAIL_ADDR_TXT      | NVARCHAR(255)| Not specified | 255             | Email address |\n  | DIRECT_MGR_ID       | NVARCHAR(10) | Not specified | 10              | Direct manager ID |\n  | DIRECT_MGR_NAME     | NVARCHAR(150)| Not specified | 150             | Direct manager name |\n  | NEXT_MGR_ID         | NVARCHAR(10) | Not specified | 10              | Next manager ID |\n  | NEXT_MGR_NAME       | NVARCHAR(150)| Not specified | 150             | Next manager name |\n  | TERMINATE_FLAG      | NVARCHAR(2)  | Not specified | 2               | Termination status |\n  | DUMMY               | INTEGER(1)   | Not specified | 1               | Dummy field for processing |\n\n- **Data Quality Rules**:  \n  Lookup operations ensure data consistency for SCD conditions.\n\n- **Performance Notes**:  \n  Database indexing and partitioning are not explicitly defined.\n\n## 3. Transformation Flow and Business Logic\n\n### Example Transformation: `xfm_getValues`\n- **Stage Identity**:  \n  - ID: `V0S13`  \n  - Name: `xfm_getValues`  \n  - Type: Transformation  \n\n- **Upstream and Downstream Connections**:  \n  - Upstream: `CREDIT_USER_INFO` file source  \n  - Downstream: `rmd_IAM_UNIQUE_ID`  \n\n- **Transformation Logic**:  \n\n  | Input Field       | Transformation Logic                                   | Output Field       | Business Purpose                     |\n  |-------------------|-------------------------------------------------------|--------------------|-------------------------------------|\n  | IAM_UNIQUE_ID     | TrimLeadingTrailing(svUniqueUID)                      | IAM_UNIQUE_ID      | Extract unique identifier           |\n  | TERMINATE_FLAG    | TrimLeadingTrailing(svcahintemployeestatus)           | TERMINATE_FLAG     | Determine termination status        |\n  | EMAIL_ADDR_TXT    | TrimLeadingTrailing(svMail)                           | EMAIL_ADDR_TXT     | Extract email address               |\n  | FIRST_NAME        | TrimLeadingTrailing(svGIVENNAME)                      | FIRST_NAME         | Extract first name                  |\n  | LAST_NAME         | TrimLeadingTrailing(svSN)                             | LAST_NAME          | Extract last name                   |\n\n- **Business Rules Implementation**:  \n  Ensures data is cleaned and structured for downstream processing.\n\n- **Data Quality and Filtering**:  \n  Trimming and validation logic applied to ensure data consistency.\n\n- **Performance Considerations**:  \n  Sequential processing may limit scalability.\n\n- **Lineage Impact**:  \n  Fields are transformed and passed downstream for further processing.\n\n## 4. Custom Calculations and Specialized Logic\n\nNo custom calculations are explicitly defined in the job specification.\n\n## 5. Output Stages and Delivery\n\n### Example Output: `pek_rej_CREDIT_USER_INFO_SCD2`\n- **Stage Identity**:  \n  - ID: `V0S88`  \n  - Name: `pek_rej_CREDIT_USER_INFO_SCD2`  \n  - Type: PxPeek  \n  - Purpose: Error capture  \n\n- **Destination Details**:  \n  - Output Type: Error messages  \n  - Description: Captures error messages for rejected rows.  \n\n- **Field Mapping**:  \n\n  | Field Name          | Data Type     | Nullability | Precision/Length | Business Meaning                     |\n  |---------------------|---------------|-------------|------------------|-------------------------------------|\n  | IAM_UNIQUE_ID       | NVARCHAR(12) | Not specified | 12              | Unique identifier for IAM records   |\n  | VALID_TO            | NVARCHAR(8)  | Not specified | 8               | End date of record validity         |\n  | RejectERRORCODE     | ERRORCODE(10)| Not specified | 10              | Error code for rejected rows        |\n  | RejectERRORTEXT     | ERRORTEXT(512)| Not specified | 512             | Error text for rejected rows        |\n\n- **Delivery Strategy**:  \n  Error records are captured for audit and reconciliation.\n\n- **Quality Assurance**:  \n  Error codes and text provide detailed information for debugging.\n\n- **Operational Considerations**:  \n  Restartability and monitoring are critical for error handling.\n\n## 6. Error Handling and Logging\n\n- **Error Capture Mechanisms**:  \n  Reject links and PxPeek stages capture error records.\n\n- **Logging Strategy**:  \n  Job logs and operational logs provide detailed error information.\n\n- **Recovery Approach**:  \n  Restartability is supported through error capture and reconciliation logic.\n\n## 7. Metadata and Lineage\n\n- **Field-Level Lineage**:  \n  Fields are transformed and passed through multiple stages, ensuring traceability.\n\n- **Job-Level Lineage**:  \n  Integrates LDAP and HANA data into a unified output table.\n\n- **Metadata Management**:  \n  Metadata is preserved through field mappings and transformation logic.\n\n## 8. End-to-End Flow Summary\n\nThe job processes LDAP data and HANA database records, applies transformations, and updates the `CREDIT_USER_INFO` table. It handles SCD1 and SCD2 conditions, captures error records, and ensures data quality through trimming and validation logic. The job integrates multiple sources and outputs structured data for downstream systems."
+    ],
+    "executivesummary": "# Business Requirements Document (BRD) – Executive Summary\n\n## Executive Overview\n**Strategic Objective:** Streamline data integration and transformation processes to enhance operational efficiency and ensure high-quality data for business decision-making.  \n\n**Business Problem:** Current data integration processes lack automation, scalability, and robust error handling, leading to inefficiencies, data inconsistencies, and compliance risks.  \n\n**Solution Summary:** Implement an ETL job using DataStage to integrate LDAP and HANA database records, apply business rules and transformations, and update the `CREDIT_USER_INFO` table in HANA. The solution includes error handling, metadata management, and compliance controls.  \n\n**Key Business Benefits:**  \n- Operational efficiency gains through automated data processing and reduced manual intervention.  \n- Improved data quality and compliance by enforcing validation and governance rules.  \n- Enhanced decision-making with accurate and timely data for reporting.  \n- Risk mitigation and control through error capture and audit trails.  \n- Cost optimization by reducing manual workload and improving scalability.  \n\n## Business Context and Data Sources\n**Business Domain:** Human Resources and IT Operations, focusing on employee data management and historical tracking.  \n\n**Data Sources and Ownership:**  \n- **Source Name:** CREDIT_USER_INFO  \n  - **System/Domain:** LDAP Server  \n  - **Business Role:** Employee data integration  \n  - **Data Owner:** HR Department  \n  - **Criticality:** High  \n  - **Governance Notes:** GDPR compliance required  \n\n- **Source Name:** ref_CREDIT_USER_INFO  \n  - **System/Domain:** HANA Database  \n  - **Business Role:** Historical tracking and lookup operations  \n  - **Data Owner:** IT Operations  \n  - **Criticality:** High  \n  - **Governance Notes:** Stewardship and indexing for data integrity  \n\n## Business Process and Transformation Logic\n**Process Flow:** The ETL job extracts data from LDAP and HANA sources, applies transformations such as trimming and validation, and updates the `CREDIT_USER_INFO` table in HANA. It handles Slowly Changing Dimensions (SCD1 and SCD2) to maintain historical records and captures error records for audit and reconciliation.  \n\n**Business Rules:**  \n- Data validation: Ensure fields like IAM_UNIQUE_ID, EMAIL_ADDR_TXT, and TERMINATE_FLAG are correctly formatted and cleansed.  \n- Historical tracking: Apply SCD1 and SCD2 logic to maintain accurate historical records.  \n- Error handling: Capture rejected rows for audit and debugging.  \n- Compliance checks: Enforce data integrity and regulatory compliance, including GDPR requirements.  \n\n**Business Rationale for Transformations:**  \n- Field cleansing → Ensures data consistency → Reliable reporting and decision-making.  \n- SCD1 and SCD2 → Maintains historical records → Improved compliance and audit readiness.  \n- Error capture → Reject invalid rows → Reduced operational risks and enhanced data quality.  \n\n## Deliverables and Stakeholder Value\n**Primary Deliverables:**  \n- Updated `CREDIT_USER_INFO` table in HANA with cleansed and validated data.  \n- Curated datasets for reporting and analytics.  \n\n**Secondary Outputs:**  \n- Error logs and rejected rows for audit and reconciliation.  \n- Metadata and lineage tracking for governance and compliance.  \n\n**Stakeholder Value:**  \n- **Executives:** Gain strategic insights from accurate and timely reporting.  \n- **Operations Teams:** Benefit from automation and reduced manual workload.  \n- **Business Users:** Access faster and more reliable reports for decision-making.  \n- **Compliance Teams:** Ensure regulatory compliance and maintain audit trails.  \n\n## Risk Management and Governance\n- **Data Quality Risks:** Mitigated by cleansing, validation, and error handling mechanisms.  \n- **Operational Risks:** Latency in ODBC connections addressed through performance tuning and indexing.  \n- **Compliance Risks:** GDPR compliance ensured through governance controls and audit trails.  \n- **Governance Controls:** Metadata management, error logging, and lineage tracking to ensure transparency and accountability.  \n\n## Business Impact and ROI\n**Quantified Benefits:**  \n- Efficiency Gains: Reduced manual data processing, saving time and resources.  \n- Cost Reduction: Automation reduces operational costs and improves scalability.  \n- Quality Improvements: Higher trust in reporting due to consistent and validated data.  \n- Risk Reduction: Lower compliance penalties and operational risks through robust error handling and governance.  \n\n**Strategic Impact:**  \n- Competitive advantage through improved data-driven decision-making.  \n- Enhanced customer experience with reliable and timely insights.  \n- Regulatory compliance, reducing legal and financial risks.  \n- Innovation enablement by freeing resources for strategic initiatives.  \n\n## Conclusion and Recommendations\n**Strategic Summary:** The DataStage ETL job addresses critical business challenges by automating data integration, improving data quality, and ensuring compliance. It delivers significant operational and strategic benefits, positioning the organization for long-term success.  \n\n**Future Opportunities:**  \n- Scalability: Expand the solution to integrate additional data sources and domains.  \n- Enhancements: Implement advanced error recovery mechanisms and performance tuning.  \n- Alignment: Integrate the ETL process with broader governance strategies to maximize ROI and ensure sustainable growth.  \n\n---",
+    "jsonlineage": [
+        {
+            "nodes": [
+                {
+                    "id": "V0S13",
+                    "name": "xfm_getValues",
+                    "description": [
+                        "This node transforms LDAP data into structured output fields for downstream processing."
+                    ]
+                },
+                {
+                    "id": "V67A0",
+                    "name": "",
+                    "description": [
+                        "This node represents an annotation stage with no transformation logic."
+                    ]
+                },
+                {
+                    "id": "V68A0",
+                    "name": "",
+                    "description": [
+                        "This node represents an annotation stage with no transformation logic."
+                    ]
+                },
+                {
+                    "id": "V0S48",
+                    "name": "lkp_JavaClient_GetLDAPdata_1",
+                    "description": [
+                        "This node performs a lookup operation to extract NEXT_MANAGER_ID and DIRECT_MANAGER_NAME fields."
+                    ]
+                },
+                {
+                    "id": "V72S0",
+                    "name": "xfm_getValues_Direct_Mananger",
+                    "description": [
+                        "Transforms input data to extract and compute fields such as IAM_UNIQUE_ID, DIRECT_MGR_NAME, and NEXT_MGR_ID."
+                    ]
+                },
+                {
+                    "id": "V73S0",
+                    "name": "xfm_getValues_Next_Mananger",
+                    "description": [
+                        "Transforms input data by extracting and trimming specific fields such as unique ID and next manager's name."
+                    ]
+                },
+                {
+                    "id": "V0S63",
+                    "name": "lkp_JavaClient_GetLDAPdata_2",
+                    "description": [
+                        "This node performs a lookup operation to extract NEXT_MANAGER_NAME value and passes through other fields unchanged."
+                    ]
+                },
+                {
+                    "id": "V0S71",
+                    "name": "xfm_audit_fields",
+                    "description": [
+                        "This node transforms audit fields by applying trimming, substring replacement, and default value assignments."
+                    ]
+                },
+                {
+                    "id": "C148",
+                    "name": "scRetrieveAuditFields",
+                    "description": [
+                        "Transforms and processes audit fields with specific derivations and default values."
+                    ]
+                },
+                {
+                    "id": "V149S0",
+                    "name": "ref_CREDIT_USER_INFO",
+                    "description": [
+                        "This stage is used to lookup target table for checking SCD conditions."
+                    ]
+                },
+                {
+                    "id": "V0S74",
+                    "name": "xfm_Trim_Fields",
+                    "description": [
+                        "This node trims leading and trailing spaces from input fields and passes through the DUMMY field unchanged."
+                    ]
+                },
+                {
+                    "id": "V0S75",
+                    "name": "lkp_CREDIT_USER_INFO",
+                    "description": [
+                        "This node performs lookup and transformation operations, including trimming spaces from input fields."
+                    ]
+                },
+                {
+                    "id": "V0S79",
+                    "name": "xfm_Ins_Upd_SCD",
+                    "description": [
+                        "This node calculates insert/update conditions for SCD1 and SCD2 transformations based on field comparisons."
+                    ]
+                },
+                {
+                    "id": "V150S0",
+                    "name": "ins_CREDIT_USER_INFO",
+                    "description": [
+                        "This stage insert (pure insert and SCD2 insert) values to CREDIT_USER_INFO table."
+                    ]
+                },
+                {
+                    "id": "V0S86",
+                    "name": "pek_rej_ins_CREDIT_USER_INFO",
+                    "description": [
+                        "This stage is used to capture error messages."
+                    ]
+                },
+                {
+                    "id": "V151S0",
+                    "name": "CREDIT_USER_INFO_SCD1",
+                    "description": [
+                        "This node updates fields in CREDIT_USER_INFO table when SCD1 condition is met and handles rejected rows."
+                    ]
+                },
+                {
+                    "id": "V0S87",
+                    "name": "pek_rej_CREDIT_USER_INFO_SCD1",
+                    "description": [
+                        "This stage is used to capture error messages."
+                    ]
+                },
+                {
+                    "id": "V152S0",
+                    "name": "CREDIT_USER_INFO_SCD2",
+                    "description": [
+                        "This node updates fields in CREDIT_USER_INFO table based on SCD2 condition and handles rejected rows."
+                    ]
+                },
+                {
+                    "id": "V0S88",
+                    "name": "pek_rej_CREDIT_USER_INFO_SCD2",
+                    "description": [
+                        "This stage is used to capture error messages."
+                    ]
+                },
+                {
+                    "id": "V0S89",
+                    "name": "rmd_IAM_UNIQUE_ID_1",
+                    "description": [
+                        "This node removes duplicate records based on IAM_UNIQUE_ID column and processes other fields with trimming and derivation logic."
+                    ]
+                },
+                {
+                    "id": "V0S91",
+                    "name": "rmd_IAM_UNIQUE_ID_2",
+                    "description": [
+                        "This node removes duplicate records based on IAM_UNIQUE_ID column."
+                    ]
+                },
+                {
+                    "id": "V0S93",
+                    "name": "rmd_IAM_UNIQUE_ID",
+                    "description": [
+                        "This node removes duplicate records based on IAM_UNIQUE_ID column and passes other fields unchanged."
+                    ]
+                },
+                {
+                    "id": "V0S98",
+                    "name": "ldap_hana_ds",
+                    "description": [
+                        "This stage is used to store SCD2 insert records."
+                    ]
+                },
+                {
+                    "id": "V153S0",
+                    "name": "CREDIT_USER_INFO",
+                    "description": [
+                        "The data is been loadedin this file  from LDAP server using unix script."
+                    ]
+                },
+                {
+                    "id": "V154S0",
+                    "name": "CREDIT_USER_INFO2",
+                    "description": [
+                        "The data is been loadedin this file  from LDAP server using unix script."
+                    ]
+                },
+                {
+                    "id": "V155S0",
+                    "name": "CREDIT_USER_INFO1",
+                    "description": [
+                        "The data is been loadedin this file  from LDAP server using unix script."
+                    ]
+                }
+            ],
+            "edges": [
+                {
+                    "start": "V0S13",
+                    "end": "V0S93",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'CN', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT']]"
+                    ]
+                },
+                {
+                    "start": "V0S48",
+                    "end": "V0S63",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'CN', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID']]"
+                    ]
+                },
+                {
+                    "start": "V72S0",
+                    "end": "V0S89",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID']]"
+                    ]
+                },
+                {
+                    "start": "V73S0",
+                    "end": "V0S91",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'NEXT_MGR_NAME']]"
+                    ]
+                },
+                {
+                    "start": "V0S63",
+                    "end": "V0S71",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'CN', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME']]"
+                    ]
+                },
+                {
+                    "start": "V0S71",
+                    "end": "C148",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME', 'VALID_FROM', 'VALID_TO', 'in_ETL_JOB_NAME', 'in_ROW_ADD_STP', 'in_ROW_ADD_USER_ID']]"
+                    ]
+                },
+                {
+                    "start": "C148",
+                    "end": "V0S75",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME', 'VALID_FROM', 'VALID_TO', 'out_ROW_ADD_STP', 'out_ROW_ADD_USER_ID', 'out_ROW_UPDATE_STP', 'out_ROW_UPDATE_USER_ID']]"
+                    ]
+                },
+                {
+                    "start": "V149S0",
+                    "end": "V0S74",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'VALID_FROM', 'VALID_TO', 'FIRST_NAME', 'LAST_NAME', 'DEPARTMENT', 'LOCATION', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'EMAIL_ADDR_TXT', 'DIRECT_MGR_ID', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME', 'TERMINATE_FLAG', 'DUMMY']]"
+                    ]
+                },
+                {
+                    "start": "V0S74",
+                    "end": "V0S75",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID_ref', 'VALID_FROM_ref', 'VALID_TO_ref', 'FIRST_NAME_ref', 'LAST_NAME_ref', 'DEPARTMENT_ref', 'LOCATION_ref', 'PRIM_WORK_PHONE_NUM_ref', 'MBL_PHONE_NUM_ref', 'EMAIL_ADDR_TXT_ref', 'DIRECT_MGR_ID_ref', 'DIRECT_MGR_NAME_ref', 'NEXT_MGR_ID_ref', 'NEXT_MGR_NAME_ref', 'TERMINATE_FLAG_ref', 'DUMMY']]"
+                    ]
+                },
+                {
+                    "start": "V0S75",
+                    "end": "V0S79",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME', 'VALID_FROM', 'VALID_TO', 'out_ROW_ADD_STP', 'out_ROW_ADD_USER_ID', 'out_ROW_UPDATE_STP', 'out_ROW_UPDATE_USER_ID', 'IAM_UNIQUE_ID_ref', 'VALID_FROM_ref', 'VALID_TO_ref', 'FIRST_NAME_ref', 'LAST_NAME_ref', 'DEPARTMENT_ref', 'LOCATION_ref', 'PRIM_WORK_PHONE_NUM_ref', 'MBL_PHONE_NUM_ref', 'EMAIL_ADDR_TXT_ref', 'DIRECT_MGR_ID_ref', 'DIRECT_MGR_NAME_ref', 'NEXT_MGR_ID_ref', 'NEXT_MGR_NAME_ref', 'TERMINATE_FLAG_ref', 'DUMMY']]"
+                    ]
+                },
+                {
+                    "start": "V0S79",
+                    "end": "V151S0",
+                    "fields": []
+                },
+                {
+                    "start": "V0S79",
+                    "end": "V152S0",
+                    "fields": []
+                },
+                {
+                    "start": "V0S79",
+                    "end": "V150S0",
+                    "fields": []
+                },
+                {
+                    "start": "V0S79",
+                    "end": "V0S98",
+                    "fields": []
+                },
+                {
+                    "start": "V150S0",
+                    "end": "V0S86",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'VALID_FROM', 'VALID_TO', 'FIRST_NAME', 'LAST_NAME', 'DEPARTMENT', 'LOCATION', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'EMAIL_ADDR_TXT', 'DIRECT_MGR_ID', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID', 'NEXT_MGR_NAME', 'TERMINATE_FLAG', 'ROW_ADD_STP', 'ROW_ADD_USER_ID', 'ROW_UPDATE_STP', 'ROW_UPDATE_USER_ID', 'RejectERRORCODE', 'RejectERRORTEXT']]"
+                    ]
+                },
+                {
+                    "start": "V151S0",
+                    "end": "V0S87",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'EMAIL_ADDR_TXT', 'TERMINATE_FLAG', 'ROW_UPDATE_STP', 'ROW_UPDATE_USER_ID', 'VALID_FROM_ref', 'VALID_TO_ref', 'DUMMY', 'RejectERRORCODE', 'RejectERRORTEXT']]"
+                    ]
+                },
+                {
+                    "start": "V152S0",
+                    "end": "V0S88",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'VALID_TO', 'ROW_UPDATE_STP', 'ROW_UPDATE_USER_ID', 'VALID_FROM_ref', 'VALID_TO_ref', 'RejectERRORCODE', 'RejectERRORTEXT']]"
+                    ]
+                },
+                {
+                    "start": "V0S89",
+                    "end": "V0S48",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'DIRECT_MGR_NAME', 'NEXT_MGR_ID']]"
+                    ]
+                },
+                {
+                    "start": "V0S91",
+                    "end": "V0S63",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'NEXT_MGR_NAME']]"
+                    ]
+                },
+                {
+                    "start": "V0S93",
+                    "end": "V0S48",
+                    "fields": [
+                        "[['IAM_UNIQUE_ID', 'TERMINATE_FLAG', 'EMAIL_ADDR_TXT', 'FIRST_NAME', 'LAST_NAME', 'CN', 'LOCATION', 'DIRECT_MGR_ID', 'PRIM_WORK_PHONE_NUM', 'MBL_PHONE_NUM', 'DEPARTMENT']]"
+                    ]
+                },
+                {
+                    "start": "V153S0",
+                    "end": "V0S13",
+                    "fields": [
+                        "[['LdapOut']]"
+                    ]
+                },
+                {
+                    "start": "V154S0",
+                    "end": "V73S0",
+                    "fields": [
+                        "[['LdapOut']]"
+                    ]
+                },
+                {
+                    "start": "V155S0",
+                    "end": "V72S0",
+                    "fields": [
+                        "[['LdapOut']]"
+                    ]
+                }
+            ]
+        }
+    ],
+    "processing_info": {
+        "approach": "enhanced_datastage",
+        "model_used": "gpt4o",
+        "file_name": "HANA_ldap_trn_hana_CREDIT_USER_INFO (1).xml",
+        "processing_timestamp": "2025-12-08T13:52:43.020659",
+        "parallel_processing": true
+    }
+}
+}

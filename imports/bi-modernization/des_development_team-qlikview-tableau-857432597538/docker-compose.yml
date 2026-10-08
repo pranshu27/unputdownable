@@ -1,0 +1,21 @@
+services:
+  linker-api:
+    build: .
+    ports:
+      - "3005:3005"
+    env_file: .env
+    volumes:
+      - ./cache:/app/cache
+      - ./output:/app/output
+    restart: unless-stopped
+
+  linker-mcp:
+    build: .
+    command: ["python", "-m", "linker_agent.mcp_server"]
+    ports:
+      - "8001:8001"
+    env_file: .env
+    volumes:
+      - ./cache:/app/cache
+      - ./output:/app/output
+    restart: unless-stopped

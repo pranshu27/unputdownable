@@ -1,0 +1,30 @@
+if [ "$(whoami)" != "abc" ]; then
+  sudo lsiown -R $(id -u):$(id -u) \
+    /opt/obsidian
+fi
+
+# Ensure a writable runtime dir for Obsidian's CLI socket.
+export XDG_RUNTIME_DIR="${XDG_RUNTIME_DIR:-$HOME/.XDG}"
+mkdir -p "$XDG_RUNTIME_DIR"
+chmod 700 "$XDG_RUNTIME_DIR"
+
+# Wait for the X11 socket exposed by the desktop session before launching.
+display_num="${DISPLAY#:}"
+x_socket="/tmp/.X11-unix/X${display_num:-0}"
+i=0
+while [ ! -S "$x_socket" ] && [ "$i" -lt 30 ]; do
+  sleep 1
+  i=$((i + 1))
+done
+sleep 2
+
+# Launch Obsidian directly (bypass wrapper to avoid wayland segfault on headless).
+unset WAYLAND_DISPLAY
+/opt/obsidian/obsidian \
+  --no-sandbox \
+  --disable-gpu \
+  --disable-software-rasterizer \
+  --ozone-platform=x11 \
+  --no-first-run \
+  --vault /vault/RAG-System-Knowledge-Base \
+  >/config/obsidian.log 2>&1

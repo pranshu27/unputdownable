@@ -1,0 +1,166 @@
+{
+  "summary": {
+    "total": 22,
+    "empty_answer_count": 0,
+    "empty_llm_error_count": 0,
+    "llm_used_count": 22
+  },
+  "empty_llm_errors": [],
+  "empty_answers": [],
+  "results": [
+    {
+      "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "grounded_relevance_fallback",
+      "answer_chars": 1301
+    },
+    {
+      "query": "Find SQL override in wf_0000_eintr_lmt_load_confirmation.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 344
+    },
+    {
+      "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "grounded_relevance_fallback",
+      "answer_chars": 1369
+    },
+    {
+      "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1675
+    },
+    {
+      "query": "Find lineage records in wf_4201_calculate_interaction_facts.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1232
+    },
+    {
+      "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "grounded_relevance_fallback",
+      "answer_chars": 1284
+    },
+    {
+      "query": "Find SQL override in wf_4202_fnd_rltinteraction.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 2019
+    },
+    {
+      "query": "Find lineage records in wf_4202_fnd_rltinteraction.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 3043
+    },
+    {
+      "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 2033
+    },
+    {
+      "query": "Find SQL override in wf_4203_calculate_interaction_facts_fbl.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 897
+    },
+    {
+      "query": "Find lineage records in wf_4203_calculate_interaction_facts_fbl.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1446
+    },
+    {
+      "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 2000
+    },
+    {
+      "query": "Find SQL override in wf_4204_fnd_rltinteraction_fbl.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1893
+    },
+    {
+      "query": "Find lineage records in wf_4204_fnd_rltinteraction_fbl.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 715
+    },
+    {
+      "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "grounded_relevance_fallback",
+      "answer_chars": 1300
+    },
+    {
+      "query": "Where is SQ_FactSaleCallActivity used?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_relevancy_rewrite",
+      "answer_chars": 473
+    },
+    {
+      "query": "Find SQL override in wf_4205_calculate_dm_facts.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_relevancy_rewrite",
+      "answer_chars": 744
+    },
+    {
+      "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1884
+    },
+    {
+      "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "grounded_relevance_fallback",
+      "answer_chars": 1289
+    },
+    {
+      "query": "Where is SQ_FactFirstCallResolution used?",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_relevancy_rewrite",
+      "answer_chars": 741
+    },
+    {
+      "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_relevancy_rewrite",
+      "answer_chars": 1055
+    },
+    {
+      "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+      "llm_used": true,
+      "llm_error": null,
+      "strategy": "llm_primary",
+      "answer_chars": 1786
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Data Analyst (Project 2[Insurance])_databricks"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "4fd0f4a7-2a11-43fc-b95f-f0a1e4783358"
+  }
+}

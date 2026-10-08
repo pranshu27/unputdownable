@@ -1,0 +1,255 @@
+{
+  "timestamp_utc": "2026-08-18T16:43:37.836984+00:00",
+  "base_url": "http://localhost:8000",
+  "dataset": "eval\\golden_answer_eval.jsonl",
+  "query_count": 22,
+  "judge_model": "gpt5-mini",
+  "scores": {
+    "faithfulness": 0.6071428571428572,
+    "answer_relevancy": 0.020623440637831184
+  },
+  "details": [
+    {
+      "id": "ans_001",
+      "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 6,
+      "answer_chars": 58
+    },
+    {
+      "id": "ans_003",
+      "query": "Find SQL override in wf_0000_eintr_lmt_load_confirmation.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 6,
+      "answer_chars": 397
+    },
+    {
+      "id": "ans_005",
+      "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_007",
+      "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_008",
+      "query": "Find lineage records in wf_4201_calculate_interaction_facts.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_009",
+      "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": true,
+      "llm_used": false,
+      "llm_error": "skipped_due_to_refusal",
+      "evidence_count": 0,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_011",
+      "query": "Find SQL override in wf_4202_fnd_rltinteraction.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_012",
+      "query": "Find lineage records in wf_4202_fnd_rltinteraction.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": true,
+      "llm_used": false,
+      "llm_error": "skipped_due_to_refusal",
+      "evidence_count": 0,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_013",
+      "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_015",
+      "query": "Find SQL override in wf_4203_calculate_interaction_facts_fbl.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_016",
+      "query": "Find lineage records in wf_4203_calculate_interaction_facts_fbl.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 6,
+      "answer_chars": 58
+    },
+    {
+      "id": "ans_017",
+      "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 6,
+      "answer_chars": 58
+    },
+    {
+      "id": "ans_019",
+      "query": "Find SQL override in wf_4204_fnd_rltinteraction_fbl.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_020",
+      "query": "Find lineage records in wf_4204_fnd_rltinteraction_fbl.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": true,
+      "llm_used": false,
+      "llm_error": "skipped_due_to_refusal",
+      "evidence_count": 0,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_021",
+      "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_022",
+      "query": "Where is SQ_FactSaleCallActivity used?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 6,
+      "answer_chars": 58
+    },
+    {
+      "id": "ans_023",
+      "query": "Find SQL override in wf_4205_calculate_dm_facts.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_024",
+      "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_025",
+      "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_026",
+      "query": "Where is SQ_FactFirstCallResolution used?",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 2,
+      "answer_chars": 58
+    },
+    {
+      "id": "ans_027",
+      "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": false,
+      "llm_error": "OpenAI returned an empty response",
+      "evidence_count": 6,
+      "answer_chars": 0
+    },
+    {
+      "id": "ans_028",
+      "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+      "mode": "hybrid",
+      "k": 6,
+      "refused": false,
+      "llm_used": true,
+      "llm_error": null,
+      "evidence_count": 1,
+      "answer_chars": 58
+    }
+  ]
+}

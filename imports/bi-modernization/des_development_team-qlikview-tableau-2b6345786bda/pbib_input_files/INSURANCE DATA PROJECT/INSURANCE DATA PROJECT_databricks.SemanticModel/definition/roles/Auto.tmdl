@@ -1,0 +1,7 @@
+role Auto
+	modelPermission: read
+
+	tablePermission InsuranceData = [PolicyType] == "Auto"
+
+	annotation PBI_Id = 95314c99cb51442ba258fd1f3cc7eb6d
+

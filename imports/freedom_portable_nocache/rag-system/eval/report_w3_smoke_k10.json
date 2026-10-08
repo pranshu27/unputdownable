@@ -1,0 +1,988 @@
+{
+  "timestamp_utc": "2026-08-15T12:36:46.206604+00:00",
+  "base_url": "http://localhost:8000",
+  "dataset": "eval\\golden_retrieval_w3_smoke.jsonl",
+  "modes": {
+    "hybrid": {
+      "summary": {
+        "query_count": 8,
+        "avg_recall_at_k": 0.625,
+        "avg_ndcg_at_k": 0.502615
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.289382
+        },
+        "lineage": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.75,
+          "avg_ndcg_at_k": 0.565523
+        },
+        "semantic": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.486879
+        },
+        "sql_override": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.75,
+          "avg_ndcg_at_k": 0.668676
+        }
+      },
+      "rows": [
+        {
+          "id": "w3s_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3s_id_002",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.01129
+          }
+        },
+        {
+          "id": "w3s_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4202_fnd_rltinteraction.XML:TRANSFORMATION:SQ_RltInteractionAgreement_Work:e65d200c#1",
+            "name": "SQ_RltInteractionAgreement_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3s_sql_002",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionagrmt_FBL_Work:780b8dea#0",
+            "name": "SQ_RLTInteractionagrmt_FBL_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3s_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.010769
+          }
+        },
+        {
+          "id": "w3s_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:FactSaleCallActivity:SourceTransaction_Ts:a58b64fa",
+            "name": "FactSaleCallActivity.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.010606
+          }
+        },
+        {
+          "id": "w3s_sem_001",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3s_sem_002",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.973758,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_BaseInteractionGroup:917bb92e",
+            "name": "SQ_BaseInteractionGroup",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        }
+      ]
+    },
+    "vector": {
+      "summary": {
+        "query_count": 8,
+        "avg_recall_at_k": 0.625,
+        "avg_ndcg_at_k": 0.502615
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.289382
+        },
+        "lineage": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.75,
+          "avg_ndcg_at_k": 0.565523
+        },
+        "semantic": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.486879
+        },
+        "sql_override": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.75,
+          "avg_ndcg_at_k": 0.668676
+        }
+      },
+      "rows": [
+        {
+          "id": "w3s_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.432
+          }
+        },
+        {
+          "id": "w3s_id_002",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2754
+          }
+        },
+        {
+          "id": "w3s_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4202_fnd_rltinteraction.XML:TRANSFORMATION:SQ_RltInteractionAgreement_Work:e65d200c#1",
+            "name": "SQ_RltInteractionAgreement_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3648
+          }
+        },
+        {
+          "id": "w3s_sql_002",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionagrmt_FBL_Work:780b8dea#0",
+            "name": "SQ_RLTInteractionagrmt_FBL_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3241
+          }
+        },
+        {
+          "id": "w3s_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0243
+          }
+        },
+        {
+          "id": "w3s_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:FactSaleCallActivity:SourceTransaction_Ts:a58b64fa",
+            "name": "FactSaleCallActivity.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.011
+          }
+        },
+        {
+          "id": "w3s_sem_001",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.1272
+          }
+        },
+        {
+          "id": "w3s_sem_002",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.973758,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_BaseInteractionGroup:917bb92e",
+            "name": "SQ_BaseInteractionGroup",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3595
+          }
+        }
+      ]
+    },
+    "bm25": {
+      "summary": {
+        "query_count": 8,
+        "avg_recall_at_k": 0.0,
+        "avg_ndcg_at_k": 0.0
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        },
+        "lineage": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        },
+        "semantic": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        },
+        "sql_override": {
+          "query_count": 2,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        }
+      },
+      "rows": [
+        {
+          "id": "w3s_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_id_002",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_sql_002",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 3,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_sem_001",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3s_sem_002",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        }
+      ]
+    }
+  }
+}

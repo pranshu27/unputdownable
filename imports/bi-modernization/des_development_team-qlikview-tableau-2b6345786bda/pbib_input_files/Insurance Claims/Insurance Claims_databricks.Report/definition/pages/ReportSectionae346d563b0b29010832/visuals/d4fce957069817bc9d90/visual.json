@@ -1,0 +1,137 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "d4fce957069817bc9d90",
+  "position": {
+    "x": 600,
+    "y": 282,
+    "z": 6000,
+    "height": 208,
+    "width": 590,
+    "tabOrder": 6000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "gender"
+                }
+              },
+              "queryRef": "processed_insurance_data.gender",
+              "nativeQueryRef": "gender"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "insurance_data"
+                    }
+                  },
+                  "Property": "claim"
+                }
+              },
+              "queryRef": "insurance_data.claim",
+              "nativeQueryRef": "claim"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "smoker"
+                }
+              },
+              "queryRef": "processed_insurance_data.smoker",
+              "nativeQueryRef": "smoker"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(gender)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport seaborn as sns\nimport matplotlib.pyplot as plt\n\n# Average Claim Amount by Gender and Smoker Status using Seaborn\nplt.figure(figsize=(18, 8))\nsns.barplot(x=''gender'', y=''claim'', hue=''smoker'', data=dataset, palette=''muted'')\nplt.title(\"Average Claim Amount by Gender and Smoker Status\", fontsize=40)\nplt.xlabel(''Gender'', fontsize=18)\nplt.ylabel(''Average Claim Amount'', fontsize=20)\nplt.xticks(fontsize=20)\nplt.yticks(fontsize=20)\nplt.legend(fontsize=20)\nplt.tight_layout()\nplt.show()\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

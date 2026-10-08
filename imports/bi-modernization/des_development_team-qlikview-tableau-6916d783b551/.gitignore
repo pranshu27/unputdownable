@@ -1,0 +1,49 @@
+# ── Top-level dashboard folders (reference PBIP projects) ────────────────────
+CarPro Auto Insurance Dashboard/
+Tru Secure CreDebit Dashboard/
+
+# ── Generated PBIP outputs ────────────────────────────────────────────────────
+pbip-converter-skill/outputs/
+
+# ── Pipeline debug snapshots (regenerated every run) ─────────────────────────
+pbip-converter-skill/debug/
+
+# ── Jira-fetched inputs (auto-saved by server.py) ────────────────────────────
+pbip-converter-skill/inputs/
+
+# ── Local dev runner (one-off testing script) ────────────────────────────────
+pbip-converter-skill/_run_local.py
+
+# ── Loose utility / one-off scripts at repo root ─────────────────────────────
+check_postgres.py
+inspect_postgres.py
+find_tableau_data.py
+create_pbi_tables.py
+skill_former_template.py
+
+# ── Test / sample input files ─────────────────────────────────────────────────
+powerbiinput.json
+tableauinput.json
+sample.json
+
+# ── Secrets ───────────────────────────────────────────────────────────────────
+.env
+*.env
+
+# ── Pipeline cache ────────────────────────────────────────────────────────────
+pbip-converter-skill/cache/cache_store.json
+
+# ── Markdown docs (keep SKILL.md) ────────────────────────────────────────────
+plan.md
+POSTGRES_CONNECTION_GUIDE.md
+AGENT_CREATION_GUIDE.md
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
+dist/
+build/
+.venv/
+venv/

@@ -1,0 +1,29 @@
+services:
+  tracker:
+    build: .
+    ports:
+      - "3000:80"
+    restart: unless-stopped
+    depends_on:
+      - backend
+
+  backend:
+    build: ../tracker-backend
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+    environment:
+      POSTGRES_URL: postgresql://raguser:ragpass@host.docker.internal:5433/ragdb
+      TRACKER_WORKSPACE_ROOT: /workspace
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ../../:/workspace:ro
+
+  node:
+    image: node:20-alpine
+    working_dir: /workspace/apps/genai-portfolio-tracker-react
+    command: ["sh", "-c", "while true; do sleep 3600; done"]
+    restart: unless-stopped
+    volumes:
+      - ../../:/workspace

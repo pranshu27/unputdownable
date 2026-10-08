@@ -1,0 +1,37 @@
+
+
+ strong {
+        color:rgba(100, 116, 139, 1) !important;
+}
+
+.markdown-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  border-radius:24px;
+  border-collapse: separate;
+}
+
+.markdown-content th{
+  border: 1px solid #ccc;
+  padding: 8px 12px;
+  text-align: left;
+}
+
+.markdown-content th {
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), linear-gradient(0deg, rgba(231, 238, 248, 0.9), rgba(231, 238, 248, 0.9));
+  color: white; 
+}
+.markdown-content td {
+ padding: 4px 10px;
+}
+
+.markdown-content tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.markdown-content tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+

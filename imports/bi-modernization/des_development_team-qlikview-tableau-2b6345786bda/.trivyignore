@@ -1,0 +1,16 @@
+# Trivy vulnerability suppressions
+# Each entry must be reviewed and re-evaluated when the base image is updated.
+#
+# CVE-2026-23949 — jaraco.context 5.3.0 (HIGH) — fixed in 6.1.0
+# CVE-2026-24049 — wheel 0.45.1 (HIGH) — fixed in 0.46.2
+#
+# Reason: Both packages are pip build-time tools baked into the
+# python-hardened-image:v1 base image (wolfi/distroless, no shell).
+# They are not imported or invoked by this application at runtime and have no
+# reachable execution path in the deployed container.
+# Mitigation: requirements.txt pins the patched versions (>=0.46.2 / >=6.1.0)
+# for fresh pip installs.  The base image (python-hardened-image) must be
+# rebuilt/updated to fully eliminate these findings from the OS layer.
+# Owner: <team maintaining python-hardened-image>  Target: next base image bump.
+CVE-2026-23949
+CVE-2026-24049

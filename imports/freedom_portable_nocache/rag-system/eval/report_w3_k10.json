@@ -1,0 +1,5887 @@
+{
+  "timestamp_utc": "2026-08-17T07:06:14.086591+00:00",
+  "base_url": "http://localhost:8000",
+  "dataset": "eval\\golden_retrieval_w3.jsonl",
+  "modes": {
+    "hybrid": {
+      "summary": {
+        "query_count": 53,
+        "avg_recall_at_k": 0.40566,
+        "avg_ndcg_at_k": 0.313095
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 26,
+          "avg_recall_at_k": 0.384615,
+          "avg_ndcg_at_k": 0.262689
+        },
+        "lineage": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.35,
+          "avg_ndcg_at_k": 0.313105
+        },
+        "semantic": {
+          "query_count": 7,
+          "avg_recall_at_k": 0.428571,
+          "avg_ndcg_at_k": 0.295664
+        },
+        "sql_override": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.456341
+        }
+      },
+      "rows": [
+        {
+          "id": "w3_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_002",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2201_source_saf_interactions_errors_campaigns.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_003",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm_history.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.63093,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_004",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.430677,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:SequenceStart_It:7a262d40",
+            "name": "File_SAF_LBK_XREF.SequenceStart_It",
+            "node_class": "LINEAGE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_005",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2204_source_saf_interaction_ebi.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_006",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2205_source_saf_interaction_iaq.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.5,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_007",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2207_wk_saf_fbl_xref.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:exp_to_derive_orginating_source_cd_Flag:d4bd5299",
+            "name": "exp_to_derive_orginating_source_cd_Flag",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_008",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2208_source_saf_interaction_fbl.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_009",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2210_source_saf_interaction_ctm.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.356207,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_010",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2211_source_saf_interaction_ivr.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_011",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2212_source_saf_interaction_arl.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_012",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2213_source_saf_interaction_pe.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.333333,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 7
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_013",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2214_source_saf_interaction_sfmc.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_014",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2215_source_saf_interaction_sfmc_sms.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Union:7feb4f1b#1",
+            "name": "Union",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_015",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2216_source_saf_interaction_synm_text.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_016",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2217_source_saf_att_voicetone.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_017",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2218_source_saf_campaigntelephonenumber.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Union:7feb4f1b#1",
+            "name": "Union",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_018",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_019",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM_HIST:ActivityCreatedBy_Nb:a3596b10",
+            "name": "DM_XREF_CTM_HIST.ActivityCreatedBy_Nb",
+            "node_class": "LINEAGE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_020",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4203_calculate_interaction_facts_fbl.XML:SOURCE:EINTR_ID_XT:fe4b7e2f",
+            "name": "EINTR_ID_XT",
+            "node_class": "SOURCE",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_021",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_022",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_023",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4206_calculate_facts_fcr.XML:TRANSFORMATION:SQ_FactFirstCallResolution:39710691#0",
+            "name": "SQ_FactFirstCallResolution",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_024",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5202_eintr_fnd_PIE_TFN.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 7
+          },
+          "top_hit": {
+            "chunk_id": "wf_2212_source_saf_interaction_arl.XML:TRANSFORMATION:exp_row_building:7a9f78ed#2",
+            "name": "exp_row_building",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_025",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5203_RltInteractionparty.XML?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TARGET:Wk_RltinteractionParty_CTM:a7a2fed2",
+            "name": "Wk_RltinteractionParty_CTM",
+            "node_class": "TARGET",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_id_026",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.01129
+          }
+        },
+        {
+          "id": "w3_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4202_fnd_rltinteraction.XML:TRANSFORMATION:SQ_RltInteractionAgreement_Work:e65d200c#1",
+            "name": "SQ_RltInteractionAgreement_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_002",
+          "bucket": "sql_override",
+          "query": "Which transformation has SQL_OVERRIDE and JOIN_CONDITION?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.888708,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TRANSFORMATION:SQ_RLTInteractionParty:4c26b5c8#0",
+            "name": "SQ_RLTInteractionParty",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_003",
+          "bucket": "sql_override",
+          "query": "Find SQL override for InteractionEvent pipeline",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_004",
+          "bucket": "sql_override",
+          "query": "Find SQL override with QUALIFY usage",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 4
+          },
+          "top_hit": {
+            "chunk_id": "wf_2208_source_saf_interaction_fbl.XML:TRANSFORMATION:derive_attributes_values1:7751eba6#1",
+            "name": "derive_attributes_values1",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_005",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionagrmt_FBL_Work:780b8dea#0",
+            "name": "SQ_RLTInteractionagrmt_FBL_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_006",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_SQL_Override_FactLeadActivity:00500b9c#0",
+            "name": "SQ_SQL_Override_FactLeadActivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011111
+          }
+        },
+        {
+          "id": "w3_sql_007",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4206_calculate_facts_fcr.XML:TRANSFORMATION:SQ_Exclude_ARLHelp:7f2ba4bb",
+            "name": "SQ_Exclude_ARLHelp",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_008",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sql_009",
+          "bucket": "sql_override",
+          "query": "Find FILTER_CONDITION logic in transformations",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_010",
+          "bucket": "sql_override",
+          "query": "Find GROUP_BY attributes in transformations",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:nrm_saf_keys:5890ad8b",
+            "name": "nrm_saf_keys",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.010769
+          }
+        },
+        {
+          "id": "w3_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:FactSaleCallActivity:SourceTransaction_Ts:a58b64fa",
+            "name": "FactSaleCallActivity.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.010606
+          }
+        },
+        {
+          "id": "w3_lin_003",
+          "bucket": "lineage",
+          "query": "Show lineage with HOP_COUNT details",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_004",
+          "bucket": "lineage",
+          "query": "Find lineage for householdbusinesskey fields",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_IVRARLCTM_UUCONN_HH:Transaction_Dt:188713b3",
+            "name": "DM_XREF_IVRARLCTM_UUCONN_HH.Transaction_Dt",
+            "node_class": "LINEAGE",
+            "score": 0.007778
+          }
+        },
+        {
+          "id": "w3_lin_005",
+          "bucket": "lineage",
+          "query": "Find lineage for InteractionGroup_Id",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_Zoom_XREF_ARL:Transaction_Cd:29fb834f",
+            "name": "dm_Zoom_XREF_ARL.Transaction_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.010606
+          }
+        },
+        {
+          "id": "w3_lin_006",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.009722
+          }
+        },
+        {
+          "id": "w3_lin_007",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_008",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.010294
+          }
+        },
+        {
+          "id": "w3_lin_009",
+          "bucket": "lineage",
+          "query": "Find lineage where SOURCE appears in path",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.01129
+          }
+        },
+        {
+          "id": "w3_lin_010",
+          "bucket": "lineage",
+          "query": "Find lineage where TARGET appears in path",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.009589
+          }
+        },
+        {
+          "id": "w3_sem_001",
+          "bucket": "semantic",
+          "query": "How is customer interaction event logic represented?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_Override_row_num_dm_factsalecallactivity:71687824#7",
+            "name": "SQ_Override_row_num_dm_factsalecallactivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_002",
+          "bucket": "semantic",
+          "query": "Where can I find campaign telephone number extraction?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:exp_hardcoded_saf_key_values:bcc776c9",
+            "name": "exp_hardcoded_saf_key_values",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_003",
+          "bucket": "semantic",
+          "query": "Which workflow handles SMS interaction feed normalization?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.039449,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_Override_row_num_dm_factsalecallactivity:a12b25c2#4",
+            "name": "SQ_Override_row_num_dm_factsalecallactivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_004",
+          "bucket": "semantic",
+          "query": "Which workflow handles IVR interaction source data?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.056438,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:UPDTRANS:7d187ab6",
+            "name": "UPDTRANS",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_005",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_006",
+          "bucket": "semantic",
+          "query": "Which workflow prepares first call resolution facts?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_SQL_Override_arl_dm_xref_final_ph:8e0779ed#1",
+            "name": "SQ_SQL_Override_arl_dm_xref_final_ph",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        },
+        {
+          "id": "w3_sem_007",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "hybrid",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.973758,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_BaseInteractionGroup:917bb92e",
+            "name": "SQ_BaseInteractionGroup",
+            "node_class": "TRANSFORMATION",
+            "score": 0.011475
+          }
+        }
+      ]
+    },
+    "vector": {
+      "summary": {
+        "query_count": 53,
+        "avg_recall_at_k": 0.386792,
+        "avg_ndcg_at_k": 0.306805
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 26,
+          "avg_recall_at_k": 0.346154,
+          "avg_ndcg_at_k": 0.249868
+        },
+        "lineage": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.35,
+          "avg_ndcg_at_k": 0.313105
+        },
+        "semantic": {
+          "query_count": 7,
+          "avg_recall_at_k": 0.428571,
+          "avg_ndcg_at_k": 0.295664
+        },
+        "sql_override": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.5,
+          "avg_ndcg_at_k": 0.456341
+        }
+      },
+      "rows": [
+        {
+          "id": "w3_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.4202
+          }
+        },
+        {
+          "id": "w3_id_002",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2201_source_saf_interactions_errors_campaigns.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3366
+          }
+        },
+        {
+          "id": "w3_id_003",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm_history.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.63093,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.417
+          }
+        },
+        {
+          "id": "w3_id_004",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.430677,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:SequenceStart_It:7a262d40",
+            "name": "File_SAF_LBK_XREF.SequenceStart_It",
+            "node_class": "LINEAGE",
+            "score": 0.0731
+          }
+        },
+        {
+          "id": "w3_id_005",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2204_source_saf_interaction_ebi.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": 0.0197
+          }
+        },
+        {
+          "id": "w3_id_006",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2205_source_saf_interaction_iaq.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.5,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3683
+          }
+        },
+        {
+          "id": "w3_id_007",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2207_wk_saf_fbl_xref.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:exp_to_derive_orginating_source_cd_Flag:d4bd5299",
+            "name": "exp_to_derive_orginating_source_cd_Flag",
+            "node_class": "TRANSFORMATION",
+            "score": 0.4886
+          }
+        },
+        {
+          "id": "w3_id_008",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2208_source_saf_interaction_fbl.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3833
+          }
+        },
+        {
+          "id": "w3_id_009",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2210_source_saf_interaction_ctm.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.356207,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              3,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3787
+          }
+        },
+        {
+          "id": "w3_id_010",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2211_source_saf_interaction_ivr.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3963
+          }
+        },
+        {
+          "id": "w3_id_011",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2212_source_saf_interaction_arl.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3637
+          }
+        },
+        {
+          "id": "w3_id_012",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2213_source_saf_interaction_pe.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3765
+          }
+        },
+        {
+          "id": "w3_id_013",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2214_source_saf_interaction_sfmc.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3715
+          }
+        },
+        {
+          "id": "w3_id_014",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2215_source_saf_interaction_sfmc_sms.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Union:7feb4f1b#1",
+            "name": "Union",
+            "node_class": "TRANSFORMATION",
+            "score": 0.4958
+          }
+        },
+        {
+          "id": "w3_id_015",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2216_source_saf_interaction_synm_text.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Filter_Restrict_Sourcecode:46786554#1",
+            "name": "Filter_Restrict_Sourcecode",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3618
+          }
+        },
+        {
+          "id": "w3_id_016",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2217_source_saf_att_voicetone.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:SOURCE:LBK_XREF_Preprocess:2cccdd3d",
+            "name": "LBK_XREF_Preprocess",
+            "node_class": "SOURCE",
+            "score": -0.023
+          }
+        },
+        {
+          "id": "w3_id_017",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2218_source_saf_campaigntelephonenumber.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:Union:7feb4f1b#1",
+            "name": "Union",
+            "node_class": "TRANSFORMATION",
+            "score": 0.508
+          }
+        },
+        {
+          "id": "w3_id_018",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.432
+          }
+        },
+        {
+          "id": "w3_id_019",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 6
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_CTM_HIST:ActivityCreatedBy_Nb:a3596b10",
+            "name": "DM_XREF_CTM_HIST.ActivityCreatedBy_Nb",
+            "node_class": "LINEAGE",
+            "score": 0.0535
+          }
+        },
+        {
+          "id": "w3_id_020",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4203_calculate_interaction_facts_fbl.XML:SOURCE:EINTR_ID_XT:fe4b7e2f",
+            "name": "EINTR_ID_XT",
+            "node_class": "SOURCE",
+            "score": 0.617
+          }
+        },
+        {
+          "id": "w3_id_021",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_InteractionEvent:5c12e573#4",
+            "name": "SQ_InteractionEvent",
+            "node_class": "TRANSFORMATION",
+            "score": 0.4232
+          }
+        },
+        {
+          "id": "w3_id_022",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:jav_print_sql_number_of_rows_affected:a6ce49c6",
+            "name": "jav_print_sql_number_of_rows_affected",
+            "node_class": "TRANSFORMATION",
+            "score": 0.5241
+          }
+        },
+        {
+          "id": "w3_id_023",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4206_calculate_facts_fcr.XML:TRANSFORMATION:SQ_FactFirstCallResolution:39710691#0",
+            "name": "SQ_FactFirstCallResolution",
+            "node_class": "TRANSFORMATION",
+            "score": 0.5646
+          }
+        },
+        {
+          "id": "w3_id_024",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5202_eintr_fnd_PIE_TFN.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 7
+          },
+          "top_hit": {
+            "chunk_id": "wf_2212_source_saf_interaction_arl.XML:TRANSFORMATION:exp_row_building:7a9f78ed#2",
+            "name": "exp_row_building",
+            "node_class": "TRANSFORMATION",
+            "score": -0.0034
+          }
+        },
+        {
+          "id": "w3_id_025",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5203_RltInteractionparty.XML?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TARGET:Wk_RltinteractionParty_CTM:a7a2fed2",
+            "name": "Wk_RltinteractionParty_CTM",
+            "node_class": "TARGET",
+            "score": 0.5849
+          }
+        },
+        {
+          "id": "w3_id_026",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.578764,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2754
+          }
+        },
+        {
+          "id": "w3_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4202_fnd_rltinteraction.XML:TRANSFORMATION:SQ_RltInteractionAgreement_Work:e65d200c#1",
+            "name": "SQ_RltInteractionAgreement_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3648
+          }
+        },
+        {
+          "id": "w3_sql_002",
+          "bucket": "sql_override",
+          "query": "Which transformation has SQL_OVERRIDE and JOIN_CONDITION?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.888708,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              2,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_5203_RltInteractionparty.XML:TRANSFORMATION:SQ_RLTInteractionParty:4c26b5c8#0",
+            "name": "SQ_RLTInteractionParty",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3656
+          }
+        },
+        {
+          "id": "w3_sql_003",
+          "bucket": "sql_override",
+          "query": "Find SQL override for InteractionEvent pipeline",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2797
+          }
+        },
+        {
+          "id": "w3_sql_004",
+          "bucket": "sql_override",
+          "query": "Find SQL override with QUALIFY usage",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 4
+          },
+          "top_hit": {
+            "chunk_id": "wf_2208_source_saf_interaction_fbl.XML:TRANSFORMATION:derive_attributes_values1:7751eba6#1",
+            "name": "derive_attributes_values1",
+            "node_class": "TRANSFORMATION",
+            "score": 0.0891
+          }
+        },
+        {
+          "id": "w3_sql_005",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionagrmt_FBL_Work:780b8dea#0",
+            "name": "SQ_RLTInteractionagrmt_FBL_Work",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3241
+          }
+        },
+        {
+          "id": "w3_sql_006",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:SQ_SQL_Override_FactLeadActivity:00500b9c#0",
+            "name": "SQ_SQL_Override_FactLeadActivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.609
+          }
+        },
+        {
+          "id": "w3_sql_007",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4206_calculate_facts_fcr.XML:TRANSFORMATION:SQ_Exclude_ARLHelp:7f2ba4bb",
+            "name": "SQ_Exclude_ARLHelp",
+            "node_class": "TRANSFORMATION",
+            "score": 0.611
+          }
+        },
+        {
+          "id": "w3_sql_008",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.337352,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 9
+          },
+          "top_hit": {
+            "chunk_id": "wf_4204_fnd_rltinteraction_fbl.XML:TRANSFORMATION:SQ_RLTInteractionAgreement:459cf639#0",
+            "name": "SQ_RLTInteractionAgreement",
+            "node_class": "TRANSFORMATION",
+            "score": 0.5805
+          }
+        },
+        {
+          "id": "w3_sql_009",
+          "bucket": "sql_override",
+          "query": "Find FILTER_CONDITION logic in transformations",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_010",
+          "bucket": "sql_override",
+          "query": "Find GROUP_BY attributes in transformations",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:nrm_saf_keys:5890ad8b",
+            "name": "nrm_saf_keys",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2296
+          }
+        },
+        {
+          "id": "w3_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 3,
+            "total_matchers": 3,
+            "observed_scores": [
+              3,
+              2,
+              2,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0243
+          }
+        },
+        {
+          "id": "w3_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.131046,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:FactSaleCallActivity:SourceTransaction_Ts:a58b64fa",
+            "name": "FactSaleCallActivity.SourceTransaction_Ts",
+            "node_class": "LINEAGE",
+            "score": 0.011
+          }
+        },
+        {
+          "id": "w3_lin_003",
+          "bucket": "lineage",
+          "query": "Show lineage with HOP_COUNT details",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_004",
+          "bucket": "lineage",
+          "query": "Find lineage for householdbusinesskey fields",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:DM_XREF_IVRARLCTM_UUCONN_HH:Transaction_Dt:188713b3",
+            "name": "DM_XREF_IVRARLCTM_UUCONN_HH.Transaction_Dt",
+            "node_class": "LINEAGE",
+            "score": -0.0021
+          }
+        },
+        {
+          "id": "w3_lin_005",
+          "bucket": "lineage",
+          "query": "Find lineage for InteractionGroup_Id",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_Zoom_XREF_ARL:Transaction_Cd:29fb834f",
+            "name": "dm_Zoom_XREF_ARL.Transaction_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0149
+          }
+        },
+        {
+          "id": "w3_lin_006",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0072
+          }
+        },
+        {
+          "id": "w3_lin_007",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_008",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0259
+          }
+        },
+        {
+          "id": "w3_lin_009",
+          "bucket": "lineage",
+          "query": "Find lineage where SOURCE appears in path",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:LINEAGE:dm_xref_final_ph:Source_Cd:8b3ab4b4",
+            "name": "dm_xref_final_ph.Source_Cd",
+            "node_class": "LINEAGE",
+            "score": 0.0541
+          }
+        },
+        {
+          "id": "w3_lin_010",
+          "bucket": "lineage",
+          "query": "Find lineage where TARGET appears in path",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2207_wk_saf_fbl_xref.XML:LINEAGE:File_SAF_LBK_XREF:InteractionGroupBusinessKey_Cd:074945e7",
+            "name": "File_SAF_LBK_XREF.InteractionGroupBusinessKey_Cd",
+            "node_class": "LINEAGE",
+            "score": -0.0091
+          }
+        },
+        {
+          "id": "w3_sem_001",
+          "bucket": "semantic",
+          "query": "How is customer interaction event logic represented?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_Override_row_num_dm_factsalecallactivity:71687824#7",
+            "name": "SQ_Override_row_num_dm_factsalecallactivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3872
+          }
+        },
+        {
+          "id": "w3_sem_002",
+          "bucket": "semantic",
+          "query": "Where can I find campaign telephone number extraction?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:exp_hardcoded_saf_key_values:bcc776c9",
+            "name": "exp_hardcoded_saf_key_values",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3048
+          }
+        },
+        {
+          "id": "w3_sem_003",
+          "bucket": "semantic",
+          "query": "Which workflow handles SMS interaction feed normalization?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.039449,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              1,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_Override_row_num_dm_factsalecallactivity:a12b25c2#4",
+            "name": "SQ_Override_row_num_dm_factsalecallactivity",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3356
+          }
+        },
+        {
+          "id": "w3_sem_004",
+          "bucket": "semantic",
+          "query": "Which workflow handles IVR interaction source data?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.5,
+            "ndcg_at_k": 0.056438,
+            "matched_matchers": 1,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4201_calculate_interaction_facts.XML:TRANSFORMATION:UPDTRANS:7d187ab6",
+            "name": "UPDTRANS",
+            "node_class": "TRANSFORMATION",
+            "score": 0.2079
+          }
+        },
+        {
+          "id": "w3_sem_005",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 2
+          },
+          "top_hit": {
+            "chunk_id": "wf_2201_source_saf_interactions_errors_campaigns.XML:TRANSFORMATION:Agg_to_remove_duplicates:ac568a74",
+            "name": "Agg_to_remove_duplicates",
+            "node_class": "TRANSFORMATION",
+            "score": 0.1272
+          }
+        },
+        {
+          "id": "w3_sem_006",
+          "bucket": "semantic",
+          "query": "Which workflow prepares first call resolution facts?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_SQL_Override_arl_dm_xref_final_ph:8e0779ed#1",
+            "name": "SQ_SQL_Override_arl_dm_xref_final_ph",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3654
+          }
+        },
+        {
+          "id": "w3_sem_007",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "vector",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 0.973758,
+            "matched_matchers": 2,
+            "total_matchers": 2,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              1,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 10
+          },
+          "top_hit": {
+            "chunk_id": "wf_4205_calculate_dm_facts.XML:TRANSFORMATION:SQ_BaseInteractionGroup:917bb92e",
+            "name": "SQ_BaseInteractionGroup",
+            "node_class": "TRANSFORMATION",
+            "score": 0.3595
+          }
+        }
+      ]
+    },
+    "bm25": {
+      "summary": {
+        "query_count": 53,
+        "avg_recall_at_k": 0.018868,
+        "avg_ndcg_at_k": 0.018868
+      },
+      "by_bucket": {
+        "identifier": {
+          "query_count": 26,
+          "avg_recall_at_k": 0.038462,
+          "avg_ndcg_at_k": 0.038462
+        },
+        "lineage": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        },
+        "semantic": {
+          "query_count": 7,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        },
+        "sql_override": {
+          "query_count": 10,
+          "avg_recall_at_k": 0.0,
+          "avg_ndcg_at_k": 0.0
+        }
+      },
+      "rows": [
+        {
+          "id": "w3_id_001",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_0000_eintr_lmt_load_confirmation.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_002",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2201_source_saf_interactions_errors_campaigns.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_003",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm_history.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_004",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2202_source_saf_interaction_arm.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_005",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2204_source_saf_interaction_ebi.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_006",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2205_source_saf_interaction_iaq.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_007",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2207_wk_saf_fbl_xref.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_008",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2208_source_saf_interaction_fbl.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_009",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2210_source_saf_interaction_ctm.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_010",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2211_source_saf_interaction_ivr.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_011",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2212_source_saf_interaction_arl.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_012",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2213_source_saf_interaction_pe.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 1.0,
+            "ndcg_at_k": 1.0,
+            "matched_matchers": 1,
+            "total_matchers": 1,
+            "observed_scores": [
+              3,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 1
+          },
+          "top_hit": {
+            "chunk_id": "wf_2213_source_saf_interaction_pe.XML:TRANSFORMATION:exp_Instance_Dete_1_2:427be47b#0",
+            "name": "exp_Instance_Dete_1_2",
+            "node_class": "TRANSFORMATION",
+            "score": 1.5e-05
+          }
+        },
+        {
+          "id": "w3_id_013",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2214_source_saf_interaction_sfmc.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_014",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2215_source_saf_interaction_sfmc_sms.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_015",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2216_source_saf_interaction_synm_text.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_016",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2217_source_saf_att_voicetone.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_017",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_2218_source_saf_campaigntelephonenumber.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_018",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4201_calculate_interaction_facts.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_019",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4202_fnd_rltinteraction.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_020",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4203_calculate_interaction_facts_fbl.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_021",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4204_fnd_rltinteraction_fbl.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_022",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4205_calculate_dm_facts.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_023",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_4206_calculate_facts_fcr.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_024",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5202_eintr_fnd_PIE_TFN.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_025",
+          "bucket": "identifier",
+          "query": "What logic exists in wf_5203_RltInteractionparty.XML?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_id_026",
+          "bucket": "identifier",
+          "query": "Where is SQ_RLTInteractionParty used?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_001",
+          "bucket": "sql_override",
+          "query": "Show SQL override logic for Source Qualifier nodes",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_002",
+          "bucket": "sql_override",
+          "query": "Which transformation has SQL_OVERRIDE and JOIN_CONDITION?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_003",
+          "bucket": "sql_override",
+          "query": "Find SQL override for InteractionEvent pipeline",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_004",
+          "bucket": "sql_override",
+          "query": "Find SQL override with QUALIFY usage",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_005",
+          "bucket": "sql_override",
+          "query": "Which SQL override references Source_cd?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_006",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4201_calculate_interaction_facts.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_007",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_4206_calculate_facts_fcr.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_008",
+          "bucket": "sql_override",
+          "query": "Find SQL override in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_009",
+          "bucket": "sql_override",
+          "query": "Find FILTER_CONDITION logic in transformations",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sql_010",
+          "bucket": "sql_override",
+          "query": "Find GROUP_BY attributes in transformations",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_001",
+          "bucket": "lineage",
+          "query": "Trace TARGET to SOURCE lineage path",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 3,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              2,
+              2
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_002",
+          "bucket": "lineage",
+          "query": "How is InteractionEvent_Id traced to source?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_003",
+          "bucket": "lineage",
+          "query": "Show lineage with HOP_COUNT details",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_004",
+          "bucket": "lineage",
+          "query": "Find lineage for householdbusinesskey fields",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_005",
+          "bucket": "lineage",
+          "query": "Find lineage for InteractionGroup_Id",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_006",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4205_calculate_dm_facts.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_007",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_4206_calculate_facts_fcr.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_008",
+          "bucket": "lineage",
+          "query": "Find lineage records in wf_2208_source_saf_interaction_fbl.XML",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_009",
+          "bucket": "lineage",
+          "query": "Find lineage where SOURCE appears in path",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_lin_010",
+          "bucket": "lineage",
+          "query": "Find lineage where TARGET appears in path",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "LINEAGE",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 1,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_001",
+          "bucket": "semantic",
+          "query": "How is customer interaction event logic represented?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_002",
+          "bucket": "semantic",
+          "query": "Where can I find campaign telephone number extraction?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_003",
+          "bucket": "semantic",
+          "query": "Which workflow handles SMS interaction feed normalization?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_004",
+          "bucket": "semantic",
+          "query": "Which workflow handles IVR interaction source data?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_005",
+          "bucket": "semantic",
+          "query": "Which workflow prepares DM facts?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_006",
+          "bucket": "semantic",
+          "query": "Which workflow prepares first call resolution facts?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": null,
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        },
+        {
+          "id": "w3_sem_007",
+          "bucket": "semantic",
+          "query": "Which transformation type appears for source qualification?",
+          "mode": "bm25",
+          "k": 10,
+          "node_class": "TRANSFORMATION",
+          "metrics": {
+            "recall_at_k": 0.0,
+            "ndcg_at_k": 0.0,
+            "matched_matchers": 0,
+            "total_matchers": 2,
+            "observed_scores": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "ideal_scores": [
+              3,
+              1
+            ],
+            "hit_count": 0
+          },
+          "top_hit": {
+            "chunk_id": null,
+            "name": null,
+            "node_class": null,
+            "score": null
+          }
+        }
+      ]
+    }
+  }
+}

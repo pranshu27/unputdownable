@@ -1,0 +1,454 @@
+.jnj-auth-page {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1.15fr) minmax(440px, 0.85fr);
+  background:
+    radial-gradient(circle at 16% 18%, rgba(255, 255, 255, 0.95) 0, rgba(255, 255, 255, 0) 28%),
+    linear-gradient(135deg, #fff7f6 0%, #ffffff 42%, #f7f2ef 100%);
+  color: #241f21;
+  overflow: hidden;
+}
+
+.jnj-auth-brand {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 44px 56px;
+  background: 
+    linear-gradient(135deg, rgba(16, 5, 8, 0.85) 0%, rgba(90, 8, 19, 0.95) 50%, rgba(13, 3, 5, 0.98) 100%),
+    radial-gradient(circle at 50% 50%, rgba(200, 16, 46, 0.3) 0%, transparent 60%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 30px 30px, 30px 30px;
+  background-position: 0 0, 0 0, -1px -1px, -1px -1px;
+  color: #fff;
+  overflow: hidden;
+}
+
+.jnj-auth-brand::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 60%;
+  background: linear-gradient(180deg, rgba(10, 2, 4, 0), rgba(10, 2, 4, 0.9));
+  pointer-events: none;
+  z-index: 2;
+}
+
+.jnj-auth-brand__mark {
+  position: relative;
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  background: rgba(200, 16, 46, 0.3);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.jnj-auth-tagline {
+  position: relative;
+  z-index: 10;
+  margin-top: auto;
+  padding-top: 40px;
+}
+
+.jnj-auth-tagline h1 {
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin: 0 0 12px;
+  color: #ffffff;
+}
+
+.jnj-auth-tagline p {
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 420px;
+  margin: 0;
+}
+
+/* Enterprise SVG Mesh Animations */
+.jnj-mesh-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.jnj-mesh-line {
+  stroke: rgba(255, 255, 255, 0.1);
+  stroke-width: 1px;
+}
+
+.jnj-mesh-line--active {
+  stroke: rgba(200, 16, 46, 0.5);
+  stroke-width: 1.5px;
+  stroke-dasharray: 6 6;
+  animation: marchLines 30s linear infinite;
+}
+
+.jnj-mesh-node {
+  fill: rgba(255, 255, 255, 0.15);
+  stroke: rgba(255, 255, 255, 0.3);
+  stroke-width: 1px;
+}
+
+.jnj-mesh-node--primary {
+  fill: rgba(200, 16, 46, 0.8);
+  stroke: rgba(255, 255, 255, 0.5);
+  animation: pulseNode 4s ease-in-out infinite alternate;
+}
+
+.jnj-mesh-node--secondary {
+  fill: rgba(255, 255, 255, 0.9);
+  animation: pulseNodeSubtle 6s ease-in-out infinite alternate;
+}
+
+.jnj-mesh-dot {
+  fill: rgba(255, 255, 255, 0.8);
+  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.8));
+}
+
+@keyframes pulseNode {
+  0% { transform: scale(0.95); opacity: 0.7; }
+  100% { transform: scale(1.05); opacity: 1; box-shadow: 0 0 20px rgba(200, 16, 46, 0.5); }
+}
+
+@keyframes pulseNodeSubtle {
+  0% { opacity: 0.4; }
+  100% { opacity: 0.8; }
+}
+
+@keyframes marchLines {
+  0% { stroke-dashoffset: 1000; }
+  100% { stroke-dashoffset: 0; }
+}
+
+/* Subtle floating container for SVG elements */
+.jnj-mesh-float-1 { animation: floatSlow 20s ease-in-out infinite alternate; }
+.jnj-mesh-float-2 { animation: floatSlow 25s ease-in-out infinite alternate-reverse; }
+.jnj-mesh-float-3 { animation: floatSlow 30s ease-in-out infinite alternate; }
+
+@keyframes floatSlow {
+  0% { transform: translate(0, 0); }
+  33% { transform: translate(15px, -15px); }
+  66% { transform: translate(-10px, -25px); }
+  100% { transform: translate(-20px, 10px); }
+}
+
+.jnj-auth-title {
+  max-width: 700px;
+  font-size: 48px !important;
+  line-height: 1.05 !important;
+  font-weight: 800 !important;
+  letter-spacing: 0 !important;
+}
+
+.jnj-auth-copy {
+  max-width: 660px;
+  margin-top: 18px !important;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 16px !important;
+  line-height: 1.7 !important;
+}
+
+.jnj-auth-flow {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 34px;
+}
+
+.jnj-auth-flow__item {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(18px);
+}
+
+.jnj-auth-flow__icon {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.jnj-auth-flow__item strong,
+.jnj-auth-flow__item small {
+  display: block;
+}
+
+.jnj-auth-flow__item strong {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.jnj-auth-flow__item small {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.74);
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.jnj-auth-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.jnj-auth-card {
+  width: 100%;
+  max-width: 480px;
+  padding: 34px;
+  border: 1px solid #eadeda;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 30px 90px rgba(36, 31, 33, 0.12);
+}
+
+.jnj-auth-card__header {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.jnj-auth-card__icon {
+  width: 42px;
+  height: 42px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background: #fff1f2;
+  color: #c8102e;
+}
+
+.jnj-auth-card__title {
+  font-size: 28px !important;
+  line-height: 1.15 !important;
+  font-weight: 800 !important;
+  color: #241f21;
+  letter-spacing: 0 !important;
+}
+
+.jnj-auth-card__subtitle {
+  margin-top: 8px !important;
+  color: #6b5f63;
+  font-size: 14px !important;
+  line-height: 1.55 !important;
+}
+
+.jnj-auth-toggle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 28px 0 24px;
+  padding: 4px;
+  border: 1px solid #eadeda;
+  border-radius: 8px;
+  background: #faf7f5;
+}
+
+.jnj-auth-toggle button {
+  height: 40px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #6b5f63;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.jnj-auth-toggle button.is-active {
+  background: #c8102e;
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(200, 16, 46, 0.22);
+}
+
+.jnj-auth-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.jnj-auth-field > span {
+  display: block;
+  margin-bottom: 7px;
+  color: #453b3f;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.jnj-auth-input {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 14px;
+  border: 1px solid #d8cdca;
+  border-radius: 8px;
+  background: #fff;
+  color: #8f7f83;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.jnj-auth-input:focus-within {
+  border-color: #c8102e;
+  box-shadow: 0 0 0 3px rgba(200, 16, 46, 0.12);
+}
+
+.jnj-auth-input.has-error {
+  border-color: #d92d20;
+}
+
+.jnj-auth-input input {
+  width: 100%;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: #241f21;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.jnj-auth-input input::placeholder {
+  color: #9a8d90;
+}
+
+.jnj-auth-error {
+  display: block;
+  margin-top: 6px;
+  color: #b42318;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.jnj-auth-error--form {
+  margin: 16px 0 0;
+}
+
+.jnj-auth-submit {
+  height: 50px;
+  gap: 8px;
+  margin-top: 24px !important;
+  border-radius: 8px !important;
+  background: #c8102e !important;
+  color: #fff !important;
+  font-weight: 800 !important;
+  text-transform: none !important;
+  box-shadow: 0 18px 34px rgba(200, 16, 46, 0.25) !important;
+}
+
+.jnj-auth-submit:hover {
+  background: #a90d27 !important;
+}
+
+.jnj-auth-card__footer {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+  color: #6b5f63;
+  font-size: 14px;
+}
+
+.jnj-auth-card__footer button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: #c8102e;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.jnj-auth-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid #eee4e1;
+}
+
+.jnj-auth-trust span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #5d5356;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.jnj-auth-trust svg {
+  color: #238b45;
+}
+
+@media (max-width: 1120px) {
+  .jnj-auth-page {
+    grid-template-columns: 1fr;
+    overflow: auto;
+  }
+
+  .jnj-auth-brand {
+    min-height: 440px;
+    padding: 32px;
+  }
+
+  .jnj-auth-title {
+    font-size: 38px !important;
+  }
+}
+
+@media (max-width: 720px) {
+  .jnj-auth-brand {
+    min-height: auto;
+    padding: 24px;
+  }
+
+  .jnj-auth-title {
+    font-size: 30px !important;
+  }
+
+  .jnj-auth-flow {
+    grid-template-columns: 1fr;
+  }
+
+  .jnj-auth-panel {
+    padding: 18px;
+  }
+
+  .jnj-auth-card {
+    padding: 22px;
+  }
+
+  .jnj-auth-card__footer {
+    flex-direction: column;
+    align-items: center;
+  }
+}

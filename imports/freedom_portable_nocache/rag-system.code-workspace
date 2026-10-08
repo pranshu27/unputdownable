@@ -1,0 +1,10 @@
+{
+  "folders": [
+    { "path": "C:/dev/freedom/rag-system", "name": "rag-system" }
+  ],
+  "settings": {
+    "python.defaultInterpreterPath": "C:/venvs/ragsys/Scripts/python.exe",
+    "git.branchProtection": ["master"],
+    "gitGraph.defaultColumnVisibility": { "Branch": true, "Commit": true }
+  }
+}

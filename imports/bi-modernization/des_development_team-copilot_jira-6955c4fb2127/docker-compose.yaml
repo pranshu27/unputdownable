@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  copilot-jira:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: copilot-jira
+    env_file:
+      - ./.env
+    ports:
+      - "8003:8003"

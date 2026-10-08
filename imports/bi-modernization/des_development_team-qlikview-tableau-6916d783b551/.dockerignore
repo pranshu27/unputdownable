@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets — never bake into image
+.env
+*.env
+
+# Dev/test artifacts
+.pytest_cache/
+.DS_Store
+*.log
+
+# Generated outputs (mounted as volume at runtime)
+outputs/
+cache/
+
+# Git
+.git/
+.gitignore

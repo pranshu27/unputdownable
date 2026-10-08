@@ -1,0 +1,67 @@
+table Individual_Budge
+	lineageTag: bad0ad5c-7311-4cdd-a204-d11c148f379b
+
+	column Branch
+		dataType: string
+		lineageTag: 59e15c8d-1926-4e6b-bc77-8c49983452ca
+		summarizeBy: none
+		sourceColumn: Branch
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Employee Name'
+		dataType: string
+		lineageTag: 1cb0a286-4d65-4dde-81bf-7c85c5a52a0f
+		summarizeBy: none
+		sourceColumn: Employee Name
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New Role2'
+		dataType: string
+		lineageTag: b939699f-41f0-48b2-9a2f-88555ee8f5d4
+		summarizeBy: none
+		sourceColumn: New Role2
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'New Budget'
+		dataType: int64
+		formatString: 0
+		lineageTag: 6a67abe9-0cd7-47e8-96a6-c89085e7d008
+		summarizeBy: sum
+		sourceColumn: New Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Cross sell bugdet'
+		dataType: int64
+		formatString: 0
+		lineageTag: dd35fbbe-ce3f-4566-81f6-f40ade361cfa
+		summarizeBy: sum
+		sourceColumn: Cross sell bugdet
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Renewal Budget'
+		dataType: int64
+		formatString: 0
+		lineageTag: 54987014-3961-42ab-b7c9-437a157b6c08
+		summarizeBy: sum
+		sourceColumn: Renewal Budget
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Individual_Budge = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_analysis_Schema = genai_demo_Database{[Name="insurance_analysis",Kind="Schema"]}[Data],
+				    individual_budge_Table = insurance_analysis_Schema{[Name="individual_budge",Kind="Table"]}[Data]
+				in
+				    individual_budge_Table
+
+	changedProperty = Name
+

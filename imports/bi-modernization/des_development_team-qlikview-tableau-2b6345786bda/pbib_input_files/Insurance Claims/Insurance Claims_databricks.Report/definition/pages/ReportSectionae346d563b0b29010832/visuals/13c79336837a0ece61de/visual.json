@@ -1,0 +1,137 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "13c79336837a0ece61de",
+  "position": {
+    "x": 42.000015258789063,
+    "y": 517.99998474121094,
+    "z": 3000,
+    "height": 198,
+    "width": 278,
+    "tabOrder": 2000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "bmi_group"
+                }
+              },
+              "queryRef": "processed_insurance_data.bmi_group",
+              "nativeQueryRef": "bmi_group"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "insurance_data"
+                    }
+                  },
+                  "Property": "bmi"
+                }
+              },
+              "queryRef": "insurance_data.bmi",
+              "nativeQueryRef": "bmi"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "insurance_data"
+                    }
+                  },
+                  "Property": "claim"
+                }
+              },
+              "queryRef": "insurance_data.claim",
+              "nativeQueryRef": "claim"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(bmi_group)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport matplotlib.pyplot as plt\nimport seaborn as sns\nimport pandas as pd\nimport numpy as np\nimport seaborn as sns\n\n# Binning the BMI data\nbins = pd.cut(dataset[''bmi''], bins=[0, 18.5, 25, 30, 35, 40, np.inf], labels=[''Underweight'', ''Normal'', ''Overweight'', ''Obesity I'', ''Obesity II'', ''Obesity III''])\n\nplt.figure(figsize=(12, 8))\nsns.barplot(x=bins, y=dataset[''claim''])\nplt.title(''Claim by BMI Categories'', fontsize=30)\nplt.xlabel(''BMI Categories'', fontsize=18)\nplt.ylabel(''Average Claim'', fontsize=18)\nplt.xticks(rotation=45, fontsize=16)  # Rotate x-ticks if labels are long\nplt.yticks(fontsize=16)\nplt.show()\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}

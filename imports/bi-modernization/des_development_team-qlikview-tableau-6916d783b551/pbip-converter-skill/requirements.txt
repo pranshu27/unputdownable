@@ -1,0 +1,35 @@
+# ── LLM / Azure OpenAI ────────────────────────────────────────────────────────
+openai>=1.30.0
+
+# ── AutoGen (mapper.py uses autogen_core + autogen_ext) ──────────────────────
+autogen-agentchat==0.4.7
+autogen-core==0.4.7
+autogen-ext[openai,azure]==0.4.7
+
+# ── FastAPI server (server.py) ────────────────────────────────────────────────
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+
+# ── HTTP client (integrations/jira_client.py, integrations/fabric_publisher.py) ──
+requests>=2.31.0
+
+# ── Microsoft Entra auth for Fabric publishing (integrations/fabric_publisher.py) ─
+msal>=1.28.0
+
+# ── Streamlit UI (app.py, chat_app.py) ───────────────────────────────────────
+streamlit>=1.35.0
+
+# ── Database (skills/json_to_pbip/src/db.py) ─────────────────────────────────
+sqlalchemy>=2.0.0
+psycopg2-binary>=2.9.0
+pandas>=2.0.0
+
+# ── AWS Secrets Manager (AWSSecretsManager.py, config.py) ────────────────────
+boto3>=1.34.0
+aws-secretsmanager-caching>=1.1.2
+
+# ── Environment variables (.env loading in main.py, chat_app.py) ─────────────
+python-dotenv>=1.0.0
+
+# ── Tests ─────────────────────────────────────────────────────────────────────
+pytest>=8.0.0

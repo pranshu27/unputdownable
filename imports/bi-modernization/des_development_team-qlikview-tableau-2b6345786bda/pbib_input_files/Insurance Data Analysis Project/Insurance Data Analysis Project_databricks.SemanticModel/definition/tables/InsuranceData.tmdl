@@ -1,0 +1,161 @@
+table InsuranceData
+	lineageTag: 5c2a5a26-2107-4e79-a33d-346c591c669b
+
+	column PolicyNumber
+		dataType: string
+		lineageTag: 1c4ee667-49a3-4aa9-b5e9-20c5598d56cc
+		summarizeBy: none
+		sourceColumn: PolicyNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column CustomerID
+		dataType: string
+		lineageTag: 9cb81a52-8a28-4358-b0b8-7bbbf5173e6a
+		summarizeBy: none
+		sourceColumn: CustomerID
+
+		annotation SummarizationSetBy = Automatic
+
+	column Gender
+		dataType: string
+		lineageTag: 14ba8732-4eca-49dc-b5a8-3194f2c858f5
+		summarizeBy: none
+		sourceColumn: Gender
+
+		annotation SummarizationSetBy = Automatic
+
+	column Age
+		dataType: int64
+		formatString: 0
+		lineageTag: 55f1ac9c-12a9-46ce-9791-87221753f537
+		summarizeBy: sum
+		sourceColumn: Age
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyType
+		dataType: string
+		lineageTag: a82d46ed-468f-408b-9aa6-734c87b78953
+		summarizeBy: none
+		sourceColumn: PolicyType
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyStartDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 1b3c26d0-cb94-4bb8-89a2-c2df1252cc49
+		summarizeBy: none
+		sourceColumn: PolicyStartDate
+
+		variation Variation
+			isDefault
+			relationship: a4d6004d-d1aa-42ee-b5ad-2ab6907d9042
+			defaultHierarchy: LocalDateTable_322b19a8-600f-4774-8fb0-6c625625d64a.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PolicyEndDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 760fa976-fb8a-4d8c-8682-494e1566a688
+		summarizeBy: none
+		sourceColumn: PolicyEndDate
+
+		variation Variation
+			isDefault
+			relationship: d92e2e94-4cf1-47b5-a7d0-b7f777f9f067
+			defaultHierarchy: LocalDateTable_8adbf27c-e3e4-442a-8ac9-401e8e928bbb.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column PremiumAmount
+		dataType: double
+		lineageTag: 33934e1d-54b7-4e92-ab84-7daca1175258
+		summarizeBy: sum
+		sourceColumn: PremiumAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column CoverageAmount
+		dataType: double
+		lineageTag: 66a94c4c-71a9-41f2-970e-5b84cfd5a119
+		summarizeBy: sum
+		sourceColumn: CoverageAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ClaimNumber
+		dataType: string
+		lineageTag: 4a0b5877-dcc7-4e66-97ec-a4b19113b39c
+		summarizeBy: none
+		sourceColumn: ClaimNumber
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaimDate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: e5c0540d-1a38-4bbe-aad1-3b1d9205d35a
+		summarizeBy: none
+		sourceColumn: ClaimDate
+
+		variation Variation
+			isDefault
+			relationship: 781e345e-b879-4cc2-a49b-ad99080a539d
+			defaultHierarchy: LocalDateTable_fa0f46e8-7c68-424b-b253-e152bad778e1.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column ClaimAmount
+		dataType: double
+		lineageTag: 350c4aa3-8550-4d86-8071-89b90b12ec9f
+		summarizeBy: sum
+		sourceColumn: ClaimAmount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ClaimStatus
+		dataType: string
+		lineageTag: 638f8736-de38-400d-a261-047e9bea3fe8
+		summarizeBy: none
+		sourceColumn: ClaimStatus
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Age Group'
+		dataType: string
+		lineageTag: add09066-7628-4406-8963-1687905112bb
+		summarizeBy: none
+		sourceColumn: Age Group
+
+		annotation SummarizationSetBy = Automatic
+
+	column Active/Inactive
+		dataType: string
+		lineageTag: b6d26c2d-1897-4fc5-83ff-fb71dc3c2965
+		summarizeBy: none
+		sourceColumn: Active/Inactive
+
+		annotation SummarizationSetBy = Automatic
+
+	partition InsuranceData = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_data_analysis_project_Schema = genai_demo_Database{[Name="insurance_data_analysis_project",Kind="Schema"]}[Data],
+				    insurancedata_Table = insurance_data_analysis_project_Schema{[Name="insurancedata",Kind="Table"]}[Data]
+				in
+				    insurancedata_Table
+
+	changedProperty = Name
+

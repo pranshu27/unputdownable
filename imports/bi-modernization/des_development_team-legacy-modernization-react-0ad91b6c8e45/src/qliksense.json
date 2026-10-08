@@ -1,0 +1,1895 @@
+{
+    "filename":"(Qliksense) asset_management_json_output 1.zip",
+    "etlTool": "qlik",
+    "model": "gpt4o",
+    "technology": "python",
+    "framework": "multiagent-moa",
+    "response" :{
+      "message": "Qlik file processed successfully",
+      "result": [
+        {
+          "tab_name": "Colors",
+          "table_name": "Colors",
+          "field_name": "Asset Class",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "Asset Class",
+          "source_fields": [
+            "Asset Class"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Asset Class from inline data",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Colors",
+          "table_name": "Colors",
+          "field_name": "Color",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "Color",
+          "source_fields": [
+            "Color"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Color from inline data",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Currency",
+          "table_name": "Currency",
+          "field_name": "_CURRENCY",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "_CURRENCY",
+          "source_fields": [
+            "_CURRENCY"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of [_CURRENCY] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Currency",
+          "table_name": "Currency",
+          "field_name": "_SYMBOL",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "_SYMBOL",
+          "source_fields": [
+            "_SYMBOL"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of [_SYMBOL] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Holdings",
+          "table_name": "Holdings",
+          "field_name": "Holdings",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "Holdings",
+          "source_fields": [
+            "Holdings"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of [Holdings] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Holdings",
+          "table_name": "Holdings",
+          "field_name": "YTD",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "YTD",
+          "source_fields": [
+            "YTD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of [YTD] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Composition",
+          "table_name": "Composition",
+          "field_name": "Sector",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "Sector",
+          "source_fields": [
+            "Sector"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Sector from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Composition",
+          "table_name": "Composition",
+          "field_name": "Sector YTD",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Sector YTD\"",
+          "source_fields": [
+            "Sector YTD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Sector YTD from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Composition",
+          "table_name": "Composition",
+          "field_name": "Sector LYTD",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Sector LYTD\"",
+          "source_fields": [
+            "Sector LYTD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Sector LYTD from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "PerformanceId",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "PerformanceId",
+          "source_fields": [
+            "PerformanceId"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of PerformanceId from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "Risk",
+          "source_fields": [
+            "Risk"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 1",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 1\"",
+          "source_fields": [
+            "Risk 1"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 1 from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 3",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 3\"",
+          "source_fields": [
+            "Risk 3"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 3 from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 5",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 5\"",
+          "source_fields": [
+            "Risk 5"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 5 from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 10",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 10\"",
+          "source_fields": [
+            "Risk 10"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 10 from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 1 year",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 1 year\"",
+          "source_fields": [
+            "Risk 1 year"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 1 year from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 3 year",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 3 year\"",
+          "source_fields": [
+            "Risk 3 year"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 3 year from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 5 year",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 5 year\"",
+          "source_fields": [
+            "Risk 5 year"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 5 year from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Risk",
+          "table_name": "Risk",
+          "field_name": "Risk 10 year",
+          "is_key": false,
+          "data_type_hint": null,
+          "expression": "\"Risk 10 year\"",
+          "source_fields": [
+            "Risk 10 year"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "description": "Passthrough of Risk 10 year from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Position Value Date",
+          "expression": "AddYears(\"Position Value Date\", 9)",
+          "source_fields": [
+            "Position Value Date"
+          ],
+          "functions_used": [
+            "AddYears"
+          ],
+          "is_derived": true,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Derived position value date shifted by 9 years.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "%Key",
+          "expression": "%Key",
+          "source_fields": [
+            "%Key"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": true,
+          "data_type_hint": null,
+          "description": "Passthrough of %Key from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Fund Code - Position Org",
+          "expression": "\"Fund Code - Position Org\"",
+          "source_fields": [
+            "Fund Code - Position Org"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Fund Code - Position Org from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Fund Code - Position",
+          "expression": "\"Fund Code - Position\"",
+          "source_fields": [
+            "Fund Code - Position"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Fund Code - Position from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Curr",
+          "expression": "Curr",
+          "source_fields": [
+            "Curr"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Curr from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Quantity",
+          "expression": "Quantity",
+          "source_fields": [
+            "Quantity"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Quantity from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "AvgCost",
+          "expression": "AvgCost",
+          "source_fields": [
+            "AvgCost"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of AvgCost from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Cost",
+          "expression": "Cost",
+          "source_fields": [
+            "Cost"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Cost from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Mkt",
+          "expression": "Mkt",
+          "source_fields": [
+            "Mkt"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Mkt from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Value",
+          "expression": "Value",
+          "source_fields": [
+            "Value"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Value from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Position Created Date",
+          "expression": "AddYears(\"Position Created Date\", 9)",
+          "source_fields": [
+            "Position Created Date"
+          ],
+          "functions_used": [
+            "AddYears"
+          ],
+          "is_derived": true,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Derived position created date shifted by 9 years.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "OpenPrice",
+          "expression": "OpenPrice",
+          "source_fields": [
+            "OpenPrice"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of OpenPrice from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "LastExecPrice",
+          "expression": "LastExecPrice",
+          "source_fields": [
+            "LastExecPrice"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of LastExecPrice from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "ClosingPrice",
+          "expression": "ClosingPrice",
+          "source_fields": [
+            "ClosingPrice"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of ClosingPrice from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "CUSIP",
+          "expression": "CUSIP",
+          "source_fields": [
+            "CUSIP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of CUSIP from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "sharesOutstanding",
+          "expression": "sharesOutstanding",
+          "source_fields": [
+            "sharesOutstanding"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of sharesOutstanding from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "strikePrice",
+          "expression": "strikePrice",
+          "source_fields": [
+            "strikePrice"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of strikePrice from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "FTSE Sector",
+          "expression": "\"FTSE Sector\"",
+          "source_fields": [
+            "FTSE Sector"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of FTSE Sector from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "FTSE Industry",
+          "expression": "\"FTSE Industry\"",
+          "source_fields": [
+            "FTSE Industry"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of FTSE Industry from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Positions",
+          "table_name": "Positions",
+          "field_name": "Desk",
+          "expression": "Desk",
+          "source_fields": [
+            "Desk"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Desk from source.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Business Unit",
+          "expression": "\"Business Unit\"",
+          "source_fields": [
+            "Business Unit"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Business Unit from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Referral Source",
+          "expression": "\"Referral Source\"",
+          "source_fields": [
+            "Referral Source"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Referral Source from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Investor",
+          "expression": "Investor",
+          "source_fields": [
+            "Investor"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Investor from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Account Name",
+          "expression": "\"Account Name\"",
+          "source_fields": [
+            "Account Name"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Account Name from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Fund Code - AUM",
+          "expression": "\"Fund Code - AUM\"",
+          "source_fields": [
+            "Fund Code - AUM"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Fund Code - AUM from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "%Key",
+          "expression": "%Key",
+          "source_fields": [
+            "%Key"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": true,
+          "data_type_hint": null,
+          "description": "Passthrough of %Key from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Tax Status",
+          "expression": "\"Tax Status\"",
+          "source_fields": [
+            "Tax Status"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Tax Status from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Client Type",
+          "expression": "\"Client Type\"",
+          "source_fields": [
+            "Client Type"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Client Type from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Business Type",
+          "expression": "\"Business Type\"",
+          "source_fields": [
+            "Business Type"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Business Type from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Fund Type",
+          "expression": "\"Fund Type\"",
+          "source_fields": [
+            "Fund Type"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Fund Type from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Asset Class",
+          "expression": "\"Asset Class\"",
+          "source_fields": [
+            "Asset Class"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Asset Class from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Investment Region",
+          "expression": "\"Investment Region\"",
+          "source_fields": [
+            "Investment Region"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Investment Region from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Capability / Investment Style",
+          "expression": "\"Capability / Investment Style\"",
+          "source_fields": [
+            "Capability / Investment Style"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Capability / Investment Style from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Pooled Fund (if applicable)",
+          "expression": "\"Pooled Fund (if applicable)\"",
+          "source_fields": [
+            "Pooled Fund (if applicable)"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Pooled Fund (if applicable) from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Investment Intensity",
+          "expression": "\"Investment Intensity\"",
+          "source_fields": [
+            "Investment Intensity"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Investment Intensity from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Segregated / Pooled",
+          "expression": "\"Segregated / Pooled\"",
+          "source_fields": [
+            "Segregated / Pooled"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Segregated / Pooled from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Gross fund val",
+          "expression": "\"Gross fund val\"",
+          "source_fields": [
+            "Gross fund val"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Gross fund val from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "% of Fund",
+          "expression": "\"% of Fund\"",
+          "source_fields": [
+            "% of Fund"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of % of Fund from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Asset_GBP",
+          "expression": "Asset_GBP",
+          "source_fields": [
+            "Asset_GBP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of Asset_GBP from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Asset_EUR",
+          "expression": "Asset_EUR",
+          "source_fields": [
+            "Asset_EUR"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of Asset_EUR from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Asset_USD",
+          "expression": "Asset_USD",
+          "source_fields": [
+            "Asset_USD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of Asset_USD from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Client Region",
+          "expression": "\"Client Region\"",
+          "source_fields": [
+            "Client Region"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Client Region from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "AUM",
+          "table_name": "AUM",
+          "field_name": "Client Country",
+          "expression": "\"Client Country\"",
+          "source_fields": [
+            "Client Country"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of Client Country from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Performance Currency",
+          "expression": "\"Performance Currency\"",
+          "source_fields": [
+            "Performance Currency"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Performance Currency] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "ProfileNo",
+          "expression": "ProfileNo",
+          "source_fields": [
+            "ProfileNo"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [ProfileNo] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "PerformanceId",
+          "expression": "PerformanceId",
+          "source_fields": [
+            "PerformanceId"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [PerformanceId] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Fund Code - Performance",
+          "expression": "\"Fund Code - Performance\"",
+          "source_fields": [
+            "Fund Code - Performance"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Fund Code - Performance] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Fund Code",
+          "expression": "\"Fund Code\"",
+          "source_fields": [
+            "Fund Code"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Fund Code] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "%Key",
+          "expression": "%Key",
+          "source_fields": [
+            "%Key"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": true,
+          "data_type_hint": null,
+          "description": "Passthrough of [%Key] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Department",
+          "expression": "Department",
+          "source_fields": [
+            "Department"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Department] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Performance Desk",
+          "expression": "\"Performance Desk\"",
+          "source_fields": [
+            "Performance Desk"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Performance Desk] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Product Type",
+          "expression": "\"Product Type\"",
+          "source_fields": [
+            "Product Type"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Product Type] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Original Fund Name",
+          "expression": "\"Original Fund Name\"",
+          "source_fields": [
+            "Original Fund Name"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Original Fund Name] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Fund Name",
+          "expression": "\"Fund Name\"",
+          "source_fields": [
+            "Fund Name"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Fund Name] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Fund Manager",
+          "expression": "\"Fund Manager\"",
+          "source_fields": [
+            "Fund Manager"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Fund Manager] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Original Fund Manager",
+          "expression": "\"Original Fund Manager\"",
+          "source_fields": [
+            "Original Fund Manager"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Original Fund Manager] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "FundSizeM_USD",
+          "expression": "FundSizeM_USD",
+          "source_fields": [
+            "FundSizeM_USD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of [FundSizeM_USD] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "FundSizeM_EUR",
+          "expression": "FundSizeM_EUR",
+          "source_fields": [
+            "FundSizeM_EUR"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of [FundSizeM_EUR] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "FundSizeM_GBP",
+          "expression": "FundSizeM_GBP",
+          "source_fields": [
+            "FundSizeM_GBP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Passthrough of [FundSizeM_GBP] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1",
+          "expression": "\"Measure 1\"",
+          "source_fields": [
+            "Measure 1"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 1 Month",
+          "expression": "\"Measure 1 1 Month\"",
+          "source_fields": [
+            "Measure 1 1 Month"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 1 Month] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 3 Months",
+          "expression": "\"Measure 1 3 Months\"",
+          "source_fields": [
+            "Measure 1 3 Months"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 3 Months] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 YTD",
+          "expression": "\"Measure 1 YTD\"",
+          "source_fields": [
+            "Measure 1 YTD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 YTD] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 1 Yr",
+          "expression": "\"Measure 1 1 Yr\"",
+          "source_fields": [
+            "Measure 1 1 Yr"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 1 Yr] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 3 Yrs ann",
+          "expression": "\"Measure 1 3 Yrs ann\"",
+          "source_fields": [
+            "Measure 1 3 Yrs ann"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 3 Yrs ann] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Measure 1 5 Yrs ann",
+          "expression": "\"Measure 1 5 Yrs ann\"",
+          "source_fields": [
+            "Measure 1 5 Yrs ann"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Measure 1 5 Yrs ann] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Profile Summary",
+          "expression": "\"Profile Summary\"",
+          "source_fields": [
+            "Profile Summary"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Profile Summary] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Performance",
+          "table_name": "Performance",
+          "field_name": "Performance Symbol",
+          "expression": "\"Performance Symbol\"",
+          "source_fields": [
+            "Performance Symbol"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Passthrough of [Performance Symbol] from source",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade ID",
+          "expression": "\"Trade ID\"",
+          "source_fields": [
+            "Trade ID"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": true,
+          "data_type_hint": null,
+          "description": "Unique identifier for the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Source",
+          "expression": "\"Trade Source\"",
+          "source_fields": [
+            "Trade Source"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Source system or origin of the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeStatus",
+          "expression": "TradeStatus",
+          "source_fields": [
+            "TradeStatus"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Status of the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradesLink",
+          "expression": "TradesLink",
+          "source_fields": [
+            "TradesLink"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Link or reference for the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Group",
+          "expression": "\"Trade Group\"",
+          "source_fields": [
+            "Trade Group"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Group or category of the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Location",
+          "expression": "\"Trade Location\"",
+          "source_fields": [
+            "Trade Location"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Location where the trade occurred.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Trader",
+          "expression": "\"Trade Trader\"",
+          "source_fields": [
+            "Trade Trader"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Trader responsible for the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Customer",
+          "expression": "\"Trade Customer\"",
+          "source_fields": [
+            "Trade Customer"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Customer involved in the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Account",
+          "expression": "\"Trade Account\"",
+          "source_fields": [
+            "Trade Account"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Account associated with the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Settlement Date",
+          "expression": "\"Trade Settlement Date\"",
+          "source_fields": [
+            "Trade Settlement Date"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "date",
+          "description": "Date when the trade is settled.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Settlement Period",
+          "expression": "Date(AddMonths(AddYears(Floor(\"Trade Settlement Period\"), 9), 6), 'YYYY-MMM')",
+          "source_fields": [
+            "Trade Settlement Period"
+          ],
+          "functions_used": [
+            "Date",
+            "AddMonths",
+            "AddYears",
+            "Floor"
+          ],
+          "is_derived": true,
+          "is_key": false,
+          "data_type_hint": "date",
+          "description": "Derived settlement period for the trade.",
+          "quality_notes": "Uses Floor and date adjustments to calculate period.",
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TransactionType",
+          "expression": "TransactionType",
+          "source_fields": [
+            "TransactionType"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Type of transaction for the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeCurrency",
+          "expression": "TradeCurrency",
+          "source_fields": [
+            "TradeCurrency"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Currency used in the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Quantity",
+          "expression": "\"Trade Quantity\"",
+          "source_fields": [
+            "Trade Quantity"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Quantity of assets traded.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "PriceAsPercent",
+          "expression": "PriceAsPercent",
+          "source_fields": [
+            "PriceAsPercent"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Price expressed as a percentage.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Price",
+          "expression": "Price",
+          "source_fields": [
+            "Price"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Price of the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeAmount",
+          "expression": "TradeAmount",
+          "source_fields": [
+            "TradeAmount"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Total amount of the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeAmount_USD",
+          "expression": "TradeAmount_USD",
+          "source_fields": [
+            "TradeAmount_USD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Trade amount in USD.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeAmount_GBP",
+          "expression": "TradeAmount_GBP",
+          "source_fields": [
+            "TradeAmount_GBP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Trade amount in GBP.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "TradeAmount_EUR",
+          "expression": "TradeAmount_EUR",
+          "source_fields": [
+            "TradeAmount_EUR"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Trade amount in EUR.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "CommissionAmount",
+          "expression": "CommissionAmount",
+          "source_fields": [
+            "CommissionAmount"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Commission charged for the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "CommissionAmount_USD",
+          "expression": "CommissionAmount_USD",
+          "source_fields": [
+            "CommissionAmount_USD"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Commission amount in USD.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "CommissionAmount_GBP",
+          "expression": "CommissionAmount_GBP",
+          "source_fields": [
+            "CommissionAmount_GBP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Commission amount in GBP.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "CommissionAmount_EUR",
+          "expression": "CommissionAmount_EUR",
+          "source_fields": [
+            "CommissionAmount_EUR"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": "numeric",
+          "description": "Commission amount in EUR.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "BrokerCode",
+          "expression": "BrokerCode",
+          "source_fields": [
+            "BrokerCode"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Code identifying the broker.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Broker",
+          "expression": "Broker",
+          "source_fields": [
+            "Broker"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Name of the broker.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "CUSIP",
+          "expression": "CUSIP",
+          "source_fields": [
+            "CUSIP"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "CUSIP identifier for the security.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "SecurityName",
+          "expression": "SecurityName",
+          "source_fields": [
+            "SecurityName"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Name of the security traded.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "AssetCurrencyCode",
+          "expression": "AssetCurrencyCode",
+          "source_fields": [
+            "AssetCurrencyCode"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Currency code for the asset.",
+          "quality_notes": null,
+          "business_notes": null
+        },
+        {
+          "tab_name": "Trades",
+          "table_name": "Trades",
+          "field_name": "Trade Last Updated",
+          "expression": "\"Trade Last Updated\"",
+          "source_fields": [
+            "Trade Last Updated"
+          ],
+          "functions_used": [],
+          "is_derived": false,
+          "is_key": false,
+          "data_type_hint": null,
+          "description": "Timestamp of the last update to the trade.",
+          "quality_notes": null,
+          "business_notes": null
+        }
+      ]
+    }
+    
+  }
+  

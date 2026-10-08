@@ -1,0 +1,118 @@
+table Invoice
+	lineageTag: 33b9daf8-07a4-4ec0-aa40-1598991412ee
+
+	column invoice_number
+		dataType: int64
+		formatString: 0
+		lineageTag: 2dfaca2e-0222-439d-aa3f-841e028df26f
+		summarizeBy: sum
+		sourceColumn: invoice_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column invoice_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 84617da9-1864-4257-bc7c-13a5c917c3ab
+		summarizeBy: none
+		sourceColumn: invoice_date
+
+		variation Variation
+			isDefault
+			relationship: b9ced52f-9005-4ff1-bac2-9f6ed5275e14
+			defaultHierarchy: LocalDateTable_7bf0c99c-624f-4796-9e66-82016fcd035c.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	column revenue_transaction_type
+		dataType: string
+		lineageTag: a7486846-5c8b-41d1-a001-2cd8938bdc52
+		summarizeBy: none
+		sourceColumn: revenue_transaction_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column branch_name
+		dataType: string
+		lineageTag: e92a92ba-c4f8-4ce6-80b8-13bb997a0976
+		summarizeBy: none
+		sourceColumn: branch_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column solution_group
+		dataType: string
+		lineageTag: 27ddc90e-e1e3-4346-b710-3e5d60ab0b49
+		summarizeBy: none
+		sourceColumn: solution_group
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Account Executive'
+		dataType: string
+		lineageTag: 149b5c51-aec9-4740-80ac-bea99b708c3a
+		summarizeBy: none
+		sourceColumn: Account Executive
+
+		annotation SummarizationSetBy = Automatic
+
+	column income_class
+		dataType: string
+		lineageTag: 2a71f478-d6af-4057-b531-f7cd84eb61da
+		summarizeBy: none
+		sourceColumn: income_class
+
+		annotation SummarizationSetBy = Automatic
+
+	column client_name
+		dataType: string
+		lineageTag: ea53b909-9a23-4704-94e9-fdecf9beb39f
+		summarizeBy: none
+		sourceColumn: client_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column policy_number
+		dataType: string
+		lineageTag: 7cc86d19-e014-4eb6-81fe-ad405e6e4227
+		summarizeBy: none
+		sourceColumn: policy_number
+
+		annotation SummarizationSetBy = Automatic
+
+	column Amount
+		dataType: int64
+		formatString: 0
+		lineageTag: ce00e8ac-2f4d-4d56-9ffb-cb9d88dafb2a
+		summarizeBy: sum
+		sourceColumn: Amount
+
+		annotation SummarizationSetBy = Automatic
+
+	column income_due_date
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 9c4785ff-e625-481d-a274-746c1a763e59
+		summarizeBy: none
+		sourceColumn: income_due_date
+
+		variation Variation
+			isDefault
+			relationship: 2153d1ef-5105-4f0e-a2c4-4a15cece4459
+			defaultHierarchy: LocalDateTable_09c6dfc4-c035-47ca-beba-00ce2c70979b.'Date Hierarchy'
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Invoice = m
+		mode: import
+		source =
+				let
+				    Source = DatabricksMultiCloud.Catalogs("dbc-9064b591-ac6c.cloud.databricks.com", "sql/protocolv1/o/845104949723771/0206-091900-f4nnmzzq", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0", MetricViewBiCompatibilityMode=null]),
+				    genai_demo_Database = Source{[Name="genai_demo",Kind="Database"]}[Data],
+				    insurance_analysis_Schema = genai_demo_Database{[Name="insurance_analysis",Kind="Schema"]}[Data],
+				    invoice_Table = insurance_analysis_Schema{[Name="invoice",Kind="Table"]}[Data]
+				in
+				    invoice_Table
+
+	changedProperty = Name
+

@@ -1,0 +1,151 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.6.0/schema.json",
+  "name": "187e88ce631c4c3a9cb7",
+  "position": {
+    "x": 640,
+    "y": 490,
+    "z": 8000,
+    "height": 226,
+    "width": 532,
+    "tabOrder": 8000
+  },
+  "visual": {
+    "visualType": "pythonVisual",
+    "query": {
+      "queryState": {
+        "Values": {
+          "projections": [
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "gender"
+                }
+              },
+              "queryRef": "processed_insurance_data.gender",
+              "nativeQueryRef": "gender"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "insurance_data"
+                    }
+                  },
+                  "Property": "claim"
+                }
+              },
+              "queryRef": "insurance_data.claim",
+              "nativeQueryRef": "claim"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "smoker"
+                }
+              },
+              "queryRef": "processed_insurance_data.smoker",
+              "nativeQueryRef": "smoker"
+            },
+            {
+              "field": {
+                "Column": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "processed_insurance_data"
+                    }
+                  },
+                  "Property": "diabetic"
+                }
+              },
+              "queryRef": "processed_insurance_data.diabetic",
+              "nativeQueryRef": "diabetic"
+            }
+          ]
+        }
+      }
+    },
+    "objects": {
+      "script": [
+        {
+          "properties": {
+            "source": {
+              "expr": {
+                "Literal": {
+                  "Value": "'# The following code to create a dataframe and remove duplicated rows is always executed and acts as a preamble for your script: \n\n# dataset = pandas.DataFrame(gender, claim, smoker)\n# dataset = dataset.drop_duplicates()\n\n# Paste or type your script code here:\nimport seaborn as sns\nimport matplotlib.pyplot as plt\nimport numpy as np\n\n# Make sure ''smoker'' and ''diabetic'' are of type string if they are boolean\ndataset[''smoker''] = dataset[''smoker''].astype(str)\ndataset[''diabetic''] = dataset[''diabetic''].astype(str)\n\n# Calculate the average claim amounts for each subgroup\ngrouped_data = dataset.groupby([''gender'', ''smoker'', ''diabetic''])[''claim''].mean().reset_index()\n\n# Pivot the data to get smoker and diabetic status in the columns, and gender as rows\npivot_data = grouped_data.pivot_table(index=''gender'', columns=[''smoker'', ''diabetic''], values=''claim'')\n\n# Now let''s create the bar chart\nplt.figure(figsize=(14, 8))\n\n# Get unique categories for smoker and diabetic status\nsmoker_categories = grouped_data[''smoker''].unique()\ndiabetic_categories = grouped_data[''diabetic''].unique()\n\n# Define bar positions for each group\nbar_positions = np.arange(len(pivot_data.index))\nbar_width = 0.2\n\n# Plot each group of bars\nfor i, smoker in enumerate(smoker_categories):\n    for j, diabetic in enumerate(diabetic_categories):\n        # Calculate positions for each bar\n        positions = bar_positions + (i * len(diabetic_categories) + j) * bar_width\n        plt.barh(positions, pivot_data[(smoker, diabetic)], height=bar_width, label=f''{smoker} Smoker, {diabetic} Diabetic'')\n\n# Add labels, title and legend\nplt.ylabel(''Gender'', fontsize=25)\nplt.yticks(bar_positions + bar_width, pivot_data.index, fontsize=20)\nplt.xlabel(''Average Claim Amount'', fontsize=20)\nplt.title(''Average Claim Amount by Smoking and Diabetic Status across Genders'', fontsize=25)\nplt.legend()\nplt.tight_layout()\nplt.show()\n'"
+                }
+              }
+            },
+            "provider": {
+              "expr": {
+                "Literal": {
+                  "Value": "'Python'"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "visualContainerObjects": {
+      "title": [
+        {
+          "properties": {
+            "show": {
+              "expr": {
+                "Literal": {
+                  "Value": "false"
+                }
+              }
+            }
+          }
+        }
+      ],
+      "padding": [
+        {
+          "properties": {
+            "right": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "bottom": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "top": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            },
+            "left": {
+              "expr": {
+                "Literal": {
+                  "Value": "0D"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  }
+}
