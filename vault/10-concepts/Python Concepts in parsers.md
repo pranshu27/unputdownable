@@ -110,3 +110,38 @@ force a second constructor pass."
 8. Why a **depth counter** for tables instead of a boolean?
 9. Why `list(section_path)` when constructing each Block?
 10. What's the honest limitation of stdlib `HTMLParser` for this job, and your mitigation?
+
+## 12. When to use `slots=True` — decision guide
+
+**Use it when:**
+- **Many instances** (thousands to millions): every plain dataclass instance carries a `__dict__`
+  plus its keys. Blocks/chunks/spans/points/DTOs in a hot path are the classic case.
+- **Fixed, known schema** — record-like classes, which is exactly what parser output is.
+- You want **typo-proofing** (no silent `obj.texxt = 1`) and slightly faster attribute access.
+- You want less GC pressure: no per-object dict to allocate, traverse and collect.
+
+**Skip it when:**
+- You need **dynamic attributes** — `setattr(obj, name, value)` from config, plugins, monkey-patching.
+- You need **`functools.cached_property`** (it requires `__dict__` to store the cache).
+- You need **`weakref`** — slotted classes reject it unless you pass `weakref_slot=True` (3.11+).
+- A base class has no `__slots__` (instances get `__dict__` back, so you lose the benefit), or you
+  combine multiple slotted bases with conflicting layouts.
+- The class has a handful of instances — no measurable win, only constraints.
+
+**Measured in this repo — and the two methods disagree, so know both:**
+- `sys.getsizeof(obj) + sys.getsizeof(obj.__dict__)`: 344 B → 56 B (**288 B/obj**) — counts the object and
+  its dict as separate blocks, which is how the overhead *feels* when reasoning per record.
+- `tracemalloc` over 100,000 live instances: 168 B → 128 B (**≈40 B/obj**, ≈40 MB per 1M) — real heap
+  allocation; PEP 412 key-sharing dicts are cheaper than `getsizeof` implies, and interned strings are
+  shared either way.
+- **The dependable rule:** you save one `__dict__` per instance — roughly 100-250 B depending on field
+  count — so at 1M blocks that is tens to hundreds of MB *plus* GC scan time. Order of magnitude, not a
+  precise constant: **say "an order of tens to hundreds of MB per million records"**, not a fake exact number.
+
+**Applied to your code:** `Block`, `Chunk` and `ParsedDocument` use `slots=True` — correct call, since
+one 10-K already yields 239 chunks and one batch yielded 290 points; the corpus is the multiplier.
+One consequence to know: `ParsedDocument.table_count` / `total_table_rows` recompute the sum on every
+access and **cannot use `cached_property`** under slots — if that ever gets hot, cache it as a field.
+
+**Related knobs:** `slots=True` (3.10+), `weakref_slot=True` (3.11+), `frozen=True` combines fine
+(immutable record), and for maximum density `NamedTuple`/`msgspec` beat both.
