@@ -64,3 +64,18 @@
 2. **Handed back as a design decision, not a requirement:** "That's your proposal to make - I'll answer requirements questions and ask you to justify design ones." Interviewer expects: the interface signature, the return type, how tables are represented (structure preserved, not flattened), how section hierarchy is carried, and what metadata rides along (provenance, format, warnings/confidence).
 
 **Rubric status at this point:** clarify ✅ (2 solid requirement questions) · abstractions ⬜ · extensibility ⬜ · failure/observability ⬜ · testing ⬜ · trade-offs ⬜
+
+### Trace 2 — the design answer (verbatim summary)
+1. "A class with several methods, one per format, so a new format is a method away."
+2. "Return type is JSON with standard fields: document type, name, data, size in bytes — to preserve metadata."
+3. "Tables stored as-is in Postgres; exact keyword match fetches exact details; Postgres has good JSON search."
+4. "Semantic chunking so every section is preserved; chunk metadata via Postgres pgvector tells us where the chunk came from."
+
+**Interviewer score:** clarify ✅ · abstractions ⚠️ (document metadata only, no content units) · extensibility ❌ (method-per-format in one class = Open/Closed violation; this is the rejected alternative in ADR-001) · failure/observability ❌ (not mentioned) · testing ❌ (not mentioned) · trade-offs ⚠️ (semantic-vs-fixed named, but at chunk level; also storage scope creep)
+
+**Three issues that would sink it in a real loop:**
+- God-class dispatch: adding PPTX means editing a shared class (merge conflicts, regression risk, one class accumulating every parser dependency). Fix: interface + one class per format + registry dispatch.
+- Return type too thin: document-level metadata only; `data` unspecified. For a 400-page 10-K with 66 tables you need ordered typed blocks (heading/paragraph/table) with section path, table structure, page provenance, warnings. Size-in-bytes is not a retrieval-relevant number (tokens are).
+- Scope creep into storage: Postgres/pgvector is the chunker+storage component's decision, not the parser's. Putting tables only in Postgres removes them from the retrieval stream (so hybrid search can never retrieve them) and creates two sources of truth. Tables must stay in the document stream as atomic blocks, with structured rows additionally retained in the payload.
+
+**Follow-ups still owed by the candidate:** the PPTX diff question, failure isolation, testing strategy.
