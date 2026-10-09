@@ -19,3 +19,8 @@ Bank size target: +10 per MOCK & BANK day. Current: **10 seeded** (Week 1 Fri �
 
 ## Behavioral
 - STAR 1 (Production Ingestion Bottleneck): see `interview/star-stories.md` — rehearse to 90 s with ≥3 numbers.
+
+## Company / experience (evidence: `interview/company-projects.md`)
+11. **Design an agentic migration pipeline with human oversight.** -> orchestrator/worker + barrier, extractor -> modeller (RAG-as-tool) -> generator -> writer -> parity reviewer -> adversarial critic -> human gate; guardrails in and out; per-step artifacts + tracing. | P1, imports tracker mermaid
+12. **How do you evaluate a RAG system when you have no user labels?** -> golden set with ground truth + expected entities; audit dimensions (empty / refusal / no-evidence / shortness); strategy attribution per answer; the eval revealed the LLM carried 1/22 answers. | P2, rag-system/eval
+13. **How would you approach a legacy BI modernization?** -> inventory the estate (84 tabular models, 8+ workspaces), build converter tooling with prompts + tests, parity review as the acceptance gate. | P3, bi-modernization

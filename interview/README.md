@@ -7,9 +7,9 @@ Rule: **attempt out loud FIRST**, then compare against the reference. The talkin
 | :--- | :--- | :--- | :--- |
 | 1 | LLD spoken — Extensible Document Parser (Thu) | [lld-extensible-document-parser.md](lld-extensible-document-parser.md) | ⬜ |
 | 2 | Whiteboard the ingestion pipeline from memory (Fri) | [whiteboard-drills.md](whiteboard-drills.md) | ⬜ |
-| 3 | STAR 1 — Production Ingestion Bottleneck (Fri) | [star-stories.md](star-stories.md) | ⬜ |
-| 4 | Company track — list own GenAI projects, pick ADR #1 (Fri) | [star-stories.md](star-stories.md) (bottom section) | ⬜ |
-| 5 | Bank +10 (Fri) | [question-bank.md](question-bank.md) | ⬜ |
+| 3 | STAR 1 — Production Ingestion Bottleneck (Fri) | [star-stories.md](star-stories.md) | 🟡 evidence found, [YOU] slots pending |
+| 4 | Company track — list own GenAI projects, pick ADR #1 (Fri) | [company-projects.md](company-projects.md) | 🟡 drafted, ADR topic recommended |
+| 5 | Bank +10 (Fri) | [question-bank.md](question-bank.md) | 🟡 13 seeded |
 
 **Reference material to compare against after attempting:** `vault/10-concepts/Chunking.md`, `vault/10-concepts/RRF.md`, `vault/10-concepts/Measurement Harness.md`, `adr/001-parsing-chunking-pipeline.md`, `adr/002-hybrid-search-strategy.md`, plus the real code in `track-a/src/app/core/`.
 
