@@ -1,0 +1,914 @@
+{
+    "filename":"Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog 1 3.dtsx",
+     "etlTool":"ssis", 
+     "model":"gpt4o", 
+     "technology":"DBT", 
+     "framework":"multiagent-moa",
+     "response" :{
+ "source": [
+    {
+      "ObjectName": "tblSF_CaseHistory_Import load Query",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "TableOrQuery": "select ID as 'ROW_ID',\nCREATEDDATE as 'OPERATION_DT',\nFIELD as 'FIELDNAME',\nCast(NEWVALUE as nvarchar(500)) as NEWVALUE,\nCast(OLDVALUE as nvarchar(500)) as OLDVALUE,\nNULL as 'ColCode'\nfrom tblSF_casehistory_Import",
+      "FieldNames": {
+        "ROW_ID": "wstr(18)",
+        "OPERATION_DT": "dbTimeStamp",
+        "FIELDNAME": "wstr(255)",
+        "NEWVALUE": "wstr(500)",
+        "OLDVALUE": "wstr(500)",
+        "ColCode": "i4"
+      },
+      "Description": "Extracts data from tblSF_casehistory_Import table for processing.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess\\tblSF_CaseHistory_Import load Query",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {
+        "ROW_ID": "tblSF_casehistory_Import.ID",
+        "OPERATION_DT": "tblSF_casehistory_Import.CREATEDDATE",
+        "FIELDNAME": "tblSF_casehistory_Import.FIELD",
+        "NEWVALUE": "tblSF_casehistory_Import.NEWVALUE",
+        "OLDVALUE": "tblSF_casehistory_Import.OLDVALUE",
+        "ColCode": "NULL"
+      },
+      "ExecutableObjectName": "target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+      "ExecutableRefId": "Package\\target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+      "ControlTaskNumber": 7
+    },
+    {
+      "ObjectName": "Salesforce tblSF_AUDIT_ITEM Owner query from Persistent",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;",
+        "Provider": "MSOLEDBSQL.1",
+        "Database": "InSightETL2",
+        "Server": "FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443"
+      },
+      "TableOrQuery": "-- tbl_S_AUDIT_ITEM load -- old owner\n\nselect \ncasehist1.ID as 'ROW_ID',\ncasehist1.CASEID as 'RECORD_ID',\ncasehist1.CREATEDBYID as 'CREATED_BY',\ncasehist1.CREATEDBYID as 'LAST_UPD_BY',\ncasehist1.CREATEDDATE as 'CREATED',\ncasehist1.CREATEDDATE as 'LAST_UPD',\ncasehist1.CREATEDDATE as 'OPERATION_DT',\n0 as 'MODIFICATION_NUM',\n0 as 'CONFLICT_ID',\n'Salesforce' as 'BUSCOMP_NAME',\ncasehist1.CREATEDBYID as 'USER_ID',\ncasehist1.OLDVALUE as 'Old_Owner',\ncasehist1.NEWVALUE as 'New_Owner',\n'Modify' as 'OPERATION_CD',\nleft(casehist1.FIELD,5) as 'FIELD_NAME'\nfrom tblSF_CASEHISTORY_Import casehist1 join tblSF_USER user1 on casehist1.OLDVALUE=user1.ID\nwhere left(casehist1.FIELD,5) ='Owner'\n\nUNION \n\n-- tbl_S_AUDIT_ITEM load -- new owner\n\nselect \ncasehist1.ID as 'ROW_ID',\ncasehist1.CASEID as 'RECORD_ID',\ncasehist1.CREATEDBYID as 'CREATED_BY',\ncasehist1.CREATEDBYID as 'LAST_UPD_BY',\ncasehist1.CREATEDDATE as 'CREATED',\ncasehist1.CREATEDDATE as 'LAST_UPD',\ncasehist1.CREATEDDATE as 'OPERATION_DT',\n0 as 'MODIFICATION_NUM',\n0 as 'CONFLICT_ID',\n'Salesforce' as 'BUSCOMP_NAME',\ncasehist1.CREATEDBYID as 'USER_ID',\ncasehist1.OLDVALUE as 'Old_Owner',\ncasehist1.NEWVALUE as 'New_Owner',\n'Modify' as 'OPERATION_CD',\nleft(casehist1.FIELD,5) as 'FIELD_NAME'\nfrom tblSF_CASEHISTORY_Import casehist1 join tblSF_USER user1 on casehist1.NEWVALUE=user1.ID\nwhere left(casehist1.FIELD,5) ='Owner'",
+      "FieldNames": {
+        "ROW_ID": "wstr(18)",
+        "RECORD_ID": "wstr(18)",
+        "CREATED_BY": "wstr(18)",
+        "LAST_UPD_BY": "wstr(18)",
+        "CREATED": "dbTimeStamp",
+        "LAST_UPD": "dbTimeStamp",
+        "OPERATION_DT": "dbTimeStamp",
+        "MODIFICATION_NUM": "i4",
+        "CONFLICT_ID": "i4",
+        "BUSCOMP_NAME": "str(10)",
+        "USER_ID": "wstr(18)",
+        "Old_Owner": "wstr(255)",
+        "New_Owner": "wstr(255)",
+        "OPERATION_CD": "str(6)",
+        "FIELD_NAME": "wstr(255)"
+      },
+      "Description": "Extracts data from Salesforce audit item history and performs filtering and joins.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner\\Salesforce tblSF_AUDIT_ITEM Owner query from Persistent",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {},
+      "ExecutableObjectName": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner",
+      "ExecutableRefId": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner",
+      "ControlTaskNumber": 9
+    },
+    {
+      "ObjectName": "Salesforce tblSF_AUDIT_ITEM Status query from _Import",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "TableOrQuery": "-- tbl_S_AUDIT_ITEM load -- status\n\nselect \ncasehist1.ID as 'ROW_ID',\ncasehist1.CASEID as 'RECORD_ID',\ncasehist1.CREATEDBYID as 'CREATED_BY',\ncasehist1.CREATEDBYID as 'LAST_UPD_BY',\ncasehist1.CREATEDDATE as 'CREATED',\ncasehist1.CREATEDDATE as 'LAST_UPD',\ncasehist1.CREATEDDATE as 'OPERATION_DT',\n0 as 'MODIFICATION_NUM',\n0 as 'CONFLICT_ID',\n'Salesforce' as 'BUSCOMP_NAME',\ncasehist1.CREATEDBYID as 'USER_ID',\ncasehist1.OLDVALUE as 'Old_Status',\ncasehist1.NEWVALUE as 'New_Status',\n'Modify' as 'OPERATION_CD',\nFIELD as 'FIELD_NAME'\nfrom tblSF_CASEHISTORY_Import casehist1\nwhere casehist1.FIELD ='Status'",
+      "FieldNames": {
+        "ROW_ID": "wstr",
+        "RECORD_ID": "wstr",
+        "CREATED_BY": "wstr",
+        "LAST_UPD_BY": "wstr",
+        "CREATED": "dbTimeStamp",
+        "LAST_UPD": "dbTimeStamp",
+        "OPERATION_DT": "dbTimeStamp",
+        "MODIFICATION_NUM": "i4",
+        "CONFLICT_ID": "i4",
+        "BUSCOMP_NAME": "str",
+        "USER_ID": "wstr",
+        "Old_Status": "wstr",
+        "New_Status": "wstr",
+        "OPERATION_CD": "str",
+        "FIELD_NAME": "wstr"
+      },
+      "Description": "Extracts data from Salesforce audit item history table for processing.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Status\\Salesforce tblSF_AUDIT_ITEM Status query from _Import",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {
+        "ROW_ID": "ROW_ID",
+        "RECORD_ID": "RECORD_ID",
+        "CREATED_BY": "CREATED_BY",
+        "LAST_UPD_BY": "LAST_UPD_BY",
+        "CREATED": "CREATED",
+        "LAST_UPD": "LAST_UPD",
+        "OPERATION_DT": "OPERATION_DT",
+        "MODIFICATION_NUM": "MODIFICATION_NUM",
+        "CONFLICT_ID": "CONFLICT_ID",
+        "BUSCOMP_NAME": "BUSCOMP_NAME",
+        "USER_ID": "USER_ID",
+        "Old_Status": "Old_Status",
+        "New_Status": "New_Status",
+        "OPERATION_CD": "OPERATION_CD",
+        "FIELD_NAME": "FIELD_NAME"
+      },
+      "ExecutableObjectName": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Status",
+      "ExecutableRefId": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Status",
+      "ControlTaskNumber": 11
+    },
+    {
+      "ObjectName": "Salesforce tblSF_AUDIT_ITEM Source query from _Import",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "TableOrQuery": "-- tbl_S_AUDIT_ITEM load -- Source\n\nselect \ncasehist1.ID as 'ROW_ID',\ncasehist1.CASEID as 'RECORD_ID',\ncasehist1.CREATEDBYID as 'CREATED_BY',\ncasehist1.CREATEDBYID as 'LAST_UPD_BY',\ncasehist1.CREATEDDATE as 'CREATED',\ncasehist1.CREATEDDATE as 'LAST_UPD',\ncasehist1.CREATEDDATE as 'OPERATION_DT',\n0 as 'MODIFICATION_NUM',\n0 as 'CONFLICT_ID',\n'Salesforce' as 'BUSCOMP_NAME',\ncasehist1.CREATEDBYID as 'USER_ID',\ncasehist1.OLDVALUE as 'Old_Source',\ncasehist1.NEWVALUE as 'New_Source',\n'Modify' as 'OPERATION_CD',\nFIELD as 'FIELD_NAME'\nfrom tblSF_CASEHISTORY_Import casehist1\nwhere casehist1.FIELD ='Origin'",
+      "FieldNames": {
+        "ROW_ID": "wstr(18)",
+        "RECORD_ID": "wstr(18)",
+        "CREATED_BY": "wstr(18)",
+        "LAST_UPD_BY": "wstr(18)",
+        "CREATED": "dbTimeStamp",
+        "LAST_UPD": "dbTimeStamp",
+        "OPERATION_DT": "dbTimeStamp",
+        "MODIFICATION_NUM": "i4",
+        "CONFLICT_ID": "i4",
+        "BUSCOMP_NAME": "str(10)",
+        "USER_ID": "wstr(18)",
+        "Old_Source": "wstr(255)",
+        "New_Source": "wstr(255)",
+        "OPERATION_CD": "str(6)",
+        "FIELD_NAME": "wstr(255)"
+      },
+      "Description": "Extracts data from Salesforce tblSF_CASEHISTORY_Import table for audit processing.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Source\\Salesforce tblSF_AUDIT_ITEM Source query from _Import",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {
+        "ROW_ID": "ROW_ID",
+        "RECORD_ID": "RECORD_ID",
+        "CREATED_BY": "CREATED_BY",
+        "LAST_UPD_BY": "LAST_UPD_BY",
+        "CREATED": "CREATED",
+        "LAST_UPD": "LAST_UPD",
+        "OPERATION_DT": "OPERATION_DT",
+        "MODIFICATION_NUM": "MODIFICATION_NUM",
+        "CONFLICT_ID": "CONFLICT_ID",
+        "BUSCOMP_NAME": "BUSCOMP_NAME",
+        "USER_ID": "USER_ID",
+        "Old_Source": "Old_Source",
+        "New_Source": "New_Source",
+        "OPERATION_CD": "OPERATION_CD",
+        "FIELD_NAME": "FIELD_NAME"
+      },
+      "ExecutableObjectName": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Source",
+      "ExecutableRefId": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Source",
+      "ControlTaskNumber": 10
+    },
+    {
+      "ObjectName": "Salesforce tblSF_AUDIT_ITEM New Record query from _Import",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "TableOrQuery": "select \ncasehist1.ID as 'ROW_ID',\ncasehist1.CASEID as 'RECORD_ID',\ncasehist1.CREATEDBYID as 'CREATED_BY',\ncasehist1.CREATEDBYID as 'LAST_UPD_BY',\ncasehist1.CREATEDDATE as 'CREATED',\ncasehist1.CREATEDDATE as 'LAST_UPD',\ncasehist1.CREATEDDATE as 'OPERATION_DT',\n0 as 'MODIFICATION_NUM',\n0 as 'CONFLICT_ID',\n'Salesforce' as 'BUSCOMP_NAME',\ncasehist1.CREATEDBYID as 'USER_ID',\n'New Record' as 'OPERATION_CD',\nFIELD as 'FIELD_NAME'\nfrom tblSF_CASEHISTORY_Import casehist1\nwhere casehist1.FIELD ='created'",
+      "FieldNames": {
+        "ROW_ID": "wstr(18)",
+        "RECORD_ID": "wstr(18)",
+        "CREATED_BY": "wstr(18)",
+        "LAST_UPD_BY": "wstr(18)",
+        "CREATED": "dbTimeStamp",
+        "LAST_UPD": "dbTimeStamp",
+        "OPERATION_DT": "dbTimeStamp",
+        "MODIFICATION_NUM": "i4",
+        "CONFLICT_ID": "i4",
+        "BUSCOMP_NAME": "str(10)",
+        "USER_ID": "wstr(18)",
+        "OPERATION_CD": "str(10)",
+        "FIELD_NAME": "wstr(255)"
+      },
+      "Description": "Extracts data from Salesforce audit item history table for processing.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - New Record\\Salesforce tblSF_AUDIT_ITEM New Record query from _Import",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {
+        "ROW_ID": "ROW_ID",
+        "RECORD_ID": "RECORD_ID",
+        "CREATED_BY": "CREATED_BY",
+        "LAST_UPD_BY": "LAST_UPD_BY",
+        "CREATED": "CREATED",
+        "LAST_UPD": "LAST_UPD",
+        "OPERATION_DT": "OPERATION_DT",
+        "MODIFICATION_NUM": "MODIFICATION_NUM",
+        "CONFLICT_ID": "CONFLICT_ID",
+        "BUSCOMP_NAME": "BUSCOMP_NAME",
+        "USER_ID": "USER_ID",
+        "OPERATION_CD": "OPERATION_CD",
+        "FIELD_NAME": "FIELD_NAME"
+      },
+      "ExecutableObjectName": "target tbl_S_AUDIT_ITEM_SF_NewProcess - New Record",
+      "ExecutableRefId": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - New Record",
+      "ControlTaskNumber": 8
+    },
+    {
+      "ObjectName": "tbl_S_AUDIT_ITEM_TEMP_NewProcess",
+      "SourceType": "DATABASE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "TableOrQuery": "select [ROW_ID],[CREATED],[CREATED_BY],[LAST_UPD],[LAST_UPD_BY],[MODIFICATION_NUM],[CONFLICT_ID],[BUSCOMP_NAME],[FIELD_NAME],[OPERATION_CD],[RECORD_ID],[USER_ID],[OPERATION_DT],[CHILD_BC_NAME],[NEW_VAL],[OLD_VAL],[ITEM_IDEN_NUM],convert(varchar(4000),audit_log) AS 'Audit_Log',[DB_LAST_UPD],[SYNC_DT],[AUDIT_SOURCE_CD],[BC_BASE_TBL],[CHILD_BC_BASE_TBL],[CHILD_RECORD_ID],[DB_LAST_UPD_SRC],[GROUP_NUM],[LINK_NAME],[NODE_NAME],[SRC_DEST_ID],[TBL_NAME],[TBL_RECORD_ID],[Old_Owner],[New_Owner],[Old_Source],[New_Source],[Old_Status],[New_Status],[Old_Mode],[New_Mode],[Trans_LDAP] from [InSightETL2].[dbo].[tbl_S_AUDIT_ITEM_TEMP_NewProcess]",
+      "FieldNames": {
+        "ROW_ID": "wstr",
+        "CREATED": "dbTimeStamp",
+        "CREATED_BY": "wstr",
+        "LAST_UPD": "dbTimeStamp",
+        "LAST_UPD_BY": "wstr",
+        "MODIFICATION_NUM": "numeric",
+        "CONFLICT_ID": "wstr",
+        "BUSCOMP_NAME": "wstr",
+        "FIELD_NAME": "wstr",
+        "OPERATION_CD": "wstr",
+        "RECORD_ID": "wstr",
+        "USER_ID": "wstr",
+        "OPERATION_DT": "dbTimeStamp",
+        "CHILD_BC_NAME": "wstr",
+        "NEW_VAL": "wstr",
+        "OLD_VAL": "wstr",
+        "ITEM_IDEN_NUM": "i8",
+        "Audit_Log": "str",
+        "DB_LAST_UPD": "dbTimeStamp",
+        "SYNC_DT": "dbTimeStamp",
+        "AUDIT_SOURCE_CD": "wstr",
+        "BC_BASE_TBL": "wstr",
+        "CHILD_BC_BASE_TBL": "wstr",
+        "CHILD_RECORD_ID": "wstr",
+        "DB_LAST_UPD_SRC": "wstr",
+        "GROUP_NUM": "wstr",
+        "LINK_NAME": "wstr",
+        "NODE_NAME": "wstr",
+        "SRC_DEST_ID": "wstr",
+        "TBL_NAME": "wstr",
+        "TBL_RECORD_ID": "wstr",
+        "Old_Owner": "str",
+        "New_Owner": "str",
+        "Old_Source": "str",
+        "New_Source": "str",
+        "Old_Status": "str",
+        "New_Status": "str",
+        "Old_Mode": "str",
+        "New_Mode": "str",
+        "Trans_LDAP": "wstr"
+      },
+      "Description": "Extracts data from the source table tbl_S_AUDIT_ITEM_TEMP_NewProcess in the InSightETL2 database.",
+      "SourceCategory": "EXTERNAL_SOURCE",
+      "NextNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess\\tbl_S_AUDIT_ITEM_TEMP_NewProcess",
+      "IncomingConstraints": [],
+      "OutgoingConstraints": [],
+      "ExecutionConditions": {},
+      "IsExternal": true,
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "DataLineage": {},
+      "ExecutableObjectName": "tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess",
+      "ExecutableRefId": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess",
+      "ControlTaskNumber": 16
+    }
+  ],
+  "output": [
+    {
+      "ObjectName": "spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "OutputType": "DATABASE_TABLE",
+      "ExecutableType": "Microsoft.ExecuteSQLTask",
+      "ConnectionDetails": {
+        "DataSource": "FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443",
+        "InitialCatalog": "InSightETL2",
+        "Provider": "MSOLEDBSQL.1",
+        "IntegratedSecurity": "SSPI",
+        "ApplicationName": "SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL"
+      },
+      "ConnectionManagerRef": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "TableName": "",
+      "FieldNames": {},
+      "Description": "Executes stored procedure spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess to process audit log data.",
+      "OutputCategory": "FINAL_DESTINATION",
+      "SQLOperations": [
+        "exec spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess"
+      ],
+      "LoadType": "FULL",
+      "PreviousNodes": [
+        "tbl_S_Audit_Item_Parsed_Log_SF_NewProcess  LDAP Stamping"
+      ],
+      "ExecutableID": "{daad4b05-bad8-4c3b-bca8-959ddaeee7f7}",
+      "IncomingConstraints": [],
+      "IsDestination": true,
+      "FastLoad": {},
+      "ErrorHandling": {},
+      "AccessMode": "SQL Command",
+      "ExecutableObjectName": "spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "ExecutableRefId": "Package\\spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "ControlTaskNumber": 5
+    },
+    {
+      "ObjectName": "spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "OutputType": "DATABASE_TABLE",
+      "ExecutableType": "Microsoft.ExecuteSQLTask",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "ConnectionManagerRef": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "TableName": "",
+      "FieldNames": {},
+      "Description": "Executes stored procedure spSrEtl_UpdateAuditLogFromFullParse_NewProcess to update audit logs.",
+      "OutputCategory": "FINAL_DESTINATION",
+      "SQLOperations": [
+        "Exec spSrEtl_UpdateAuditLogFromFullParse_NewProcess"
+      ],
+      "LoadType": "FULL",
+      "PreviousNodes": [
+        "tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess"
+      ],
+      "ExecutableID": "{52CFED10-255B-4951-AFAF-5C87EED0A8B1}",
+      "IncomingConstraints": [],
+      "IsDestination": true,
+      "FastLoad": {},
+      "ErrorHandling": {},
+      "AccessMode": "SQL Command",
+      "ExecutableObjectName": "spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "ExecutableRefId": "Package\\spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "ControlTaskNumber": 6
+    },
+    {
+      "ObjectName": "tbl_S_Audit_Item_NewProcess",
+      "OutputType": "DATABASE_TABLE",
+      "ExecutableType": "Microsoft.Pipeline",
+      "ConnectionDetails": {
+        "ConnectionString": "Data Source=FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443;Initial Catalog=InSightETL2;Provider=MSOLEDBSQL.1;Integrated Security=SSPI;Application Name=SSIS-Salesforce_Downstream_AuditItem_and_AuditItem_ParsedLog-{24CFFF38-7E47-4B82-9014-93483159C94B}FADBCDP0539.InSightETL;"
+      },
+      "ConnectionManagerRef": "Package.ConnectionManagers[FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443.InSightETL2]",
+      "TableName": "[dbo].[tbl_S_AUDIT_ITEM_NewProcess]",
+      "FieldNames": {
+        "ROW_ID": "wstr",
+        "CREATED": "dbTimeStamp",
+        "CREATED_BY": "wstr",
+        "LAST_UPD": "dbTimeStamp",
+        "LAST_UPD_BY": "wstr",
+        "MODIFICATION_NUM": "numeric",
+        "CONFLICT_ID": "wstr",
+        "BUSCOMP_NAME": "wstr",
+        "FIELD_NAME": "wstr",
+        "OPERATION_CD": "wstr",
+        "RECORD_ID": "wstr",
+        "USER_ID": "wstr",
+        "OPERATION_DT": "dbTimeStamp",
+        "CHILD_BC_NAME": "wstr",
+        "NEW_VAL": "wstr",
+        "OLD_VAL": "wstr",
+        "ITEM_IDEN_NUM": "i8",
+        "Copy of Audit_Log": "str",
+        "DB_LAST_UPD": "dbTimeStamp",
+        "SYNC_DT": "dbTimeStamp",
+        "AUDIT_SOURCE_CD": "wstr",
+        "BC_BASE_TBL": "wstr",
+        "CHILD_BC_BASE_TBL": "wstr",
+        "CHILD_RECORD_ID": "wstr",
+        "DB_LAST_UPD_SRC": "wstr",
+        "GROUP_NUM": "wstr",
+        "LINK_NAME": "wstr",
+        "NODE_NAME": "wstr",
+        "SRC_DEST_ID": "wstr",
+        "TBL_NAME": "wstr",
+        "TBL_RECORD_ID": "wstr",
+        "Old_Owner": "str",
+        "New_Owner": "str",
+        "Old_Source": "str",
+        "New_Source": "str",
+        "Old_Status": "str",
+        "New_Status": "str",
+        "Old_Mode": "str",
+        "New_Mode": "str",
+        "Trans_LDAP": "wstr"
+      },
+      "Description": "Loads data into the target table tbl_S_AUDIT_ITEM_NewProcess in the InSightETL2 database.",
+      "OutputCategory": "FINAL_DESTINATION",
+      "SQLOperations": [],
+      "LoadType": "FULL",
+      "PreviousNodes": [
+        "Data Conversion"
+      ],
+      "ExecutableID": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess\\tbl_S_Audit_Item_NewProcess",
+      "IncomingConstraints": [],
+      "IsDestination": true,
+      "FastLoad": {
+        "FastLoadOptions": "TABLOCK,CHECK_CONSTRAINTS",
+        "FastLoadMaxInsertCommitSize": 2147483647
+      },
+      "ErrorHandling": {
+        "ErrorRowDisposition": "FailComponent",
+        "TruncationRowDisposition": "FailComponent"
+      },
+      "AccessMode": "Table",
+      "ExecutableObjectName": "tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess",
+      "ExecutableRefId": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess",
+      "ControlTaskNumber": 16
+    }
+  ],
+  "transformations": [
+    {
+      "id": "Package\\spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "name": "spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{52CFED10-255B-4951-AFAF-5C87EED0A8B1}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "Exec spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+      "toTask": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess"
+    },
+    {
+      "id": "Package\\Empty tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+      "name": "Empty tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{592dc59a-caa3-4fed-a8df-920be250b3a7}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "--Truncate table  [InSightETL].[dbo].[tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess] \n\nTruncate table  [dbo].[tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess] ",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\Empty tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+      "toTask": "Package\\target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess"
+    },
+    {
+      "id": "Package\\tbl_S_Audit_Item_SF_NewProcess  DataTranslation",
+      "name": "tbl_S_Audit_Item_SF_NewProcess  DataTranslation",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{47c36651-7edb-4f15-ba71-c632677c8eee}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "update tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Mode= 'Button'\nwhere New_Status='Referred' ;\n\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Status = 'Reopen_SF'\nwhere Old_Status = 'Re-Open' ;\n\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Status = 'Reopen_SF'\nwhere New_Status = 'Re-Open' ;\n\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Status = 'Pending Documentation'\nwhere Old_Status = 'Customer/Agent Action Needed' ;\n\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Status = 'Pending Documentation'\nwhere New_Status = 'Customer/Agent Action Needed' ;",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\tbl_S_Audit_Item_SF_NewProcess  DataTranslation",
+      "toTask": "Package\\Clear tbl_S_AUDIT_ITEM_temp_NewProcess"
+    },
+    {
+      "id": "Package\\tbl_S_Audit_Item_Parsed_Log_SF_NewProcess  LDAP Stamping",
+      "name": "tbl_S_Audit_Item_Parsed_Log_SF_NewProcess  LDAP Stamping",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{e51055fb-220f-4585-8594-9e56e35be206}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "--- USER LDAP stamping\n\n-- convert OldVALUE to LDAP from user\n\nupdate tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset OldValue = LDAP_ID__C\nfrom tblSF_USER\nwhere tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.OldValue=tblSF_USER.ID\nand tblSF_USER.LDAP_ID__C IS NOT NULL ;\n\nupdate  tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset OldValue = LDAP_ID\nfrom SF_ODS_SRM_USR\nwhere  tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.OldValue=SF_ODS_SRM_USR.SRC_USR_ID\nand SF_ODS_SRM_USR.LDAP_ID IS NOT NULL\nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_USR] sub where SF_ODS_SRM_USR.SRC_USR_ID = sub.SRC_USR_ID) ;\n\n-- convert New_Owner to LDAP -- user\n\nupdate tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset NewValue = LDAP_ID__C\nfrom tblSF_USER\nwhere tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.NewValue=tblSF_USER.ID\nand tblSF_USER.LDAP_ID__C IS NOT NULL ;\n\n\n-- convert New_Owner to LDAP -- SF_ODS_USR\nupdate  tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset NewValue = LDAP_ID\nfrom SF_ODS_SRM_USR\nwhere  tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.NewValue=SF_ODS_SRM_USR.SRC_USR_ID\nand SF_ODS_SRM_USR.LDAP_ID IS NOT NULL \nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_USR] sub where SF_ODS_SRM_USR.SRC_USR_ID = sub.SRC_USR_ID) ;\n\n\n--- GROUP name stamping\n\n-- convert Old_Owner to Name -- group \n\nupdate tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset OldValue = DEVELOPERNAME\nfrom tblSF_GROUP\nwhere tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.OldValue=tblSF_GROUP.ID\nand tblSF_GROUP.DEVELOPERNAME IS NOT NULL ;\n\n-- convert New_Owner to LDAP -- group\n\nupdate tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess\nset NewValue = DEVELOPERNAME\nfrom tblSF_GROUP\nwhere tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess.NewValue=tblSF_GROUP.ID\nand tblSF_GROUP.DEVELOPERNAME IS NOT NULL ;",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\tbl_S_Audit_Item_Parsed_Log_SF_NewProcess  LDAP Stamping",
+      "toTask": "Package\\spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess"
+    },
+    {
+      "id": "Package\\Empty tbl_S_AUDIT_ITEM_SF_NewProcess",
+      "name": "Empty tbl_S_AUDIT_ITEM_SF_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{cf05658e-6508-420d-bcda-6789093ea0e8}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "--Truncate Table [InSightETL].[dbo].[tbl_S_AUDIT_ITEM_SF_NewProcess]\n\nTruncate Table [InSightETL2].[dbo].[tbl_S_AUDIT_ITEM_SF_NewProcess]",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\Empty tbl_S_AUDIT_ITEM_SF_NewProcess",
+      "toTask": "Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner"
+    },
+    {
+      "id": "Package\\spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "name": "spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{daad4b05-bad8-4c3b-bca8-959ddaeee7f7}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "exec  spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+      "toTask": "Package\\Audit_Item_Parsed_Log_SF_NewProcess  to  Audit_Item_Parsed_Log_NewProcess"
+    },
+    {
+      "id": "Package\\Clear tbl_S_AUDIT_ITEM_temp_NewProcess",
+      "name": "Clear tbl_S_AUDIT_ITEM_temp_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{599b5298-cadd-4d81-8a01-51cc54005453}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "--Truncate Table [InSightETL].[dbo].[tbl_S_AUDIT_ITEM_Temp_NewProcess]\n\nTruncate table [InSightETL2].[dbo].[tbl_S_AUDIT_ITEM_Temp_NewProcess]",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\Clear tbl_S_AUDIT_ITEM_temp_NewProcess",
+      "toTask": "Package\\tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess"
+    },
+    {
+      "id": "Package\\tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess",
+      "name": "tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{7CE3C515-3E31-4868-9C00-3F1284681DDF}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "delete from tbl_S_AUDIT_ITEM_Temp_NewProcess\nwhere row_ID in (select row_ID from tbl_S_AUDIT_ITEM_SF_NewProcess) ;\n\n\ninsert into tbl_S_AUDIT_ITEM_Temp_NewProcess\nselect * from tbl_S_AUDIT_ITEM_SF_NewProcess ;",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess",
+      "toTask": "Package\\spSrEtl_UpdateAuditLogFromFullParse_NewProcess"
+    },
+    {
+      "id": "Package\\Audit_Item_Parsed_Log_SF_NewProcess  to  Audit_Item_Parsed_Log_NewProcess",
+      "name": "Audit_Item_Parsed_Log_SF_NewProcess  to  Audit_Item_Parsed_Log_NewProcess",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{BEFE2805-F315-4110-AF5B-827BDD00E38D}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "delete from tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess\nfrom tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess where tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess.row_id =tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess.row_id\nand tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess.Operation_DT =tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess.Operation_DT\nand tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess.FieldName =tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess.FieldName ;\n\ninsert into tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess\nselect * from tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess ;",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\Audit_Item_Parsed_Log_SF_NewProcess  to  Audit_Item_Parsed_Log_NewProcess",
+      "toTask": "Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess"
+    },
+    {
+      "id": "Package\\tbl_S_Audit_Item_SF_NewProcess  LDAP Stamping",
+      "name": "tbl_S_Audit_Item_SF_NewProcess  LDAP Stamping",
+      "type": "ExecuteSQL (Microsoft.ExecuteSQLTask)",
+      "description": "Execute SQL Task",
+      "dtsid": "{c1826b96-e319-406f-8ed2-9ce5e9119c3f}",
+      "connection": "{24CFFF38-7E47-4B82-9014-93483159C94B}",
+      "logic": "--- USER LDAP stamping\n\n-- convert Old_Owner to LDAP -- user\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Owner = LDAP_ID__C\nfrom tblSF_USER\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.Old_Owner=tblSF_USER.ID\nand tblSF_USER.LDAP_ID__C IS NOT NULL ;\n\nupdate  tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Owner = LDAP_ID\nfrom SF_ODS_SRM_USR\nwhere   tbl_S_AUDIT_ITEM_SF_NewProcess.Old_Owner=SF_ODS_SRM_USR.SRC_USR_ID\nand SF_ODS_SRM_USR.LDAP_ID IS NOT NULL\nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_USR] sub where SF_ODS_SRM_USR.SRC_USR_ID = sub.SRC_USR_ID) ;\n\n-- convert New_Owner to LDAP -- user\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Owner = LDAP_ID__C\nfrom tblSF_USER\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.New_Owner=tblSF_USER.ID\nand tblSF_USER.LDAP_ID__C IS NOT NULL ;\n\n-- convert New_Owner to LDAP -- SF_ODS_USR\nupdate  tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Owner = LDAP_ID\nfrom SF_ODS_SRM_USR\nwhere  tbl_S_AUDIT_ITEM_SF_NewProcess.New_Owner=SF_ODS_SRM_USR.SRC_USR_ID\nand SF_ODS_SRM_USR.LDAP_ID IS NOT NULL \nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_USR] sub where SF_ODS_SRM_USR.SRC_USR_ID = sub.SRC_USR_ID) ;\n\n\n\n--- GROUP name stamping\n\n-- convert Old_Owner to Name -- group \n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Owner = DEVELOPERNAME\nfrom tblSF_GROUP\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.Old_Owner=tblSF_GROUP.ID\nand tblSF_GROUP.DEVELOPERNAME IS NOT NULL ;\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset Old_Owner = DEVLPR_NM\nfrom SF_ODS_SRM_GRP\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.Old_Owner=SF_ODS_SRM_GRP.SRC_GRP_ID\nand SF_ODS_SRM_GRP.DEVLPR_NM IS NOT NULL \nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_GRP] sub where SF_ODS_SRM_GRP.SRC_GRP_ID = sub.SRC_GRP_ID) ;\n\n\n-- convert New_Owner to LDAP -- group\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Owner = DEVELOPERNAME\nfrom tblSF_GROUP\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.New_Owner=tblSF_GROUP.ID\nand tblSF_GROUP.DEVELOPERNAME IS NOT NULL ;\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset New_Owner = DEVLPR_NM\nfrom SF_ODS_SRM_GRP\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.New_Owner=SF_ODS_SRM_GRP.SRC_GRP_ID\nand SF_ODS_SRM_GRP.DEVLPR_NM IS NOT NULL \nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_GRP] sub where SF_ODS_SRM_GRP.SRC_GRP_ID = sub.SRC_GRP_ID) ;\n\n\n-- load TRANS_LDAP -- uses USER_ID joined to tblSF_USER\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset TRANS_LDAP = tblSF_USER.LDAP_ID__C\nfrom tblSF_USER\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.[USER_ID]=tblSF_USER.ID\nand tblSF_USER.LDAP_ID__C IS NOT NULL ;\n\n\nupdate tbl_S_AUDIT_ITEM_SF_NewProcess\nset TRANS_LDAP =SF_ODS_SRM_USR.LDAP_ID\nfrom SF_ODS_SRM_USR\nwhere tbl_S_AUDIT_ITEM_SF_NewProcess.[USER_ID]=SF_ODS_SRM_USR.SRC_USR_ID\nand SF_ODS_SRM_USR.LDAP_ID IS NOT NULL \nand TRANS_EFF_TMSP is not null and TRANS_EXP_TMSP is null \nAnd TRANS_EFF_TMSP = (Select MAX(TRANS_EFF_TMSP) as TRANS_EFF_TMSP From [InSightETL2].[dbo].[SF_ODS_SRM_USR] sub where SF_ODS_SRM_USR.SRC_USR_ID = sub.SRC_USR_ID) ;",
+      "precedenceCondition": "Success",
+      "fromTask": "Package\\tbl_S_Audit_Item_SF_NewProcess  LDAP Stamping",
+      "toTask": "Package\\tbl_S_Audit_Item_SF_NewProcess  DataTranslation"
+    }
+  ],
+  "customCalculations": [
+    {
+      "Name": "Data Conversion (Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert data types for input fields.",
+      "Expression": "Conversion logic applied to input fields: BUSCOMP_NAME, Old_Owner, New_Owner, OPERATION_CD.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "BUSCOMP_NAME",
+        "Old_Owner",
+        "New_Owner",
+        "OPERATION_CD"
+      ],
+      "OutputFields": [
+        "Copy of BUSCOMP_NAME",
+        "Copy of Old_Owner",
+        "Copy of New_Owner",
+        "Copy of OPERATION_CD"
+      ]
+    },
+    {
+      "Name": "Data Conversion (Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Source\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert input fields to specified data types.",
+      "Expression": "Conversion logic applied to input fields: BUSCOMP_NAME, Old_Source, New_Source, OPERATION_CD.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "BUSCOMP_NAME",
+        "Old_Source",
+        "New_Source",
+        "OPERATION_CD"
+      ],
+      "OutputFields": [
+        "Copy of BUSCOMP_NAME",
+        "Copy of Old_Source",
+        "Copy of New_Source",
+        "Copy of OPERATION_CD"
+      ]
+    },
+    {
+      "Name": "Data Conversion (Package\\target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert data types for fields.",
+      "Expression": "Conversion logic applied to input fields: FIELDNAME, NEWVALUE, OLDVALUE. Output fields: Copy of FIELDNAME, Copy of NEWVALUE, Copy of OLDVALUE.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "FIELDNAME",
+        "NEWVALUE",
+        "OLDVALUE"
+      ],
+      "OutputFields": [
+        "Copy of FIELDNAME",
+        "Copy of NEWVALUE",
+        "Copy of OLDVALUE"
+      ]
+    },
+    {
+      "Name": "Data Conversion (Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - Status\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert input fields to specified data types.",
+      "Expression": "Conversion logic applied to input fields: BUSCOMP_NAME, Old_Status, New_Status, OPERATION_CD.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "BUSCOMP_NAME",
+        "Old_Status",
+        "New_Status",
+        "OPERATION_CD"
+      ],
+      "OutputFields": [
+        "Copy of BUSCOMP_NAME",
+        "Copy of Old_Status",
+        "Copy of New_Status",
+        "Copy of OPERATION_CD"
+      ]
+    },
+    {
+      "Name": "Data Conversion (Package\\tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert data types.",
+      "Expression": "Conversion logic applied to Audit_Log column to produce Copy of Audit_Log.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "Audit_Log"
+      ],
+      "OutputFields": [
+        "Copy of Audit_Log",
+        "ErrorCode",
+        "ErrorColumn"
+      ]
+    },
+    {
+      "Name": "Data Conversion (Package\\target tbl_S_AUDIT_ITEM_SF_NewProcess - New Record\\Data Conversion)",
+      "Description": "Data Conversion transformation to convert input fields to specified data types.",
+      "Expression": "Conversion logic for input fields BUSCOMP_NAME and OPERATION_CD to wstr data type.",
+      "ComponentType": "Data Conversion",
+      "CalculationType": "CONVERSION",
+      "InputFields": [
+        "BUSCOMP_NAME",
+        "OPERATION_CD"
+      ],
+      "OutputFields": [
+        "Copy of BUSCOMP_NAME",
+        "Copy of OPERATION_CD"
+      ]
+    }
+  ],
+  "jsonlineage": [
+    {
+      "Control Flow": {
+        "nodes": [
+          {
+            "id": "n0",
+            "name": "Empty tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+            "description": [
+              "Truncates the table [dbo].[tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess] in the InSightETL2 database."
+            ]
+          },
+          {
+            "id": "n1",
+            "name": "target tbl_S_AUDIT_ITEM_parsed_log_SF_NewProcess",
+            "description": [
+              "Loads transformed data into the target table tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess."
+            ]
+          },
+          {
+            "id": "n2",
+            "name": "tbl_S_Audit_Item_Parsed_Log_SF_NewProcess  LDAP Stamping",
+            "description": [
+              "Executes SQL statements to perform LDAP stamping and group name stamping on the tbl_S_AUDIT_ITEM_Parsed_log_SF_NewProcess table."
+            ]
+          },
+          {
+            "id": "n3",
+            "name": "tbl_S_Audit_Item_SF_NewProcess  DataTranslation",
+            "description": [
+              "Executes multiple SQL update statements to transform data in the tbl_S_AUDIT_ITEM_SF_NewProcess table. Updates various status fields based on specific conditions."
+            ]
+          },
+          {
+            "id": "n4",
+            "name": "Clear tbl_S_AUDIT_ITEM_temp_NewProcess",
+            "description": [
+              "Truncates the table tbl_S_AUDIT_ITEM_Temp_NewProcess in the InSightETL2 database."
+            ]
+          },
+          {
+            "id": "n5",
+            "name": "tbl_S_Audit_Item_SF_NewProcess  to  tbl_S_Audit_Item_Temp_NewProcess",
+            "description": [
+              "Executes SQL statements to delete rows from tbl_S_AUDIT_ITEM_Temp_NewProcess based on matching row_IDs in tbl_S_AUDIT_ITEM_SF_NewProcess, and then inserts all rows from tbl_S_AUDIT_ITEM_SF_NewProcess into tbl_S_AUDIT_ITEM_Temp_NewProcess."
+            ]
+          },
+          {
+            "id": "n6",
+            "name": "spSrEtl_UpdateAuditLogFromFullParse_NewProcess",
+            "description": [
+              "Executes stored procedure spSrEtl_UpdateAuditLogFromFullParse_NewProcess to update audit logs."
+            ]
+          },
+          {
+            "id": "n7",
+            "name": "tbl_S_Audit_Item_Temp_NewProcess  to  tbl_S_Audit_Item_NewProcess",
+            "description": [
+              "Loads data into the target table tbl_S_AUDIT_ITEM_NewProcess in the InSightETL2 database."
+            ]
+          },
+          {
+            "id": "n8",
+            "name": "Audit_Item_Parsed_Log_SF_NewProcess  to  Audit_Item_Parsed_Log_NewProcess",
+            "description": [
+              "Executes SQL statements to delete matching rows from tbl_S_AUDIT_ITEM_Parsed_Log_NewProcess based on conditions and then inserts all rows from tbl_S_AUDIT_ITEM_Parsed_Log_SF_NewProcess."
+            ]
+          },
+          {
+            "id": "n9",
+            "name": "spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess",
+            "description": [
+              "Executes stored procedure spSfEtl_Audit_Parsed_LogDataTranslation_NewProcess to process audit log data."
+            ]
+          },
+          {
+            "id": "n10",
+            "name": "Empty tbl_S_AUDIT_ITEM_SF_NewProcess",
+            "description": [
+              "Truncates tables in the InSightETL and InSightETL2 databases."
+            ]
+          },
+          {
+            "id": "n11",
+            "name": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Owner",
+            "description": [
+              "Loads transformed data into the target database table."
+            ]
+          },
+          {
+            "id": "n12",
+            "name": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Status",
+            "description": [
+              "Loads transformed data into the target audit item table."
+            ]
+          },
+          {
+            "id": "n13",
+            "name": "target tbl_S_AUDIT_ITEM_SF_NewProcess - Source",
+            "description": [
+              "Loads transformed data into the target table tbl_S_AUDIT_ITEM_SF_NewProcess."
+            ]
+          },
+          {
+            "id": "n14",
+            "name": "target tbl_S_AUDIT_ITEM_SF_NewProcess - New Record",
+            "description": [
+              "Loads transformed data into the target audit item table."
+            ]
+          },
+          {
+            "id": "n15",
+            "name": "tbl_S_Audit_Item_SF_NewProcess  LDAP Stamping",
+            "description": [
+              "Executes SQL statements to update LDAP and group name fields in tbl_S_AUDIT_ITEM_SF_NewProcess based on user and group mappings."
+            ]
+          }
+        ],
+        "edges": [
+          {
+            "start": "n0",
+            "end": "n1",
+            "fields": []
+          },
+          {
+            "start": "n1",
+            "end": "n2",
+            "fields": [
+              "['ROW_ID', 'OPERATION_DT', 'Copy of FIELDNAME', 'Copy of NEWVALUE', 'Copy of OLDVALUE', 'ColCode']"
+            ]
+          },
+          {
+            "start": "n2",
+            "end": "n9",
+            "fields": [
+              "['OldValue', 'NewValue']"
+            ]
+          },
+          {
+            "start": "n3",
+            "end": "n4",
+            "fields": [
+              "['New_Mode', 'Old_Status', 'New_Status']"
+            ]
+          },
+          {
+            "start": "n4",
+            "end": "n5",
+            "fields": []
+          },
+          {
+            "start": "n5",
+            "end": "n6",
+            "fields": [
+              "['row_ID', '*']"
+            ]
+          },
+          {
+            "start": "n6",
+            "end": "n7",
+            "fields": []
+          },
+          {
+            "start": "n8",
+            "end": "n7",
+            "fields": [
+              "['ROW_ID', 'OPERATION_DT', 'FIELDNAME', 'NEWVALUE', 'OLDVALUE', 'ColCode', 'ErrorCode', 'ErrorColumn']"
+            ]
+          },
+          {
+            "start": "n9",
+            "end": "n8",
+            "fields": []
+          },
+          {
+            "start": "n10",
+            "end": "n11",
+            "fields": []
+          },
+          {
+            "start": "n11",
+            "end": "n12",
+            "fields": [
+              "['ROW_ID', 'RECORD_ID', 'CREATED_BY', 'LAST_UPD_BY', 'CREATED', 'LAST_UPD', 'OPERATION_DT', 'MODIFICATION_NUM', 'CONFLICT_ID', 'BUSCOMP_NAME', 'FIELD_NAME', 'OPERATION_CD', 'USER_ID']"
+            ]
+          },
+          {
+            "start": "n12",
+            "end": "n13",
+            "fields": [
+              "['ROW_ID', 'RECORD_ID', 'CREATED_BY', 'LAST_UPD_BY', 'CREATED', 'LAST_UPD', 'OPERATION_DT', 'MODIFICATION_NUM', 'CONFLICT_ID', 'BUSCOMP_NAME', 'FIELD_NAME', 'OPERATION_CD', 'USER_ID']"
+            ]
+          },
+          {
+            "start": "n13",
+            "end": "n14",
+            "fields": [
+              "['ROW_ID', 'RECORD_ID', 'CREATED_BY', 'LAST_UPD_BY', 'CREATED', 'LAST_UPD', 'OPERATION_DT', 'MODIFICATION_NUM', 'CONFLICT_ID', 'BUSCOMP_NAME', 'FIELD_NAME', 'OPERATION_CD', 'USER_ID']"
+            ]
+          },
+          {
+            "start": "n14",
+            "end": "n15",
+            "fields": [
+              "['ROW_ID', 'RECORD_ID', 'CREATED_BY', 'LAST_UPD_BY', 'CREATED', 'LAST_UPD', 'OPERATION_DT', 'MODIFICATION_NUM', 'CONFLICT_ID', 'BUSCOMP_NAME', 'FIELD_NAME', 'OPERATION_CD', 'USER_ID', 'Copy of OPERATION_CD', 'Copy of BUSCOMP_NAME']"
+            ]
+          },
+          {
+            "start": "n15",
+            "end": "n3",
+            "fields": [
+              "['Old_Owner', 'New_Owner', 'TRANS_LDAP']"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "summary": [
+    "# SSIS Technical Analysis for Integration Engineers\n\n---\n\n## 1. PACKAGE ARCHITECTURE OVERVIEW\n\n### High-Level Summary\nThe SSIS package processes Salesforce audit data by extracting, transforming, and loading it into multiple target tables. The workflow follows an **Extract-Transform-Load (ETL)** pattern, with intermediate staging tables used for temporary data storage and processing. The package incorporates SQL-based transformations, data type conversions, and stored procedure executions to ensure data consistency and compatibility.\n\n### Data Flow Pattern\n- **Extract**: Data is sourced from Salesforce audit tables (`tblSF_CASEHISTORY_Import`) and related tables (`tblSF_USER`, `tblSF_GROUP`).\n- **Transform**: Data undergoes type conversions, SQL-based updates, and business rule applications.\n- **Load**: Transformed data is loaded into final destination tables (`tbl_S_AUDIT_ITEM_SF_NewProcess`, `tbl_S_AUDIT_ITEM_NewProcess`).\n\n### Architectural Patterns\n- **Staging Approach**: Temporary tables (`tbl_S_AUDIT_ITEM_Temp_NewProcess`) are used for intermediate processing.\n- **Incremental Load**: Data is updated and inserted based on primary keys (`ROW_ID`).\n- **SCD Handling**: Slowly Changing Dimensions are managed via SQL updates for fields like `Old_Owner`, `New_Owner`, and `TRANS_LDAP`.\n\n### Key Components and Relationships\n- **Source Components**: Extract data from Salesforce audit tables.\n- **Transformations**: Apply data type conversions and SQL-based updates.\n- **Destination Components**: Load data into final tables with fast-load options enabled.\n\n### Critical Path Components\n- **Data Conversion Tasks**: Ensure compatibility between source and destination schemas.\n- **SQL Execution Tasks**: Apply business rules and update fields based on mappings.\n- **Fast Load Destination**: Optimize data insertion into target tables.\n\n### Potential Bottlenecks\n- Complex SQL joins and updates in transformation tasks may impact performance.\n- Large data volumes in staging tables could lead to memory and disk I/O constraints.\n\n---\n\n## 2. SOURCE COMPONENTS ANALYSIS\n\n### tblSF_CaseHistory_Import load Query\n**Component Type:** Microsoft.Pipeline  \n**Source Type:** DATABASE  \n\n**Connection Details:**\n- **Server:** FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443\n- **Database:** InSightETL2\n- **Authentication:** Integrated Security (SSPI)\n\n**Source Definition:**\n```sql\nSELECT \n    ID AS 'ROW_ID',\n    CREATEDDATE AS 'OPERATION_DT',\n    FIELD AS 'FIELDNAME',\n    CAST(NEWVALUE AS NVARCHAR(500)) AS NEWVALUE,\n    CAST(OLDVALUE AS NVARCHAR(500)) AS OLDVALUE,\n    NULL AS 'ColCode'\nFROM tblSF_casehistory_Import\n```\n\n**Output Schema:**\n| Column Name   | Data Type     | Description                          |\n|---------------|---------------|--------------------------------------|\n| ROW_ID        | wstr(18)      | Primary key for audit records        |\n| OPERATION_DT  | dbTimeStamp   | Operation timestamp                  |\n| FIELDNAME     | wstr(255)     | Field name being audited             |\n| NEWVALUE      | wstr(500)     | New value of the field               |\n| OLDVALUE      | wstr(500)     | Old value of the field               |\n| ColCode       | i4            | Placeholder column                   |\n\n**Technical Notes:**\n- **Query Complexity**: Simple SELECT statement with CAST operations for type conversion.\n- **Optimization Opportunities**: Ensure indexes exist on `ID`, `CREATEDDATE`, and `FIELD` for faster query execution.\n- **Parameterization**: No parameters used; consider adding filters for incremental extraction.\n\n---\n\n## 3. TRANSFORMATION WORKFLOW ANALYSIS\n\n### Data Conversion\n**Component Type:** DATA_CONVERSION (Microsoft.Pipeline)  \n**Execution Order:** Sequential, after source extraction  \n\n**Description:**\nPerforms data type conversions for columns such as `BUSCOMP_NAME`, `Old_Owner`, `New_Owner`, and `OPERATION_CD` to ensure compatibility with downstream components.\n\n**Configuration Details:**\n```plaintext\nConverts data types for columns:\n- BUSCOMP_NAME: str(10) → wstr(10)\n- Old_Owner: wstr(255) → str(255)\n- New_Owner: wstr(255) → str(255)\n- OPERATION_CD: str(6) → wstr(6)\n```\n\n**Input/Output Analysis:**\n- **Input Schema:** `BUSCOMP_NAME`, `Old_Owner`, `New_Owner`, `OPERATION_CD`\n- **Output Schema:** `Copy of BUSCOMP_NAME`, `Copy of Old_Owner`, `Copy of New_Owner`, `Copy of OPERATION_CD`\n\n**Technical Considerations:**\n- **Efficiency**: Data type conversions are lightweight but should be optimized for large datasets.\n- **Error Handling**: Configured to fail on truncation or conversion errors.\n- **Data Quality**: Ensure source data adheres to expected formats to avoid runtime issues.\n\n---\n\n## 4. CUSTOM EXPRESSIONS AND DERIVED COLUMN ANALYSIS\n\nNo custom calculations or derived columns are defined in this package.\n\n---\n\n## 5. DESTINATION COMPONENTS ANALYSIS\n\n### tbl_S_AUDIT_ITEM_SF_NewProcess\n**Destination Type:** DATABASE_TABLE  \n**Component:** Microsoft.Pipeline  \n\n**Connection Details:**\n- **Server:** FMAVWP000044.aws.CLIENT_Binsurance.cloud,1443\n- **Database:** InSightETL2\n- **Target:** `[dbo].[tbl_S_AUDIT_ITEM_SF_NewProcess]`\n\n**Input Mapping:**\n| Source Column   | Destination Column | Data Type     | Transformation       |\n|------------------|--------------------|---------------|----------------------|\n| ROW_ID          | ROW_ID             | wstr(18)      | Direct mapping       |\n| RECORD_ID       | RECORD_ID          | wstr(18)      | Direct mapping       |\n| CREATED_BY      | CREATED_BY         | wstr(18)      | Direct mapping       |\n| LAST_UPD_BY     | LAST_UPD_BY        | wstr(18)      | Direct mapping       |\n| CREATED         | CREATED            | dbTimeStamp   | Direct mapping       |\n| LAST_UPD        | LAST_UPD           | dbTimeStamp   | Direct mapping       |\n\n**Technical Notes:**\n- **Insertion Method**: Fast load enabled with `TABLOCK` and `CHECK_CONSTRAINTS`.\n- **Transaction Handling**: Configured to fail on error or truncation.\n- **Index Impacts**: Ensure indexes exist on primary keys for efficient data retrieval.\n\n---\n\n## 6. CONTROL FLOW AND PRECEDENCE ANALYSIS\n\n- **Precedence Constraints**: Sequential execution with dependencies between source extraction, transformations, and destination loading.\n- **Parallel Execution**: Limited parallelism due to sequential dependencies.\n- **Conditional Logic**: None defined; all tasks execute unconditionally.\n\n---\n\n## 7. ERROR HANDLING AND LOGGING ASSESSMENT\n\n- **Error Handling**: Configured to fail on truncation or conversion errors in data conversion tasks.\n- **Logging**: No explicit logging mechanisms defined; consider adding event handlers for better traceability.\n- **Transaction Handling**: SQL tasks are atomic but lack rollback mechanisms for multi-step failures.\n\n---\n\n## 8. PERFORMANCE OPTIMIZATION OPPORTUNITIES\n\n- **Source Queries**: Optimize SQL queries with indexes and filters for incremental extraction.\n- **Transformations**: Minimize redundant data type conversions by consolidating tasks.\n- **Destination Loading**: Use batch sizes and commit intervals to reduce transaction overhead.\n\n---\n\n## 9. DATA LINEAGE AND DEPENDENCY MAPPING\n\n### Field-Level Lineage\n| Source Field   | Transformation Logic | Destination Field |\n|----------------|----------------------|-------------------|\n| ROW_ID         | Direct mapping       | ROW_ID            |\n| CREATEDDATE    | Direct mapping       | OPERATION_DT      |\n| FIELD          | Direct mapping       | FIELD_NAME        |\n| NEWVALUE       | Direct mapping       | NEW_VAL           |\n| OLDVALUE       | Direct mapping       | OLD_VAL           |\n\n### Business Rules\n- **LDAP Stamping**: Updates `Old_Owner` and `New_Owner` fields based on user and group mappings.\n- **Status Translation**: Applies business rules to transform `Old_Status` and `New_Status`.\n\n---\n\n## SSIS-SPECIFIC TECHNICAL GUIDELINES\n\n- **Buffer Size Optimization**: Configure buffer sizes to handle large data volumes efficiently.\n- **Lookup Cache Modes**: Use full cache mode for lookup transformations to improve performance.\n- **Package Configuration**: Parameterize connection strings and SQL queries for reusability.\n- **Design Patterns**: Follow best practices for staging and incremental loads.\n\n---\n\nThis analysis provides actionable insights for SSIS engineers to optimize and maintain the package effectively."
+  ],
+  "executivesummary": "# BUSINESS REQUIREMENTS DOCUMENT\n\n## Salesforce Audit Data Integration Project\n\n### DOCUMENT CONTROL\n| Document Information | Details |\n|----------------------|---------|\n| Document ID | BRD-SF-Audit-Integration |\n| Version | 1.0 |\n| Date | [Current Date] |\n| Prepared By | Business Analysis Team |\n| Status | Draft |\n\n### DOCUMENT REVISION HISTORY\n| Version | Date | Description of Changes | Author |\n|---------|------|------------------------|--------|\n| 1.0 | [Current Date] | Initial Draft | Business Analysis Team |\n\n---\n\n### 1. EXECUTIVE SUMMARY\nThe Salesforce Audit Data Integration Project aims to streamline the processing of audit data from Salesforce into the organization's data warehouse. This initiative will enhance data visibility, improve decision-making capabilities, and ensure compliance with audit and regulatory requirements. By automating the extraction, transformation, and loading (ETL) of audit data, the project will reduce manual effort, improve data accuracy, and provide timely insights to business stakeholders.\n\nThis project aligns with the organization's strategic goals of leveraging data for operational efficiency and compliance. It addresses the current challenges of fragmented audit data processing and inconsistent reporting, enabling a unified and reliable data integration framework.\n\n---\n\n### 2. PROJECT BACKGROUND & OBJECTIVES\n\n#### 2.1 Business Context\nThe organization relies on Salesforce for managing customer interactions and case histories. Audit data from Salesforce is critical for tracking changes, ensuring compliance, and supporting operational decisions. Currently, audit data processing involves manual interventions and lacks consistency, leading to delays and potential errors.\n\nThe need for a robust data integration solution arises from:\n- Increasing data volumes and complexity.\n- Regulatory requirements for audit trail transparency.\n- Business demand for timely and accurate reporting.\n\n#### 2.2 Project Objectives\n1. Automate the integration of Salesforce audit data into the data warehouse to reduce manual effort.\n2. Ensure data accuracy and consistency by applying business rules and validations during processing.\n3. Provide timely access to audit data for compliance and operational reporting.\n4. Support decision-making by delivering actionable insights through integrated data.\n5. Enhance scalability to accommodate growing data volumes and business needs.\n\n#### 2.3 Business Stakeholders\n| Stakeholder | Role/Interest |\n|-------------|---------------|\n| Compliance Team | Ensure audit data meets regulatory requirements. |\n| Operations Team | Use audit data for process improvement and decision-making. |\n| IT Team | Maintain and optimize the data integration solution. |\n| Executive Leadership | Leverage insights for strategic planning and governance. |\n\n---\n\n### 3. BUSINESS REQUIREMENTS\n\n#### 3.1 Data Source Requirements\n| Data Source | Business Purpose | Ownership | Frequency | Dependencies | Data Quality Expectations |\n|-------------|------------------|-----------|-----------|--------------|---------------------------|\n| Salesforce Audit Tables (`tblSF_CASEHISTORY_Import`) | Track changes in case history for compliance and reporting. | Salesforce Admin Team | Daily | Salesforce system availability | Accurate and complete audit records. |\n| Salesforce User Table (`tblSF_USER`) | Map user IDs to user details for audit tracking. | Salesforce Admin Team | Daily | User data updates in Salesforce | Consistent and up-to-date user information. |\n| Salesforce Group Table (`tblSF_GROUP`) | Map group IDs to group details for audit tracking. | Salesforce Admin Team | Daily | Group data updates in Salesforce | Accurate group mappings. |\n\n#### 3.2 Business Process Requirements\n- **Process Flows**: Audit data must support compliance reporting and operational analysis workflows.\n- **Business Rules**: Apply rules to map user and group IDs to their respective details and translate status changes.\n- **Validations**: Ensure data completeness and accuracy during extraction and transformation.\n- **Transformations**: Convert data types and apply business logic to align with reporting requirements.\n\n#### 3.3 Calculation & Derivation Requirements\n- **Business Calculations**: Derive fields such as `Old_Owner` and `New_Owner` based on user and group mappings.\n- **Context**: These calculations are essential for tracking ownership changes in audit records.\n- **Precision**: Ensure accurate mapping and rounding where applicable.\n- **Usage**: Support compliance audits and operational decision-making.\n\n#### 3.4 Output Requirements\n| Output | Business Purpose | Target Audience | Data Elements | Format | Frequency |\n|--------|------------------|-----------------|---------------|--------|----------|\n| Final Audit Table (`tbl_S_AUDIT_ITEM_SF_NewProcess`) | Consolidated audit data for compliance and reporting. | Compliance Team, Operations Team | Audit fields such as `ROW_ID`, `FIELDNAME`, `NEWVALUE`, `OLDVALUE` | Tabular | Daily |\n| Operational Reports | Insights into case history changes. | Operations Team | Key audit metrics | Dashboards | Weekly |\n\n---\n\n### 4. FUNCTIONAL REQUIREMENTS\n- Automate data extraction from Salesforce audit tables.\n- Apply business rules to transform and validate data.\n- Load transformed data into the data warehouse for reporting.\n- Provide scalable and efficient data processing to handle growing volumes.\n- Ensure data lineage and traceability for compliance purposes.\n\n---\n\n### 5. BUSINESS RULES\n- Validate audit records for completeness and accuracy during extraction.\n- Map user and group IDs to their respective details for ownership tracking.\n- Translate status changes based on predefined business logic.\n- Ensure data type compatibility between source and destination systems.\n\n---\n\n### 6. REPORTING & ANALYTICS REQUIREMENTS\n- Generate compliance reports with detailed audit trails.\n- Provide dashboards for operational insights into case history changes.\n- Enable ad-hoc analysis of audit data for decision support.\n\n---\n\n### 7. DATA QUALITY REQUIREMENTS\n- Ensure audit data is complete, accurate, and consistent.\n- Validate data during extraction and transformation to prevent errors.\n- Maintain data timeliness by processing updates daily.\n- Implement governance practices to monitor and improve data quality.\n\n---\n\n### 8. PERFORMANCE REQUIREMENTS\n- Ensure data processing completes within the daily operational window.\n- Optimize system response times for reporting and analytics.\n- Support high data volumes without performance degradation.\n\n---\n\n### 9. SECURITY & COMPLIANCE REQUIREMENTS\n- Protect audit data with access controls and encryption.\n- Ensure compliance with regulatory requirements for data handling.\n- Provide audit trails for all data processing activities.\n- Enable tracking and monitoring of data access and changes.\n\n---\n\n### 10. SUCCESS CRITERIA\n- Reduction in manual effort for audit data processing.\n- Improved accuracy and timeliness of audit data.\n- Enhanced compliance reporting capabilities.\n- Increased operational efficiency through actionable insights.\n\n---\n\n### 11. IMPLEMENTATION CONSIDERATIONS\n- Phase implementation to minimize business disruption.\n- Provide training to stakeholders on new reporting capabilities.\n- Ensure business readiness by validating data and processes before go-live.\n\n---\n\n### 12. RISKS & ASSUMPTIONS\n- **Risks**: Delays in Salesforce data availability may impact processing timelines.\n- **Assumptions**: Salesforce data structures remain consistent during the project.\n- **Dependencies**: Integration relies on Salesforce system stability and data quality.\n- **Constraints**: Limited processing windows may require optimization.\n\n---\n\n### 13. GLOSSARY OF TERMS\n- **Audit Data**: Records tracking changes in Salesforce case history.\n- **ETL**: Extract-Transform-Load, a data integration process.\n- **SCD**: Slowly Changing Dimensions, a method for tracking changes in data over time.\n\n---\n\n### APPENDICES\n- Process flow diagrams for audit data integration.\n- Sample compliance reports and dashboards.\n\n---\n\nThis Business Requirements Document outlines the objectives, requirements, and success criteria for the Salesforce Audit Data Integration Project, ensuring alignment with business goals and stakeholder needs."
+}
+}

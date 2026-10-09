@@ -74,7 +74,7 @@ Plus **`imports/PORTFOLIO.md`**: a one-page index of all four projects with thei
 
 - Per-project page: sanitized diagrams + metrics + 2-3 curated snippets (no client data, no names).
 - Never ship: `documents/`, `pbib_input_files/` (client reports), the big JSONs (they embed real
-  schema/data - `nationWide1.json` names a client).
+  schema/data - `CLIENT_C1.json` names a client).
 - Options: (a) sanitize in place, (b) new repo `yourname/portfolio` with pages only. (b) is cleaner.
 
 ---

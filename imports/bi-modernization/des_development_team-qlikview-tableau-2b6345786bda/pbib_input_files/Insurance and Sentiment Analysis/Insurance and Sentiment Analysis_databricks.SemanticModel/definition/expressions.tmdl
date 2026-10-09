@@ -1,5 +1,0 @@
-expression 'Score sentiment' = AIFunctions.Contents(){[Key = "CognitiveServices.ScoreSentimenttexttext"]}[Data]
-	lineageTag: d630afe2-fa97-4f15-bc84-eacdabc4417b
-
-	annotation PBI_ResultType = Function
-

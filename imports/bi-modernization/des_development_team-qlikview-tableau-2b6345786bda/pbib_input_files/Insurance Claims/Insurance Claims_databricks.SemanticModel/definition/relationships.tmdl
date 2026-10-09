@@ -1,6 +1,0 @@
-relationship 46df54bc-df8b-e4d5-3a28-88ec6e3adc73
-	crossFilteringBehavior: bothDirections
-	fromCardinality: one
-	fromColumn: insurance_data.PatientID
-	toColumn: processed_insurance_data.PatientID
-

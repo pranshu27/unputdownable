@@ -227,3 +227,20 @@ qdrant_storage/
 vault/.obsidian/workspace.json
 vault/.obsidian/workspace-mobile.json
 vault/.obsidian/cache/
+
+# imports: archives and client artifacts kept local, never published
+*.zip
+imports/bi-modernization/des_development_team-qlikview-tableau-857432597538/
+imports/bi-modernization/des_development_team-qlikview-tableau-6916d783b551/
+imports/freedom/project1/_ref_zips/
+imports/bi-modernization/qlikview-converter/pbib_input_files/
+imports/bi-modernization/react-modernization/src/800node.json
+imports/bi-modernization/react-modernization/src/nationWide1.json
+imports/bi-modernization/react-modernization/src/BTEQResponse.json
+imports/bi-modernization/react-modernization/src/basicInteractiongroup.json
+imports/bi-modernization/react-modernization/src/Pages/Lineage/lineageData.js
+imports/bi-modernization/react-modernization/public/assets/images/login.jpg
+imports/bi-modernization/react-modernization/public/assets/images/upload.jpg
+imports/bi-modernization/react-modernization/public/assets/images/redTheme.png
+imports/bi-modernization/react-modernization/src/Assets/login.png
+imports/bi-modernization/react-modernization/src/Assets/redTheme.png
