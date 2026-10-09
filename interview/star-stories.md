@@ -16,7 +16,7 @@ Rule: **three numbers minimum per story** (scale, delta, business impact). Rehea
 ## STAR 1 — Production Ingestion / Migration Bottleneck  🟡 (evidence found in imports/)
 
 **Anchor candidate found:** the Informatica-to-PySpark agentic migration
-(`imports/freedom_portable_nocache/project1/e2e_infa_to_pyspark/TRACKER.md`) — a migration whose
+(`imports/freedom/project1/e2e_infa_to_pyspark/TRACKER.md`) — a migration whose
 *bottleneck* story is exactly this. Full draft: see `company-projects.md` P1 + STAR 2 below.
 Fill the `[YOU]` slots (scale, volumes, hours saved) before rehearsing.
 

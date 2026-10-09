@@ -2,6 +2,10 @@
 
 **Purpose:** the Fri deliverable "list own GenAI projects, pick ADR topic #1" — built from your
 **imports/ archives** (artifact-derived facts you can defend) plus `[YOU]` slots only you can fill.
+**Project separation (do not mix):** P1-P4 are **completed prior projects**. Track A
+(`track-a/`) is the **current, separate build** with its own HLD/LLD (`vault/30-design/`) - none of
+these artifacts are part of Track A, and Track A borrows no code from them.
+
 **Confidentiality rule:** the artifacts contain client names (e.g. an auto-insurance client) —
 in interviews say "a large insurance client", never the name, and describe patterns, not internals.
 
@@ -9,7 +13,7 @@ in interviews say "a large insurance client", never the name, and describe patte
 
 ## P1 — Agentic Informatica-to-PySpark migration  ⭐ strongest story
 
-**What it is (from `imports/freedom_portable_nocache/project1/e2e_infa_to_pyspark/TRACKER.md`):**
+**What it is (from `imports/freedom/project1/e2e_infa_to_pyspark/TRACKER.md`):**
 an agent pipeline that migrates Teradata EDW / Informatica PowerCenter logic (from XML exports) to
 **PySpark + Apache Iceberg**, with RAG grounding, guardrails, adversarial critique and a human gate.
 
@@ -33,7 +37,7 @@ Iceberg MERGE strategy, how much the human gate should block.
 
 ## P2 — RAG system with a golden-set eval gate
 
-**What it is (`imports/freedom_portable_nocache/rag-system/`):** a RAG service with Streamlit UI,
+**What it is (`imports/freedom/rag-system/`):** a RAG service with Streamlit UI,
 prompt registry (`prompts.yml`), design docs (CONCEPTUAL_BIBLE, SYSTEM_E2E_FLOW: "semantic-first",
 "graph-augmented", "evidence-first answer contract", guardrail routing) and — the gem — **an eval
 folder with real audit results**.
@@ -58,7 +62,7 @@ what the 3 problem_rows were · how the golden set was chosen.
 
 ## P3 — BI modernization program (QlikView -> Tableau/Power BI)
 
-**What it is (`imports/bi-modernization/`):** a conversion program with LLM-assisted tooling.
+**What it is (`imports/bi-modernization/` (renamed 2026-10-08: `react-modernization/`, `qlikview-converter/`, `jira-copilot-service/`)):** a conversion program with LLM-assisted tooling.
 
 **Artifact-derived evidence:**
 - **84 Power BI tabular models** (`.tmdl`) across the program

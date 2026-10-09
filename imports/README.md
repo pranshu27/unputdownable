@@ -1,21 +1,30 @@
-# imports/ — external work brought into this repo
+# imports/ — completed past projects (evidence vault)
 
-**Provenance:** extracted from the two archives pushed in commit `1fd6877` ("bi-mod and rag work") and kept alongside them in the repo root.
+> [!warning] Separate projects — do not mix
+> Everything here is **completed prior work**. The current build lives in `track-a/` and is a
+> **separate project** with its own design docs (`vault/30-design/`). Nothing here is part of Track A.
 
-| Folder | Source archive | Files | Size | What it is |
-| :--- | :--- | :--- | :--- | :--- |
-| `bi-modernization/` | `BI-Modernization-Complete-Code.zip` (5 nested zips) | 999 | ~57 MB | BI workstreams: legacy React modernization (46 MB incl. large JSON/image assets), QlikView→Tableau conversions ×3, Jira→Copilot tooling |
-| `freedom_portable_nocache/` | `freedom_portable_nocache.zip` | 306 | ~4.6 MB | RAG-system workspace: `apps/`, `rag-system/`, `project1/`, `documents/`, `.agents/skills/`, `.github/skills/`, `rag-system.code-workspace` |
+| Folder | What it is | State |
+| :--- | :--- | :--- |
+| `bi-modernization/react-modernization/` | Legacy UI modernization: 175 `.tsx` modules across core/layouts/Hooks/Lib, 56 deps | code committed; data payloads untracked |
+| `bi-modernization/qlikview-converter/` | QlikView -> Power BI/Tableau conversion tooling (prompts + tests) | code committed; client report bundles untracked |
+| `bi-modernization/jira-copilot-service/` | Containerised Jira<->Copilot integration service (AWS Secrets Manager) | complete |
+| `freedom/rag-system/` | RAG system: golden-set eval (22/22 non-empty, 0 no-evidence), `prompts.yml`, Streamlit UI, 8 design docs | complete |
+| `freedom/project1/` | Agentic Informatica -> PySpark migration: 6 AutoGen agents, 1,189-chunk live run, 20/20 tests, human review gate | complete |
+| `freedom/apps/` | genai-portfolio-tracker-react, tracker-backend, obsidian vault | working |
+| `freedom/documents/` | P2-P5 LLD docs (local benchmarking, observability, fine-tuning, realtime multimodal) | committed |
 
-### Extraction notes
-- Windows-style `\` paths in the archives were normalized to `/`; `.git/` and `__MACOSX/` entries were skipped; stored executable bits were restored.
-- No `node_modules`, `.venv`, `__pycache__`, or nested `.zip` payloads were present.
-- These are **snapshots** — they carry no git history from their origin, so review before trusting them as a source of truth.
+## Publishing notes (this repo is public)
 
-### Secrets / client data
-- `.env` files are excluded by the repo `.gitignore` (verified with `git check-ignore`) — e.g. `bi-modernization/des_development_team-legacy-modernization-react-*/.../.env` holds only API base URLs, but one points at a client, so it stays out of git.
-- Two `.env.example` templates *are* committed (they contain no values).
-- `AWSSecretsManager.py` (×3) are helper modules that read secrets at runtime — no credentials in them.
+- **Untracked + gitignored** (kept local, never published): the two root archives, converter variants
+  a/b, `pbib_input_files/` (client report bundles), `_ref_zips/`, all 19 `src/*.json` client ETL
+  conversion datasets (up to 11 MB), heavy images.
+- **Source scrubbed** (2026-10-08): client names replaced with `CLIENT_A` / `CLIENT_B` / `CLIENT_C`
+  across 26 tracked files; verified zero remaining hits.
+- **History caveat:** earlier commits (`1fd6877`, `77368c0`) still contain the archives and client
+  data. **Before linking this repo publicly: keep it private, or publish a fresh sanitised repo** and
+  link that instead. Do not link this one until that decision is made.
 
-### Size warning
-- The repo root still holds the original archives (~26 MB of binaries) and commit `1fd6877` keeps them in history forever. If this repo should stay lean, `git rm --cached *.zip` + a `.gitignore` rule stops future growth (history rewrite is a separate, riskier step).
+## Entry points
+- Metrics and STAR stories: `../interview/company-projects.md`
+- Polish backlog: `POLISH-PLAN.md`

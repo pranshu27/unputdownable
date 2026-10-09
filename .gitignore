@@ -244,3 +244,4 @@ imports/bi-modernization/react-modernization/public/assets/images/upload.jpg
 imports/bi-modernization/react-modernization/public/assets/images/redTheme.png
 imports/bi-modernization/react-modernization/src/Assets/login.png
 imports/bi-modernization/react-modernization/src/Assets/redTheme.png
+imports/bi-modernization/react-modernization/src/*.json
