@@ -10,6 +10,13 @@ Rule of thumb: 5 bullets max per day — what was built, what was measured, what
 
 ---
 
+## 2026-10-08 · Partnership day 1 — design docs, the Book, imports polish
+- **Built:** [[Working Agreement]] + failure-mode playbook (rants/overwhelm/drift/bombed-mocks protocols + correct-path rule) · **HLD + LLD** (`vault/30-design/`, Obsidian-formatted, stamped) · **📖 The Book** — 17 chapterwise notes walking the complete flow (`vault/40-book/`; 3-min recall = Ch1+Ch6+Ch7) · Python-concepts note + runnable proofs notebook (7/7 cells pass)
+- **Built (imports polish Phase 1):** readable folder names, client data untracked + scrubbed (CLIENT_A/B/C across 26 files, 0 hits remain), 19 ETL datasets + heavy media untracked, root zips untracked; **decision recorded: repo stays PRIVATE**
+- **Built (interview):** `company-projects.md` mined from imports — P1 agentic migration (6 agents, 1,189-chunk live run, 20/20 tests, HITL gate held) · P2 golden-set eval (22/22 non-empty, 0 no-evidence, LLM carried 1/22) · P3 BI modernization (84 models, 8+ workspaces) + STAR 2/3 drafts + bank to 13 questions
+- **Learned:** LLD drill trace 1-2 — clarify beats are strong, but method-per-format god-class is the gap; measurement-honesty ledger grew (brute-force regime naming; slots memory = two methods, two answers)
+- **Next:** LLD follow-ups A + B1-B3 (drill to 6/6) -> Week 2 Day 1: extend ADR-002 with the rerank stage -> Fri-Sun: BGE-M3 swap + reranker + full measurement run
+
 ## 2026-10-05 · DSA drill — prefix sums & sliding window (Week 1 Thu catch-up)
 - **Built:** 3 drill notebooks in `dsa/` — LC 560 ✅ (fuzz 200/200), LC 974 ✅ (fuzz 300/300, hand-derived 7), LC 3 ✅ (fuzz 500/500, `max(left, last[c] + 1)` trap) — plus `dsa/patterns.md` (2 pattern families, skeletons, 7 cross-cutting traps) and `.vscode/settings.json` with AI completions off.
 - **Built (company evidence):** mined `imports/` into `interview/company-projects.md` — 4 projects with artifact-derived metrics (agentic Informatica-to-PySpark migration: 6 AutoGen agents, 1,189-chunk live run, 20/20 tests, HITL gate; RAG golden-set eval: 22/22 non-empty, 0 no-evidence, strategy attribution 15/6/1; BI modernization: 84 tabular models, 8+ dashboard workspaces) + STAR 2/3 drafts in `star-stories.md` and +3 bank questions. ADR topic #1 recommended: the human review gate.
