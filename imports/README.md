@@ -21,9 +21,9 @@
   conversion datasets (up to 11 MB), heavy images.
 - **Source scrubbed** (2026-10-08): client names replaced with `CLIENT_A` / `CLIENT_B` / `CLIENT_C`
   across 26 tracked files; verified zero remaining hits.
-- **History caveat:** earlier commits (`1fd6877`, `77368c0`) still contain the archives and client
-  data. **Before linking this repo publicly: keep it private, or publish a fresh sanitised repo** and
-  link that instead. Do not link this one until that decision is made.
+- **Decision (2026-10-08): the repo stays PRIVATE for now.** The archives and client data remain in
+  git history (`1fd6877`, `77368c0`); if it ever goes public, publish a fresh sanitised repo (or
+  rewrite history first) and link that instead. Until then the working tree is the clean state.
 
 ## Entry points
 - Metrics and STAR stories: `../interview/company-projects.md`

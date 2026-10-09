@@ -52,19 +52,19 @@ queries; parsers extensible without pipeline edits; production-shaped (async, co
 
 ## 5. Components
 
-| Component | Responsibility | Code | Status |
-| :--- | :--- | :--- | :--- |
-| API layer | validation, routing, OpenAPI | `app/main.py` | OK |
-| Parsers (Strategy) | source format -> typed blocks | `core/parsers.py` | OK |
-| Chunker | blocks -> chunks, atomic tables | `core/chunker.py` | OK |
-| Embedding backend | dense + hashed sparse | `core/embeddings.py` | WIP (CPU, sync) |
-| Ingest service | orchestration + spans | `core/ingest_service.py` | OK |
-| Vector store | dense+sparse index + payload | `core/qdrant.py` | OK |
-| Search + RRF | hybrid retrieval + fusion | `core/search_service.py` | OK |
-| Reranker | top-50 -> top-5 | TODO W2 | TODO |
-| Agent | plan/act/verify loop | TODO W5 LangGraph | TODO |
-| Semantic cache | reuse query embeddings | TODO W4 Redis | TODO |
-| Eval harness | Ragas/DeepEval CI gate | TODO W13 | TODO |
+| Component          | Responsibility                  | Code                     | Status          |
+| :----------------- | :------------------------------ | :----------------------- | :-------------- |
+| API layer          | validation, routing, OpenAPI    | `app/main.py`            | OK              |
+| Parsers (Strategy) | source format -> typed blocks   | `core/parsers.py`        | OK              |
+| Chunker            | blocks -> chunks, atomic tables | `core/chunker.py`        | OK              |
+| Embedding backend  | dense + hashed sparse           | `core/embeddings.py`     | WIP (CPU, sync) |
+| Ingest service     | orchestration + spans           | `core/ingest_service.py` | OK              |
+| Vector store       | dense+sparse index + payload    | `core/qdrant.py`         | OK              |
+| Search + RRF       | hybrid retrieval + fusion       | `core/search_service.py` | OK              |
+| Reranker           | top-50 -> top-5                 | TODO W2                  | TODO            |
+| Agent              | plan/act/verify loop            | TODO W5 LangGraph        | TODO            |
+| Semantic cache     | reuse query embeddings          | TODO W4 Redis            | TODO            |
+| Eval harness       | Ragas/DeepEval CI gate          | TODO W13                 | TODO            |
 
 ## 6. Data flow (measured)
 
