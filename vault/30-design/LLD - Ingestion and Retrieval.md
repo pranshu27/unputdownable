@@ -7,9 +7,7 @@ related: "[[HLD - Track A Agentic RAG]]"
 ---
 # LLD - Ingestion & Retrieval (Track A)
 
-> [!info] Scope
-> Modules, interfaces, data models, algorithms, sequences, error handling, tests and debt.
-> Stamped at commit `fc3314e`.
+> [!info] Scope Modules, interfaces, data models, algorithms, sequences, error handling, tests and debt. Stamped at commit `fc3314e`.
 
 ## 1. Module map
 
@@ -55,8 +53,7 @@ ensure_collection(client, settings) -> bool                    # True when (re)c
 
 **`Chunk`**
 
-- `chunk_id`, `document_id`, `text`, `contextual_header`, `start_index`, `end_index`, `token_count`,
-  `is_table`, `table_rows`, `metadata`
+- `chunk_id`, `document_id`, `text`, `contextual_header`, `start_index`, `end_index`, `token_count`, `is_table`, `table_rows`, `metadata`
 - invariants: header = `title > section > subsection`; a table chunk is never merged with prose
 
 **Request / response models**
@@ -69,17 +66,11 @@ ensure_collection(client, settings) -> bool                    # True when (re)c
 
 ## 4. Algorithms
 
-- **Chunk packing:** paragraphs packed to `chunk_target_tokens=250`; oversized paragraphs split on
-  sentence boundaries; `chunk_overlap_tokens=50` carried between chunks; each heading is a hard
-  boundary; tables are emitted as their own single chunk regardless of size.
-- **Contextual headers:** `title > section_path...` computed per chunk and prepended to the embedding
-  text, not just stored.
-- **Sparse encoding:** hashed bag-of-words into `sparse_hash_buckets=65536` (collisions accepted by
-  design); IDF weighting applied by Qdrant (`modifier=IDF`).
-- **RRF:** `score(d) = sum over lists L of 1 / (k + rank_L(d))` with `k = 60`; rank-only, so cosine and
-  BM25 scales never need normalisation.
-- **ANN:** HNSW `m=16`, `ef_construct=100`; `full_scan_threshold=10000` means exact brute force below
-  10k points - the reason dense and hybrid tie on the 290-point corpus.
+- **Chunk packing:** paragraphs packed to `chunk_target_tokens=250`; oversized paragraphs split on sentence boundaries; `chunk_overlap_tokens=50` carried between chunks; each heading is a hard boundary; tables are emitted as their own single chunk regardless of size.
+- **Contextual headers:** `title > section_path...` computed per chunk and prepended to the embedding text, not just stored.
+- **Sparse encoding:** hashed bag-of-words into `sparse_hash_buckets=65536` (collisions accepted by design); IDF weighting applied by Qdrant (`modifier=IDF`).
+- **RRF:** `score(d) = sum over lists L of 1 / (k + rank_L(d))` with `k = 60`; rank-only, so cosine and BM25 scales never need normalisation.
+- **ANN:** HNSW `m=16`, `ef_construct=100`; `full_scan_threshold=10000` means exact brute force below 10k points - the reason dense and hybrid tie on the 290-point corpus.
 
 ## 5. Sequences
 
@@ -142,8 +133,7 @@ QUERY   query -> embed_dense  -> query_points(using="dense")  -
 | `test_services.py` | end-to-end ingest + hybrid search on the scratch collection |
 | `test_health.py` | app boot and health payload |
 
-**Guardrail:** quality claims come from the benchmark / fuzz harnesses (`scripts/*.py`) with reference
-implementations - never from assertions alone.
+**Guardrail:** quality claims come from the benchmark / fuzz harnesses (`scripts/*.py`) with reference implementations - never from assertions alone.
 
 **TODO:** golden-file fixtures for scanned / multi-column docs, property-based chunk invariants, CI eval gate (W13).
 
@@ -162,8 +152,7 @@ implementations - never from assertions alone.
 
 ## 11. Drill status
 
-Spoken LLD drill: `interview/lld-extensible-document-parser.md` - traces 1-2 logged.
-Open follow-ups: **A** (extensibility diff) and **B1-B3** (blast radius, fidelity proof, testing strategy).
+Spoken LLD drill: `interview/lld-extensible-document-parser.md` - traces 1-2 logged. Open follow-ups: **A** (extensibility diff) and **B1-B3** (blast radius, fidelity proof, testing strategy).
 
 ## 12. Links
 

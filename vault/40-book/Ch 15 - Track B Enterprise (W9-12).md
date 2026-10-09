@@ -8,6 +8,4 @@ next: "[[Ch 16 - Evals & Observability (W13-14)]]"
 
 **Status:** stub.
 
-**Why it matters:** the enterprise story - Bedrock + Guardrails, OpenSearch serverless with
-multi-tenant RBAC, Step Functions regulated HITL, X-Ray observability and cost governance - with its
-own HLD when it starts.
+**Why it matters:** the enterprise story - Bedrock + Guardrails, OpenSearch serverless with multi-tenant RBAC, Step Functions regulated HITL, X-Ray observability and cost governance - with its own HLD when it starts.

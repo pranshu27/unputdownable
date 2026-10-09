@@ -1,8 +1,6 @@
 # imports/ — completed past projects (evidence vault)
 
-> [!warning] Separate projects — do not mix
-> Everything here is **completed prior work**. The current build lives in `track-a/` and is a
-> **separate project** with its own design docs (`vault/30-design/`). Nothing here is part of Track A.
+> [!warning] Separate projects — do not mix Everything here is **completed prior work**. The current build lives in `track-a/` and is a **separate project** with its own design docs (`vault/30-design/`). Nothing here is part of Track A.
 
 | Folder | What it is | State |
 | :--- | :--- | :--- |
@@ -16,14 +14,9 @@
 
 ## Publishing notes (this repo is public)
 
-- **Untracked + gitignored** (kept local, never published): the two root archives, converter variants
-  a/b, `pbib_input_files/` (client report bundles), `_ref_zips/`, all 19 `src/*.json` client ETL
-  conversion datasets (up to 11 MB), heavy images.
-- **Source scrubbed** (2026-10-08): client names replaced with `CLIENT_A` / `CLIENT_B` / `CLIENT_C`
-  across 26 tracked files; verified zero remaining hits.
-- **Decision (2026-10-08): the repo stays PRIVATE for now.** The archives and client data remain in
-  git history (`1fd6877`, `77368c0`); if it ever goes public, publish a fresh sanitised repo (or
-  rewrite history first) and link that instead. Until then the working tree is the clean state.
+- **Untracked + gitignored** (kept local, never published): the two root archives, converter variants a/b, `pbib_input_files/` (client report bundles), `_ref_zips/`, all 19 `src/*.json` client ETL conversion datasets (up to 11 MB), heavy images.
+- **Source scrubbed** (2026-10-08): client names replaced with `CLIENT_A` / `CLIENT_B` / `CLIENT_C` across 26 tracked files; verified zero remaining hits.
+- **Decision (2026-10-08): the repo stays PRIVATE for now.** The archives and client data remain in git history (`1fd6877`, `77368c0`); if it ever goes public, publish a fresh sanitised repo (or rewrite history first) and link that instead. Until then the working tree is the clean state.
 
 ## Entry points
 - Metrics and STAR stories: `../interview/company-projects.md`

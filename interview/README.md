@@ -1,7 +1,6 @@
 # Interview Prep — Week 1 Leftovers
 
-Plan leftovers from **Thu Oct 1 · DRILL** and **Fri Oct 2 · MOCK & BANK**. Work top-down.
-Rule: **attempt out loud FIRST**, then compare against the reference. The talking *is* the deliverable — these files are only the record.
+Plan leftovers from **Thu Oct 1 · DRILL** and **Fri Oct 2 · MOCK & BANK**. Work top-down. Rule: **attempt out loud FIRST**, then compare against the reference. The talking *is* the deliverable — these files are only the record.
 
 | # | Leftover (plan day) | Artifact | Status |
 | :--- | :--- | :--- | :--- |

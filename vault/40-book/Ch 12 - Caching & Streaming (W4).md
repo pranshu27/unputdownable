@@ -8,6 +8,4 @@ next: "[[Ch 13 - Agents (W5-6)]]"
 
 **Status:** stub.
 
-**Why it matters:** a semantic cache (Redis, cosine similarity on query embeddings, staleness rules)
-saves double-paying for identical questions; SSE streaming with backpressure makes answers feel
-instant. Both measured as cache hit-rate, latency delta and tokens avoided.
+**Why it matters:** a semantic cache (Redis, cosine similarity on query embeddings, staleness rules) saves double-paying for identical questions; SSE streaming with backpressure makes answers feel instant. Both measured as cache hit-rate, latency delta and tokens avoided.

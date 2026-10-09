@@ -10,8 +10,7 @@ related: "[[RRF]], [[Embeddings]]"
 > [!info] Full record lives in the repo: `adr/002-hybrid-search-strategy.md`.
 
 ## Context
-Dense-only retrieval fails on exact identifiers, codes, and numbers; sparse-only fails
-on paraphrase. Track A needs one retrieval path that degrades gracefully on both.
+Dense-only retrieval fails on exact identifiers, codes, and numbers; sparse-only fails on paraphrase. Track A needs one retrieval path that degrades gracefully on both.
 
 ## Decision
 Hybrid pipeline on Qdrant:
@@ -26,19 +25,12 @@ Hybrid pipeline on Qdrant:
 - Hashed sparse vocab = collisions possible; acceptable vs maintaining a vocab.
 
 ## Success metrics
-- Δ Recall@5 (hybrid − dense) ≥ +15% target — **re-targeted to Week 2**: on the small
-  corpus both legs saturate (0.92/0.92); the lexical-hard golden queries
-  (`ERR-4021`, `0001874410`, `4,535.35`) are where the delta should finally appear.
+- Δ Recall@5 (hybrid − dense) ≥ +15% target — **re-targeted to Week 2**: on the small corpus both legs saturate (0.92/0.92); the lexical-hard golden queries (`ERR-4021`, `0001874410`, `4,535.35`) are where the delta should finally appear.
 - Fuse latency < 50 ms → ✅ by ~600×.
 - Sparse index < 20% of dense bytes → ✅.
 
 ## Key methodology insight (Sep 29)
-Qdrant brute-forces below `full_scan_threshold` (10k). With 290 points, dense matches
-exact numbers fine ⇒ Δ = 0. **Hybrid's win condition is scale (HNSW approximation loss)
-or reranking quality, not small-corpus fusion.** This reframe is interview gold.
+Qdrant brute-forces below `full_scan_threshold` (10k). With 290 points, dense matches exact numbers fine ⇒ Δ = 0. **Hybrid's win condition is scale (HNSW approximation loss) or reranking quality, not small-corpus fusion.** This reframe is interview gold.
 
 ## Interview soundbite
-> "I fused dense and sparse with RRF I wrote myself — rank-only, k=60, no score
-> normalization. My own harness showed Δ Recall@5 = 0 on a 290-point corpus, which
-> taught me the honest lesson: hybrid pays off at ANN scale, so I re-targeted that
-> metric to the Week-2 reranker benchmark on exact-identifier queries."
+> "I fused dense and sparse with RRF I wrote myself — rank-only, k=60, no score normalization. My own harness showed Δ Recall@5 = 0 on a 290-point corpus, which taught me the honest lesson: hybrid pays off at ANN scale, so I re-targeted that metric to the Week-2 reranker benchmark on exact-identifier queries."

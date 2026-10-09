@@ -4,11 +4,7 @@ created: 2026-10-08
 ---
 # 📖 The Track A Book — one flow, chapter by chapter
 
-> [!info] How to read
-> **Full pass:** Ch1 → Ch9 in order (30 min). **3-minute recall before an interview:** Ch1 + Ch6 + Ch7.
-> Chapters 10+ are stubs — they get written the week that component lands, so the book always
-> matches reality. Deep dives live in the [[HLD - Track A Agentic RAG]], [[LLD - Ingestion and Retrieval]]
-> and the concept notes; this book is the connective tissue.
+> [!info] How to read **Full pass:** Ch1 → Ch9 in order (30 min). **3-minute recall before an interview:** Ch1 + Ch6 + Ch7. Chapters 10+ are stubs — they get written the week that component lands, so the book always matches reality. Deep dives live in the [[HLD - Track A Agentic RAG]], [[LLD - Ingestion and Retrieval]] and the concept notes; this book is the connective tissue.
 
 ## The one-diagram mind map
 

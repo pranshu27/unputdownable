@@ -1,7 +1,6 @@
 # Polish Plan — imports/ made interview-presentable
 
-**Audit date:** 2026-10-08 · **Verdict:** hygiene is good (0 junk files: no pycache/venv/node_modules);
-what needs work is **naming, weight, and the missing sanitized layer**.
+**Audit date:** 2026-10-08 · **Verdict:** hygiene is good (0 junk files: no pycache/venv/node_modules); what needs work is **naming, weight, and the missing sanitized layer**.
 
 ---
 
@@ -14,8 +13,7 @@ what needs work is **naming, weight, and the missing sanitized layer**.
 | **You, in the room** | stories + numbers + diagrams you can draw from memory. The archives are evidence, not a showcase. |
 | **A public portfolio** (if you link GitHub) | **sanitized project pages** - never the company dumps verbatim. Client names, insurance data and proprietary logic must not ship. |
 
-**Recommendation:** keep `imports/` private evidence; build a sanitized `portfolio/` layer only if you
-plan to link this repo. Decide: **will this repo be public / linked on your resume?**
+**Recommendation:** keep `imports/` private evidence; build a sanitized `portfolio/` layer only if you plan to link this repo. Decide: **will this repo be public / linked on your resume?**
 
 ---
 
@@ -65,16 +63,14 @@ Specific gaps found:
 | `qlikview-converter-variant-b` | **NO README** | write one or archive it |
 | `rag-system` | 8 design docs, no README | one README linking the docs + the eval results table |
 
-Plus **`imports/PORTFOLIO.md`**: a one-page index of all four projects with their metric tables
-(fed from `interview/company-projects.md`).
+Plus **`imports/PORTFOLIO.md`**: a one-page index of all four projects with their metric tables (fed from `interview/company-projects.md`).
 
 ---
 
 ## 3. Phase 3 - the sanitized public layer (only if the repo goes public)
 
 - Per-project page: sanitized diagrams + metrics + 2-3 curated snippets (no client data, no names).
-- Never ship: `documents/`, `pbib_input_files/` (client reports), the big JSONs (they embed real
-  schema/data - `CLIENT_C1.json` names a client).
+- Never ship: `documents/`, `pbib_input_files/` (client reports), the big JSONs (they embed real schema/data - `CLIENT_C1.json` names a client).
 - Options: (a) sanitize in place, (b) new repo `yourname/portfolio` with pages only. (b) is cleaner.
 
 ---

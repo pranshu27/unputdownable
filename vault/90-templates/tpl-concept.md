@@ -6,8 +6,7 @@ related: ""
 ---
 # {{Concept Name}}
 
-> [!abstract] Soundbite
-> (The one line you'd say in an interview — write this FIRST.)
+> [!abstract] Soundbite (The one line you'd say in an interview — write this FIRST.)
 
 ## The problem
 (What breaks without this concept / why it exists.)

@@ -1,7 +1,6 @@
 # Question Bank
 
-Format: **question → answer skeleton → where the detail lives.** Rehearse the skeleton out loud (30–60 s), then check the link.
-Bank size target: +10 per MOCK & BANK day. Current: **10 seeded** (Week 1 Fri ✅ pending your pass over them).
+Format: **question → answer skeleton → where the detail lives.** Rehearse the skeleton out loud (30–60 s), then check the link. Bank size target: +10 per MOCK & BANK day. Current: **10 seeded** (Week 1 Fri ✅ pending your pass over them).
 
 ## RAG / system design
 1. **Walk me through your ingestion pipeline end-to-end.** → route by format → Strategy parser → typed blocks → semantic chunking + contextual headers + atomic tables → dense + sparse embed → upsert. | `vault/10-concepts/Chunking.md`

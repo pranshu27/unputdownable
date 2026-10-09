@@ -1,7 +1,6 @@
 # Pattern Ledger — revise before every interview
 
-One entry per problem. **Name the family, not the problem** — interviewers probe transfer, not LC numbers.
-Status: ✅ verified · 🟡 attempt in flight · 🔒 locked (unlocked by the entry above it)
+One entry per problem. **Name the family, not the problem** — interviewers probe transfer, not LC numbers. Status: ✅ verified · 🟡 attempt in flight · 🔒 locked (unlocked by the entry above it)
 
 ---
 

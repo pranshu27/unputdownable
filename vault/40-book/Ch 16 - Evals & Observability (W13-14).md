@@ -8,6 +8,4 @@ next: "[[Ch 17 - Appendix - Prior Evidence]]"
 
 **Status:** stub.
 
-**Why it matters:** Ragas/DeepEval as a CI gate (a regression in retrieval quality breaks the build),
-OpenTelemetry traces into Arize Phoenix. Precedent: the golden-set audit already run in a prior RAG
-project - 22/22 non-empty, 0 no-evidence, strategy attribution (Ch 17).
+**Why it matters:** Ragas/DeepEval as a CI gate (a regression in retrieval quality breaks the build), OpenTelemetry traces into Arize Phoenix. Precedent: the golden-set audit already run in a prior RAG project - 22/22 non-empty, 0 no-evidence, strategy attribution (Ch 17).

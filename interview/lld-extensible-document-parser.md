@@ -1,7 +1,6 @@
 # LLD Drill — Extensible Document Parser
 
-**Plan item:** Week 1 Thu · spoken LLD, 25 minutes, no code, no notes.
-**Prompt (say this to yourself, then design out loud):**
+**Plan item:** Week 1 Thu · spoken LLD, 25 minutes, no code, no notes. **Prompt (say this to yourself, then design out loud):**
 
 > *"Design the document-parsing component of a RAG ingestion service. It must handle native PDFs, scanned PDFs, Markdown, DOCX and SEC HTML filings. Tables must survive parsing intact. New formats will arrive later and must be addable without touching the ingestion pipeline."*
 

@@ -7,22 +7,18 @@ related: "[[LLD - Ingestion and Retrieval]]"
 ---
 # HLD - Track A: Agentic RAG Platform
 
-> [!info] Legend
-> **OK** built & measured · **WIP** built, needs hardening · **TODO** planned (week noted)
-> Source of truth is the repo; this doc is stamped at commit `fc3314e`.
+> [!info] Legend **OK** built & measured · **WIP** built, needs hardening · **TODO** planned (week noted) Source of truth is the repo; this doc is stamped at commit `fc3314e`.
 
 ## 1. Purpose & scope
 
-A service that ingests heterogeneous enterprise documents and answers questions over them with cited
-passages - hybrid retrieval now, agentic orchestration later.
+A service that ingests heterogeneous enterprise documents and answers questions over them with cited passages - hybrid retrieval now, agentic orchestration later.
 
 - **In scope:** ingestion -> hybrid retrieval -> caching/serving -> evals/observability
 - **Out of scope:** Track B (AWS governance) and Track C (resilient gateway) own their own HLDs
 
 ## 2. Goals / non-goals
 
-**Goals:** defensible retrieval quality with measured deltas; explicit latency budgets; cost per 1k
-queries; parsers extensible without pipeline edits; production-shaped (async, containerised, observed).
+**Goals:** defensible retrieval quality with measured deltas; explicit latency budgets; cost per 1k queries; parsers extensible without pipeline edits; production-shaped (async, containerised, observed).
 
 **Non-goals (now):** multi-tenant RBAC, cross-region HA, GPU serving (lands Week 7).
 
@@ -68,15 +64,13 @@ queries; parsers extensible without pipeline edits; production-shaped (async, co
 
 ## 6. Data flow (measured)
 
-**Ingest:** route by format -> parse (`Block[]`) -> chunk (`Chunk[]` + contextual headers) -> embed
-dense+sparse -> upsert.
+**Ingest:** route by format -> parse (`Block[]`) -> chunk (`Chunk[]` + contextual headers) -> embed dense+sparse -> upsert.
 
 - parse ~96 ms for the 1.5 MB 10-K (parsing is not the bottleneck)
 - embed **60-95 s p95** - the bottleneck
 - upsert ~1 s
 
-**Query:** embed (~3-9 ms) -> dense (~4-8 ms) and sparse (~2-8 ms) -> RRF fuse (~0.03-0.08 ms) -> top-k.
-Rerank will sit between fuse and top-k from W2.
+**Query:** embed (~3-9 ms) -> dense (~4-8 ms) and sparse (~2-8 ms) -> RRF fuse (~0.03-0.08 ms) -> top-k. Rerank will sit between fuse and top-k from W2.
 
 ## 7. Storage & data model
 
@@ -134,16 +128,13 @@ token_count - is_table - table_rows - metadata{section_path, source_format}
 
 ## 11. Observability
 
-**OK:** per-stage spans on every ingest and search call (parse/chunk/embed/upsert; embed/dense/sparse/fuse),
-surfaced in API responses and benchmark output.
+**OK:** per-stage spans on every ingest and search call (parse/chunk/embed/upsert; embed/dense/sparse/fuse), surfaced in API responses and benchmark output.
 
-**TODO:** OTel traces + Arize Phoenix (W14), counters/histograms, structured logs, alerts on
-parse-failure rate and ingest p95, cost dashboard per 1k queries.
+**TODO:** OTel traces + Arize Phoenix (W14), counters/histograms, structured logs, alerts on parse-failure rate and ingest p95, cost dashboard per 1k queries.
 
 ## 12. Security & tenancy (TODO)
 
-Tenant isolation via payload filters; PII redaction at ingest; prompt-injection guardrails; audit log.
-Track B owns the enterprise RBAC story; Track A keeps a minimal, honest version.
+Tenant isolation via payload filters; PII redaction at ingest; prompt-injection guardrails; audit log. Track B owns the enterprise RBAC story; Track A keeps a minimal, honest version.
 
 ## 13. Roadmap alignment
 
@@ -156,8 +147,7 @@ Track B owns the enterprise RBAC story; Track A keeps a minimal, honest version.
 
 ## 14. Risks & open questions
 
-- Small-corpus saturation hides retrieval gains: 290 points < `full_scan_threshold` (10k) means brute
-  force, so Delta = 0. Gains must be shown at scale or via reranking.
+- Small-corpus saturation hides retrieval gains: 290 points < `full_scan_threshold` (10k) means brute force, so Delta = 0. Gains must be shown at scale or via reranking.
 - The CPU embedding path is the biggest ingest risk and the top Week-2 fix.
 - Mirrored structured tables (Postgres) would create two sources of truth - decide explicitly.
 - Scanned / multi-column handling is unvalidated on real PDFs (synthetic stand-ins so far).

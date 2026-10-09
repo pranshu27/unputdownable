@@ -5,8 +5,7 @@ updated: 2026-09-29
 ---
 # 🏠 Home — Track A Agentic RAG Vault
 
-Map of Content for everything understood & built so far. Each note ends with an
-**Interview soundbite** — the line to say out loud.
+Map of Content for everything understood & built so far. Each note ends with an **Interview soundbite** — the line to say out loud.
 
 **Operating agreement:** [[Working Agreement]] — my role, the session loop, accountability rules, and the 3-month trajectory.
 
