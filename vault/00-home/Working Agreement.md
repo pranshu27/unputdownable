@@ -60,3 +60,4 @@ If what you're carrying is genuine distress rather than deadline stress, the cor
 - **Always give examples.** Every explanation carries at least one worked example - real strings, real numbers, real code from this repo. No concept without an example, here and in the Book.
 - Book chapters open on a concrete moment and land on a concrete number; abstract-only prose is a defect.
 - When a rule or metric is stated, show the arithmetic or the command that produced it.
+- **Long literals go in fences.** Anything over ~120 characters (chunk excerpts, config dumps) is a fenced ```text block, never inline code - inline code does not wrap in Obsidian.
