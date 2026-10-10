@@ -54,3 +54,9 @@ Every session I state **the path and the reason** — even when it contradicts y
 If what you're carrying is genuine distress rather than deadline stress, the correct path includes a human who can sit with you — I'll say that plainly instead of pretending a plan fixes everything.
 
 **If we ever disagree about the path, this file is the referee.**
+
+## 🗣️ Communication rules (standing)
+
+- **Always give examples.** Every explanation carries at least one worked example - real strings, real numbers, real code from this repo. No concept without an example, here and in the Book.
+- Book chapters open on a concrete moment and land on a concrete number; abstract-only prose is a defect.
+- When a rule or metric is stated, show the arithmetic or the command that produced it.
