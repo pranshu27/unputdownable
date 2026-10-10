@@ -5,11 +5,7 @@ updated: 2026-10-08
 ---
 # 📖 The Track A Book — a talk in seventeen chapters
 
-> [!info] How to read
-> This is a **story**, not a manual: every chapter opens on a real moment from the build, shows the
-> wrong turn, and lands on the measured number that fixed it. **Full pass:** Ch1 -> Ch9 (30 minutes).
-> **3-minute recall before an interview:** Ch1 + Ch6 + Ch7. Chapters 10-16 are teasers - each gets
-> written the week that component ships, so the book never drifts from reality.
+> [!info] How to read This is a **story**, not a manual: every chapter opens on a real moment from the build, shows the wrong turn, and lands on the measured number that fixed it. **Full pass:** Ch1 -> Ch9 (30 minutes). **3-minute recall before an interview:** Ch1 + Ch6 + Ch7. Chapters 10-16 are teasers - each gets written the week that component ships, so the book never drifts from reality.
 
 ## The one-diagram mind map
 

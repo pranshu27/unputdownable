@@ -6,19 +6,11 @@ next: "[[Ch 08 - Serving]]"
 ---
 # Ch 7 — Measurement: the two times I lied to myself
 
-This chapter is the confession chapter. Three categories get measured every single measure-day -
-quality, latency, cost - and this week they caught me twice.
+This chapter is the confession chapter. Three categories get measured every single measure-day - quality, latency, cost - and this week they caught me twice.
 
-**Lie number one.** I benchmarked a brute-force algorithm against a reference and reported a win.
-Except the input alphabet was five characters long, which means the brute force broke out of its
-inner loop almost immediately - it was never O(n-squared) on that input, it was O(n times alphabet).
-Same code, different regime, different truth. **Name the regime or the benchmark is fiction.**
+**Lie number one.** I benchmarked a brute-force algorithm against a reference and reported a win. Except the input alphabet was five characters long, which means the brute force broke out of its inner loop almost immediately - it was never O(n-squared) on that input, it was O(n times alphabet). Same code, different regime, different truth. **Name the regime or the benchmark is fiction.**
 
-**Lie number two.** I measured `slots=True` saving 288 bytes per object with `sys.getsizeof`, felt
-great about it - and then `tracemalloc` over 100,000 live objects said 40 bytes. Both were "correct".
-Key-sharing dictionaries, interned strings - the method defines the truth. So now I say: *"you save
-one dict per instance - tens to hundreds of megabytes per million records"*, an order of magnitude,
-not a fake constant.
+**Lie number two.** I measured `slots=True` saving 288 bytes per object with `sys.getsizeof`, felt great about it - and then `tracemalloc` over 100,000 live objects said 40 bytes. Both were "correct". Key-sharing dictionaries, interned strings - the method defines the truth. So now I say: *"you save one dict per instance - tens to hundreds of megabytes per million records"*, an order of magnitude, not a fake constant.
 
 The numbers that *survived* scrutiny, and now form the baseline:
 
@@ -28,5 +20,4 @@ The numbers that *survived* scrutiny, and now form the baseline:
 - Tables: **0/75 corrupted**. Parse failures: **0/8**.
 - Cost: $0.0025 per 1k pages embedded, $0.088 stored - reference prices, computed not guessed.
 
-> **Walk off stage with:** "Three fixed categories every measure-week - and my harness caught me
-> lying to myself twice, which is exactly what a harness is for."
+> **Walk off stage with:** "Three fixed categories every measure-week - and my harness caught me lying to myself twice, which is exactly what a harness is for."

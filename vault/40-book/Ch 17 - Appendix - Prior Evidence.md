@@ -4,13 +4,16 @@ chapter: 17
 prev: "[[Ch 16 - Evals & Observability (W13-14)]]"
 next: "[[Book]]"
 ---
-# Ch 17 — Appendix: prior evidence (completed projects)
+# Ch 17 — Appendix: before Track A, there was this
 
-**These are completed prior projects, deliberately separate from Track A** (in `imports/`, kept private). Full metrics and STAR drafts: `interview/company-projects.md`.
+Track A did not start from zero. It started from scars. (Kept private in `imports/` - completed prior projects, deliberately separate from this build. Full metrics: `interview/company-projects.md`.)
 
-- **Agentic Informatica -> PySpark migration** - 6 specialised AutoGen agents (extractor -> collector -> modeller -> generator -> Iceberg writer -> parity reviewer -> critic -> human gate that held), RAG-as-tool over **1,189 chunks**, PII/secret redaction, Langfuse tracing, **20/20 tests**. *Lesson carried into Track A:* guardrails in and out, HITL as a first-class stage.
-- **RAG system with a golden-set eval gate** - 22 golden queries, hybrid k=6; audit: **22/22 non-empty, 0 refused, 0 empty, 0 no-evidence**, p95 22.6 s; strategy attribution showed the LLM primary carried only 1/22 answers - extractive evidence-first fallbacks carried 21/22. *Lesson carried into Track A:* evidence-first answering, and an eval that changes the design.
-- **BI modernization program** - 84 Power BI tabular models, 8+ dashboard workspaces migrated with LLM-assisted converter tooling (prompts + tests). *Lesson:* conversion tooling needs parity review as the acceptance gate.
-- **Legacy React modernization** - 175 `.tsx` modules restructured into core/layouts/Hooks/Lib.
+**The agentic migration.** A Teradata EDW whose logic lived in Informatica mappings nobody could read, migrated by six specialised AutoGen agents: extractor, collector, modeller, PySpark generator, Iceberg writer, parity reviewer - then an adversarial critic, then a human gate. The RAG modeller was fed by **1,189 chunks** of indexed lineage. The validated run: **20/20 tests, critic flagged, human gate held.** The lesson I carried here: guardrails in and out, and HITL as a first-class stage, not an apology.
 
-> **Interview line:** "I have already run an agentic migration with a human gate and a golden-set eval - Track A is the second, more disciplined iteration of ideas I have shipped."
+**The golden-set audit.** A RAG system with 22 golden queries and an audit that scored non-empty, refusal, no-evidence and length per answer. Result: **22/22 non-empty, 0 refused, 0 empty, 0 no-evidence.** And the insight that mattered more than the score: strategy attribution showed the LLM-primary path fired **once out of twenty-two**. Extractive, evidence-first fallbacks carried the other twenty-one. The audit did not just grade the system - it exposed the real answer distribution and forced the evidence-first contract.
+
+**The BI modernization program.** 84 Power BI tabular models, eight-plus dashboard workspaces from an insurance client, converted with LLM-assisted tooling that had prompts and tests. *Lesson: parity review is the acceptance gate, not a nice-to-have.*
+
+**The legacy React rebuild.** 175 components restructured into core, layouts, Hooks and Lib. *Lesson: structure is what makes the next person productive.*
+
+> **Walk off stage with:** "I have already run an agentic migration with a human gate and a golden-set eval - Track A is the second, more disciplined iteration of ideas I have shipped."
