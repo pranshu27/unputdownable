@@ -2,7 +2,7 @@
 tags: [book, track-a]
 chapter: 03
 prev: "[[Ch 02 - Parsing]]"
-next: "[[Ch 04 - Embeddings]]"
+next: "[[Ch 03b - The Chunk Catalog]]"
 ---
 # Ch 3 — Chunking: the half balance sheet
 

@@ -1,7 +1,7 @@
 ---
 tags: [book, track-a]
 chapter: 06
-prev: "[[Ch 05 - Indexing]]"
+prev: "[[Ch 05b - Qdrant Primer]]"
 next: "[[Ch 07 - Measurement]]"
 ---
 # Ch 6 — Retrieval: two witnesses and a judge

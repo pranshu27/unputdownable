@@ -2,7 +2,7 @@
 tags: [book, track-a]
 chapter: 05
 prev: "[[Ch 04 - Embeddings]]"
-next: "[[Ch 06 - Retrieval & RRF]]"
+next: "[[Ch 05b - Qdrant Primer]]"
 ---
 # Ch 5 — Indexing: the tie that taught me something
 

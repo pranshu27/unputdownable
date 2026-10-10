@@ -23,8 +23,10 @@ updated: 2026-10-08
 | 1 | [[Ch 01 - The Problem]] | the answer that was confidently wrong |
 | 2 | [[Ch 02 - Parsing]] | five formats walk into a pipeline |
 | 3 | [[Ch 03 - Chunking]] | the half balance sheet |
+| 3b | [[Ch 03b - The Chunk Catalog]] | every chunk shape, with real output |
 | 4 | [[Ch 04 - Embeddings]] | the number the vector could not see |
 | 5 | [[Ch 05 - Indexing]] | the tie that taught me something |
+| 5b | [[Ch 05b - Qdrant Primer]] | the database under the pipeline (first-timer) |
 | 6 | [[Ch 06 - Retrieval & RRF]] | two witnesses and a judge |
 | 7 | [[Ch 07 - Measurement]] | the two times I lied to myself |
 | 8 | [[Ch 08 - Serving]] | what happens when the store dies at 3 a.m. |

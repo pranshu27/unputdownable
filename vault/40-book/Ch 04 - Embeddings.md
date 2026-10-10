@@ -1,7 +1,7 @@
 ---
 tags: [book, track-a]
 chapter: 04
-prev: "[[Ch 03 - Chunking]]"
+prev: "[[Ch 03b - The Chunk Catalog]]"
 next: "[[Ch 05 - Indexing]]"
 ---
 # Ch 4 — Embeddings: the number the vector could not see
