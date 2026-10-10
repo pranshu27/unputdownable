@@ -41,3 +41,17 @@ In `chunk_document()`: a TABLE block calls `_emit_table_chunk` — one chunk, ne
 
 ## Interview soundbite
 > "Chunking is where RAG quality is won or lost. I use semantic chunking with sentence boundaries and overlap, contextual headers so chunks are self-describing, and an atomicity contract for tables — and I prove it with a corruption metric, not vibes."
+
+---
+
+## Contract deep-dive (2026-10-08)
+
+**Contract 1 - semantic packing.** `count_tokens` = whitespace split (fast, approximate: 250 whitespace tokens ~ 300+ BPE). Oversized paragraphs pre-split on sentence boundaries (`(?<=[.!?])\s+`), then packed greedily so a chunk never exceeds target. Headings are hard boundaries -> chunk size varies by section, by design. *Follow-up:* "why 250?" -> header + 250 whitespace tokens stays inside the 512-token embedding window; it is a measured dial, not a constant.
+
+**Contract 2 - self-describing chunks.** `section_path` is a stack mutated by headings; the header `title > section > subsection` is **embedded with the text** (steers the vector, not just the reader). Heading blocks emit no body - their words live in the header. Degradation: no headings -> header is title-only (the honest gap; scanned docs are the frontier).
+
+**Contract 3 - tables atomic.** Parser emits `table_rows` (structure) + markdown `text` (searchability); chunker emits the table alone, never merged/split. Proof: corruption check 0/75. **Sharpest edge:** atomicity is unbounded - a 400-row table becomes one chunk whose dense vector is truncated at the embedder's 512-token window (payload complete, embedding amputated - the corruption check cannot see it). Mitigation: row-group splits repeating the header row, or a long-context embedder.
+
+### Two limitations found in `chunker.py` while elaborating
+1. **Overlap takes the head, not the tail:** `_word_window` = `text.split()[:max]` on the previous chunk's last paragraph - so the seam carries the *beginning* of the previous chunk, halving the intended benefit. One-line fix: `text.split()[-max_tokens:]`.
+2. **`start_index`/`end_index` are offsets into the chunk body, not the source document** - provenance is coarse (no page/character traceability).
