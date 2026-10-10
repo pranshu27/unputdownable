@@ -4,15 +4,24 @@ chapter: 08
 prev: "[[Ch 07 - Measurement]]"
 next: "[[Ch 09 - Guardrails]]"
 ---
-# Ch 8 — Serving: an async API that degrades gracefully
+# Ch 8 — Serving: what happens when the store dies at 3 a.m.
 
-FastAPI + Pydantic v2, three routes: `GET /health`, `POST /api/v1/documents` (ingest), `POST /api/v1/search` (hybrid or dense-only).
+It is 3 a.m. Qdrant has crashed. Does the whole service fall over with it?
 
-**Design choices worth defending:**
+In this build, no - and that is a deliberate choice made in the lifespan hook. The app **boots** with
+the store down, `/health` honestly reports what is broken, and the capability degrades instead of
+the liveness. A vector-store outage should cost you search, not your pager escalating an app that
+will not start.
 
-- **Best-effort lifespan:** if Qdrant is down at startup the app still boots and `/health` reports the error - a vector store outage must not take the service down
-- **Validation at the boundary:** Pydantic models reject empty titles, bad formats, bad params
-- **Spans in the response:** every search returns per-stage timings (embed / dense / sparse / fuse) - observability from day one, not bolted on
-- **Config as env:** `TRACKA_*` knobs (collection, dims, model, chunk shape, RRF k) - the encoder is an implementation detail behind an interface
+The rest of the serving story is quiet discipline:
 
-> **Interview line:** "Async FastAPI with graceful degradation - a store outage degrades the app's capability, not its liveness - and every response carries its own latency spans."
+- **Pydantic at the boundary** - empty titles, bad formats and nonsense parameters are rejected
+  before they reach any component that could be hurt by them.
+- **Spans in every response** - embed, dense, sparse, fuse, each timed, returned to the caller.
+  Observability is not a Week-14 project; it ships on day one, in the payload.
+- **Config as environment** - collection name, vector size, model, chunk shape, RRF k. The encoder
+  is an implementation detail behind an interface, which is why the 1024-dimension upgrade later is
+  a config swap and not a fire drill.
+
+> **Walk off stage with:** "Async API, graceful degradation - an outage costs capability, never
+> liveness - and every response carries its own latency spans."

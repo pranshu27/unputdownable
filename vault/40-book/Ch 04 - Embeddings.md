@@ -4,15 +4,27 @@ chapter: 04
 prev: "[[Ch 03 - Chunking]]"
 next: "[[Ch 05 - Indexing]]"
 ---
-# Ch 4 — Embeddings: two representations
+# Ch 4 — Embeddings: the number the vector could not see
 
-One representation is never enough. The pipeline embeds every chunk **twice**:
+Here is a query my retrieval system should ace and originally fumbled: *"What is ERR-4021?"*
 
-- **Dense** - BGE-family ONNX vectors (384-d today, 1024-d BGE-M3/large is a config swap). Captures *meaning*: paraphrase, synonyms. Fails at exact strings - `ERR-4021`, CIK `0001874410`, `$4,535.35` are just noise to it.
-- **Sparse** - hashed bag-of-words with IDF weighting. Captures *exact terms*. Fails at paraphrase.
+ERR-4021 is a ledger-journal write-timeout from an incident postmortem. To you, it is a precise
+string. To a dense embedding, it is **noise** - semantically, every paragraph about outages and
+errors looks vaguely alike, and the vector has no idea this particular code is the needle. Dense
+vectors capture *meaning*. They are blind to *exact strings*.
 
-They fail in complementary directions - which is the entire argument for hybrid retrieval (Ch 6).
+The mirror image is true too: lexical search nails `ERR-4021` but has no idea that "car" and
+"automobile" are the same thing. Two tools, opposite blind spots. So every chunk in this pipeline is
+embedded **twice**:
 
-**Details that matter:** the contextual header is embedded *with* the chunk text; the sparse index hashes into 65,536 buckets (collisions accepted by design) and Qdrant applies IDF so rare terms win.
+- **Dense** - BGE-family vectors, 384 dimensions today (1024-d BGE-M3/large is a config swap, not a
+  rewrite). Meaning, paraphrase, intent.
+- **Sparse** - a hashed bag-of-words into 65,536 buckets, with IDF weighting so rare terms punch
+  above their weight. Exact match.
 
-> **Interview line:** "Dense understands meaning but drops exact identifiers; BM25 does exact match but zero paraphrase. Complementary failure modes - so I run both and fuse."
+And one detail that quietly moves metrics: the contextual header travels **inside the embedding
+text**. `Apple FY2023 Form 10-K > Item 7` is not decoration - it steers the vector so a chunk about
+liquidity retrieves for liquidity questions even when the sentence itself never says "liquidity".
+
+> **Walk off stage with:** "Dense understands meaning and drops exact identifiers; lexical does the
+> opposite. Complementary blind spots - so I embed twice and fuse later."

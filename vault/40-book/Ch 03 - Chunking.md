@@ -4,14 +4,29 @@ chapter: 03
 prev: "[[Ch 02 - Parsing]]"
 next: "[[Ch 04 - Embeddings]]"
 ---
-# Ch 3 — Chunking: semantic units, self-describing chunks
+# Ch 3 — Chunking: the half balance sheet
 
-Chunking is where retrieval quality is won or lost. Three contracts (ADR-001):
+Remember the demo that opened this talk? Here is exactly how it happens. A chunker cuts text every
+N characters, and a balance sheet straddles the cut. The top half goes into one chunk, the bottom
+half into another. Both are retrieved. The model - fluent, confident - averages a truth with a
+fragment and presents a lie.
 
-1. **Semantic packing** - paragraphs packed to ~250 tokens; oversized ones split on **sentence boundaries** (never mid-thought); 50 tokens of overlap carried across seams.
-2. **Self-describing chunks** - every chunk carries `title > section_path...`. A chunk that says "operating expenses rose 3%" is meaningless without it. The header is also **prepended to the embedding text**, not just stored.
-3. **Tables are atomic** - a table is emitted as its own single chunk, never merged with prose, never split. The structured rows survive in the payload too (for exact queries).
+So chunking got three contracts, not settings:
 
-**The proof:** a corruption check asserts every source cell survives into exactly one chunk. Measured across 75 tables (merged headers, parenthesised negatives, XBRL): **0 corrupted**.
+1. **Semantic packing.** Paragraphs are packed to ~250 tokens, and when a paragraph is too big it
+   splits on **sentence boundaries** - a chunk ends where an idea ends. Fifty tokens of overlap
+   cross every seam, so context is never amputated.
+2. **Self-describing chunks.** Every chunk carries `title > section > subsection` - and that header
+   is *embedded with the text*, not merely stored. Retrieval sees the context, not just the reader.
+3. **Tables are atomic.** A table is its own chunk. Never merged with prose. Never split. Ever. The
+   structured rows travel in the payload too, so an exact query can hit them directly.
 
-> **Interview line:** "Semantic chunking with contextual headers and an atomicity contract for tables - and I prove it with a corruption metric, not vibes."
+Then the part I care about most: **I did not take my own word for it.** I wrote a corruption check -
+for every source table, every cell must appear, intact, inside exactly one chunk - and ran it over
+75 tables: merged header cells, parenthesised negatives like `(921)`, inline XBRL tags, a scanned
+lease with OCR noise. The result: **0 corrupted.** Across all eight documents: 0 parse failures.
+
+That zero is the point of this chapter. Anyone can write a chunker. Very few can *prove* theirs.
+
+> **Walk off stage with:** "Semantic chunking, contextual headers, an atomicity contract for tables -
+> and a corruption metric of 0 out of 75 to prove it."

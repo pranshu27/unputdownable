@@ -4,18 +4,30 @@ chapter: 06
 prev: "[[Ch 05 - Indexing]]"
 next: "[[Ch 07 - Measurement]]"
 ---
-# Ch 6 — Retrieval: run both, fuse by rank
+# Ch 6 — Retrieval: two witnesses and a judge
 
-At query time the question is embedded twice and both stores are queried:
+So you have two witnesses. The dense witness says: "by meaning, these are the five passages that
+matter." The sparse witness says: "by exact terms, here are mine." They disagree. They are both
+partly right. Who decides?
 
-1. dense query -> ranked list by cosine
-2. sparse query -> ranked list by BM25/IDF
-3. **RRF fuse: `score(d) = sum 1 / (60 + rank_L(d))`** - implemented from scratch (`core/rrf.py`)
+You could add their scores. You should not: cosine lives in [0, 1] and BM25 is unbounded - adding
+them is adding metres to kilograms. You could normalise per query - unstable, fiddly, wrong at the
+edges. Or you could do what Reciprocal Rank Fusion does: **ignore the scores entirely and listen to
+the ranks.**
 
-**Why rank-based:** cosine lives in [0,1], BM25 is unbounded - adding raw scores mixes incompatible units. Ranks need no normalisation. k=60 dampens the head so consensus across lists dominates one list's confidence.
+```text
+score(doc) = sum over lists L of 1 / (60 + rank_L(doc))
+```
 
-**Measured:** fuse p95 = **0.03-0.084 ms** against a 50 ms budget (~600x headroom). Fusion is free.
+Rank one in both lists beats rank one in one list and rank forty in the other - but not
+overwhelmingly, because k=60 deliberately dampens the head so *consensus* wins over confidence.
+I implemented it from scratch - it is fifteen lines, and writing it is the interview flex; importing
+it is not. And the punchline number: fusing two ranked lists costs **0.03 to 0.08 milliseconds** at
+p95 against a 50 millisecond budget. Fusion is effectively free.
 
-**The honest lesson:** on the 290-point corpus dense = hybrid = 0.92 Recall@5, Delta = 0. Not a failure - a diagnosis: small corpora saturate, and hybrid's win shows at ANN scale or through the reranker (Ch 10). The lexical-hard golden queries (exact identifiers) are the instrument.
+And then the honest coda, because this talk keeps its promises: on the 290-point corpus, hybrid
+equals dense, 0.92 to 0.92. Fusion did not move the needle - *yet*. The witnesses both saw the whole
+crowd. The judge gets interesting when the crowd gets to ten million.
 
-> **Interview line:** "RRF, from scratch: rank-only fusion with k=60 - no score normalisation, and it costs 0.08 ms p95."
+> **Walk off stage with:** "RRF, from scratch: rank-only fusion with k=60 - no score normalisation,
+> and it costs 0.08 milliseconds at p95."

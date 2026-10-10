@@ -4,18 +4,26 @@ chapter: 09
 prev: "[[Ch 08 - Serving]]"
 next: "[[Ch 10 - Reranking (W2)]]"
 ---
-# Ch 9 — Guardrails: tests, fuzz and fidelity checks
+# Ch 9 — Guardrails: the test that polluted production
 
-The test map (30 passing):
+Confession time again, and this one is my favourite, because I caught it showing the system off.
+I opened the collection to demo what was inside and found strangers living there: a `hello world`
+point, four `Smoke Doc` chunks, four `Quarterly Report` chunks. **My own live tests had been writing
+into the production collection** - every pytest run with Qdrant up, quietly leaking.
 
-- **Per strategy:** block extraction for markdown / HTML / plain text (`test_parsers.py`)
-- **Invariants:** chunk packing, overlap, headers, table atomicity (`test_chunker.py`)
-- **Fusion maths:** RRF ordering and k-damping (`test_rrf.py`)
-- **Boundaries:** schema validation rejects bad input (`test_schemas.py`)
-- **Config:** dense dims + sparse IDF collection config (`test_qdrant_config.py`)
-- **Live integration:** auto-skip when Qdrant is down; writes go to a **scratch collection (`documents-tests`)** dropped on teardown - never the production collection (`test_qdrant_integration.py`)
-- **End-to-end:** ingest -> hybrid search on the scratch collection (`test_services.py`)
+Nine stray points. Small blast radius, huge lesson: integration tests need the same production
+hygiene as production code. Now they run against a **scratch collection** that is created on demand
+and dropped on teardown, and the round-trip test *asserts* it is not writing into `documents`.
+The pollution can never happen again - there is a guardrail where the bug used to live.
 
-**Beyond pytest, the harnesses:** quality claims are fuzzed against reference implementations (200-500 cases with negatives and edge cases), and the table-corruption check asserts every source cell survives into exactly one chunk.
+The full guardrail stack around the pipeline:
 
-> **Interview line:** "Per-strategy unit tests, invariants as assertions, fuzz against reference implementations, and live integration tests that can never pollute production data."
+- **Per-strategy unit tests** - markdown tables, HTML headings, plain text, each parser on its own
+- **Invariants as assertions** - chunk packing, overlap, headers, and table atomicity
+- **Fuzz against references** - 200 to 500 randomised cases, negatives included, compared to a
+  boring correct implementation, on every quality claim I make
+- **The corruption check** - every source table cell must survive into exactly one chunk
+- **Live tests that auto-skip** - CI stays green without infrastructure
+
+> **Walk off stage with:** "The guardrail I am proudest of is the one that caught me - my tests now
+> cannot write into production, because there is a lock where the bug used to be."
