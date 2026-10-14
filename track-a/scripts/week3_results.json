@@ -1,0 +1,375 @@
+{
+  "config": {
+    "pipeline": "subquery",
+    "reflection": true,
+    "rerank": false,
+    "dense_dims": 384
+  },
+  "quality": {
+    "recall_at5_baseline_hybrid": 0.821,
+    "recall_at5_pipeline": 0.821,
+    "delta_pipeline_minus_baseline": 0.0,
+    "compound_baseline": 0.0,
+    "compound_pipeline": 0.0,
+    "compound_delta": 0.0,
+    "retries_total": 0
+  },
+  "latency": {
+    "transform_p95_ms": 0.01,
+    "reflect_p95_ms": 0.08,
+    "pipeline_total_p50_ms": 12.9,
+    "pipeline_total_p95_ms": 41.1,
+    "overhead_vs_baseline_p50": 0.4
+  },
+  "cost": {
+    "added_llm_tokens_per_query": 0,
+    "note": "transform+reflection are LLM-free by design in Week 3"
+  },
+  "rows": [
+    {
+      "kind": "simple",
+      "query": "what was apple net sales in fiscal 2023",
+      "baseline_recall": 0.0,
+      "pipeline_recall": 0.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.04,
+      "pipeline_total_ms": 17.0,
+      "baseline_total_ms": 24.7
+    },
+    {
+      "kind": "simple",
+      "query": "iphone revenue mac revenue segment breakdown",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 20.3,
+      "baseline_total_ms": 18.4
+    },
+    {
+      "kind": "simple",
+      "query": "gross margin percentage fiscal 2023",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.09,
+      "pipeline_total_ms": 21.5,
+      "baseline_total_ms": 19.5
+    },
+    {
+      "kind": "simple",
+      "query": "domestic fee cross-border fee tier",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.06,
+      "pipeline_total_ms": 19.6,
+      "baseline_total_ms": 20.1
+    },
+    {
+      "kind": "simple",
+      "query": "hnsw ef_search recall latency trade-off",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.01,
+      "pipeline_total_ms": 18.0,
+      "baseline_total_ms": 20.9
+    },
+    {
+      "kind": "simple",
+      "query": "quantization memory reduction per million vectors",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.04,
+      "pipeline_total_ms": 15.4,
+      "baseline_total_ms": 15.2
+    },
+    {
+      "kind": "simple",
+      "query": "reciprocal rank fusion decision sprint",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 10.7,
+      "baseline_total_ms": 12.3
+    },
+    {
+      "kind": "simple",
+      "query": "reranker candidate cap fifty",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.01,
+      "pipeline_total_ms": 9.6,
+      "baseline_total_ms": 9.3
+    },
+    {
+      "kind": "simple",
+      "query": "total operating expenses research development",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.01,
+      "pipeline_total_ms": 11.9,
+      "baseline_total_ms": 11.7
+    },
+    {
+      "kind": "simple",
+      "query": "services revenue growth drivers",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 9.6,
+      "baseline_total_ms": 11.9
+    },
+    {
+      "kind": "simple",
+      "query": "what is the ACMR CIK number",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.04,
+      "pipeline_total_ms": 11.4,
+      "baseline_total_ms": 12.4
+    },
+    {
+      "kind": "simple",
+      "query": "ACME restructuring charges severance impairment Hannover",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 9.9,
+      "baseline_total_ms": 11.4
+    },
+    {
+      "kind": "simple",
+      "query": "Series B term loan interest rate basis points",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 10.8,
+      "baseline_total_ms": 12.7
+    },
+    {
+      "kind": "simple",
+      "query": "ACME warehouse fulfillment segment revenue growth percent",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.05,
+      "pipeline_total_ms": 10.6,
+      "baseline_total_ms": 10.7
+    },
+    {
+      "kind": "simple",
+      "query": "ACME diluted earnings per share fiscal 2023",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 10.9,
+      "baseline_total_ms": 10.8
+    },
+    {
+      "kind": "simple",
+      "query": "ERR-4021 ledger journal write timeout",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 13.8,
+      "baseline_total_ms": 11.7
+    },
+    {
+      "kind": "simple",
+      "query": "which deploy caused the canary rollback",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 12.5,
+      "baseline_total_ms": 12.3
+    },
+    {
+      "kind": "simple",
+      "query": "trace id fraud scoring span budget breach",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 11.5,
+      "baseline_total_ms": 11.5
+    },
+    {
+      "kind": "simple",
+      "query": "remediation owner canary blast radius tier-0",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 12.7,
+      "baseline_total_ms": 12.2
+    },
+    {
+      "kind": "simple",
+      "query": "lease monthly base rent lease year three",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 12.8,
+      "baseline_total_ms": 11.1
+    },
+    {
+      "kind": "simple",
+      "query": "security deposit amount Sundial Analytics",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.04,
+      "pipeline_total_ms": 16.0,
+      "baseline_total_ms": 13.6
+    },
+    {
+      "kind": "simple",
+      "query": "proportionate share operating expenses base year",
+      "baseline_recall": 0.0,
+      "pipeline_recall": 0.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 13.2,
+      "baseline_total_ms": 12.6
+    },
+    {
+      "kind": "simple",
+      "query": "two-column degradation dense right half recall",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.0,
+      "reflect_ms": 0.01,
+      "pipeline_total_ms": 12.0,
+      "baseline_total_ms": 12.5
+    },
+    {
+      "kind": "simple",
+      "query": "column-aware pre-pass latency milliseconds per page",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 16.4,
+      "baseline_total_ms": 20.3
+    },
+    {
+      "kind": "simple",
+      "query": "synthetic corpus citation key retrieval",
+      "baseline_recall": 1.0,
+      "pipeline_recall": 1.0,
+      "variants": [],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 13.1,
+      "baseline_total_ms": 14.1
+    },
+    {
+      "kind": "compound",
+      "query": "fee schedule and latency budget",
+      "baseline_recall": 0.0,
+      "pipeline_recall": 0.0,
+      "variants": [
+        "fee schedule",
+        "latency budget"
+      ],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.02,
+      "pipeline_total_ms": 42.0,
+      "baseline_total_ms": 12.5
+    },
+    {
+      "kind": "compound",
+      "query": "revenue by segment and gross margin",
+      "baseline_recall": 0.0,
+      "pipeline_recall": 0.0,
+      "variants": [
+        "revenue by segment",
+        "gross margin"
+      ],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 40.1,
+      "baseline_total_ms": 13.0
+    },
+    {
+      "kind": "compound",
+      "query": "incident timeline and remediation owners",
+      "baseline_recall": 0.0,
+      "pipeline_recall": 0.0,
+      "variants": [
+        "incident timeline",
+        "remediation owners"
+      ],
+      "retries": 0,
+      "transform_ms": 0.01,
+      "reflect_ms": 0.03,
+      "pipeline_total_ms": 34.6,
+      "baseline_total_ms": 13.3
+    }
+  ]
+}

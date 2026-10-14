@@ -70,7 +70,7 @@ A service that ingests heterogeneous enterprise documents and answers questions 
 - embed **60-95 s p95** - the bottleneck
 - upsert ~1 s
 
-**Query:** embed (~3-9 ms) -> dense (~4-8 ms) and sparse (~2-8 ms) -> RRF fuse (~0.03-0.08 ms) -> top-k. Rerank will sit between fuse and top-k from W2.
+**Query:** embed (~3-9 ms) -> dense (~4-8 ms) and sparse (~2-8 ms) -> RRF fuse (~0.03-0.08 ms) -> top-k. Rerank now sits between fuse and top-k (optional, `TRACKA_RERANK_ENABLED`).
 
 ## 7. Storage & data model
 

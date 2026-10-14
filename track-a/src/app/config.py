@@ -50,6 +50,20 @@ class Settings(BaseSettings):
     # --- Hybrid search (ADR 002) ---------------------------------------------------
     rrf_k: int = 60
 
+    # --- Reranking (ADR 002 Week-2 addendum) -----------------------------------------
+    # Cross-encoder reranks fused candidates: fuse top-50 -> rerank -> top-5.
+    # Disabled by default so the hermetic test suite and the Day-3 baseline stay unchanged.
+    rerank_enabled: bool = False
+    reranker_model: str = "BAAI/bge-reranker-base"  # fastembed ships base, not large
+    rerank_candidates: int = 50
+
+    # --- Query transformation (ADR 003, Week 3) ---------------------------------------
+    # Chain selected by membership, e.g. "subquery,rewrite,hyde". Rule-based strategies
+    # are LLM-free; hyde degrades to a no-op until the generator lands (Week 7).
+    query_transform_pipeline: str = "subquery"
+    reflection_enabled: bool = True   # Self-RAG-style sufficiency check + 1 bounded retry
+    reflection_min_coverage: float = 0.6  # fraction of query keywords covered by top results
+
     # --- Data ----------------------------------------------------------------------
     data_dir: str = "data"
 

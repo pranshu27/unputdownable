@@ -56,7 +56,50 @@ One entry per problem. **Name the family, not the problem** — interviewers pro
 - **Measured:** `"abba"` -> 2 (the no-`max` variant returns 3); fuzz 500/500 vs brute force over letters+digits+symbols+spaces; n = 100,000 in ~11.5 ms (V1: 17.3 ms), while brute force is O(n x alphabet) for small alphabets but truly O(n^2) on all-distinct input (87.2 ms at n=3,000, vs V2 handling n=100,000 in ~11.5 ms).
 - **Soundbite:** *"LC 3 is a sliding window: monotone validity (a duplicate can never be repaired by adding characters) lets me shrink from the left; I keep a last-seen index map and update `left = max(left, last[c] + 1)` so `left` never moves backwards - that `max` is the `"abba"` trap."*
 
----
+## Family C — Heaps (top-k and running order-statistics)
+
+| Member | Structure | Invariant | Status |
+| :--- | :--- | :--- | :--- |
+| **LC 347** Top K Frequent Elements | freq map + frequency buckets | a frequency is an int in [1, n] ⇒ bucket-sort beats comparison sort | ✅ P3 |
+| **LC 295** Find Median from Data Stream | two heaps (lo max-heap, hi min-heap) | order: max(lo) ≤ min(hi); size: len(lo) == len(hi) or +1 | ✅ P3 |
+| **LC 215** Kth Largest | min-heap of size k | heap holds the k biggest seen | preview |
+| **LC 23** Merge k Lists | k-way heap | pop min, push its next | preview |
+
+### P3a — LC 347 Top K Frequent Elements ✅
+- **Ladder:** count O(n) → sort by freq O(n log n) → **bucket sort on frequency O(n)** (legal because the sort key is a bounded integer 1..n).
+- **Heap alternative:** min-heap of size k → O(n log k) — better when k ≪ distinct count or streaming.
+- **Fuzz lesson (the honest one):** ties at the k-boundary make the element *set* non-unique — two legal answers differ! The reference must compare the **frequency multiset**, not element sets.
+- **Soundbite:** *"When the sort key is a small bounded integer, you don't sort — you index into buckets."*
+
+### P3b — LC 295 Find Median from Data Stream ✅
+- **The two-heap seesaw:** smaller half = max-heap `lo`, larger half = min-heap `hi`; median = lo top (odd) or mean of tops (even).
+- **The dance (my bug + fix):** push to lo → **ALWAYS** transit lo's max to hi → rebalance hi→lo if hi grew. My first version skipped the transit when hi was empty → size invariant broke on `[1,2]` (median 2.0 instead of 1.5). The unconditional transit makes the "x smaller than everything" case self-handling.
+- **Complexity:** add O(log n), median O(1).
+- **Soundbite:** *"Two heaps with one invariant — every element transits through lo — so the median is always where the halves touch."*
+
+## Family D — Trees (single-pass recursion with contracts)
+
+| Member | The contract returned upward | Status |
+| :--- | :--- | :--- |
+| **LC 236** Lowest Common Ancestor | None / found-target / found-LCA; both-sides ⇒ I am LCA | ✅ P4 |
+| **LC 124** Binary Tree Max Path Sum | straight-chain gain (≤1 branch); the bend updates a global | ✅ P4 |
+| **LC 104/110** depth / balanced | subtree height + flag | preview |
+| **LC 98** Validate BST | (min, max) bounds | preview |
+
+### P4a — LC 236 LCA ✅
+- **The recursion contract:** return `None` (nothing here), the target node (I am/contain p or q), or the LCA (answer found below — bubbles up unchanged).
+- **Why both-sides = me is correct even when p is q's ancestor:** the ancestor case terminates at the *ancestor itself* (it is p, base case), so no double-count.
+- **Fuzz: property check** — LCA contains both; NO child of LCA contains both ("deepest"). Plus two fuzz-authoring lessons: namedtuples reject `setattr` (use a mutable node class); never sample unattached nodes as targets.
+- **Complexity:** O(n) time, O(h) stack.
+- **Soundbite:** *"The LCA recursion has a three-valued contract — None, target, or answer — and the rule 'both sides returned something ⇒ I am it' does all the work."*
+
+### P4b — LC 124 Max Path Sum ✅
+- **Every path has one bend.** Per node: offer the parent a **straight chain** `me + max(l, r, 0)`; update the global with the **bend** `me + l + r`. The global max is the answer.
+- **Pruning:** `max(gain, 0)` drops negative branches — but the path must contain ≥1 node, so a single-node negative tree answers its own negative value (example 3).
+- **Verified:** 60 random trees (−10..10 values) vs an all-simple-paths O(n²) reference.
+- **Complexity:** O(n) time, O(h) stack.
+- **Soundbite:** *"The parent gets a straight chain; the answer may use the bend — separating the two questions is the whole problem."*
+
 
 ## Cross-cutting traps — reread these 2 minutes before an interview
 

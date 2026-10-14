@@ -29,6 +29,16 @@ Hybrid pipeline on Qdrant:
 - Fuse latency < 50 ms → ✅ by ~600×.
 - Sparse index < 20% of dense bytes → ✅.
 
+## Week-2 addendum (Oct 2026): the rerank stage
+- **Decision:** fuse top-50 → **cross-encoder rerank** → top-5; optional seam
+  (`core/reranker.py`, fastembed `TextCrossEncoder`), off by default.
+- **Why a cross-encoder:** it reads query and candidate *together*; a bi-encoder never
+  lets them meet. Precision stage on top of the recall stage.
+- **Deviation:** plan said BGE-Reranker-Large; fastembed ships only **base** → recorded.
+- **Measured:** Recall@5 0.92 in ALL modes incl. rerank (Δ = 0 — ceiling at 290 pts);
+  warm rerank ~15 ms/2 pairs ≈ 0.4 s per 50 pairs (clean est; benchmark p50/p95
+  machine-contaminated, re-measure quiet); ≈ $0.02/1k queries.
+
 ## Key methodology insight (Sep 29)
 Qdrant brute-forces below `full_scan_threshold` (10k). With 290 points, dense matches exact numbers fine ⇒ Δ = 0. **Hybrid's win condition is scale (HNSW approximation loss) or reranking quality, not small-corpus fusion.** This reframe is interview gold.
 

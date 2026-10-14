@@ -32,6 +32,22 @@ One entry per work day. **Newest first.** Use `90-templates/tpl-daily-log`. Rule
 - **Learned:** small corpus (< 10k pts ⇒ brute force) saturates both retrievers → Δ Recall@5 belongs to the Week-2 reranker benchmark; documented in [[ADR-002 Hybrid Search]].
 - **Next:** DSA drill Thu; Week 2: BGE-M3, batched embed workers, reranker.
 
+## 2026-10-14 · Week 2 — Hybrid Retrieval, RRF & Reranking (two-week catch-up, W2)
+- **Built (Mon):** ADR-002 Week-2 addendum — the cross-encoder rerank stage: fuse top-50 → rerank → top-5; deviation recorded (fastembed ships `bge-reranker-base`, not Large).
+- **Built (Tue/Wed):** `core/reranker.py` (fastembed `TextCrossEncoder`, lazy-load, OFF by default so baseline stays reproducible) + reranker wiring in `SearchService` (new `rerank_ms` span; top-50 candidate pull). Config knobs: `TRACKA_RERANK_ENABLED` / `TRACKA_RERANKER_MODEL` / `TRACKA_RERANK_CANDIDATES`.
+- **Built:** `scripts/week2_benchmark.py` — 4 modes (dense / sparse / hybrid / hybrid+rerank), lexical-hard subset, rerank p50/p95, CPU-second $/1k-queries method.
+- **Verified:** reranker direction sanity (+3.07 relevant vs −10.19 irrelevant; warm 15 ms/2 pairs). Full suite green with rerank off.
+- **Measured:** Recall@5 **0.92 all four modes** (dense/sparse/hybrid/hybrid+rerank; lexical-hard 0.90) — rerank Δ = 0 at 290-pt ceiling · corruption 0/75 · rerank warm ~15 ms/2 pairs (≈0.4 s per 50 pairs, clean est); benchmark p50/p95 contaminated by the load-44 storm, re-measure quiet · rerank ≈ $0.02/1k queries clean est. See `measurements.md`.
+- **Measured (W3):** Δ pipeline−baseline = 0.0 (0.821 both; compound goldens 0.0 in BOTH — metric mis-defined, all-in-one-chunk can't hold for span answers) · transform p95 0.01 ms · reflect p95 0.08 ms · overhead p50 +0.4 ms · 0 LLM tokens. The W3 deliverable: **the control flow costs nothing and regresses nothing until the LLM lands.**
+- **Learned (the honest one):** the 1024-d (BGE-large 1.2 GB) eval was attempted first and died of **memory pressure** — 7.5 GB used, 165 MB free, 3.5 GB compressed, swap-thrash at 22% CPU. Config-only model swap works; the BOX must match the model. Sizing lesson: "the model must fit with headroom, or you benchmark the swap file." Collection `documents-1024` upgrade aborted on swap pressure — rerun when the machine is quiet.
+
+## 2026-10-14 · Week 3 — Query Rewriting & Self-RAG (two-week catch-up, W3)
+- **Built (Mon):** ADR-003 — pluggable, config-driven query-transformation chain (subquery / rewrite / hyde); HyDE ships as a generator seam, no-op until W7 LLM.
+- **Built (Tue/Wed):** `core/query_transformers.py` (SubQueryDecomposer, RewriteTransformer, HydeTransformer + `build_pipeline`) + `core/query_service.py` (multi-variant retrieval fused via RRF → rerank → rule-based sufficiency reflection → ONE bounded retry). 4 new unit tests; suite green.
+- **Rule bugs caught by tests before they could ship:** leading-article stripping, "simple query is not its own variant", trailing punctuation.
+- **Measured:** ⏳ fill from `scripts/week3_results.json` when the run lands.
+
+
 ## 2026-09-29 · Week 1 Day 3 — Integrate & Measure
 - **Built:** ADR-001 pipeline end-to-end: `parsers.py` (Strategy Pattern) → `chunker.py` (semantic + contextual headers + atomic tables) → `embeddings.py` → `ingest_service.py`.
 - **Built:** ADR-002 hybrid search: dense + hashed-sparse(BM25/IDF) + `rrf.py` from scratch.

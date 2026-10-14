@@ -13,6 +13,16 @@ Implement a Hybrid Search pipeline using Qdrant:
 2.  **Sparse Retriever:** BM25 lexical index.
 3.  **Fusion:** Reciprocal Rank Fusion (RRF) for merging results.
 
+## Decision (Week-2 addendum): cross-encoder reranking
+
+4. **Rerank stage (added Oct 2026):** fusion output is *candidates*, not answers. A cross-encoder
+    reads (query, candidate) together - impossible for bi-encoders, which compress each side into one
+    vector before they meet - so it becomes the precision stage: fuse top-50 -> **rerank** -> top-5.
+    Implemented behind an optional `Reranker` seam (`core/reranker.py`), **off by default** so the
+    baseline and the hermetic test suite stay unchanged; enabled via `TRACKA_RERANK_ENABLED=true`.
+    Model: `BAAI/bge-reranker-base` (fastembed ships no bge-reranker-large; deviation noted).
+    Budget: rerank span p95 < 500 ms on CPU ONNX for 50 candidates (measured in Week 2 Day 3).
+
 ## Alternatives Considered
 1.  **Dense-only search:** High recall on semantic queries; fails on specific technical identifiers or acronyms.
 2.  **Sparse-only search (BM25):** High precision on keywords; fails on semantic synonyms.

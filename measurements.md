@@ -5,6 +5,27 @@ Log of the 3 fixed measurement categories (quality / latency / cost) captured ev
 | Week | Quality (Δ Recall@5 / eval delta) | Latency (TTFT + TPOT by span) | Cost ($/1k queries or VRAM/user) | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | Parse failure 0.0% · table corruption 0.0% (0/68) · Δ Recall@5 (hybrid−dense) = 0.0 (both 0.90, ceiling) | Ingest p95 75.2 s (10-K CPU embed bottleneck); search TTFT p50 18.2 ms / p95 59.4 ms; RRF fuse p95 0.084 ms | $0 marginal (local ONNX); ref $0.0025/1k pages embed + $0.088/1k pages storage | Week 1 Day 3 — see below |
+| 2 | Recall@5 all four modes **0.92** (lexical-hard 0.90) — rerank Δ = 0 on the 290-pt ceiling · corruption 0/75 | Rerank warm ~15 ms/2 pairs → **~0.4 s per 50 pairs** (clean-box est); benchmark p50 35 s / p95 72 s CONTAMINATED (load-44 swap storm, re-measure quiet) | Rerank ≈ **$0.02/1k queries** clean est (vs $1.77 in the contaminated run); CPU-second method @ $4.7e-5/s | Week 2 — rerank stage measured; deltas still 0 at small-corpus scale |
+
+| 3 | Δ pipeline−baseline = **0.0** (0.821 both, 28 goldens) — **no regression is the deliverable at ~zero cost**; compound goldens 0.0 in BOTH modes (metric-definition bug: all-keywords-in-one-chunk can't hold for span-chunk answers) | transform p95 **0.01 ms** · reflect p95 **0.08 ms** · pipeline overhead p50 **+0.4 ms** | added LLM tokens **0** (rule-based strategies; HyDE deferred to W7) | Week 3 — see below |
+
+## Week 2 Day 3 — 1024-d upgrade attempt + cross-encoder rerank (Track A)
+
+Run: `track-a/scripts/week2_benchmark.py` (full ingest run + `--skip-ingest` eval re-run) · corpus = 8 stress docs, 25 goldens · modes = dense / sparse / hybrid / hybrid+rerank (`BAAI/bge-reranker-base`, top-50 → top-5, off by default).
+
+- **Quality:** 0.92 Recall@5 in all four modes (lexical-hard 0.90) — fusion already saturates; the reranker moved nothing ON THIS CORPUS (ceiling effect, small-corpus brute-force regime). Honest conclusion: rerank's Δ Recall needs a corpus where fusion fails — scale or harder negatives.
+- **The memory lesson:** the BGE-large 1024-d upgrade (1.2 GB) was attempted first and died of swap-thrash (7.5 GB used / 165 MB free / load 44) — "the model must fit the box or you benchmark the swap file." Config-only swap stays ready (`TRACKA_EMBEDDING_MODEL`); re-run when quiet.
+- **Contamination lesson:** rerank p50 35 s / p95 72 s were measured under the same system storm; the clean warm measurement is ~15 ms per 2 pairs. Quote the clean number with the caveat; re-measure on a quiet box before citing p95.
+- **Cost:** rerank ≈ $0.02/1k queries (clean est); dense index 445 KB, sparse est 64 KB (sparse ≈ 14% of dense → ✅ < 20% budget).
+
+## Week 3 Day 3 — Query transformation + reflection (Track A)
+
+Run: `track-a/scripts/week3_benchmark.py` (reuse the 290-pt collection) · baseline = hybrid · pipeline = transform → multi-variant retrieve → fuse → reflect (rerank off in both).
+
+- **Quality:** Δ pipeline−baseline = 0.0 (0.821 both). Compound goldens: 0.0 in BOTH — **the metric was mis-defined** (all keywords must appear in ONE chunk; compound answers span chunks). Fix queued: per-keyword hit-rate across top-k for compound queries. Honest framing: the pipeline did not help YET (rule-based decomposition is shallow, and the goldens it could win are scored by a broken metric), and it provably did not hurt.
+- **Latency (the real deliverable):** transform p95 0.01 ms · reflect p95 0.08 ms · total overhead p50 **+0.4 ms** — ADR-003's control flow costs nothing until the LLM lands.
+- **Cost:** added LLM tokens = 0.
+- **Retries:** 0 (reflection never triggered — coverage ≥ 0.6 everywhere; the bounded retry is tested in unit tests, untested on real insufficient queries — say so honestly).
 
 ## Week 1 Day 3 — Ingestion pipeline + hybrid retrieval (Track A)
 

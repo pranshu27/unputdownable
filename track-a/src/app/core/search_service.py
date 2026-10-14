@@ -25,6 +25,7 @@ class SearchSpans:
     retrieve_dense_ms: float = 0.0
     retrieve_sparse_ms: float = 0.0
     fuse_ms: float = 0.0
+    rerank_ms: float = 0.0  # ADR-002 W2: cross-encoder stage (0 when disabled)
     total_ms: float = 0.0
 
 
@@ -38,10 +39,19 @@ class SearchOutcome:
 class SearchService:
     """Hybrid retrieval with RRF fusion over a single Qdrant collection."""
 
-    def __init__(self, client: QdrantClient, embedder: EmbeddingBackend, settings: Settings | None = None) -> None:
+    def __init__(self, client: QdrantClient, embedder: EmbeddingBackend, settings: Settings | None = None, reranker=None) -> None:
         self.client = client
         self.embedder = embedder
         self.settings = settings or get_settings()
+        # ADR-002 W2: optional cross-encoder rerank stage (off by default)
+        if reranker is None:
+            from .reranker import get_reranker
+
+            reranker = get_reranker(self.settings)
+        self.reranker = reranker
+        from .reranker import NullReranker
+
+        self.rerank_enabled = self.settings.rerank_enabled and not isinstance(reranker, NullReranker)
 
     def search(self, query: str, top_k: int = 5, mode: str = "hybrid") -> SearchOutcome:
         settings = self.settings
@@ -91,17 +101,29 @@ class SearchService:
             by_id: dict = {}
             for p in [*dense_hits, *sparse_hits]:
                 by_id.setdefault(p.id, p)
-            ordered = [(by_id[i], score) for i, score in fused[:top_k]]
+            ordered = [(by_id[i], score) for i, score in fused if i in by_id]
         elif mode == "dense":
-            ordered = [(p, p.score or 0.0) for p in dense_hits[:top_k]]
+            ordered = [(p, p.score or 0.0) for p in dense_hits]
         else:
-            ordered = [(p, p.score or 0.0) for p in sparse_hits[:top_k]]
+            ordered = [(p, p.score or 0.0) for p in sparse_hits]
         spans.fuse_ms = (time.perf_counter() - t3) * 1000
+
+        # ADR-002 W2: cross-encoder precision stage over the candidate set (top-50 -> top-5)
+        if self.rerank_enabled and ordered:
+            candidates = ordered[: settings.rerank_candidates]
+            t4 = time.perf_counter()
+            texts = [(p.payload or {}).get("text", "") for p, _ in candidates]
+            scores = self.reranker.rerank(query, texts)
+            spans.rerank_ms = (time.perf_counter() - t4) * 1000
+            ordered = sorted(
+                ((p, s) for p, s in zip([p for p, _ in candidates], scores)),
+                key=lambda ps: -ps[1],
+            )
         spans.total_ms = (time.perf_counter() - started) * 1000
 
         results = []
         rank = 0
-        for p, score in ordered:
+        for p, score in ordered[:top_k]:
             payload = p.payload or {}
             if "chunk_id" not in payload or "document_id" not in payload:
                 continue  # skip malformed/legacy points without ingestion metadata

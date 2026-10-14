@@ -23,7 +23,10 @@ related: "[[HLD - Track A Agentic RAG]]"
 | `core/ingest_service.py` | orchestration, `IngestStats` spans, `load_source` |
 | `core/qdrant.py` | client factory, collection config, dims-aware `ensure_collection` |
 | `core/search_service.py` | dense + sparse queries, fusion, span timings |
-| `core/rrf.py` | rank-based fusion, written from scratch |
+| `core/rrf.py` | rank-based fusion + `weighted_rank_fusion`, written from scratch |
+| `core/reranker.py` | cross-encoder rerank stage (fastembed TextCrossEncoder, lazy load) |
+| `core/query_transformers.py` | ADR-003 strategy chain: SubQueryDecomposer / RewriteTransformer / HydeTransformer |
+| `core/query_service.py` | transform -> multi-variant retrieve -> fuse -> reflect -> 1 retry |
 
 ## 2. Interfaces
 
@@ -35,6 +38,9 @@ EmbeddingBackend.embed_sparse(texts) -> list[dict]             # {indices, value
 IngestService.ingest(payload: DocumentUpload, source_text: str | None) -> IngestResult
 SearchService.search(query, top_k=5, mode="hybrid"|"dense"|"sparse") -> SearchOutcome
 rrf_fuse(ranked_lists: list[list[str]], k: int = 60) -> list[tuple[str, float]]
+weighted_rank_fusion(lists, k=60, weights=None) -> list[tuple]   # per-list weights
+CrossEncoderReranker.rerank(query, texts) -> list[float]        # higher = more relevant
+QueryService.search(query, top_k=5) -> QueryOutcome              # variants + reflections
 ensure_collection(client, settings) -> bool                    # True when (re)created
 ```
 
@@ -107,6 +113,11 @@ QUERY   query -> embed_dense  -> query_points(using="dense")  -
 | `TRACKA_CHUNK_TARGET_TOKENS` | `250` | chunk target |
 | `TRACKA_CHUNK_OVERLAP_TOKENS` | `50` | carried overlap |
 | `TRACKA_RRF_K` | `60` | fusion damping |
+| `TRACKA_RERANK_ENABLED` | `false` | cross-encoder rerank stage |
+| `TRACKA_RERANKER_MODEL` | `BAAI/bge-reranker-base` | rerank model (no large in fastembed) |
+| `TRACKA_RERANK_CANDIDATES` | `50` | fuse top-50 -> rerank -> top-5 |
+| `TRACKA_QUERY_TRANSFORM_PIPELINE` | `subquery` | ADR-003 chain |
+| `TRACKA_REFLECTION_ENABLED` | `true` | Self-RAG-style sufficiency retry |
 | `TRACKA_SPARSE_HASH_BUCKETS` | `65536` | sparse dimensionality |
 
 ## 8. Extension points
