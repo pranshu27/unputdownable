@@ -90,7 +90,8 @@ def main() -> None:
                 t, c = table_corruption_check(result.parsed, chunks2)
                 print(f"  {title!r}: tables={t} corrupted={c}")
 
-    base = SearchService(client, embedder, settings)
+    base_settings = settings.model_copy(update={"rerank_enabled": False})  # baseline stays rerank-free
+    base = SearchService(client, embedder, base_settings)
     query_svc = QueryService(base, settings)
 
     evals = [("simple", q, kws) for q, kws in GOLDEN] + [("compound", q, kws) for q, kws in COMPOUND]

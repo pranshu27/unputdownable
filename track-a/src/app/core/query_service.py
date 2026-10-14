@@ -80,7 +80,12 @@ class QueryService:
             return ids[:top_k], 0.0
         started = time.perf_counter()
         candidates = ids[: self.settings.rerank_candidates]
-        scores = self.reranker.rerank(query, [payload[i].text for i in candidates if i in payload])
+        texts = [payload[i].text for i in candidates if i in payload]
+        if self.settings.rerank_snippet_tokens > 0:
+            # rerankers are snippet scorers: per-pair cost ~quadratic in sequence length
+            n = self.settings.rerank_snippet_tokens
+            texts = [" ".join(t.split()[:n]) for t in texts]
+        scores = self.reranker.rerank(query, texts)
         candidates = candidates[: len(scores)]
         ranked = sorted(zip(candidates, scores), key=lambda ps: -ps[1])
         return [i for i, _ in ranked[:top_k]], (time.perf_counter() - started) * 1000

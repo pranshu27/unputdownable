@@ -44,7 +44,7 @@ raw doc ──▶ ??? ──▶ ??? ──▶ ??? ──▶ ??? ──▶ ???
 
 **Structure the answer:** (1) capacity math first: 10M chunks × 1024-d × 4 B = ~40 GB dense alone → memory sizing decides quantization; (2) sharding: by tenant/collection, or time?; (3) ANN tuning: `m`/`ef_search` against a measured Recall@k-vs-p95 curve; quantization (int8 = 4x, PQ = 16x) only after measuring recall loss; (4) cache tiers: semantic cache (query embedding) → rerank cache → payload cache; (5) rerank in the budget: fused top-50 rerank costs ~O(50) cross-encoder calls — batched ONNX or GPU; (6) write path: async workers, upsert batching.
 
-**Numbers to quote from this repo:** fuse 0.03-0.08 ms · rerank warm ~15 ms/2 pairs (base model, CPU) → 50 pairs ≈ 200-400 ms CPU → GPU or smaller reranker needed at scale · 290 pts brute-force regime.
+**Numbers to quote from this repo:** fuse 0.03-0.08 ms · rerank fitted config (MiniLM, 20 × 64-token snippets) **p50 257 ms / p95 426 ms** — inside budget · bge-reranker-base = 4.1 s at the same config (CPU budget breaker) · full-chunk rerank of 50 candidates = 16.7 s, never on CPU · cross-encoder cost quadratic in pair length (12 ms/pair @ 10 tok → 398 ms/pair @ 250 tok, measured) · 290 pts brute-force regime.
 
 ### Your diagram (draw after reading the structure)
 

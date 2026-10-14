@@ -56,6 +56,11 @@ class Settings(BaseSettings):
     rerank_enabled: bool = False
     reranker_model: str = "BAAI/bge-reranker-base"  # fastembed ships base, not large
     rerank_candidates: int = 50
+    # Cross-encoder per-pair cost scales ~quadratically with sequence length (measured:
+    # 12 ms/pair @ ~10 tok vs 398 ms/pair @ ~250 tok on CPU). Rerankers are snippet
+    # scorers: 0 = rerank full chunk text (measured p50 16.7 s for 50 candidates - CPU
+    # budget breaker); N = truncate each candidate to N whitespace tokens first.
+    rerank_snippet_tokens: int = 0
 
     # --- Query transformation (ADR 003, Week 3) ---------------------------------------
     # Chain selected by membership, e.g. "subquery,rewrite,hyde". Rule-based strategies

@@ -7,14 +7,17 @@
 **The numbers, in speaking order.**
 1. "My harness showed Recall@5 = 0.92 across ALL four modes — dense, sparse, hybrid, hybrid+rerank — and Δ = 0."
 2. "The honest reason: 290 points is below Qdrant's `full_scan_threshold` of 10k — everything brute-forces exactly, so both retrievers saturate. Hybrid's win condition is ANN scale or reranker quality — NOT small-corpus fusion."
-3. "Rerank cost: warm ~15 ms for 2 pairs on CPU ONNX ≈ 0.4 s for 50 pairs, ≈ $0.02 per 1k queries by the CPU-second method. My benchmark's p50 of 35 s was contaminated by a system load storm — I quote the clean number with the caveat."
-4. "Table integrity through all of it: 0/75 corrupted, including a 42-row balance sheet."
+3. "Rerank latency taught me the sharpest lesson of the build: cross-encoder cost is QUADRATIC in pair length — measured, 12 ms per pair at ~10 tokens versus 398 ms at ~250 tokens, 33×. Reranking 50 full chunks took 16.7 seconds; my first 'estimate' from short pairs was 100× off."
+4. "So I fitted the config to the budget: fastembed's small cross-encoder — ms-marco-MiniLM, 22M params — reranking 20 candidates truncated to 64-token snippets: p50 257 ms, p95 426 ms, inside my 500 ms budget, at $0.014 per 1k queries. The big bge-reranker-base at the same config is 4.1 seconds — that one needs a GPU."
+5. "Table integrity through all of it: 0/75 corrupted, including a 42-row balance sheet."
+
+**If pushed — 'doesn't truncating to 64 tokens hide answers?'** "I tested that hypothesis — it's false on this corpus: the one golden that misses does so in EVERY configuration, including the no-rerank no-truncation baseline. The miss is a corpus-coverage fact, not a snippet artifact. And structurally: the snippet decides the ORDER, the payload still carries the full chunk downstream — truncation costs scoring fidelity on tail content, not data."
 
 **If pushed — 'so the reranker is useless?'** "On this corpus, at this size, yes — and that's a measurement, not an excuse. The reranker earns its 0.4 s when fusion's top-50 ordering is wrong at the top: overlapping-doc corpora, semantic-vs-exact vocabulary gaps, or at ANN scale where approximation loss makes rank-1≠best. That's a Week-4+ re-benchmark at scale, and the seam means I flip one env var."
 
 **If pushed — 'why RRF over normalized weighted sum?'** "Scores across systems don't share a scale — cosine ∈ [−1,1]-ish, BM25 unbounded, and a model swap silently changes both. Ranks are universal. Weighted RRF exists when I need to bias a leg — I built `weighted_rank_fusion` — but with k=60 a weight must beat a 61/62 rank-gap to flip a top pair; the damping is strong."
 
-**Beat sheet (10):** 1 dense+sparse one-liner · 2 RRF formula + k=60 + rank-only · 3 cross-encoder reads pairs together · 4 top-50→top-5 · 5 0.92 all modes + Δ=0 · 6 brute-force-below-10k honesty beat · 7 rerank 15 ms/2-pairs + 0.4 s/50 · 8 contaminated-p50 caveat · 9 $0.02/1k · 10 reranker-earns-its-cost re-benchmark stance.
+**Beat sheet (10):** 1 dense+sparse one-liner · 2 RRF formula + k=60 + rank-only · 3 cross-encoder reads pairs together · 4 top-50→top-5 · 5 0.92 all modes + Δ=0 · 6 brute-force-below-10k honesty beat · 7 quadratic-in-pair-length: 12 ms@10 tok → 398 ms@250 tok · 8 fitted config: MiniLM 20×64 → p50 257 / p95 426 ✅ (bge-base 4.1 s = GPU) · 9 $0.014/1k · 10 truncation-hypothesis disproof (baseline also misses) + ordering-insurance stance.
 
 ## ADR-003 walk — Query Transformation + Self-RAG reflection
 

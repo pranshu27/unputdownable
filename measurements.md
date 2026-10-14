@@ -5,18 +5,20 @@ Log of the 3 fixed measurement categories (quality / latency / cost) captured ev
 | Week | Quality (Δ Recall@5 / eval delta) | Latency (TTFT + TPOT by span) | Cost ($/1k queries or VRAM/user) | Notes |
 | :--- | :--- | :--- | :--- | :--- |
 | 1 | Parse failure 0.0% · table corruption 0.0% (0/68) · Δ Recall@5 (hybrid−dense) = 0.0 (both 0.90, ceiling) | Ingest p95 75.2 s (10-K CPU embed bottleneck); search TTFT p50 18.2 ms / p95 59.4 ms; RRF fuse p95 0.084 ms | $0 marginal (local ONNX); ref $0.0025/1k pages embed + $0.088/1k pages storage | Week 1 Day 3 — see below |
-| 2 | Recall@5 all four modes **0.92** (lexical-hard 0.90) — rerank Δ = 0 on the 290-pt ceiling · corruption 0/75 | Rerank warm ~15 ms/2 pairs → **~0.4 s per 50 pairs** (clean-box est); benchmark p50 35 s / p95 72 s CONTAMINATED (load-44 swap storm, re-measure quiet) | Rerank ≈ **$0.02/1k queries** clean est (vs $1.77 in the contaminated run); CPU-second method @ $4.7e-5/s | Week 2 — rerank stage measured; deltas still 0 at small-corpus scale |
+| 2 | Recall@5 all four modes **0.92** (lexical-hard 0.90) — rerank Δ = 0 on the 290-pt ceiling · corruption 0/75 (full-ingest runs) | **Rerank p50 257 ms / p95 426 ms** (fitted: MiniLM, 20 cand × 64-token snippets — inside the 500 ms budget ✅); bge-reranker-base at the same config = 4.1 s (budget breaker on CPU); full-chunk rerank p50 16.7 s | Rerank ≈ **$0.014/1k queries** fitted; CPU-second method @ $4.7e-5/s | Week 2 — see below |
 
 | 3 | Δ pipeline−baseline = **0.0** (0.821 both, 28 goldens) — **no regression is the deliverable at ~zero cost**; compound goldens 0.0 in BOTH modes (metric-definition bug: all-keywords-in-one-chunk can't hold for span-chunk answers) | transform p95 **0.01 ms** · reflect p95 **0.08 ms** · pipeline overhead p50 **+0.4 ms** | added LLM tokens **0** (rule-based strategies; HyDE deferred to W7) | Week 3 — see below |
 
-## Week 2 Day 3 — 1024-d upgrade attempt + cross-encoder rerank (Track A)
+## Week 2 Day 3 — rerank stage: RCA + fitted budget (Track A)
 
-Run: `track-a/scripts/week2_benchmark.py` (full ingest run + `--skip-ingest` eval re-run) · corpus = 8 stress docs, 25 goldens · modes = dense / sparse / hybrid / hybrid+rerank (`BAAI/bge-reranker-base`, top-50 → top-5, off by default).
+Run: `track-a/scripts/week2_benchmark.py --skip-ingest` · 290-pt collection · 25 goldens × 4 modes (dense / sparse / hybrid / hybrid+rerank).
 
-- **Quality:** 0.92 Recall@5 in all four modes (lexical-hard 0.90) — fusion already saturates; the reranker moved nothing ON THIS CORPUS (ceiling effect, small-corpus brute-force regime). Honest conclusion: rerank's Δ Recall needs a corpus where fusion fails — scale or harder negatives.
-- **The memory lesson:** the BGE-large 1024-d upgrade (1.2 GB) was attempted first and died of swap-thrash (7.5 GB used / 165 MB free / load 44) — "the model must fit the box or you benchmark the swap file." Config-only swap stays ready (`TRACKA_EMBEDDING_MODEL`); re-run when quiet.
-- **Contamination lesson:** rerank p50 35 s / p95 72 s were measured under the same system storm; the clean warm measurement is ~15 ms per 2 pairs. Quote the clean number with the caveat; re-measure on a quiet box before citing p95.
-- **Cost:** rerank ≈ $0.02/1k queries (clean est); dense index 445 KB, sparse est 64 KB (sparse ≈ 14% of dense → ✅ < 20% budget).
+- **The 15 s/query bug (RCA):** `week2_benchmark.py` built its *baseline* `SearchService` from env-modified settings — with `TRACKA_RERANK_ENABLED=true` the baseline reranked too, so every mode paid rerank 4×. Fix: the benchmark now forces `rerank_enabled=False` on the baseline and `True` on the rerank service via `model_copy`, regardless of environment. (`Settings` env_prefix `TRACKA_` verified correct; `search_service.py` correctly reads `self.settings`.)
+- **Cross-encoder cost is quadratic in pair length (measured):** 12 ms/pair @ ~10 tokens → 398 ms/pair @ ~250 tokens (**33×**). Full-chunk rerank of 50 candidates = 16.7 s — never ship that on CPU. New knob: `TRACKA_RERANK_SNIPPET_TOKENS` (rerankers are snippet scorers).
+- **The budget-fitting config:** `Xenova/ms-marco-MiniLM-L-6-v2` (22M params vs bge-base 278M) + 20 candidates × 64-token snippets → warm **208–257 ms** ✅, recall unchanged; **p95 426 ms ✅**; **$0.014/1k queries**. `bge-reranker-base` at the same config: 4.1 s — needs GPU to fit the budget. First query carries model load (~5 s) — warm the model at startup.
+- **Truncation hypothesis disproven:** the failing golden (`apple net sales fiscal 2023`) scores 0 in ALL modes INCLUDING the no-rerank, no-truncation baseline — a pre-existing corpus/golden miss, not a snippet artifact.
+- **Ceiling unchanged:** Recall@5 0.92 all modes, Δ = 0 — on 290 brute-forced points fusion already saturates; rerank buys ordering insurance, not recall, at this scale.
+- **The memory lesson (kept):** the BGE-large 1024-d upgrade (1.2 GB) died of swap-thrash (7.5 GB used / 165 MB free / load 44) — "the model must fit the box or you benchmark the swap file." Config-only swap stays ready (`TRACKA_EMBEDDING_MODEL`); re-run when quiet.
 
 ## Week 3 Day 3 — Query transformation + reflection (Track A)
 

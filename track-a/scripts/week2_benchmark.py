@@ -98,7 +98,10 @@ def main() -> None:
     totals = [r["total_ms"] for r in ingest_rows if not r["failed"]]
 
     # ---- search phase: 4 modes ----
-    base_search = SearchService(client, embedder, settings)  # rerank disabled
+    # The baseline MUST be rerank-free regardless of the environment (TRACKA_RERANK_ENABLED
+    # would otherwise silently rerank every mode and 4x the cost — the 15s/query bug).
+    base_settings = settings.model_copy(update={"rerank_enabled": False})
+    base_search = SearchService(client, embedder, base_settings)
     rerank_settings = settings.model_copy(update={"rerank_enabled": True})
     reranker = CrossEncoderReranker(rerank_settings)
     rerank_search = SearchService(client, embedder, rerank_settings, reranker=reranker)

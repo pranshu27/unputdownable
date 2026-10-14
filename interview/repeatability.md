@@ -6,7 +6,7 @@
 1. **I pick the drill at random** — never let yourself warm up on a favorite. Say: "surprise me" and I choose.
 2. **You reproduce out loud** (voice memo, or typed fast into the session). Timed: LLD 25 min · whiteboard 30 min · STAR 90 s cut + 5 min pushback · MBB case 30 min.
 3. **I score against the beat sheet** — for every beat: ✅ hit (right shape + right content) · 🟡 right idea, wrong shape (acceptable; note the gap) · ❌ missed, wrong order, or wrong number.
-4. **Numbers must be exact.** 0/75 tables · 1,189 chunks · 20/20 tests · 22/22 and 1/22 · 15/6/1 · 61/62 rank-gap · ~53 GB @ 10M · 96 ms vs 60–95 s · p95 < 2 s · Δ=0 at 290 pts. A wrong number is a ❌, not a 🟡 — interviewers check numbers.
+4. **Numbers must be exact.** 0/75 tables · 1,189 chunks · 20/20 tests · 22/22 and 1/22 · 15/6/1 · 61/62 rank-gap · ~53 GB @ 10M · 96 ms vs 60–95 s · p95 < 2 s · Δ=0 at 290 pts · rerank quadratic: 12→398 ms/pair (10→250 tok) · fitted rerank p50 257 / p95 426 ms (MiniLM, 20×64) · bge-base 4.1 s same config · full-chunk 50-cand rerank 16.7 s · $0.014/1k. A wrong number is a ❌, not a 🟡 — interviewers check numbers.
 5. **Pass bar:** zero ❌, everything else ≥ 🟡, delivered inside the time cap. **Two consecutive passes spaced ≥ 48 h = burned in.**
 6. **Fail rule:** any ❌ → rewrite THAT beat in your own words the same day (own words stick; my prose is scaffolding), re-test that drill first next session.
 

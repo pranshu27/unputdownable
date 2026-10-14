@@ -26,7 +26,7 @@ Format: **question → answer skeleton → where the detail lives.** Rehearse th
 
 ## Week 2 Fri / Week 3 Fri additions
 14. **Why a cross-encoder can beat a bi-encoder on relevance.** -> bi-encoders compress query and doc into one vector each before they meet; a cross-encoder reads them together (full attention across the pair) -> more precise, much slower -> two-stage shape. | `core/reranker.py`, ADR-002 W2
-15. **Your rerank latency budget at scale?** -> measured: warm ~15 ms for 2 pairs (CPU ONNX base) -> 50 pairs ≈ 200-400 ms -> batched/GPU or smaller reranker; budget the rerank span explicitly. | week2_results.json
+15. **Your rerank latency budget at scale?** -> fitted config measured: MiniLM + 20 cand x 64-token snippets -> p50 257 ms / p95 426 ms (budget 500 ms MET); bge-base = 4.1 s same config (GPU only); cost is quadratic in pair length (12 -> 398 ms/pair, 10 -> 250 tok). | week2_results_fitted.json
 16. **How do you fuse more than two ranked lists?** -> same RRF: sum 1/(k+rank) over n lists; optional per-list weights (w_i/(k+rank)); variants from query transformation fuse exactly this way. | `core/query_service.py`
 17. **When does query transformation hurt retrieval?** -> a bad rewrite steers the query; mitigated by fusing the ORIGINAL with every variant (variants only add votes). | ADR-003
 18. **What is HyDE and when would you not use it?** -> embed a hypothetical answer document instead of the question; needs generation (latency + cost); skip for keyword-exact queries where sparse wins. | ADR-003 (deferred to W7)

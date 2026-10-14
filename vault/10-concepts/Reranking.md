@@ -16,8 +16,11 @@ dense hits + sparse hits -> RRF fuse -> take top-50 -> cross-encoder scores each
 - Model: `BAAI/bge-reranker-base` — the plan said *Large*; fastembed ships only base (recorded deviation).
 - Raw outputs are logits (relevant ≫ 0, irrelevant ≪ 0): sanity direction-check before trusting: relevant doc scored +3.07, irrelevant −10.19.
 
-## Latency intuition
-Rerank cost = candidates × pairs-time. Warm CPU call on 2 pairs ≈ 15 ms ⇒ 50 pairs ≈ hundreds of ms on CPU — the single biggest span in the query path. At scale: batch on GPU, or a smaller reranker, or rerank fewer candidates.
+## Latency intuition — MEASURED, and it killed my first estimate
+Rerank cost = candidates × per-pair cost, and per-pair cost is **quadratic in sequence length**: measured on CPU ONNX, 12 ms/pair at ~10 tokens vs **398 ms/pair at ~250 tokens — 33×**. My first estimate ("warm 15 ms per 2 short pairs → 0.4 s per 50") was extrapolated from short pairs and was ~40× off: reranking 50 full chunks took **16.7 s**. Consequences:
+- Rerankers are **snippet scorers**: truncate candidates to a snippet window (`TRACKA_RERANK_SNIPPET_TOKENS`); the payload still carries the full chunk downstream — truncation affects scoring, not data.
+- Model size matters ~linearly-to-squared: `bge-reranker-base` (278M) at 20×64-token config = 4.1 s; `ms-marco-MiniLM-L-6-v2` (22M) at the same config = **208–257 ms warm** — the fitted, budget-meeting config (p95 426 ms < 500 ms budget; $0.014/1k queries).
+- First query carries model load (~5 s) — warm the model at service startup, and quote WARM numbers.
 
 ## Where it breaks
 - Truncation: rerankers have their own token limit — giant atomic tables arrive amputated and the reranker can only score what it sees.

@@ -113,6 +113,10 @@ class SearchService:
             candidates = ordered[: settings.rerank_candidates]
             t4 = time.perf_counter()
             texts = [(p.payload or {}).get("text", "") for p, _ in candidates]
+            if settings.rerank_snippet_tokens > 0:
+                # rerankers are snippet scorers: per-pair cost ~quadratic in sequence length
+                n = settings.rerank_snippet_tokens
+                texts = [" ".join(t.split()[:n]) for t in texts]
             scores = self.reranker.rerank(query, texts)
             spans.rerank_ms = (time.perf_counter() - t4) * 1000
             ordered = sorted(
